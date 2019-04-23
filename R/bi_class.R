@@ -21,6 +21,9 @@
 #'
 bi_class <- function(.data, x, y){
 
+  # global bindings
+  bs_x = bs_y = NULL
+
   # save parameters to list
   paramList <- as.list(match.call())
 
