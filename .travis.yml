@@ -19,5 +19,9 @@ matrix:
     - r: devel
       os: osx
 
+before_install:
+    - chmod +x ./.travis/install.sh
+    - ./.travis/install.sh
+
 after_success:
   - Rscript -e 'covr::codecov()'
