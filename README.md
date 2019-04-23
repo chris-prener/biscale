@@ -69,7 +69,7 @@ we create our plots:
 
 ``` r
 # apply palette
-data_DkViolet <- bi_pal(data, pal = "DkBlue")
+data <- bi_pal(data, pal = "DkBlue")
 ```
 
 Other options include `"Brown"`, `"DkCyan"`, `"DkViolet"`, and
@@ -80,7 +80,7 @@ With our scale and palette created, we can then create our main map:
 ``` r
 # create map
 map <- ggplot() +
-  geom_sf(data = data_DkViolet, aes(fill = bs_fill), color = "white", size = 0.1) +
+  geom_sf(data = data, aes(fill = bs_fill), color = "white", size = 0.1) +
   scale_fill_identity() +
   labs(
     title = "Race and Income in St. Louis, MO",
