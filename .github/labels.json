@@ -1,0 +1,135 @@
+[
+	{
+		"name": "good first issue",
+		"color": "006b75",
+		"description": "Good issue for first-time contributors"
+	},
+	{
+		"name": "help wanted",
+		"color": "0052cc",
+		"description": "Looking for contributors",
+		"aliases": [
+			"help"
+		]
+	},
+	{
+		"name": "high priority",
+		"color": "b60205",
+		"description": "Needs to be addressed ASAP",
+		"aliases": [
+			"asap"
+		]
+	},
+
+	{
+		"name": "status: blocked",
+		"color": "0052cc",
+		"description": "Progress on addressing issue blocked",
+		"aliases": [
+			"blocked"
+		]
+	},
+	{
+		"name": "status: changes requested",
+		"color": "0e8a16",
+		"description": "Waiting for contributor to update PR",
+		"aliases": [
+			"changes requested"
+		]
+	},
+	{
+		"name": "status: duplicate",
+		"color": "5319e7",
+		"description": "Issue or PR already exists",
+		"aliases": [
+			"duplicate"
+		]
+	},
+	{
+		"name": "status: in progress",
+		"color": "0e8a16",
+		"description": "Contributor working on issue",
+		"aliases": [
+			"in progress"
+		]
+	},
+	{
+		"name": "status: need more info",
+		"color": "0e8a16",
+		"description": "More information needed",
+		"aliases": [
+			"need more information",
+			"need more info",
+			"more information needed",
+			"more info needed",
+			"info needed"
+		]
+	},
+	{
+		"name": "status: out of scope",
+		"color": "5319e7",
+		"description": "Proposed changes are out of scope",
+		"aliases": [
+			"out of scope"
+		]
+	},
+	{
+		"name": "status: waiting",
+		"color": "0052cc",
+		"description": "Progress dependent on another issue or conversation",
+		"aliases": [
+			"waiting"
+		]
+	},
+
+	{
+		"name": "type: bug",
+		"color": "b60205",
+		"description": "Code included in the package needs to be fixed",
+		"aliases": [
+			"bug",
+			"error",
+			"refactor"
+		]
+	},
+	{
+		"name": "type: clarification",
+		"color": "b60205",
+		"description": "Suggest change for make package clearer",
+		"aliases": [
+			"clarification"
+		]
+	},
+	{
+		"name": "type: discussion",
+		"color": "fbca04",
+		"description": "Discussion or feedback about the package",
+		"aliases": [
+			"discussion"
+		]
+	},
+	{
+		"name": "type: enhancement",
+		"color": "fbca04",
+		"description": "Propose enhancement to the package",
+		"aliases": [
+			"enhancement"
+		]
+	},
+	{
+		"name": "type: formatting",
+		"color": "d73a4a",
+		"description": "Formatting needs to be fixed",
+		"aliases": [
+			"formatting"
+		]
+	},
+	{
+		"name": "type: typo",
+		"color": "d73a4a",
+		"description": "Typo in text for the package",
+		"aliases": [
+			"typo"
+		]
+	}
+]

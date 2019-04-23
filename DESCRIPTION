@@ -1,0 +1,24 @@
+Package: biscale
+Type: Package
+Title: Tools and Palettes for Bivariate Thematic Mapping
+Version: 0.1.4
+Authors@R: c(
+    person("Christopher", "Prener", , "chris.prener@slu.edu", c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-4310-9888")))
+Description: A set of functions to implementing bivarite maps in ggplot2.
+Depends: R (>= 3.3)
+License: GPL-3
+URL: https://github.com/slu-openGIS/biscale
+BugReports: https://github.com/slu-openGIS/biscale/issues
+Encoding: UTF-8
+LazyData: true
+Imports:
+  dplyr
+RoxygenNote: 6.1.1
+Suggests:
+  ggplot2,
+  knitr,
+  rmarkdown,
+  testthat,
+  covr
+VignetteBuilder: knitr
