@@ -124,6 +124,13 @@ experimentation depending on the shape of the map itself.
 
 ![](man/figures/dkblue.png)
 
+## Palettes
+
+Palette options include `"Brown"`, `"DkBlue"`, `"DkCyan"`, `"DkViolet"`,
+and `"GrPink"`.
+
+![](man/figures/preview.png)
+
 ## Contributor Code of Conduct
 
 Please note that this project is released with a [Contributor Code of
