@@ -40,6 +40,14 @@ wards <- ar_stl_wards
 ### Installing Dependencies
 You should check the [`sf` package website](https://r-spatial.github.io/sf/) and the [`areal` package website](https://slu-openGIS.github.io/areal/) for the latest details on installing dependencies for that package. Instructions vary significantly by operating system. For best results, have `sf` installed before you install `areal`. Other dependencies, like `dplyr`, will be installed automatically with `areal` if they are not already present.
 
+### Installing biscale
+Once you have `sf` installed, you can install `biscale` with the `remotes` package:
+
+```r
+# install.packages("remotes")
+remotes::install_github("slu-openGIS/biscale")
+```
+
 ## Usage
 Creating bivariate plots in the style described by [Grossenbacher and Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) requires a number of dependencies in addition to `biscale` - `ggplot2` for plotting, `cowplot` for combining the legend and the main map, and `sf` for working with spaital objects in `R`:
 

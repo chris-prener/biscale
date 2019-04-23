@@ -31,6 +31,16 @@ significantly by operating system. For best results, have `sf` installed
 before you install `areal`. Other dependencies, like `dplyr`, will be
 installed automatically with `areal` if they are not already present.
 
+### Installing biscale
+
+Once you have `sf` installed, you can install `biscale` with the
+`remotes` package:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("slu-openGIS/biscale")
+```
+
 ## Usage
 
 Creating bivariate plots in the style described by [Grossenbacher and
