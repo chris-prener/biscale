@@ -2,6 +2,8 @@
 #'
 #' @description A theme for creating a simple, clean bivariate map.
 #'
+#' @param ... Arguments to pass on to \code{ggplot2}'s \code{theme} function
+#'
 #' @importFrom ggplot2 theme
 #' @importFrom ggplot2 theme_minimal
 #' @importFrom ggplot2 element_blank
@@ -11,7 +13,7 @@
 #' @importFrom ggplot2 margin
 #'
 #' @export
-theme_map <- function(...) {
+bi_theme <- function(...) {
   ggplot2::theme_minimal() +
     ggplot2::theme(
 

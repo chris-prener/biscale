@@ -45,8 +45,9 @@ pal_dkviolet <- function(){
     "3 - 1" = "#AE3A4E", # high x, low y
     "2 - 1" = "#BC7C8F",
     "1 - 1" = "#CABED0" # low x, low y
-  ) %>%
-    tidyr::gather("bs_class", "bs_fill")
+  )
+
+  out <- tidyr::gather(out, "bs_class", "bs_fill")
 
   return(out)
 
@@ -65,8 +66,9 @@ pal_grpink <- function(){
     "3 - 1" = "#C85A5A", # high x, low y
     "2 - 1" = "#E4ACAC",
     "1 - 1" = "#E8E8E8" # low x, low y
-  ) %>%
-    tidyr::gather("bs_class", "bs_fill")
+  )
+
+  out <- tidyr::gather(out, "bs_class", "bs_fill")
 
   return(out)
 
@@ -84,8 +86,9 @@ pal_dkblue <- function(){
     "3 - 1" = "#5AC8C8", # high x, low y
     "2 - 1" = "#ACE4E4",
     "1 - 1" = "#E8E8E8" # low x, low y
-  ) %>%
-    tidyr::gather("bs_class", "bs_fill")
+  )
+
+  out <- tidyr::gather(out, "bs_class", "bs_fill")
 
   return(out)
 
@@ -103,8 +106,9 @@ pal_dkcyan <- function(){
     "3 - 1" = "#6C83B5", # high x, low y
     "2 - 1" = "#B5C0DA",
     "1 - 1" = "#E8E8E8" # low x, low y
-  ) %>%
-    tidyr::gather("bs_class", "bs_fill")
+  )
+
+  out <- tidyr::gather(out, "bs_class", "bs_fill")
 
   return(out)
 
@@ -122,8 +126,9 @@ pal_brown <- function(){
     "3 - 1" = "#C8B35A", # high x, low y
     "2 - 1" = "#E4D9AC",
     "1 - 1" = "#E8E8E8" # low x, low y
-  ) %>%
-    tidyr::gather("bs_class", "bs_fill")
+  )
+
+  out <- tidyr::gather(out, "bs_class", "bs_fill")
 
   return(out)
 

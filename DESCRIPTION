@@ -16,7 +16,8 @@ Imports:
   dplyr,
   ggplot2,
   rlang,
-  stats
+  stats,
+  tidyr
 RoxygenNote: 6.1.1
 Suggests:
   covr,

@@ -3,7 +3,7 @@
 export(bi_class)
 export(bi_legend)
 export(bi_pal)
-export(theme_map)
+export(bi_theme)
 importFrom(dplyr,left_join)
 importFrom(dplyr,mutate)
 importFrom(dplyr,pull)

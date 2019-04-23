@@ -13,6 +13,9 @@
 #' @export
 bi_legend <- function(pal){
 
+  # global binding
+  bs_class = x = y = NULL
+
   # return palette colors
   if (pal == "DkViolet"){
     x <- pal_dkviolet()
@@ -27,9 +30,8 @@ bi_legend <- function(pal){
   }
 
   # reformat
-  out <- x %>%
-    tidyr::separate(bs_class, into = c("x", "y"), sep = " - ") %>%
-    dplyr::mutate(x = as.integer(x), y = as.integer(y))
+  out <- tidyr::separate(x, bs_class, into = c("x", "y"), sep = " - ")
+  out <- dplyr::mutate(out, x = as.integer(x), y = as.integer(y))
 
   # return output
   return(out)
