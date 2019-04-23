@@ -22,7 +22,7 @@ map <- ggplot() +
     title = "Race and Income in St. Louis, MO",
     subtitle = "Brown (Brown) Palette"
   ) +
-  theme_map()
+  bi_theme()
 
 
 # separate the groups used for plotting
@@ -34,7 +34,7 @@ legend <- ggplot() +
   scale_fill_identity() +
   labs(x = expression(paste("Higher % White ", ""%->%"")),
        y = expression(paste("Higher Income ", ""%->%""))) +
-  theme_map() +
+  bi_theme() +
 
   # make font small enough
   theme(axis.title = element_text(size = 10)) +
