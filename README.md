@@ -24,12 +24,15 @@ bivariate mapping palettes from Joshua Stevens’s
 ### Installing Dependencies
 
 You should check the [`sf` package
-website](https://r-spatial.github.io/sf/) and the [`areal` package
-website](https://slu-openGIS.github.io/areal/) for the latest details on
+website](https://r-spatial.github.io/sf/) for the latest details on
 installing dependencies for that package. Instructions vary
-significantly by operating system. For best results, have `sf` installed
-before you install `areal`. Other dependencies, like `dplyr`, will be
-installed automatically with `areal` if they are not already present.
+significantly by operating system. Linux users in particular should also
+check the [`biscale` package
+repo](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh)
+for a script that installs the relevant dependencies. For best results,
+have `sf` installed before you install `biscale`. Other dependencies,
+like `dplyr`, will be installed automatically with `areal` if they are
+not already present.
 
 ### Installing biscale
 
