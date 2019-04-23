@@ -19,6 +19,7 @@
 #' @importFrom rlang sym
 #' @importFrom stats quantile
 #'
+#' @export
 bi_class <- function(.data, x, y){
 
   # global bindings

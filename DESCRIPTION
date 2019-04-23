@@ -18,9 +18,10 @@ Imports:
   stats
 RoxygenNote: 6.1.1
 Suggests:
+  covr,
   ggplot2,
   knitr,
   rmarkdown,
-  testthat,
-  covr
+  sf,
+  testthat
 VignetteBuilder: knitr
