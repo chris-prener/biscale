@@ -53,7 +53,7 @@ bi_class <- function(.data, x, y){
   # cut into groups defined above and join fill
   out <- dplyr::mutate(.data, bs_x = cut(!!xQ, breaks = bins_x, include.lowest = TRUE))
   out <- dplyr::mutate(out, bs_y = cut(!!yQ, breaks = bins_y, include.lowest = TRUE))
-  out <- dplyr::mutate(out, bs_class = paste(as.numeric(bs_x), "-", as.numeric(bs_y)))
+  out <- dplyr::mutate(out, bs_class = paste0(as.numeric(bs_x), "-", as.numeric(bs_y)))
 
   # return output
   return(out)
