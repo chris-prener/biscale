@@ -4,11 +4,25 @@
 #'
 #' @usage bi_pal(pal)
 #'
-#' @param pal The name of the palette to print hex values for.
+#' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
+#'     \code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.
+#'
+#' @return A named vector with class values for names and their corresponding
+#'     hex color values.
+#'
+#' @examples
+#' bi_pal(pal = "DkBlue")
+#' bi_pal(pal = "DkCyan")
 #'
 #' @export
 bi_pal <- function(pal){
 
+  # check parameters
+  if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
+    stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+  }
+
+  # call sub functions
   if (pal == "DkViolet"){
     x <- pal_dkviolet()
   } else if (pal == "GrPink"){
@@ -21,12 +35,15 @@ bi_pal <- function(pal){
     x <- pal_brown()
   }
 
+  # return output
   return(x)
 
 }
 
+# dark violet palette
 pal_dkviolet <- function(){
 
+  # construct palette
   out <- c(
     "3-3" = "#3F2949", # high x, high y
     "2-3" = "#435786",
@@ -39,13 +56,15 @@ pal_dkviolet <- function(){
     "1-1" = "#CABED0" # low x, low y
   )
 
+  # return output
   return(out)
 
 }
 
-
+# gray pink palette
 pal_grpink <- function(){
 
+  # construct palette
   out <- c(
     "3-3" = "#574249", # high x, high y
     "2-3" = "#627F8C",
@@ -58,12 +77,15 @@ pal_grpink <- function(){
     "1-1" = "#E8E8E8" # low x, low y
   )
 
+  # return output
   return(out)
 
 }
 
+# dark blue palette
 pal_dkblue <- function(){
 
+  # construct palette
   out <- c(
     "3-3" = "#3B4994", # high x, high y
     "2-3" = "#8C62AA",
@@ -76,12 +98,15 @@ pal_dkblue <- function(){
     "1-1" = "#E8E8E8" # low x, low y
   )
 
+  # return output
   return(out)
 
 }
 
+# dark cyan palette
 pal_dkcyan <- function(){
 
+  # construct palette
   out <- c(
     "3-3" = "#2A5A5B", # high x, high y
     "2-3" = "#5A9178",
@@ -94,12 +119,15 @@ pal_dkcyan <- function(){
     "1-1" = "#E8E8E8" # low x, low y
   )
 
+  # return output
   return(out)
 
 }
 
+# brown palette
 pal_brown <- function(){
 
+  # construct palette
   out <- c(
     "3-3" = "#804D36", # high x, high y
     "2-3" = "#976B82",
@@ -112,6 +140,7 @@ pal_brown <- function(){
     "1-1" = "#E8E8E8" # low x, low y
   )
 
+  # return output
   return(out)
 
 }

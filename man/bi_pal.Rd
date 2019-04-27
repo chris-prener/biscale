@@ -7,8 +7,18 @@
 bi_pal(pal)
 }
 \arguments{
-\item{pal}{The name of the palette to print hex values for.}
+\item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
+\code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.}
+}
+\value{
+A named vector with class values for names and their corresponding
+    hex color values.
 }
 \description{
 Prints the hex values for a specified palette.
+}
+\examples{
+bi_pal(pal = "DkBlue")
+bi_pal(pal = "DkCyan")
+
 }
