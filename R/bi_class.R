@@ -56,7 +56,7 @@ bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
 
   # check data
   if ("sf" %in% class(.data) == TRUE & "sf" %in% (.packages()) == FALSE){
-    warning("The 'sf' package is not loaded, and the class 'sf' attribute of the give data set has been removed. Load 'sf' to retain the class when using 'bi_class'.")
+    warning("The 'sf' package is not loaded, and the class 'sf' attribute of the given data set has been lost. Load 'sf' to retain the class when using 'bi_class'.")
   }
 
   # save parameters to list
