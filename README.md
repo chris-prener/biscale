@@ -87,7 +87,7 @@ Once breaks are created, we can use `bi_scale_fill()` as part of our
 # create map
 map <- ggplot() +
   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "GrPink") +
+  bi_scale_fill(pal = "DkBlue") +
   labs(
     title = "Race and Income in St. Louis, MO",
     subtitle = "Dark Blue (DkBlue) Palette"
@@ -95,17 +95,17 @@ map <- ggplot() +
   bi_theme()
 ```
 
-Other options for palettes include `"Brown"`, `"DkBlue"`, `"DkCyan"`,
-and `"DkViolet"`. The `bi_theme()` function applies a simple theme
-without distracting elements, which is preferable given the already
-elevated complexity of a bivarite map.
+Other options for palettes include `"Brown"`, `"DkCyan"`, `"DkViolet"`,
+and `"GrPink"`. The `bi_theme()` function applies a simple theme without
+distracting elements, which is preferable given the already elevated
+complexity of a bivarite map.
 
 To add a legend to our map, we need to create a second `ggplot` object.
 We can use `bi_legend()` to accomplish this, which allows us to easily
 specify the fill palette, the x and y axis labels, and their size:
 
 ``` r
-legend <- bi_legend(pal = "GrPink",
+legend <- bi_legend(pal = "DkBlue",
                     xlab = "Higher % White ",
                     ylab = "Higher Income ",
                     size = 8)
