@@ -29,3 +29,29 @@ A copy of \code{.data} with a new variable \code{bs_class} that contains
 \description{
 Creates mapping classes for a 3x3 bivariate map.
 }
+\examples{
+# default breaks
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc)
+
+# summarize default breaks
+table(data$bi_class)
+
+# equal breaks
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal")
+
+# summarize equal breaks
+table(data$bi_class)
+
+# fisher breaks
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher")
+
+# summarize fisher breaks
+table(data$bi_class)
+
+# jenks breaks
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks")
+
+# summarize jenks breaks
+table(data$bi_class)
+
+}

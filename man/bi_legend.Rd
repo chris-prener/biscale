@@ -28,7 +28,7 @@ Creates a \code{ggplot} object containing a legend that is specific
 legend <- bi_legend(pal = "GrPink",
                     xlab = "Higher \% White ",
                     ylab = "Higher Income ",
-                    size = 8)
+                    size = 16)
 
 # print legend
 legend

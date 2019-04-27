@@ -24,6 +24,31 @@
 #' @importFrom rlang enquo quo quo_name sym
 #' @importFrom stats quantile
 #'
+#' @examples
+#' # default breaks
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc)
+#'
+#' # summarize default breaks
+#' table(data$bi_class)
+#'
+#' # equal breaks
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal")
+#'
+#' # summarize equal breaks
+#' table(data$bi_class)
+#'
+#' # fisher breaks
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher")
+#'
+#' # summarize fisher breaks
+#' table(data$bi_class)
+#'
+#' # jenks breaks
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks")
+#'
+#' # summarize jenks breaks
+#' table(data$bi_class)
+#'
 #' @export
 bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
 
