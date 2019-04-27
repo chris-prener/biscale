@@ -8,7 +8,7 @@ bi_legend(pal, xlab, ylab, size)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
-\code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.}
+\code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
 
 \item{xlab}{Text for desired x axis label on legend}
 

@@ -7,7 +7,7 @@
 #' @usage bi_scale_fill(pal, ...)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
-#'     \code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.
+#'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
 #' @param ... Arguments to pass to \code{\link{scale_fill_manual}}
 #'
 #' @importFrom ggplot2 scale_fill_manual

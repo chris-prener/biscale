@@ -8,7 +8,7 @@ bi_pal(pal, preview = TRUE)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
-\code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.}
+\code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
 }
 \value{
 A named vector with class values for names and their corresponding
@@ -19,11 +19,23 @@ Prints the hex values for a specified palette.
 }
 \examples{
 # dark blue palette
+bi_pal(pal = "Brown")
+bi_pal(pal = "Brown", preview = FALSE)
+
+# dark blue palette
 bi_pal(pal = "DkBlue")
 bi_pal(pal = "DkBlue", preview = FALSE)
 
 # dark cyan palette
 bi_pal(pal = "DkCyan")
 bi_pal(pal = "DkCyan", preview = FALSE)
+
+# dark violet palette
+bi_pal(pal = "DkViolet")
+bi_pal(pal = "DkViolet", preview = FALSE)
+
+# gray pink palette
+bi_pal(pal = "GrPink")
+bi_pal(pal = "GrPink", preview = FALSE)
 
 }

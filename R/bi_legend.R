@@ -6,7 +6,7 @@
 #' @usage bi_legend(pal, xlab, ylab, size)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
-#'     \code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.
+#'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
 #' @param xlab Text for desired x axis label on legend
 #' @param ylab Text for desired y axis label on legened
 #' @param size Size of axis labels
