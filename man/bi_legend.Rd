@@ -23,3 +23,14 @@ A \code{ggplot} object with a bivariate legend.
 Creates a \code{ggplot} object containing a legend that is specific
     to bivariate mapping.
 }
+\examples{
+# construct legend
+legend <- bi_legend(pal = "GrPink",
+                    xlab = "Higher \% White ",
+                    ylab = "Higher Income ",
+                    size = 8)
+
+# print legend
+legend
+
+}

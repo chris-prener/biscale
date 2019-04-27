@@ -18,6 +18,16 @@
 #'     scale_fill_identity theme
 #' @importFrom tidyr separate
 #'
+#' @examples
+#' # construct legend
+#' legend <- bi_legend(pal = "GrPink",
+#'                     xlab = "Higher % White ",
+#'                     ylab = "Higher Income ",
+#'                     size = 16)
+#'
+#' # print legend
+#' legend
+#'
 #' @export
 bi_legend <- function(pal, xlab, ylab, size = 10){
 
