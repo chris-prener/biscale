@@ -20,6 +20,7 @@
 #'
 #' @importFrom classInt classIntervals
 #' @importFrom dplyr mutate pull select
+#' @importFrom glue glue
 #' @importFrom rlang enquo quo quo_name sym
 #' @importFrom stats quantile
 #'

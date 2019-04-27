@@ -19,6 +19,7 @@ Imports:
   classInt,
   dplyr,
   ggplot2,
+  glue,
   rlang,
   stats,
   tidyr
