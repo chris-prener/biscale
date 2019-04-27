@@ -87,7 +87,7 @@ Once breaks are created, we can use `bi_scale_fill()` as part of our
 # create map
 map <- ggplot() +
   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "DkBlue") +
+  bi_scale_fill(pal = "GrPink") +
   labs(
     title = "Race and Income in St. Louis, MO",
     subtitle = "Dark Blue (DkBlue) Palette"
@@ -95,19 +95,21 @@ map <- ggplot() +
   bi_theme()
 ```
 
-Other options for palettes include `"Brown"`, `"DkCyan"`, `"DkViolet"`,
-and `"GrPink"`. The `bi_theme()` function applies a simple theme without
-distracting elements, which is preferable given the already elevated
-complexity of a bivarite map.
+Other options for palettes include `"Brown"`, `"DkBlue"`, `"DkCyan"`,
+and `"DkViolet"`. The `bi_theme()` function applies a simple theme
+without distracting elements, which is preferable given the already
+elevated complexity of a bivarite map.
 
 To add a legend to our map, we need to create a second `ggplot` object.
 We can use `bi_legend()` to accomplish this, which allows us to easily
 specify the fill palette, the x and y axis labels, and their size:
 
-    legend <- bi_legend(pal = "GrPink",
-                        xlab = "Higher % White ",
-                        ylab = "Higher Income ",
-                        size = 8)
+``` r
+legend <- bi_legend(pal = "GrPink",
+                    xlab = "Higher % White ",
+                    ylab = "Higher Income ",
+                    size = 8)
+```
 
 Note that
 [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html)
@@ -119,13 +121,15 @@ With our legend drawn, we can then combine the legend and the map with
 `cowplot`. The values needed for this stage will be subject to
 experimentation depending on the shape of the map itself.
 
-    # combine map with legend
-    finalPlot <- ggdraw() +
-      draw_plot(map, 0, 0, 1, 1) +
-      draw_plot(legend, 0.2, .7, 0.2, 0.2)
-    
-    # print map
-    finalPlot
+``` r
+# combine map with legend
+finalPlot <- ggdraw() +
+  draw_plot(map, 0, 0, 1, 1) +
+  draw_plot(legend, 0.2, .7, 0.2, 0.2)
+
+# print map
+finalPlot
+```
 
 ![](man/figures/dkblue.png)
 
