@@ -76,25 +76,18 @@ table of classes, created with the `bi_class()` function:
 data <- bi_class(data, x = pctWhite, y = medInc)
 ```
 
-Next, we want to apply hex values for a desired palette to our data
-object as well. This will allow us to use `scale_fill_identity()` when
-we create our plots:
+The default method for calculating breaks is `"tercile"`, which will
+provide breaks at 33.33% and 66.66% percent (i.e. 3 quantile breaks).
+Other options are `"equal"`, `"fisher"`, and `"jenks"`.
 
-``` r
-# apply palette
-data <- bi_pal(data, pal = "DkBlue")
-```
-
-Other options include `"Brown"`, `"DkCyan"`, `"DkViolet"`, and
-`"GrPink"`.
-
-With our scale and palette created, we can then create our main map:
+Once breaks are created, we can use `bi_scale_fill()` as part of our
+`ggplot()` call:
 
 ``` r
 # create map
 map <- ggplot() +
-  geom_sf(data = data, aes(fill = bs_fill), color = "white", size = 0.1) +
-  scale_fill_identity() +
+  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  bi_scale_fill(pal = "DkBlue") +
   labs(
     title = "Race and Income in St. Louis, MO",
     subtitle = "Dark Blue (DkBlue) Palette"
@@ -102,26 +95,25 @@ map <- ggplot() +
   bi_theme()
 ```
 
-To add a legend to our map, we need to create a special data object with
-the categories and colors associated with them before we draw the legend
-itself:
+Other options for palettes include `"Brown"`, `"DkCyan"`, `"DkViolet"`,
+and `"GrPink"`. The `bi_theme()` function applies a simple theme without
+distracting elements, which is preferable given the already elevated
+complexity of a bivarite map.
 
-    # separate the groups used for plotting
-    bs <- bi_legend(pal = "DkBlue")
-    
-    # draw legend
-    legend <- ggplot() +
-      geom_tile(data = bs, mapping = aes(x = x, y = y, fill = bs_fill)) +
-      scale_fill_identity() +
-      labs(x = expression(paste("Higher % White ", ""%->%"")),
-           y = expression(paste("Higher Income ", ""%->%""))) +
-      bi_theme() +
-      theme(axis.title = element_text(size = 10)) +
-      coord_fixed()
+To add a legend to our map, we need to create a second `ggplot` object.
+We can use `bi_legend()` to accomplish this, which allows us to easily
+specify the fill palette, the x and y axis labels, and their size:
+
+    legend <- bi_legend(pal = "GrPink",
+                        xlab = "Higher % White ",
+                        ylab = "Higher Income ",
+                        size = 8)
 
 Note that
 [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html)
-is used to draw the arrows since Unicode arrows are font dependent.
+is used to draw the arrows since Unicode arrows are font dependent. This
+happens internally as part of `bi_legend()` - you don’t need to include
+them in your `xlab` and `ylab` arguments\!
 
 With our legend drawn, we can then combine the legend and the map with
 `cowplot`. The values needed for this stage will be subject to
