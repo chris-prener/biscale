@@ -1,16 +1,10 @@
-#' Add Palette Hex Values to Data
+#' Print Hex Values for Palette
 #'
-#' @description Adding the palette hex values allows you to use \code{sale_fill_identity}
-#'     to plot the bivariate data.
+#' @description Prints the hex values for a specified palette.
 #'
-#' @usage bi_pal(.data, pal)
+#' @usage bi_pal(pal)
 #'
-#' @param .data A \code{sf} object
-#' @param pal The name of the palette to apply.
-#'
-#' @importFrom dplyr tibble
-#' @importFrom dplyr left_join
-#' @importFrom tidyr gather
+#' @param pal The name of the palette to print hex values for.
 #'
 #' @export
 bi_pal <- function(pal){

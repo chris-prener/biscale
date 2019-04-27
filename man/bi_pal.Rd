@@ -2,16 +2,13 @@
 % Please edit documentation in R/bi_pal.R
 \name{bi_pal}
 \alias{bi_pal}
-\title{Add Palette Hex Values to Data}
+\title{Print Hex Values for Palette}
 \usage{
-bi_pal(.data, pal)
+bi_pal(pal)
 }
 \arguments{
-\item{.data}{A \code{sf} object}
-
-\item{pal}{The name of the palette to apply.}
+\item{pal}{The name of the palette to print hex values for.}
 }
 \description{
-Adding the palette hex values allows you to use \code{sale_fill_identity}
-    to plot the bivariate data.
+Prints the hex values for a specified palette.
 }

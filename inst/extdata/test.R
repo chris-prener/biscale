@@ -15,9 +15,9 @@ map <- ggplot() +
   ) +
   bi_theme()
 
-map
+# map
 
-legend <- bi_legend(pal = "GrPink",
+legend <- bi_legend2(pal = "GrPink",
                     xlab = "Higher % White ",
                     ylab = "Higher Income ",
                     size = 8)
