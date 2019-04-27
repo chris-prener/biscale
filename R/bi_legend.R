@@ -3,9 +3,12 @@
 #' @description Creates a tibble that can be used as the basis for
 #'     drawing a legend.
 #'
-#' @usage bi_legend(pal)
+#' @usage bi_legend(pal, xlab, ylab, size)
 #'
 #' @param pal A palette name
+#' @param xlab The x axis label
+#' @param ylab The y axis label
+#' @param size Size of axis labels
 #'
 #' @importFrom dplyr mutate tibble
 #' @importFrom ggplot2 aes coord_fixed element_text geom_tile ggplot labs
@@ -16,7 +19,7 @@
 bi_legend <- function(pal, xlab, ylab, size){
 
   # global binding
-  bs_class = x = y = NULL
+  bi_class = bi_fill = x = y = NULL
 
   # return palette colors
   if (pal == "DkViolet"){
@@ -33,17 +36,17 @@ bi_legend <- function(pal, xlab, ylab, size){
 
   # create tibble for plotting
   x <- dplyr::tibble(
-    bs_class = names(x),
-    bs_fill = x
+    bi_class = names(x),
+    bi_fill = x
   )
 
   # reformat
-  leg <- tidyr::separate(x, bs_class, into = c("x", "y"), sep = "-")
+  leg <- tidyr::separate(x, bi_class, into = c("x", "y"), sep = "-")
   leg <- dplyr::mutate(leg, x = as.integer(x), y = as.integer(y))
 
   # create ggplot2 legend object
   legend <- ggplot2::ggplot() +
-    ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bs_fill)) +
+    ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill)) +
     ggplot2::scale_fill_identity() +
     ggplot2::labs(x = substitute(paste(xlab, ""%->%"")), y = substitute(paste(ylab, ""%->%""))) +
     bi_theme() +

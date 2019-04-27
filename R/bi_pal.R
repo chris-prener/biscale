@@ -21,7 +21,7 @@ bi_pal <- function(pal){
     x <- pal_brown()
   }
 
-  return(out)
+  return(x)
 
 }
 

@@ -4,7 +4,7 @@
 \alias{bi_class}
 \title{Create Classes for Bivariate Maps}
 \usage{
-bi_class(.data, x, y)
+bi_class(.data, x, y, style = "tercile", keep_factors = FALSE)
 }
 \arguments{
 \item{.data}{A data frame, tibble, or \code{sf} object}

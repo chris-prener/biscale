@@ -2,7 +2,7 @@
 #'
 #' @description Creates mapping classes for a 3x3 bivariate map.
 #'
-#' @usage bi_class(.data, x, y)
+#' @usage bi_class(.data, x, y, style = "tercile", keep_factors = FALSE)
 #'
 #' @param .data A data frame, tibble, or \code{sf} object
 #' @param x The \code{x} variable
@@ -31,7 +31,7 @@
 bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
 
   # global bindings
-  bs_x = bs_y = NULL
+  bi_x = bi_y = NULL
 
   # check inputs
   if (style %in% c("tercile", "equal", "fisher", "jenks") == FALSE){

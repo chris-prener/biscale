@@ -4,10 +4,16 @@
 \alias{bi_legend}
 \title{Create Object for Drawing Legend}
 \usage{
-bi_legend(pal)
+bi_legend(pal, xlab, ylab, size)
 }
 \arguments{
 \item{pal}{A palette name}
+
+\item{xlab}{The x axis label}
+
+\item{ylab}{The y axis label}
+
+\item{size}{Size of axis labels}
 }
 \description{
 Creates a tibble that can be used as the basis for
