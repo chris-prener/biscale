@@ -19,7 +19,7 @@
 #' @importFrom tidyr separate
 #'
 #' @export
-bi_legend <- function(pal, xlab, ylab, size){
+bi_legend <- function(pal, xlab, ylab, size = 10){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -27,6 +27,27 @@ bi_legend <- function(pal, xlab, ylab, size){
   # check parameters
   if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+  }
+
+  if (is.character(xlab) == FALSE){
+    stop("The 'xlab' argument must be a character string.")
+  }
+
+  if (is.character(ylab) == FALSE){
+    stop("The 'ylab' argument must be a character string.")
+  }
+
+  if (is.numeric(size) == FALSE){
+    stop("The 'size' argument must be a numeric value.")
+  }
+
+  # insert missing parameter values
+  if (missing(xlab) == TRUE){
+    xlab <- "x var "
+  }
+
+  if (missing(ylab) == TRUE){
+    ylab <- "y var "
   }
 
   # return palette colors
