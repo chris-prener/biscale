@@ -12,6 +12,14 @@ bi_class(.data, x, y)
 \item{x}{The \code{x} variable}
 
 \item{y}{The \code{y} variable}
+
+\item{style}{A string identifying the style used to calculate breaks. Currently
+supported styles are \code{"tercile"} (default), \code{"equal"}, \code{"fisher"},
+and \code{"jenks"}.}
+
+\item{keep_factors}{A logical scalar; if \code{TRUE}, the fintermediate factor
+variables created as part of the calculation of \code{bs_class} will be
+retained. If \code{FALSE} (default), they will not be returned.}
 }
 \value{
 A copy of \code{.data} with a new variable \code{bs_class} that contains

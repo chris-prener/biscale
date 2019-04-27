@@ -16,6 +16,7 @@ BugReports: https://github.com/slu-openGIS/biscale/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
+  classInt,
   dplyr,
   ggplot2,
   rlang,
