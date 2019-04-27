@@ -10,7 +10,7 @@
 #' @param style A string identifying the style used to calculate breaks. Currently
 #'     supported styles are \code{"tercile"} (default), \code{"equal"}, \code{"fisher"},
 #'     and \code{"jenks"}.
-#' @param keep_factors A logical scalar; if \code{TRUE}, the fintermediate factor
+#' @param keep_factors A logical scalar; if \code{TRUE}, the intermediate factor
 #'     variables created as part of the calculation of \code{bs_class} will be
 #'     retained. If \code{FALSE} (default), they will not be returned.
 #'
@@ -34,6 +34,18 @@ bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
   bi_x = bi_y = NULL
 
   # check inputs
+  if (missing(.data)) {
+    stop("An object containing data must be specified for the '.data' argument.")
+  }
+
+  if (missing(x)) {
+    stop("A variable must be given for the 'x' argument.")
+  }
+
+  if (missing(y)) {
+    stop("A variable must be given for the 'y' argument.")
+  }
+
   if (style %in% c("tercile", "equal", "fisher", "jenks") == FALSE){
     stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'tercile'.")
   }
@@ -93,7 +105,7 @@ bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
 
   }
 
-  # cut into groups defined above and join fill
+  # cut into groups defined above
   out <- dplyr::mutate(.data, bi_x = cut(!!xQ, breaks = bins_x, include.lowest = TRUE))
   out <- dplyr::mutate(out, bi_y = cut(!!yQ, breaks = bins_y, include.lowest = TRUE))
   out <- dplyr::mutate(out, bi_class = paste0(as.numeric(bi_x), "-", as.numeric(bi_y)))

@@ -17,7 +17,7 @@ bi_class(.data, x, y, style = "tercile", keep_factors = FALSE)
 supported styles are \code{"tercile"} (default), \code{"equal"}, \code{"fisher"},
 and \code{"jenks"}.}
 
-\item{keep_factors}{A logical scalar; if \code{TRUE}, the fintermediate factor
+\item{keep_factors}{A logical scalar; if \code{TRUE}, the intermediate factor
 variables created as part of the calculation of \code{bs_class} will be
 retained. If \code{FALSE} (default), they will not be returned.}
 }
