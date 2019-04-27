@@ -19,12 +19,8 @@
 #'     and \code{y}. This is the basis for applying a bivariate color palette.
 #'
 #' @importFrom classInt classIntervals
-#' @importFrom dplyr mutate
-#' @importFrom dplyr pull
-#' @importFrom dplyr select
-#' @importFrom rlang enquo
-#' @importFrom rlang quo
-#' @importFrom rlang sym
+#' @importFrom dplyr mutate pull select
+#' @importFrom rlang enquo quo quo_name sym
 #' @importFrom stats quantile
 #'
 #' @export
@@ -69,10 +65,25 @@ bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
     xQ <- rlang::quo(!! rlang::sym(x))
   }
 
+  xQN <- rlang::quo_name(rlang::enquo(x))
+
   if (!is.character(paramList$y)) {
     yQ <- rlang::enquo(y)
   } else if (is.character(paramList$y)) {
     yQ <- rlang::quo(!! rlang::sym(y))
+  }
+
+  yQN <- rlang::quo_name(rlang::enquo(y))
+
+  # check variables
+  if (xQN %in% names(.data) == FALSE){
+    stop(glue::glue("The given 'x' variable '{var}' is not found in the given data set.",
+                    var = xQN))
+  }
+
+  if (yQN %in% names(.data) == FALSE){
+    stop(glue::glue("The given 'y' variable '{var}' is not found in the given data set.",
+                    var = yQN))
   }
 
   # create three bins for x and y
