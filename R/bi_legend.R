@@ -1,14 +1,17 @@
 #' Create Object for Drawing Legend
 #'
-#' @description Creates a tibble that can be used as the basis for
-#'     drawing a legend.
+#' @description Creates a \code{ggplot} object containing a legend that is specific
+#'     to bivariate mapping.
 #'
 #' @usage bi_legend(pal, xlab, ylab, size)
 #'
-#' @param pal A palette name
-#' @param xlab The x axis label
-#' @param ylab The y axis label
+#' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
+#'     \code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.
+#' @param xlab Text for desired x axis label on legend
+#' @param ylab Text for desired y axis label on legened
 #' @param size Size of axis labels
+#'
+#' @return A \code{ggplot} object with a bivariate legend.
 #'
 #' @importFrom dplyr mutate tibble
 #' @importFrom ggplot2 aes coord_fixed element_text geom_tile ggplot labs
@@ -20,6 +23,11 @@ bi_legend <- function(pal, xlab, ylab, size){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
+
+  # check parameters
+  if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
+    stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+  }
 
   # return palette colors
   if (pal == "DkViolet"){

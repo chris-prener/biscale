@@ -7,15 +7,19 @@
 bi_legend(pal, xlab, ylab, size)
 }
 \arguments{
-\item{pal}{A palette name}
+\item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
+\code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.}
 
-\item{xlab}{The x axis label}
+\item{xlab}{Text for desired x axis label on legend}
 
-\item{ylab}{The y axis label}
+\item{ylab}{Text for desired y axis label on legened}
 
 \item{size}{Size of axis labels}
 }
+\value{
+A \code{ggplot} object with a bivariate legend.
+}
 \description{
-Creates a tibble that can be used as the basis for
-    drawing a legend.
+Creates a \code{ggplot} object containing a legend that is specific
+    to bivariate mapping.
 }
