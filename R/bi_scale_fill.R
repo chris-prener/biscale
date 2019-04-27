@@ -13,6 +13,9 @@
 #' @importFrom ggplot2 scale_fill_manual
 #'
 #' @examples
+#' # load dependency
+#' library(ggplot2)
+#'
 #' # add breaks
 #' data <- bi_class(stl_race_income, x = pctWhite, y = medInc)
 #'

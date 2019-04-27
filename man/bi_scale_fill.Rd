@@ -18,6 +18,9 @@ Applies the selected palette as the fill aesthetic when \code{\link{geom_sf}}
     mapping.
 }
 \examples{
+# load dependency
+library(ggplot2)
+
 # add breaks
 data <- bi_class(stl_race_income, x = pctWhite, y = medInc)
 
