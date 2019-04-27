@@ -9,10 +9,14 @@ bi_pal(pal, preview = TRUE)
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
+
+\item{preview}{A logical scalar; if \code{TRUE} (default), an image preview will
+be generated. If \code{FALSE}, a vector with hex color values will be returned.}
 }
 \value{
-A named vector with class values for names and their corresponding
-    hex color values.
+If \code{preview = TRUE}, an image preview of the legend will be returned.
+    Otherwise, if \code{preview = FALSE}, a named vector with class values for names
+    and their corresponding hex color values.
 }
 \description{
 Prints the hex values for a specified palette.

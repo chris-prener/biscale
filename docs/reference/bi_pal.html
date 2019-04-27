@@ -120,12 +120,18 @@
       <td><p>A palette name; one of <code>"Brown"</code>, <code>"DkBlue"</code>,
 <code>"DkCyan"</code>, <code>"DkViolet"</code>, or <code>"GrPink"</code>.</p></td>
     </tr>
+    <tr>
+      <th>preview</th>
+      <td><p>A logical scalar; if <code>TRUE</code> (default), an image preview will
+be generated. If <code>FALSE</code>, a vector with hex color values will be returned.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A named vector with class values for names and their corresponding
-    hex color values.</p>
+    <p>If <code>preview = TRUE</code>, an image preview of the legend will be returned.
+    Otherwise, if <code>preview = FALSE</code>, a named vector with class values for names
+    and their corresponding hex color values.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

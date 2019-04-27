@@ -6,9 +6,12 @@
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
+#' @param preview A logical scalar; if \code{TRUE} (default), an image preview will
+#'     be generated. If \code{FALSE}, a vector with hex color values will be returned.
 #'
-#' @return A named vector with class values for names and their corresponding
-#'     hex color values.
+#' @return If \code{preview = TRUE}, an image preview of the legend will be returned.
+#'     Otherwise, if \code{preview = FALSE}, a named vector with class values for names
+#'     and their corresponding hex color values.
 #'
 #' @examples
 #' # dark blue palette
