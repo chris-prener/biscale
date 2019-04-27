@@ -2,7 +2,7 @@
 #'
 #' @description Prints the hex values for a specified palette.
 #'
-#' @usage bi_pal(pal)
+#' @usage bi_pal(pal, preview = TRUE)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, and \code{"GrPink"}.
@@ -11,32 +11,47 @@
 #'     hex color values.
 #'
 #' @examples
+#' # dark blue palette
 #' bi_pal(pal = "DkBlue")
+#' bi_pal(pal = "DkBlue", preview = FALSE)
+#'
+#' # dark cyan palette
 #' bi_pal(pal = "DkCyan")
+#' bi_pal(pal = "DkCyan", preview = FALSE)
 #'
 #' @export
-bi_pal <- function(pal){
+bi_pal <- function(pal, preview = TRUE){
 
   # check parameters
   if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
   }
 
-  # call sub functions
-  if (pal == "DkViolet"){
-    x <- pal_dkviolet()
-  } else if (pal == "GrPink"){
-    x <- pal_grpink()
-  } else if (pal == "DkBlue"){
-    x <- pal_dkblue()
-  } else if (pal == "DkCyan"){
-    x <- pal_dkcyan()
-  } else if (pal == "Brown"){
-    x <- pal_brown()
+  # create output
+  if (preview == TRUE){
+
+    # construct image
+    out <- bi_legend(pal = pal, size = 16)
+
+  } else if (preview == FALSE){
+
+    # construct vectors
+    if (pal == "DkViolet"){
+      out <- pal_dkviolet()
+    } else if (pal == "GrPink"){
+      out <- pal_grpink()
+    } else if (pal == "DkBlue"){
+      out <- pal_dkblue()
+    } else if (pal == "DkCyan"){
+      out <- pal_dkcyan()
+    } else if (pal == "Brown"){
+      out <- pal_brown()
+    }
+
   }
 
   # return output
-  return(x)
+  return(out)
 
 }
 

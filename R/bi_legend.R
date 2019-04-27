@@ -39,8 +39,17 @@ bi_legend <- function(pal, xlab, ylab, size = 10){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
   }
 
+  # insert missing parameter values
+  if (missing(xlab) == TRUE){
+    xlab <- "x var "
+  }
+
   if (is.character(xlab) == FALSE){
     stop("The 'xlab' argument must be a character string.")
+  }
+
+  if (missing(ylab) == TRUE){
+    ylab <- "y var "
   }
 
   if (is.character(ylab) == FALSE){
@@ -49,15 +58,6 @@ bi_legend <- function(pal, xlab, ylab, size = 10){
 
   if (is.numeric(size) == FALSE){
     stop("The 'size' argument must be a numeric value.")
-  }
-
-  # insert missing parameter values
-  if (missing(xlab) == TRUE){
-    xlab <- "x var "
-  }
-
-  if (missing(ylab) == TRUE){
-    ylab <- "y var "
   }
 
   # return palette colors

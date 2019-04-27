@@ -4,7 +4,7 @@
 \alias{bi_pal}
 \title{Print Hex Values for Palette}
 \usage{
-bi_pal(pal)
+bi_pal(pal, preview = TRUE)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
@@ -18,7 +18,12 @@ A named vector with class values for names and their corresponding
 Prints the hex values for a specified palette.
 }
 \examples{
+# dark blue palette
 bi_pal(pal = "DkBlue")
+bi_pal(pal = "DkBlue", preview = FALSE)
+
+# dark cyan palette
 bi_pal(pal = "DkCyan")
+bi_pal(pal = "DkCyan", preview = FALSE)
 
 }
