@@ -17,7 +17,7 @@
 #'
 #' @examples
 #' # brown palette, 2x2 preview
-#' bi_pal(pal = "Brown", dim = 3)
+#' bi_pal(pal = "Brown", dim = 2)
 #'
 #' # brown palette, 2x2 hex values
 #' bi_pal(pal = "Brown", dim = 2, preview = FALSE)
@@ -96,7 +96,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE){
   if (preview == TRUE){
 
     # construct image
-    out <- bi_legend(pal = pal, size = 16)
+    out <- bi_legend(pal = pal, dim = dim, size = 16)
 
   } else if (preview == FALSE){
 

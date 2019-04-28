@@ -26,7 +26,7 @@ Prints the hex values for a specified palette.
 }
 \examples{
 # brown palette, 2x2 preview
-bi_pal(pal = "Brown", dim = 3)
+bi_pal(pal = "Brown", dim = 2)
 
 # brown palette, 2x2 hex values
 bi_pal(pal = "Brown", dim = 2, preview = FALSE)
