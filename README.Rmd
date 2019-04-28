@@ -66,14 +66,14 @@ The `biscale` package comes with some sample data from St. Louis, MO that you ca
 data <- stl_race_income
 ```
 
-First, we want to create our classes. `biscale` currently supports a 3x3 table of classes, created with the `bi_class()` function:
+First, we want to create our classes. `biscale` currently supports a both two-by-two and three-by-three tables of classes, created with the `bi_class()` function:
 
 ```r
 # create classes
-data <- bi_class(data, x = pctWhite, y = medInc)
+data <- bi_class(data, x = pctWhite, y = medInc, dim = 3)
 ```
 
-The default method for calculating breaks is `"tercile"`, which will provide breaks at 33.33% and 66.66% percent (i.e. 3 quantile breaks). Other options are `"equal"`, `"fisher"`, and `"jenks"`.
+The default method for calculating breaks is `"quantile"`, which will provide breaks at 33.33% and 66.66% percent (i.e. tercile breaks) for three-by-three palettes. Other options are `"equal"`, `"fisher"`, and `"jenks"`. These are specified with the optional `style` argument. The `dim` argument is used to adjust whether a two-by-two and three-by-three tables of classes is returned
 
 Once breaks are created, we can use `bi_scale_fill()` as part of our `ggplot()` call:
 
@@ -81,7 +81,7 @@ Once breaks are created, we can use `bi_scale_fill()` as part of our `ggplot()` 
 # create map
 map <- ggplot() +
   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "DkBlue") +
+  bi_scale_fill(pal = "DkBlue", dim = 3) +
   labs(
     title = "Race and Income in St. Louis, MO",
     subtitle = "Dark Blue (DkBlue) Palette"
@@ -89,12 +89,13 @@ map <- ggplot() +
   bi_theme()
 ```
 
-Other options for palettes include `"Brown"`, `"DkCyan"`, `"DkViolet"`, and `"GrPink"`. The `bi_theme()` function applies a simple theme without distracting elements, which is preferable given the already elevated complexity of a bivarite map.
+Other options for palettes include `"Brown"`, `"DkCyan"`, `"DkViolet"`, and `"GrPink"`. The `bi_theme()` function applies a simple theme without distracting elements, which is preferable given the already elevated complexity of a bivarite map. We need to specify the dimensions of the palette for `bi_scale_fill()` as well.
 
-To add a legend to our map, we need to create a second `ggplot` object. We can use `bi_legend()` to accomplish this, which allows us to easily specify the fill palette, the x and y axis labels, and their size:
+To add a legend to our map, we need to create a second `ggplot` object. We can use `bi_legend()` to accomplish this, which allows us to easily specify the fill palette, the x and y axis labels, and their size along with the dimensions of the palette:
 
 ```r
 legend <- bi_legend(pal = "DkBlue",
+                    dim = 3,
                     xlab = "Higher % White ",
                     ylab = "Higher Income ",
                     size = 8)
