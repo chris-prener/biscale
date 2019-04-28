@@ -7,6 +7,8 @@
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
+#' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
+#'     \code{3} for a three-by-three palette.
 #' @param xlab Text for desired x axis label on legend
 #' @param ylab Text for desired y axis label on legened
 #' @param size Size of axis labels
@@ -19,8 +21,19 @@
 #' @importFrom tidyr separate
 #'
 #' @examples
-#' # construct legend
+#' # construct 3x3 legend
 #' legend <- bi_legend(pal = "GrPink",
+#'                     dim = 2,
+#'                     xlab = "Higher % White ",
+#'                     ylab = "Higher Income ",
+#'                     size = 16)
+#'
+#' # print legend
+#' legend
+#'
+#' # construct 3x3 legend
+#' legend <- bi_legend(pal = "GrPink",
+#'                     dim = 3,
 #'                     xlab = "Higher % White ",
 #'                     ylab = "Higher Income ",
 #'                     size = 16)
@@ -29,7 +42,7 @@
 #' legend
 #'
 #' @export
-bi_legend <- function(pal, xlab, ylab, size = 10){
+bi_legend <- function(pal, dim, xlab, ylab, size = 10){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -39,7 +52,14 @@ bi_legend <- function(pal, xlab, ylab, size = 10){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
   }
 
-  # insert missing parameter values
+  if (is.numeric(dim) == FALSE){
+    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+  }
+
+  if (dim != 2 & dim != 3){
+    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+  }
+
   if (missing(xlab) == TRUE){
     xlab <- "x var "
   }
@@ -62,15 +82,15 @@ bi_legend <- function(pal, xlab, ylab, size = 10){
 
   # return palette colors
   if (pal == "DkViolet"){
-    x <- pal_dkviolet()
+    x <- pal_dkviolet(n = dim)
   } else if (pal == "GrPink"){
-    x <- pal_grpink()
+    x <- pal_grpink(n = dim)
   } else if (pal == "DkBlue"){
-    x <- pal_dkblue()
+    x <- pal_dkblue(n = dim)
   } else if (pal == "DkCyan"){
-    x <- pal_dkcyan()
+    x <- pal_dkcyan(n = dim)
   } else if (pal == "Brown"){
-    x <- pal_brown()
+    x <- pal_brown(n = dim)
   }
 
   # create tibble for plotting

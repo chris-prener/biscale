@@ -10,6 +10,9 @@ bi_pal(pal, preview = TRUE)
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
 
+\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
+\code{3} for a three-by-three palette.}
+
 \item{preview}{A logical scalar; if \code{TRUE} (default), an image preview will
 be generated. If \code{FALSE}, a vector with hex color values will be returned.}
 }
@@ -22,24 +25,64 @@ If \code{preview = TRUE}, an image preview of the legend will be returned.
 Prints the hex values for a specified palette.
 }
 \examples{
-# dark blue palette
-bi_pal(pal = "Brown")
-bi_pal(pal = "Brown", preview = FALSE)
+# brown palette, 2x2 preview
+bi_pal(pal = "Brown", dim = 3)
 
-# dark blue palette
-bi_pal(pal = "DkBlue")
-bi_pal(pal = "DkBlue", preview = FALSE)
+# brown palette, 2x2 hex values
+bi_pal(pal = "Brown", dim = 2, preview = FALSE)
 
-# dark cyan palette
-bi_pal(pal = "DkCyan")
-bi_pal(pal = "DkCyan", preview = FALSE)
+# brown palette, 3x3 preview
+bi_pal(pal = "Brown", dim = 3)
 
-# dark violet palette
-bi_pal(pal = "DkViolet")
-bi_pal(pal = "DkViolet", preview = FALSE)
+# brown palette, 3x3 hex values
+bi_pal(pal = "Brown", dim = 3, preview = FALSE)
 
-# gray pink palette
-bi_pal(pal = "GrPink")
-bi_pal(pal = "GrPink", preview = FALSE)
+# dark blue palette, 2x2 preview
+bi_pal(pal = "DkBlue", dim = 2)
+
+# dark blue palette, 2x2 hex values
+bi_pal(pal = "DkBlue", dim = 2, preview = FALSE)
+
+# dark blue palette, 3x3 preview
+bi_pal(pal = "DkBlue", dim = 3)
+
+# dark blue palette, 3x3 hex values
+bi_pal(pal = "DkBlue", dim = 3, preview = FALSE)
+
+# dark cyan palette, 2x2
+bi_pal(pal = "DkCyan", dim = 2)
+
+# dark cyan palette, 2x2 hex values
+bi_pal(pal = "DkCyan", dim = 2, preview = FALSE)
+
+# dark cyan palette, 3x3
+bi_pal(pal = "DkCyan", dim = 3)
+
+# dark cyan palette, 3x3 hex values
+bi_pal(pal = "DkCyan", dim = 3, preview = FALSE)
+
+# dark violet palette, 2x2
+bi_pal(pal = "DkViolet", dim = 2)
+
+# dark violet palette, 2x2 hex values
+bi_pal(pal = "DkViolet", dim = 2, preview = FALSE)
+
+# dark violet palette, 3x3
+bi_pal(pal = "DkViolet", dim = 3)
+
+# dark violet palette, 3x3 hex values
+bi_pal(pal = "DkViolet", dim = 3, preview = FALSE)
+
+# gray pink palette, 2x2
+bi_pal(pal = "GrPink", dim = 2)
+
+# gray pink palette, 2x2 hex values
+bi_pal(pal = "GrPink", dim = 2, preview = FALSE)
+
+# gray pink palette, 3x3
+bi_pal(pal = "GrPink", dim = 3)
+
+# gray pink palette, 3x3 hex values
+bi_pal(pal = "GrPink", dim = 3, preview = FALSE)
 
 }

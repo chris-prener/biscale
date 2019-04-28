@@ -10,6 +10,9 @@ bi_legend(pal, xlab, ylab, size)
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
 
+\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
+\code{3} for a three-by-three palette.}
+
 \item{xlab}{Text for desired x axis label on legend}
 
 \item{ylab}{Text for desired y axis label on legened}
@@ -24,8 +27,19 @@ Creates a \code{ggplot} object containing a legend that is specific
     to bivariate mapping.
 }
 \examples{
-# construct legend
+# construct 3x3 legend
 legend <- bi_legend(pal = "GrPink",
+                    dim = 2,
+                    xlab = "Higher \% White ",
+                    ylab = "Higher Income ",
+                    size = 16)
+
+# print legend
+legend
+
+# construct 3x3 legend
+legend <- bi_legend(pal = "GrPink",
+                    dim = 3,
                     xlab = "Higher \% White ",
                     ylab = "Higher Income ",
                     size = 16)
