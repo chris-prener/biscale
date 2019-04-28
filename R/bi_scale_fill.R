@@ -18,13 +18,21 @@
 #' # load dependency
 #' library(ggplot2)
 #'
-#' # add breaks
-#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc)
+#' # add breaks, 2x2
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 2)
 #'
 #' # create map
 #' ggplot() +
 #'   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-#'   bi_scale_fill(pal = "GrPink")
+#'   bi_scale_fill(pal = "GrPink", dim = 2)
+#'
+#' # add breaks, 3x3
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 3)
+#'
+#' # create map
+#' ggplot() +
+#'   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+#'   bi_scale_fill(pal = "GrPink", dim = 3)
 #'
 #' @export
 bi_scale_fill <- function(pal, dim = 3, ...){
