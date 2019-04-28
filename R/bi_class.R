@@ -135,8 +135,8 @@ bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FA
   # calculate breaks
   if (style == "quantile"){
 
-    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "equal")
-    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "equal")
+    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "quantile")
+    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "quantile")
 
   } else if (style == "equal"){
 
