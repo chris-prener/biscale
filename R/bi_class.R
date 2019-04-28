@@ -2,14 +2,16 @@
 #'
 #' @description Creates mapping classes for a 3x3 bivariate map.
 #'
-#' @usage bi_class(.data, x, y, style = "tercile", keep_factors = FALSE)
+#' @usage bi_class(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE)
 #'
 #' @param .data A data frame, tibble, or \code{sf} object
 #' @param x The \code{x} variable
 #' @param y The \code{y} variable
 #' @param style A string identifying the style used to calculate breaks. Currently
-#'     supported styles are \code{"tercile"} (default), \code{"equal"}, \code{"fisher"},
+#'     supported styles are \code{"quantile"} (default), \code{"equal"}, \code{"fisher"},
 #'     and \code{"jenks"}.
+#' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
+#'     \code{3} for a three-by-three palette.
 #' @param keep_factors A logical scalar; if \code{TRUE}, the intermediate factor
 #'     variables created as part of the calculation of \code{bs_class} will be
 #'     retained. If \code{FALSE} (default), they will not be returned.
@@ -25,32 +27,38 @@
 #' @importFrom stats quantile
 #'
 #' @examples
-#' # default breaks
-#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc)
+#' # quantile breaks, 2x2
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2)
 #'
-#' # summarize default breaks
+#' # summarize quantile breaks, 2x2
+#' table(data$bi_class)
+#'
+#' # quantile breaks, 3x3
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
+#'
+#' # summarize quantile breaks, 3x3
 #' table(data$bi_class)
 #'
 #' # equal breaks
-#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal")
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal", dim = 3)
 #'
-#' # summarize equal breaks
+#' # summarize equal breaks, 3x3
 #' table(data$bi_class)
 #'
 #' # fisher breaks
-#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher")
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher", dim = 3)
 #'
-#' # summarize fisher breaks
+#' # summarize fisher breaks, 3x3
 #' table(data$bi_class)
 #'
 #' # jenks breaks
-#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks")
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 3)
 #'
-#' # summarize jenks breaks
+#' # summarize jenks breaks, 3x3
 #' table(data$bi_class)
 #'
 #' @export
-bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
+bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE){
 
   # global bindings
   bi_x = bi_y = NULL
@@ -68,8 +76,16 @@ bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
     stop("A variable must be given for the 'y' argument.")
   }
 
-  if (style %in% c("tercile", "equal", "fisher", "jenks") == FALSE){
-    stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'tercile'.")
+  if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
+    stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+  }
+
+  if (is.numeric(dim) == FALSE){
+    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+  }
+
+  if (dim != 2 & dim != 3){
+    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
   }
 
   if (is.logical(keep_factors) == FALSE){
@@ -117,35 +133,31 @@ bi_class <- function(.data, x, y, style = "tercile", keep_factors = FALSE){
   bins_y <- dplyr::pull(.data, !!yQ)
 
   # calculate breaks
-  if (style == "tercile"){
+  if (style == "quantile"){
 
-    bins_x <- stats::quantile(bins_x, probs = seq(0, 1, length.out = 4))
-    bins_y <- stats::quantile(bins_y, probs = seq(0, 1, length.out = 4))
+    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "equal")
+    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "equal")
 
   } else if (style == "equal"){
 
-    bins_x <- classInt::classIntervals(bins_x, n = 3, style = "equal")
-    bins_y <- classInt::classIntervals(bins_y, n = 3, style = "equal")
+    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "equal")
+    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "equal")
 
   } else if (style == "fisher"){
 
-    bins_x <- classInt::classIntervals(bins_x, n = 3, style = "fisher")
-    bins_y <- classInt::classIntervals(bins_y, n = 3, style = "fisher")
+    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "fisher")
+    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "fisher")
 
   } else if (style == "jenks"){
 
-    bins_x <- classInt::classIntervals(bins_x, n = 3, style = "jenks")
-    bins_y <- classInt::classIntervals(bins_y, n = 3, style = "jenks")
+    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "jenks")
+    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "jenks")
 
   }
 
   # convert to breaks
-  if (style %in% c("equal", "fisher", "jenks")){
-
-    bins_x <- bins_x$brks
-    bins_y <- bins_y$brks
-
-  }
+  bins_x <- bins_x$brks
+  bins_y <- bins_y$brks
 
   # cut into groups defined above
   out <- dplyr::mutate(.data, bi_x = cut(!!xQ, breaks = bins_x, include.lowest = TRUE))

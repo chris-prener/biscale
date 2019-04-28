@@ -4,7 +4,7 @@
 \alias{bi_pal}
 \title{Print Hex Values for Palette}
 \usage{
-bi_pal(pal, preview = TRUE)
+bi_pal(pal, dim = 3, preview = TRUE)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},

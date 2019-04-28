@@ -4,11 +4,14 @@
 \alias{bi_scale_fill}
 \title{Apply Bivariate Scale to ggplot Object}
 \usage{
-bi_scale_fill(pal, ...)
+bi_scale_fill(pal, dim = 3, ...)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
+
+\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
+\code{3} for a three-by-three palette.}
 
 \item{...}{Arguments to pass to \code{\link{scale_fill_manual}}}
 }

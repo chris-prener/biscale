@@ -2,7 +2,7 @@
 #'
 #' @description Prints the hex values for a specified palette.
 #'
-#' @usage bi_pal(pal, preview = TRUE)
+#' @usage bi_pal(pal, dim = 3, preview = TRUE)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
@@ -77,15 +77,11 @@
 #' bi_pal(pal = "GrPink", dim = 3, preview = FALSE)
 #'
 #' @export
-bi_pal <- function(pal, dim, preview = TRUE){
+bi_pal <- function(pal, dim = 3, preview = TRUE){
 
   # check parameters
   if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
-  }
-
-  if (missing(dim) == TRUE){
-    stop("Dimensions for the bivariate palette, either '2' or '3', must be specified.")
   }
 
   if (is.numeric(dim) == FALSE){

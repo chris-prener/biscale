@@ -3,7 +3,7 @@
 #' @description Creates a \code{ggplot} object containing a legend that is specific
 #'     to bivariate mapping.
 #'
-#' @usage bi_legend(pal, xlab, ylab, size)
+#' @usage bi_legend(pal, dim = 3, xlab, ylab, size)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
@@ -42,7 +42,7 @@
 #' legend
 #'
 #' @export
-bi_legend <- function(pal, dim, xlab, ylab, size = 10){
+bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
 
   # global binding
   bi_class = bi_fill = x = y = NULL

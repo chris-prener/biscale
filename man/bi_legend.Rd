@@ -4,7 +4,7 @@
 \alias{bi_legend}
 \title{Create Object for Drawing Legend}
 \usage{
-bi_legend(pal, xlab, ylab, size)
+bi_legend(pal, dim = 3, xlab, ylab, size)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},

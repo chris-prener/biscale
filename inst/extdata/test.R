@@ -4,7 +4,9 @@ library(ggplot2)
 library(sf)
 
 data <- stl_race_income
-data <- bi_class(data, x = pctWhite, y = medInc)
+data <- bi_class(data, x = pctWhite, y = medInc, keep_factors = TRUE)
+
+classInt::classIntervals(data$pctWhite, n = 3, style = "quantile")
 
 map <- ggplot() +
   geom_sf(data = data, aes(fill = bs_class), color = "white", size = 0.1, show.legend = FALSE) +

@@ -4,7 +4,7 @@
 \alias{bi_class}
 \title{Create Classes for Bivariate Maps}
 \usage{
-bi_class(.data, x, y, style = "tercile", keep_factors = FALSE)
+bi_class(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE)
 }
 \arguments{
 \item{.data}{A data frame, tibble, or \code{sf} object}
@@ -14,8 +14,11 @@ bi_class(.data, x, y, style = "tercile", keep_factors = FALSE)
 \item{y}{The \code{y} variable}
 
 \item{style}{A string identifying the style used to calculate breaks. Currently
-supported styles are \code{"tercile"} (default), \code{"equal"}, \code{"fisher"},
+supported styles are \code{"quantile"} (default), \code{"equal"}, \code{"fisher"},
 and \code{"jenks"}.}
+
+\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
+\code{3} for a three-by-three palette.}
 
 \item{keep_factors}{A logical scalar; if \code{TRUE}, the intermediate factor
 variables created as part of the calculation of \code{bs_class} will be
@@ -30,28 +33,34 @@ A copy of \code{.data} with a new variable \code{bs_class} that contains
 Creates mapping classes for a 3x3 bivariate map.
 }
 \examples{
-# default breaks
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc)
+# quantile breaks, 2x2
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2)
 
-# summarize default breaks
+# summarize quantile breaks, 2x2
+table(data$bi_class)
+
+# quantile breaks, 3x3
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
+
+# summarize quantile breaks, 3x3
 table(data$bi_class)
 
 # equal breaks
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal")
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal", dim = 3)
 
-# summarize equal breaks
+# summarize equal breaks, 3x3
 table(data$bi_class)
 
 # fisher breaks
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher")
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher", dim = 3)
 
-# summarize fisher breaks
+# summarize fisher breaks, 3x3
 table(data$bi_class)
 
 # jenks breaks
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks")
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 3)
 
-# summarize jenks breaks
+# summarize jenks breaks, 3x3
 table(data$bi_class)
 
 }
