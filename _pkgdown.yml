@@ -1,0 +1,24 @@
+url: https://slu-openGIS.github.io/biscale/
+
+authors:
+  Christopher Prener:
+    href: https://chris-prener.github.io
+
+reference:
+  - title: "Data Preparation"
+    desc: "Create classes for bivariate mapping"
+    contents:
+    - bi_class
+
+  - title: "Mapping"
+    desc: "Bivariate mapping with ggplot2"
+    contents:
+    - bi_pal
+    - bi_scale_fill
+    - bi_theme
+    - bi_legend
+
+  - title: "Sample Data"
+    desc: "Sample data for demonstrating bivariate mapping"
+    contents:
+    - stl_race_income
