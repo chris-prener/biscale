@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biscale</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -93,9 +93,11 @@
 <a href="#installation" class="anchor"></a>Installation</h3>
 <p>Since the package does not directly use functions from <code>sf</code>, it is a suggested dependency rather than a required one. However, the most direct approach to using <code>biscale</code> is with <code>sf</code> objects, and we therefore recommend users install <code>sf</code> before proceeding with using <code>biscale</code>. Windows users should be able to install <code>sf</code> without significant issues, but macOS and Linux users will need to install several open source spatial libraries to get <code>sf</code> itself up and running. The easiest approach for macOS users is to install the GDAL 2.0 Complete framework from <a href="https://www.kyngchaos.com/software/frameworks/">Kyng Chaos</a>.</p>
 <p>For Linux users, steps will vary based on the flavor being used. Our <a href="https://github.com/slu-openGIS/biscale/blob/master/.travis.yml">configuration file</a> for Travis CI and its associated <a href="https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh">bash script</a> should be useful in determining the necessary components to install.</p>
-<p>Once <code>sf</code> is installed, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"slu-openGIS/biscale"</span>)</a></code></pre></div>
+<p>Once <code>sf</code> is installed, the easiest way to get <code>biscale</code> is to install it from CRAN:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"biscale"</span>)</a></code></pre></div>
+<p>Alternatively, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"slu-openGIS/biscale"</span>)</a></code></pre></div>
 </div>
 <div id="functions" class="section level3">
 <h3 class="hasAnchor">
@@ -111,21 +113,21 @@
 <h3 class="hasAnchor">
 <a href="#preparing-data" class="anchor"></a>Preparing Data</h3>
 <p>Once data are loaded, bivariate classes can be applied with the <code>bi_class()</code> function. There is an <em>important caveat</em>, however:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># load dependencies</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="er">&gt;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biscale)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="er">&gt;</span><span class="st"> </span><span class="co"># create classes</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="er">&gt;</span><span class="st"> </span>data &lt;-<span class="st"> </span><span class="kw">bi_class</span>(stl_race_income, <span class="dt">x =</span> pctWhite, <span class="dt">y =</span> medInc, <span class="dt">style =</span> <span class="st">"quantile"</span>, <span class="dt">dim =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">Warning message<span class="op">:</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">In <span class="kw">bi_class</span>(stl_race_income, <span class="dt">x =</span> pctWhite, <span class="dt">y =</span> medInc, <span class="dt">dim =</span> <span class="dv">3</span>) <span class="op">:</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="st">  </span>The <span class="st">'sf'</span> package is not loaded, and the class <span class="st">'sf'</span> attribute of the given data set has been lost. Load <span class="st">'sf'</span> to retain the class when using <span class="st">'bi_class'</span>.</a></code></pre></div>
-<p>If you are going to be using <code>sf</code> objects, it is important that you load the <code>sf</code> package as well so that its methods can be correctly applied to your data:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># load dependencies</span></a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="er">&gt;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biscale)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="op">&gt;</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="er">&gt;</span><span class="st"> </span><span class="co"># create classes</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="er">&gt;</span><span class="st"> </span>data &lt;-<span class="st"> </span><span class="kw">bi_class</span>(stl_race_income, <span class="dt">x =</span> pctWhite, <span class="dt">y =</span> medInc, <span class="dt">style =</span> <span class="st">"quantile"</span>, <span class="dt">dim =</span> <span class="dv">3</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="er">&gt;</span><span class="st"> </span><span class="co"># create classes</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="er">&gt;</span><span class="st"> </span>data &lt;-<span class="st"> </span><span class="kw">bi_class</span>(stl_race_income, <span class="dt">x =</span> pctWhite, <span class="dt">y =</span> medInc, <span class="dt">style =</span> <span class="st">"quantile"</span>, <span class="dt">dim =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">Warning message<span class="op">:</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">In <span class="kw">bi_class</span>(stl_race_income, <span class="dt">x =</span> pctWhite, <span class="dt">y =</span> medInc, <span class="dt">dim =</span> <span class="dv">3</span>) <span class="op">:</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="st">  </span>The <span class="st">'sf'</span> package is not loaded, and the class <span class="st">'sf'</span> attribute of the given data set has been lost. Load <span class="st">'sf'</span> to retain the class when using <span class="st">'bi_class'</span>.</a></code></pre></div>
+<p>If you are going to be using <code>sf</code> objects, it is important that you load the <code>sf</code> package as well so that its methods can be correctly applied to your data:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span><span class="co"># load dependencies</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="er">&gt;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biscale)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="op">&gt;</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="er">&gt;</span><span class="st"> </span><span class="co"># create classes</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="er">&gt;</span><span class="st"> </span>data &lt;-<span class="st"> </span><span class="kw">bi_class</span>(stl_race_income, <span class="dt">x =</span> pctWhite, <span class="dt">y =</span> medInc, <span class="dt">style =</span> <span class="st">"quantile"</span>, <span class="dt">dim =</span> <span class="dv">3</span>)</a></code></pre></div>
 <p>This warning will not be generated if <code>sf</code> is loaded, or if you are using <code>bi_class()</code> on a non-<code>sf</code> object (which leaves room for folks who use other tools like <code>sp</code>, or who are applying classes to tibbles or data frames).</p>
 <p>The <code>dim</code> argument is used to control the extent of the legend - do you want to produce a two-by-two map (<code>dim = 2</code>) or a three-by-three map (<code>dim = 3</code>)?</p>
 <p>Classes can be applied with the <code>style</code> parameter using four approaches for calculating breaks: <code>"quantile"</code> (default), <code>"equal"</code>, <code>"fisher"</code>, and <code>"jenks"</code>. The default <code>"quantile"</code> approach will create relatively equal “buckets” of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map.</p>
@@ -137,15 +139,15 @@
 <h3 class="hasAnchor">
 <a href="#mapping-data" class="anchor"></a>Mapping Data</h3>
 <p>Once breaks are created, we can use <code>bi_scale_fill()</code> as part of our <code>ggplot()</code> call:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># create map</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">map &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> data, mapping <span class="kw">aes</span>(<span class="dt">fill =</span> bi_class), <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">size =</span> <span class="fl">0.1</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="st">  </span><span class="kw">bi_scale_fill</span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>, <span class="dt">dim =</span> <span class="dv">3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6">    <span class="dt">title =</span> <span class="st">"Race and Income in St. Louis, MO"</span>,</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">    <span class="dt">subtitle =</span> <span class="st">"Dark Blue (DkBlue) Palette"</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="st">  </span><span class="kw">bi_theme</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># create map</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">map &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> data, mapping <span class="kw">aes</span>(<span class="dt">fill =</span> bi_class), <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">size =</span> <span class="fl">0.1</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw">bi_scale_fill</span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>, <span class="dt">dim =</span> <span class="dv">3</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw">labs</span>(</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">title =</span> <span class="st">"Race and Income in St. Louis, MO"</span>,</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="dt">subtitle =</span> <span class="st">"Dark Blue (DkBlue) Palette"</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw">bi_theme</span>()</a></code></pre></div>
 <p>This requires that the variable <code>bi_class</code>, created with <code>bi_class()</code>, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.</p>
 <p>The dimensions of the scale must again be supplied for <code>bi_scale_fill()</code> (they should match the dimensions given for <code>bi_class()</code>!), and a palette must be given. Options for palettes are <code>"Brown"</code>, <code>"DkBlue"</code>, <code>"DkCyan"</code>, <code>"DkViolet"</code>, or <code>"GrPink"</code>. The <code>"DkViolet"</code> was created by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">Timo Grossenbacher and Angelo Zehr</a>, and the other four palettes were created by <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">Joshua Stevens</a>. The first map in this vignette uses the <code>"GrPink"</code> palette. Other two-by-two palettes look like so:</p>
 <p><img src="../man/figures/biscale.002.png" width="100%"></p>
@@ -158,17 +160,17 @@
 <h3 class="hasAnchor">
 <a href="#creating-legends" class="anchor"></a>Creating Legends</h3>
 <p>We’ve set <code>show.legend = FALSE</code> so that we can add (manually) our own bivariate legend. The legend itself can be created with the <code>bi_legend()</code> function:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">legend &lt;-<span class="st"> </span><span class="kw">bi_legend</span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>,</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">                    <span class="dt">dim =</span> <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">                    <span class="dt">xlab =</span> <span class="st">"Higher % White "</span>,</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">                    <span class="dt">ylab =</span> <span class="st">"Higher Income "</span>,</a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">                    <span class="dt">size =</span> <span class="dv">8</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">legend &lt;-<span class="st"> </span><span class="kw">bi_legend</span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>,</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">                    <span class="dt">dim =</span> <span class="dv">3</span>,</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">                    <span class="dt">xlab =</span> <span class="st">"Higher % White "</span>,</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">                    <span class="dt">ylab =</span> <span class="st">"Higher Income "</span>,</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">                    <span class="dt">size =</span> <span class="dv">8</span>)</a></code></pre></div>
 <p>The palette and dimensions should match what has been used for both <code>bi_class()</code> (in terms of dimensions) and <code>bi_scale_fill()</code> (in terms of both dimensions and palette). The <code>size</code> argument controls the font size used on the legend. Note that <a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html"><code>plotmath</code></a> is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of <code>bi_legend()</code> - you don’t need to include them in your <code>xlab</code> and <code>ylab</code> arguments!</p>
 <p>With our legend drawn, we can then combine the legend and the map with <code>cowplot</code>. Like <code>sf</code>, <code>cowplot</code> is a suggested rather than required dependency. The values needed for this stage will be subject to experimentation depending on the shape of the map itself.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># combine map with legend</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">finalPlot &lt;-<span class="st"> </span><span class="kw">ggdraw</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw">draw_plot</span>(map, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw">draw_plot</span>(legend, <span class="fl">0.2</span>, <span class="fl">.7</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># combine map with legend</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">finalPlot &lt;-<span class="st"> </span><span class="kw">ggdraw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">draw_plot</span>(map, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw">draw_plot</span>(legend, <span class="fl">0.2</span>, <span class="fl">.7</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)</a></code></pre></div>
 <p>This approach allows us to customize legend’s placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach.</p>
 </div>
 </div>

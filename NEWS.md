@@ -1,3 +1,8 @@
+# biscale 0.1.1
+
+* CRAN release version
+* Add installation instructions and Zenodo badge to README and pkgdown site
+
 # biscale 0.1.0
 
 * Added a `NEWS.md` file to track changes to the package.

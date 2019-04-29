@@ -10,6 +10,7 @@ Status](https://travis-ci.org/slu-openGIS/biscale.svg?branch=master)](https://tr
 Status](https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?branch=master&svg=true)](https://ci.appveyor.com/project/chris-prener/biscale)
 [![Coverage
 status](https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=master)
+[![DOI](https://zenodo.org/badge/183024212.svg)](https://zenodo.org/badge/latestdoi/183024212)
 [![CRAN\_status\_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 
 `biscale` implements a set of functions for bivariate thematic mapping
@@ -47,8 +48,15 @@ for Travis CI and its associated [bash
 script](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh)
 should be useful in determining the necessary components to install.
 
-Once `sf` is installed, the development version of `biscale` can be
-accessed from GitHub with `remotes`:
+Once `sf` is installed, the easiest way to get `biscale` is to install
+it from CRAN:
+
+``` r
+install.packages("biscale")
+```
+
+Alternatively, the development version of `biscale` can be accessed from
+GitHub with `remotes`:
 
 ``` r
 # install.packages("remotes")
