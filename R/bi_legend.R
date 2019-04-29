@@ -48,6 +48,10 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
   bi_class = bi_fill = x = y = NULL
 
   # check parameters
+  if (missing(pal) == TRUE){
+    stop("A palette must be specified for the 'pal' argument. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+  }
+
   if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
   }
