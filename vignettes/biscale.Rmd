@@ -99,7 +99,7 @@ map <- ggplot() +
 
 This requires that the variable `bi_class`, created with `bi_class()`, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.
 
-The dimensions of the scale must again be supplied for `bi_scale_fill()`, and a palette must be given. Options for palettes are `"Brown"`, `"DkBlue"`, `"DkCyan"`, `"DkViolet"`, or `"GrPink"`. The `"DkViolet"` was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The first map in this vignette uses the `"GrPink"` palette. Other two-by-two palettes look like so:
+The dimensions of the scale must again be supplied for `bi_scale_fill()` (they should match the dimensions given for `bi_class()`!), and a palette must be given. Options for palettes are `"Brown"`, `"DkBlue"`, `"DkCyan"`, `"DkViolet"`, or `"GrPink"`. The `"DkViolet"` was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The first map in this vignette uses the `"GrPink"` palette. Other two-by-two palettes look like so:
 
 ```{r 2by2Pals, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("../man/figures/biscale.002.png")
@@ -126,7 +126,7 @@ legend <- bi_legend(pal = "DkBlue",
                     size = 8)
 ```
 
-Note that [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html) is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of `bi_legend()` - you don't need to include them in your `xlab` and `ylab` arguments!
+The palette and dimensions should match what has been used for both `bi_class()` (in terms of dimensions) and `bi_scale_fill()` (in terms of both dimensions and palette). The `size` argument controls the font size used on the legend. Note that [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html) is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of `bi_legend()` - you don't need to include them in your `xlab` and `ylab` arguments!
 
 With our legend drawn, we can then combine the legend and the map with `cowplot`. Like `sf`, `cowplot` is a suggested rather than required dependency. The values needed for this stage will be subject to experimentation depending on the shape of the map itself.
 

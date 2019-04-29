@@ -43,7 +43,13 @@
   </a>
 </li>
 <li>
+  <a href="articles/biscale.html">Get started</a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -73,77 +79,27 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#biscale" class="anchor"></a>biscale</h1></div>
 
-<p><code>biscale</code> implements a set of functions for bivariate themeatic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens’s <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">tutorial</a>.</p>
-<div id="installation" class="section level2">
+<p><code>biscale</code> implements a set of functions for bivariate themeatic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens’s <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">tutorial</a>. The package currently supports two-by-two and three-by-three bivariate maps:</p>
+<p><img src="../man/figures/biscale.001.png" width="100%"></p>
+<p>In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.</p>
+<div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<div id="installing-dependencies" class="section level3">
-<h3 class="hasAnchor">
-<a href="#installing-dependencies" class="anchor"></a>Installing Dependencies</h3>
-<p>You should check the <a href="https://r-spatial.github.io/sf/"><code>sf</code> package website</a> for the latest details on installing dependencies for that package. Instructions vary significantly by operating system. Linux users in particular should also check the <a href="https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh"><code>biscale</code> package repo</a> for a script that installs the relevant dependencies. For best results, have <code>sf</code> installed before you install <code>biscale</code>. Other dependencies, like <code>dplyr</code>, will be installed automatically with <code>areal</code> if they are not already present.</p>
-</div>
-<div id="installing-biscale" class="section level3">
-<h3 class="hasAnchor">
-<a href="#installing-biscale" class="anchor"></a>Installing biscale</h3>
-<p>Once you have <code>sf</code> installed, you can install <code>biscale</code> with the <code>remotes</code> package:</p>
+<a href="#quick-start" class="anchor"></a>Quick Start</h2>
+<p>If the <code>sf</code> package is already installed, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"slu-openGIS/biscale"</span>)</a></code></pre></div>
+<p>Additional details, including some tips for installing <code>sf</code>, can be found in the <a href="articles/biscale.html#getting-started">Get started article</a>.</p>
 </div>
-</div>
-<div id="usage" class="section level2">
+<div id="resources" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p>Creating bivariate plots in the style described by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">Grossenbacher and Zehr</a> requires a number of dependencies in addition to <code>biscale</code> - <code>ggplot2</code> for plotting, <code>cowplot</code> for combining the legend and the main map, and <code>sf</code> for working with spaital objects in <code>R</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># load dependencies</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(biscale)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(cowplot)</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(sf)</a></code></pre></div>
-<p>The <code>biscale</code> package comes with some sample data from St. Louis, MO that you can use to check out the bivariate mapping workflow:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># load data</span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">data &lt;-<span class="st"> </span>stl_race_income</a></code></pre></div>
-<p>First, we want to create our classes. <code>biscale</code> currently supports a both two-by-two and three-by-three tables of classes, created with the <code><a href="reference/bi_class.html">bi_class()</a></code> function:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># create classes</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw"><a href="reference/bi_class.html">bi_class</a></span>(data, <span class="dt">x =</span> pctWhite, <span class="dt">y =</span> medInc, <span class="dt">dim =</span> <span class="dv">3</span>)</a></code></pre></div>
-<p>The default method for calculating breaks is <code>"quantile"</code>, which will provide breaks at 33.33% and 66.66% percent (i.e. tercile breaks) for three-by-three palettes. Other options are <code>"equal"</code>, <code>"fisher"</code>, and <code>"jenks"</code>. These are specified with the optional <code>style</code> argument. The <code>dim</code> argument is used to adjust whether a two-by-two and three-by-three tables of classes is returned</p>
-<p>Once breaks are created, we can use <code><a href="reference/bi_scale_fill.html">bi_scale_fill()</a></code> as part of our <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot()</a></code> call:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># create map</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">map &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggsf">geom_sf</a></span>(<span class="dt">data =</span> data, <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">fill =</span> bi_class), <span class="dt">color =</span> <span class="st">"white"</span>, <span class="dt">size =</span> <span class="fl">0.1</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="reference/bi_scale_fill.html">bi_scale_fill</a></span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>, <span class="dt">dim =</span> <span class="dv">3</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/labs">labs</a></span>(</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6">    <span class="dt">title =</span> <span class="st">"Race and Income in St. Louis, MO"</span>,</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">    <span class="dt">subtitle =</span> <span class="st">"Dark Blue (DkBlue) Palette"</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">  ) <span class="op">+</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="reference/bi_theme.html">bi_theme</a></span>()</a></code></pre></div>
-<p>Other options for palettes include <code>"Brown"</code>, <code>"DkCyan"</code>, <code>"DkViolet"</code>, and <code>"GrPink"</code>. The <code><a href="reference/bi_theme.html">bi_theme()</a></code> function applies a simple theme without distracting elements, which is preferable given the already elevated complexity of a bivarite map. We need to specify the dimensions of the palette for <code><a href="reference/bi_scale_fill.html">bi_scale_fill()</a></code> as well.</p>
-<p>To add a legend to our map, we need to create a second <code>ggplot</code> object. We can use <code><a href="reference/bi_legend.html">bi_legend()</a></code> to accomplish this, which allows us to easily specify the fill palette, the x and y axis labels, and their size along with the dimensions of the palette:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">legend &lt;-<span class="st"> </span><span class="kw"><a href="reference/bi_legend.html">bi_legend</a></span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>,</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">                    <span class="dt">dim =</span> <span class="dv">3</span>,</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">                    <span class="dt">xlab =</span> <span class="st">"Higher % White "</span>,</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">                    <span class="dt">ylab =</span> <span class="st">"Higher Income "</span>,</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">                    <span class="dt">size =</span> <span class="dv">8</span>)</a></code></pre></div>
-<p>Note that <a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html"><code>plotmath</code></a> is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of <code><a href="reference/bi_legend.html">bi_legend()</a></code> - you don’t need to include them in your <code>xlab</code> and <code>ylab</code> arguments!</p>
-<p>With our legend drawn, we can then combine the legend and the map with <code>cowplot</code>. The values needed for this stage will be subject to experimentation depending on the shape of the map itself.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># combine map with legend</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">finalPlot &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/cowplot/topics/ggdraw">ggdraw</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/cowplot/topics/draw_plot">draw_plot</a></span>(map, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/cowplot/topics/draw_plot">draw_plot</a></span>(legend, <span class="fl">0.2</span>, <span class="fl">.7</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co"># print map</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">finalPlot</a></code></pre></div>
-<p><img src="reference/figures/dkblue.png"></p>
-</div>
-<div id="palettes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#palettes" class="anchor"></a>Palettes</h2>
-<p>Palette options include <code>"Brown"</code>, <code>"DkBlue"</code>, <code>"DkCyan"</code>, <code>"DkViolet"</code>, and <code>"GrPink"</code>.</p>
-<p><img src="reference/figures/preview.png"></p>
-</div>
-<div id="contributor-code-of-conduct" class="section level2">
-<h2 class="hasAnchor">
-<a href="#contributor-code-of-conduct" class="anchor"></a>Contributor Code of Conduct</h2>
-<p>Please note that this project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<a href="#resources" class="anchor"></a>Resources</h2>
+<p>In addition to instructions for installation, the main <a href="articles/biscale.html">Get started</a> article has:</p>
+<ul>
+<li>a quick overview of bivariate mapping,</li>
+<li>a description of the workflrow for creating bivariate maps,</li>
+<li>a comparison of different approaches to calculating those classes,</li>
+<li>and a comparison of different color palettes for bivariate mapping.</li>
+</ul>
 </div>
 </div>
   </div>
@@ -178,7 +134,7 @@
       <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="lifecycle"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
 <li><a href="https://travis-ci.org/slu-openGIS/biscale"><img src="https://travis-ci.org/slu-openGIS/biscale.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://ci.appveyor.com/project/chris-prener/biscale"><img src="https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
 <li><a href="https://codecov.io/github/slu-openGIS/biscale?branch=master"><img src="https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
