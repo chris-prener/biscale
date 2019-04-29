@@ -19,5 +19,5 @@ bi_theme(base_family = "sans", base_size = 24, bg_color = "#ffffff",
 \item{...}{Arguments to pass on to \code{ggplot2}'s \code{theme} function}
 }
 \description{
-A theme for creating a simple, clean bivariate map.
+A theme for creating a simple, clean bivariate map using \code{\link{ggplot2}}.
 }
