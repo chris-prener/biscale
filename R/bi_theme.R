@@ -12,6 +12,7 @@
 #'
 #' @export
 bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff", font_color = "#000000", ...) {
+
   ggplot2::theme_minimal(base_family = base_family, base_size = base_size) +
     ggplot2::theme(
 
@@ -52,4 +53,5 @@ bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff",
                                            color = font_color),
       ...
     )
+
 }
