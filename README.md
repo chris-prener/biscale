@@ -57,6 +57,8 @@ remotes::install_github("slu-openGIS/biscale")
 
 ## Usage
 
+### Quick Overview
+
 Creating bivariate plots in the style described by [Grossenbacher and
 Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/)
 requires a number of dependencies in addition to `biscale` - `ggplot2`
@@ -139,6 +141,32 @@ finalPlot <- ggdraw() +
   draw_plot(map, 0, 0, 1, 1) +
   draw_plot(legend, 0.2, .7, 0.2, 0.2)
 ```
+
+### Breaks for Bivariate Mapping
+
+The map at the top of the README uses the default `"quantile"` style for
+calculating breaks. The other options, `"equal"`, `"fisher"`, and
+`"jenks"`, will produce narrower ranges for the percent white variable
+in particular:
+
+![](man/figures/biscale.005.png)
+
+### Palettes for Bivariate Mapping
+
+In addition to the `"DkBlue"` palette show in the first map, there are a
+number of other options for palettes (including `"Brown"`, which is not
+shown here) for two-by-two mapping:
+
+![](man/figures/biscale.002.png)
+
+These same options exist for three-by-three mapping as well:
+
+![](man/figures/biscale.003.png)
+
+All color palettes, including `"Brown"`, can be previewed by using the
+`bi_pal()` function or by checking out that function’s documentation on
+the [package
+website](https://slu-opengis.github.io/biscale/reference/bi_pal.html).
 
 ## Contributor Code of Conduct
 
