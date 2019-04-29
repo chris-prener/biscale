@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print Hex Values for Palette — bi_pal • biscale</title>
+<title>Palette Preview and Hex Values — bi_pal • biscale</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Print Hex Values for Palette — bi_pal" />
+<meta property="og:title" content="Palette Preview and Hex Values — bi_pal" />
 
-<meta property="og:description" content="Prints the hex values for a specified palette." />
+<meta property="og:description" content="Prints either a visual preview of each palette or the associated
+    hex values." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -99,14 +100,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print Hex Values for Palette</h1>
+    <h1>Palette Preview and Hex Values</h1>
     <small class="dont-index">Source: <a href='https://github.com/slu-openGIS/biscale/blob/master/R/bi_pal.R'><code>R/bi_pal.R</code></a></small>
     <div class="hidden name"><code>bi_pal.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Prints the hex values for a specified palette.</p>
+    <p>Prints either a visual preview of each palette or the associated
+    hex values.</p>
     
     </div>
 
@@ -137,6 +139,14 @@ be generated. If <code>FALSE</code>, a vector with hex color values will be retu
     <p>If <code>preview = TRUE</code>, an image preview of the legend will be returned.
     Otherwise, if <code>preview = FALSE</code>, a named vector with class values for names
     and their corresponding hex color values.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The <code>"Brown"</code>, <code>"DkBlue"</code>, <code>"DkCyan"</code>, and <code>"GrPink"</code>
+    palettes were made by
+    <a href='http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/'>Joshua Stevens</a>.
+    The <code>"DkViolet"</code> palette was made by
+    <a href='https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/'>Timo Grossenbacher and Angelo Zehr</a>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -208,6 +218,8 @@ be generated. If <code>FALSE</code>, a vector with hex color values will be retu
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

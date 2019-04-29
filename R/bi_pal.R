@@ -1,6 +1,13 @@
-#' Print Hex Values for Palette
+#' Palette Preview and Hex Values
 #'
-#' @description Prints the hex values for a specified palette.
+#' @description Prints either a visual preview of each palette or the associated
+#'     hex values.
+#'
+#' @details The \code{"Brown"}, \code{"DkBlue"}, \code{"DkCyan"}, and \code{"GrPink"}
+#'     palettes were made by
+#'     \href{http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/}{Joshua Stevens}.
+#'     The \code{"DkViolet"} palette was made by
+#'     \href{https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/}{Timo Grossenbacher and Angelo Zehr}.
 #'
 #' @usage bi_pal(pal, dim = 3, preview = TRUE)
 #'

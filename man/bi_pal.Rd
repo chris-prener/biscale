@@ -2,7 +2,7 @@
 % Please edit documentation in R/bi_pal.R
 \name{bi_pal}
 \alias{bi_pal}
-\title{Print Hex Values for Palette}
+\title{Palette Preview and Hex Values}
 \usage{
 bi_pal(pal, dim = 3, preview = TRUE)
 }
@@ -22,7 +22,15 @@ If \code{preview = TRUE}, an image preview of the legend will be returned.
     and their corresponding hex color values.
 }
 \description{
-Prints the hex values for a specified palette.
+Prints either a visual preview of each palette or the associated
+    hex values.
+}
+\details{
+The \code{"Brown"}, \code{"DkBlue"}, \code{"DkCyan"}, and \code{"GrPink"}
+    palettes were made by
+    \href{http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/}{Joshua Stevens}.
+    The \code{"DkViolet"} palette was made by
+    \href{https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/}{Timo Grossenbacher and Angelo Zehr}.
 }
 \examples{
 # brown palette, 2x2 preview
