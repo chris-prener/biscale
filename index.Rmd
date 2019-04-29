@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 [![Coverage status](https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=master)
 [![CRAN_status_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 
-`biscale` implements a set of functions for bivariate themeatic mapping based on the [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens's [tutorial](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The package currently supports two-by-two and three-by-three bivariate maps:
+`biscale` implements a set of functions for bivariate thematic mapping based on the [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens's [tutorial](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The package currently supports two-by-two and three-by-three bivariate maps:
 
 ```{r exampleMap, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("man/figures/biscale.001.png")
@@ -43,6 +43,6 @@ Additional details, including some tips for installing `sf`, can be found in the
 In addition to instructions for installation, the main [Get started](articles/biscale.html) article has:
 
   * a quick overview of bivariate mapping,
-  * a description of the workflrow for creating bivariate maps,
+  * a description of the workflow for creating bivariate maps,
   * a comparison of different approaches to calculating those classes,
   * and a comparison of different color palettes for bivariate mapping.

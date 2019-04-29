@@ -12,7 +12,7 @@ Status](https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?b
 status](https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=master)
 [![CRAN\_status\_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 
-`biscale` implements a set of functions for bivariate themeatic mapping
+`biscale` implements a set of functions for bivariate thematic mapping
 based on the
 [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/)
 written by Timo Grossenbacher and Angelo Zehr as well as a set of
@@ -63,7 +63,7 @@ Creating bivariate plots in the style described by [Grossenbacher and
 Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/)
 requires a number of dependencies in addition to `biscale` - `ggplot2`
 for plotting, `cowplot` for combining the legend and the main map, and
-`sf` for working with spaital objects in `R`:
+`sf` for working with spatial objects in `R`:
 
 ``` r
 # load dependencies

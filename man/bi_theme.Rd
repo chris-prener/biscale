@@ -10,7 +10,7 @@ bi_theme(base_family = "sans", base_size = 24, bg_color = "#ffffff",
 \arguments{
 \item{base_family}{A character string representing the font family to be used in the map.}
 
-\item{base_size}{A number represeting the base size used in the map.}
+\item{base_size}{A number representing the base size used in the map.}
 
 \item{bg_color}{A character string containing the hex value for the desired color of the map's background.}
 

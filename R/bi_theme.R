@@ -3,7 +3,7 @@
 #' @description A theme for creating a simple, clean bivariate map using \code{\link{ggplot2}}.
 #'
 #' @param base_family A character string representing the font family to be used in the map.
-#' @param base_size A number represeting the base size used in the map.
+#' @param base_size A number representing the base size used in the map.
 #' @param bg_color A character string containing the hex value for the desired color of the map's background.
 #' @param font_color A character string containing the hex value for the desired color of the map's text.
 #' @param ... Arguments to pass on to \code{ggplot2}'s \code{theme} function
