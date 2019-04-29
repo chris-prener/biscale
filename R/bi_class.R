@@ -1,6 +1,8 @@
 #' Create Classes for Bivariate Maps
 #'
-#' @description Creates mapping classes for a 3x3 bivariate map.
+#' @description Creates mapping classes for a bivariate map. These data will be stored
+#'     in a new variable named \code{bi_class}, which will be added to the given
+#'     data object.
 #'
 #' @usage bi_class(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE)
 #'
@@ -16,7 +18,7 @@
 #'     variables created as part of the calculation of \code{bs_class} will be
 #'     retained. If \code{FALSE} (default), they will not be returned.
 #'
-#' @return A copy of \code{.data} with a new variable \code{bs_class} that contains
+#' @return A copy of \code{.data} with a new variable \code{bi_class} that contains
 #'     combinations of values that correspond to an observations values for \code{x}
 #'     and \code{y}. This is the basis for applying a bivariate color palette.
 #'
