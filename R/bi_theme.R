@@ -2,15 +2,13 @@
 #'
 #' @description A theme for creating a simple, clean bivariate map.
 #'
+#' @param base_family A character string representing the font family to be used in the map.
+#' @param base_size A number represeting the base size used in the map.
+#' @param bg_color A character string containing the hex value for the desired color of the map's background.
+#' @param font_color A character string containing the hex value for the desired color of the map's text.
 #' @param ... Arguments to pass on to \code{ggplot2}'s \code{theme} function
 #'
-#' @importFrom ggplot2 theme
-#' @importFrom ggplot2 theme_minimal
-#' @importFrom ggplot2 element_blank
-#' @importFrom ggplot2 element_rect
-#' @importFrom ggplot2 element_text
-#' @importFrom ggplot2 unit
-#' @importFrom ggplot2 margin
+#' @importFrom ggplot2 theme theme_minimal element_blank element_rect element_text margin rel unit
 #'
 #' @export
 bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff", font_color = "#000000", ...) {
@@ -41,7 +39,7 @@ bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff",
       panel.spacing = ggplot2::unit(c(-.1, 0.2, .2, 0.2), "cm"),
 
       # titles
-      plot.title = ggplot2::element_text(size = rel(1.25), hjust = 0.5, color = font_color, face = "bold"),
+      plot.title = ggplot2::element_text(size = ggplot2::rel(1.25), hjust = 0.5, color = font_color, face = "bold"),
       plot.subtitle = ggplot2::element_text(hjust = 0.5, color = font_color,
                                    margin = ggplot2::margin(b = -0.1, t = -0.1, l = 2, unit = "cm"),
                                    face = "bold", debug = FALSE),
@@ -49,7 +47,7 @@ bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff",
       legend.text = ggplot2::element_text(hjust = 0, color = font_color),
 
       # captions
-      plot.caption = ggplot2::element_text(size = rel(.6), hjust = .5,
+      plot.caption = ggplot2::element_text(size = ggplot2::rel(.6), hjust = .5,
                                            margin = ggplot2::margin(t = 0.2, b = 0, unit = "cm"),
                                            color = font_color),
       ...
