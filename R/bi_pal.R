@@ -87,6 +87,10 @@
 bi_pal <- function(pal, dim = 3, preview = TRUE){
 
   # check parameters
+  if (missing(pal) == TRUE){
+    stop("A palette must be specified for the 'pal' argument. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+  }
+
   if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
   }
@@ -97,6 +101,10 @@ bi_pal <- function(pal, dim = 3, preview = TRUE){
 
   if (dim != 2 & dim != 3){
     stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+  }
+
+  if (is.logical(preview) == FALSE){
+    stop("A logical scalar must be supplied for 'preview'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
   # create output

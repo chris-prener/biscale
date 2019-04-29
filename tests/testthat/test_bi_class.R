@@ -1,22 +1,60 @@
 context("test bi_class function")
 
+# load test data ------------------------------------------------
+
+data("stl_race_income", package = "biscale")
+
+# test warnings ------------------------------------------------
+
+test_that("sf warning is triggered",{
+  expect_warning(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2),
+                 "The 'sf' package is not loaded, and the class 'sf' attribute of the given data set has been lost. Load 'sf' to retain the class when using 'bi_class'.")
+})
+
 # load suggested dependencies ------------------------------------------------
 
 library(sf)
 
-# load test data ------------------------------------------------
+# load test data again ------------------------------------------------
 
 data("stl_race_income", package = "biscale")
+
+# test errors ------------------------------------------------
+
+test_that("missing parameters trigger appropriate errors", {
+  expect_error(bi_class(x = pctWhite, y = medInc, style = "quantile", dim = 2),
+               "An object containing data must be specified for the '.data' argument.")
+  expect_error(bi_class(stl_race_income, y = medInc, style = "quantile", dim = 2),
+               "A variable must be given for the 'x' argument.")
+  expect_error(bi_class(stl_race_income, x = pctWhite, style = "quantile", dim = 2),
+               "A variable must be given for the 'y' argument.")
+})
+
+test_that("incorrectly specified parameters trigger appropriate errors", {
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),
+               "The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = "ham"),
+               "The 'dim' argument only accepts the numeric values '2' or '3'.")
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 4),
+               "The 'dim' argument only accepts the numeric values '2' or '3'.")
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2, keep_factors = "ham"),
+               "A logical scalar must be supplied for 'keep_factors'. Please provide either 'TRUE' or 'FALSE'.")
+})
 
 # test inputs ------------------------------------------------
 
 test_that("correctly specified functions execute without error", {
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2), NA)
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3), NA)
+  expect_error(bi_class(stl_race_income, x = "pctWhite", y = "medInc", style = "quantile", dim = 3), NA)
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal", dim = 2), NA)
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal", dim = 3), NA)
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher", dim = 2), NA)
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher", dim = 3), NA)
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 2), NA)
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 3), NA)
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 3, keep_factors = TRUE), NA)
 })
+
+# test results ------------------------------------------------
+
+

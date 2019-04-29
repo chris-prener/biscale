@@ -11,4 +11,5 @@
 ^cran-comments\.md$
 ^README\.Rmd$
 ^index\.Rmd$
+^index\.md$
 ^LICENSE$
