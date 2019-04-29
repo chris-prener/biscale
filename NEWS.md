@@ -1,4 +1,4 @@
-# biscale 0.1.0.9000
+# biscale 0.1.0
 
 * Added a `NEWS.md` file to track changes to the package.
 * Develop bivariate mapping functionality (`bi_` functions)
