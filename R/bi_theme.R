@@ -8,6 +8,20 @@
 #' @param font_color A character string containing the hex value for the desired color of the map's text.
 #' @param ... Arguments to pass on to \code{ggplot2}'s \code{theme} function
 #'
+#' @examples
+#' # load suggested dependencies
+#' library(ggplot2)
+#' library(sf)
+#'
+#' # add breaks, 3x3
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 3)
+#'
+#' # create map
+#' ggplot() +
+#'   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+#'   bi_scale_fill(pal = "GrPink", dim = 3) +
+#'   bi_theme()
+#'
 #' @importFrom ggplot2 theme theme_minimal element_blank element_rect element_text margin rel unit
 #'
 #' @export

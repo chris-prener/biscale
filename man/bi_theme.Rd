@@ -21,3 +21,18 @@ bi_theme(base_family = "sans", base_size = 24, bg_color = "#ffffff",
 \description{
 A theme for creating a simple, clean bivariate map using \code{\link{ggplot2}}.
 }
+\examples{
+# load suggested dependencies
+library(ggplot2)
+library(sf)
+
+# add breaks, 3x3
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 3)
+
+# create map
+ggplot() +
+  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  bi_scale_fill(pal = "GrPink", dim = 3) +
+  bi_theme()
+
+}
