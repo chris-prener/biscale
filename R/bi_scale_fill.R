@@ -1,7 +1,7 @@
 #' Apply Bivariate Scale to ggplot Object
 #'
 #' @description Applies the selected palette as the fill aesthetic when \code{\link{geom_sf}}
-#'     is used and the \code{bi_class} variable is used as the \code{fill} in the aesthetic
+#'     is used and the \code{bi_class} variable is given as the \code{fill} in the aesthetic
 #'     mapping.
 #'
 #' @usage bi_scale_fill(pal, dim = 3, ...)
@@ -11,6 +11,8 @@
 #' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
 #'     \code{3} for a three-by-three palette.
 #' @param ... Arguments to pass to \code{\link{scale_fill_manual}}
+#'
+#' @return A \code{ggplot} object with the given bivariate palette applied to the data.
 #'
 #' @importFrom ggplot2 scale_fill_manual
 #'

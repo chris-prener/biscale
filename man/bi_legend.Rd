@@ -15,7 +15,7 @@ bi_legend(pal, dim = 3, xlab, ylab, size)
 
 \item{xlab}{Text for desired x axis label on legend}
 
-\item{ylab}{Text for desired y axis label on legened}
+\item{ylab}{Text for desired y axis label on legend}
 
 \item{size}{Size of axis labels}
 }
@@ -27,7 +27,7 @@ Creates a \code{ggplot} object containing a legend that is specific
     to bivariate mapping.
 }
 \examples{
-# construct 3x3 legend
+# construct 2x2 legend
 legend <- bi_legend(pal = "GrPink",
                     dim = 2,
                     xlab = "Higher \% White ",

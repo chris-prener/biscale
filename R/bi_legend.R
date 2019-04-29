@@ -10,7 +10,7 @@
 #' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
 #'     \code{3} for a three-by-three palette.
 #' @param xlab Text for desired x axis label on legend
-#' @param ylab Text for desired y axis label on legened
+#' @param ylab Text for desired y axis label on legend
 #' @param size Size of axis labels
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
@@ -21,7 +21,7 @@
 #' @importFrom tidyr separate
 #'
 #' @examples
-#' # construct 3x3 legend
+#' # construct 2x2 legend
 #' legend <- bi_legend(pal = "GrPink",
 #'                     dim = 2,
 #'                     xlab = "Higher % White ",

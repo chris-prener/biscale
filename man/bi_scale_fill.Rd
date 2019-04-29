@@ -15,9 +15,12 @@ bi_scale_fill(pal, dim = 3, ...)
 
 \item{...}{Arguments to pass to \code{\link{scale_fill_manual}}}
 }
+\value{
+A \code{ggplot} object with the given bivariate palette applied to the data.
+}
 \description{
 Applies the selected palette as the fill aesthetic when \code{\link{geom_sf}}
-    is used and the \code{bi_class} variable is used as the \code{fill} in the aesthetic
+    is used and the \code{bi_class} variable is given as the \code{fill} in the aesthetic
     mapping.
 }
 \examples{
