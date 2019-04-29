@@ -14,7 +14,12 @@
 ## R CMD check results
 There were no ERRORs, WARNINGs, or NOTEs with local checks or on Travis CI/Appveyor.
 
-On devtools::release()'s R CMD check and all winbuilder checks, we get one NOTE:
+On winbuilder checks, we get one NOTE:
+
+* checking CRAN incoming feasibility ... NOTE
+Maintainer: 'Christopher Prener <chris.prener@slu.edu>'
+
+New submission
 
 ## Reverse dependencies
 Not applicable.

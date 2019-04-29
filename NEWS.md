@@ -2,6 +2,7 @@
 
 * CRAN release version
 * Add installation instructions and Zenodo badge to README and pkgdown site
+* Add `cran-comments.md`
 
 # biscale 0.1.0
 
