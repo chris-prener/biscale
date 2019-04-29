@@ -3,6 +3,7 @@ context("test bi_pal function")
 # load test data ------------------------------------------------
 
 data("stl_race_income", package = "biscale")
+load(system.file("extdata", "testdata.rda", package = "biscale"))
 
 # load suggested dependencies ------------------------------------------------
 
@@ -54,4 +55,26 @@ test_that("correct classes of output are returned", {
   expect_equal("ggplot" %in% class(result2), TRUE)
   expect_equal("character" %in% class(result3), TRUE)
   expect_equal("character" %in% class(result4), TRUE)
+})
+
+result_brown2 <- bi_pal(pal = "Brown", dim = 2, preview = FALSE)
+result_brown3 <- bi_pal(pal = "Brown", dim = 3, preview = FALSE)
+result_dkblue2 <- bi_pal(pal = "DkBlue", dim = 2, preview = FALSE)
+result_dkblue3 <- bi_pal(pal = "DkBlue", dim = 3, preview = FALSE)
+result_dkcyan2 <- bi_pal(pal = "DkCyan", dim = 2, preview = FALSE)
+result_dkcyan3 <- bi_pal(pal = "DkCyan", dim = 3, preview = FALSE)
+result_dkviolet2 <- bi_pal(pal = "DkViolet", dim = 2, preview = FALSE)
+result_dkviolet3 <- bi_pal(pal = "DkViolet", dim = 3, preview = FALSE)
+
+test_that("correct color palettes are returned", {
+  expect_equal(result_brown2, brown2)
+  expect_equal(result_brown3, brown3)
+  expect_equal(result_dkblue2, dkblue2)
+  expect_equal(result_dkblue3, dkblue3)
+  expect_equal(result_dkcyan2, dkcyan2)
+  expect_equal(result_dkcyan3, dkcyan3)
+  expect_equal(result_dkviolet2, dkviolet2)
+  expect_equal(result_dkviolet3, dkviolet3)
+  expect_equal(result3, grpink2)
+  expect_equal(result4, grpink3)
 })
