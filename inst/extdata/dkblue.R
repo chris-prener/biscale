@@ -1,52 +1,67 @@
 devtools::load_all()
-
-library(dplyr)
-library(ggplot2)
 library(cowplot)
+library(ggplot2)
 library(sf)
 
-# load data
+# prep data
 data <- stl_race_income
+data <- bi_class(data, x = pctWhite, y = medInc, keep_factors = TRUE)
 
-# create classes
-data <- bi_class(data, x = pctWhite, y = medInc)
-
-# apply palette
-data_DkViolet <- bi_pal(data, pal = "DkBlue")
-
-# plot
+# draw map
 map <- ggplot() +
-  geom_sf(data = data_DkViolet, aes(fill = bs_fill), color = "white", size = 0.1) +
-  scale_fill_identity() +
+  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  bi_scale_fill(pal = "DkBlue") +
   labs(
     title = "Race and Income in St. Louis, MO",
     subtitle = "Dark Blue (DkBlue) Palette"
   ) +
   bi_theme()
 
-
-# separate the groups used for plotting
-bs <- bi_legend(pal = "DkBlue")
-
 # draw legend
-legend <- ggplot() +
-  geom_tile(data = bs, mapping = aes(x = x, y = y, fill = bs_fill)) +
-  scale_fill_identity() +
-  labs(x = expression(paste("Higher % White ", ""%->%"")),
-       y = expression(paste("Higher Income ", ""%->%""))) +
-  bi_theme() +
-
-  # make font small enough
-  theme(axis.title = element_text(size = 10)) +
-
-  # quadratic tiles
-  coord_fixed()
+legend <- bi_legend(pal = "DkBlue",
+                    xlab = "Higher % White ",
+                    ylab = "Higher Income ",
+                    size = 10)
 
 # combine map with legend
 finalPlot <- ggdraw() +
   draw_plot(map, 0, 0, 1, 1) +
-  draw_plot(legend, 0.2, .7, 0.2, 0.2)
+  draw_plot(legend, 0.2, 0.7, 0.22, 0.22)
 
+# print map
 finalPlot
 
-ggsave(filename = "inst/extdata/dkblue.png", height = 12.54, width = 8.505, dpi = 500)
+# save map
+ggsave(filename = "inst/extdata/dkblue3.png", height = 12.54, width = 8.505, dpi = 500)
+
+# prep data
+data <- stl_race_income
+data <- bi_class(data, x = pctWhite, y = medInc, dim = 2, keep_factors = TRUE)
+
+# draw map
+map <- ggplot() +
+  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  bi_scale_fill(pal = "DkBlue", dim = 2) +
+  labs(
+    title = "Race and Income in St. Louis, MO",
+    subtitle = "Dark Blue (DkBlue) Palette"
+  ) +
+  bi_theme()
+
+# draw legend
+legend <- bi_legend(pal = "DkBlue",
+                    dim = 2,
+                    xlab = "Higher % White ",
+                    ylab = "Higher Income ",
+                    size = 10)
+
+# combine map with legend
+finalPlot <- ggdraw() +
+  draw_plot(map, 0, 0, 1, 1) +
+  draw_plot(legend, 0.2, 0.7, 0.22, 0.22)
+
+# print map
+finalPlot
+
+# save map
+ggsave(filename = "inst/extdata/dkblue2.png", height = 12.54, width = 8.505, dpi = 500)
