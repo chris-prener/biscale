@@ -1,6 +1,6 @@
-# .gitignore lists file types to be ignored during
-# a Github commit.
-
+# This is a .gitignore file that specifies for GitHub files that should
+# never be uploaded to your repositories.
+# More details - https://help.github.com/articles/ignoring-files/
 # Source - https://gist.github.com/octocat/9257657
 
 # Compiled source #
@@ -11,6 +11,7 @@
 *.exe
 *.o
 *.so
+
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
@@ -23,6 +24,7 @@
 *.rar
 *.tar
 *.zip
+
 # Logs and databases #
 ######################
 *.log
@@ -36,13 +38,42 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+
 # R files #
 ###########
-.Rapp.history
+
+# History files
 .Rhistory
+.Rapp.history
+
+# Session Data files
 .RData
+.Ruserdata
+
+# Example code in package build process
+*-Ex.R
+
+# Output files from R CMD build
+/*.tar.gz
+
+# Output files from R CMD check
+/*.Rcheck/
+
+# RStudio files
+.Rproj.user/
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
+
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+# knitr and R markdown default cache directories
+/*_cache/
+/cache/
+
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
 .Rproj.user
-*.dcf
-*.ttc
-inst/doc
-/revdep/.cache.rds
