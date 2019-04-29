@@ -31,6 +31,10 @@ test_that("missing parameters trigger appropriate errors", {
 })
 
 test_that("incorrectly specified parameters trigger appropriate errors", {
+  expect_error(bi_class(stl_race_income, x = ham, y = medInc, style = "quantile", dim = 2),
+               "The given 'x' variable 'ham' is not found in the given data set.")
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = ham, style = "quantile", dim = 2),
+               "The given 'y' variable 'ham' is not found in the given data set.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),
                "The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = "ham"),
