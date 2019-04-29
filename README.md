@@ -18,26 +18,37 @@ based on the
 written by Timo Grossenbacher and Angelo Zehr as well as a set of
 bivariate mapping palettes from Joshua Stevens’s
 [tutorial](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
+The package currently supports two-by-two and three-by-three bivariate
+maps:
+
+![](man/figures/biscale.001.png)
+
+In addition to support for both two-by-two and three-by-three maps, the
+package also supports four methods for calculating breaks for bivariate
+maps.
 
 ## Installation
 
-### Installing Dependencies
+Since the package does not directly use functions from `sf`, it is a
+suggested dependency rather than a required one. However, the most
+direct approach to using `biscale` is with `sf` objects, and we
+therefore recommend users install `sf` before proceeding with using
+`biscale`. Windows users should be able to install `sf` without
+significant issues, but macOS and Linux users will need to install
+several open source spatial libraries to get `sf` itself up and running.
+The easiest approach for macOS users is to install the GDAL 2.0 Complete
+framework from [Kyng
+Chaos](https://www.kyngchaos.com/software/frameworks/).
 
-You should check the [`sf` package
-website](https://r-spatial.github.io/sf/) for the latest details on
-installing dependencies for that package. Instructions vary
-significantly by operating system. Linux users in particular should also
-check the [`biscale` package
-repo](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh)
-for a script that installs the relevant dependencies. For best results,
-have `sf` installed before you install `biscale`. Other dependencies,
-like `dplyr`, will be installed automatically with `areal` if they are
-not already present.
+For Linux users, steps will vary based on the flavor being used. Our
+[configuration
+file](https://github.com/slu-openGIS/biscale/blob/master/.travis.yml)
+for Travis CI and its associated [bash
+script](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh)
+should be useful in determining the necessary components to install.
 
-### Installing biscale
-
-Once you have `sf` installed, you can install `biscale` with the
-`remotes` package:
+Once `sf` is installed, the development version of `biscale` can be
+accessed from GitHub with `remotes`:
 
 ``` r
 # install.packages("remotes")
@@ -61,20 +72,14 @@ library(sf)
 ```
 
 The `biscale` package comes with some sample data from St. Louis, MO
-that you can use to check out the bivariate mapping workflow:
-
-``` r
-# load data
-data <- stl_race_income
-```
-
-First, we want to create our classes. `biscale` currently supports a
-both two-by-two and three-by-three tables of classes, created with the
-`bi_class()` function:
+that you can use to check out the bivariate mapping workflow. Our first
+step is to create our classes for bivariate mapping. `biscale` currently
+supports a both two-by-two and three-by-three tables of classes, created
+with the `bi_class()` function: :
 
 ``` r
 # create classes
-data <- bi_class(data, x = pctWhite, y = medInc, dim = 3)
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
 ```
 
 The default method for calculating breaks is `"quantile"`, which will
