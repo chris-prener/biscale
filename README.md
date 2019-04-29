@@ -133,19 +133,7 @@ experimentation depending on the shape of the map itself.
 finalPlot <- ggdraw() +
   draw_plot(map, 0, 0, 1, 1) +
   draw_plot(legend, 0.2, .7, 0.2, 0.2)
-
-# print map
-finalPlot
 ```
-
-![](man/figures/dkblue.png)
-
-## Palettes
-
-Palette options include `"Brown"`, `"DkBlue"`, `"DkCyan"`, `"DkViolet"`,
-and `"GrPink"`.
-
-![](man/figures/preview.png)
 
 ## Contributor Code of Conduct
 
