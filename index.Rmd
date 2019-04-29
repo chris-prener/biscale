@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 `biscale` implements a set of functions for bivariate themeatic mapping based on the [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens's [tutorial](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The package currently supports two-by-two and three-by-three bivariate maps:
 
 ```{r exampleMap, echo=FALSE, out.width = '100%'}
-knitr::include_graphics("../man/figures/biscale.001.png")
+knitr::include_graphics("man/figures/biscale.001.png")
 ```
 
 In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.
