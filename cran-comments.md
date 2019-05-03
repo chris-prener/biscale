@@ -1,5 +1,9 @@
 ## Release summary
- This is the initial CRAN submission.
+This is the first re-submission of our initial CRAN submission based on feedback from Matthias Sterrer. We've made the following changes:
+
+1. Changed the first word of the description to "Provides..." as suggested.
+2. Edited the 3rd sentance for clarity as suggested.
+3. Added quotes around package names as requested.
 
 ## Test environments
 * local OS X install, R 3.5.2
@@ -9,7 +13,7 @@
 * windows x64 (on Appveyor), R-release, R-oldrel, R-devel
 * winbuilder, R-release, R-oldrel, R-devel
 
-* r-hub not used because it lacks dependencies needed to build `sf` and `lwgeom` on Debian
+* r-hub not used because it lacks dependencies needed to build `sf` on Debian
 
 ## R CMD check results
 There were no ERRORs, WARNINGs, or NOTEs with local checks or on Travis CI/Appveyor.
