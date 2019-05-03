@@ -8,12 +8,13 @@ Authors@R: c(
     person("Timo", "Grossenbacher", , role = "aut"),
     person("Angelo", "Zehr", , role = "aut"),
     person("Joshua", "Stevens", , role = "ctb"))
-Description: A ggplot2 centric approach to bivariate mapping. This is a technique
-    that maps two quantities simultaneously rather than the single value that most 
-    thematic maps display. A suite of tools for calculating breaks using multiple 
-    different approaches, a selection of palettes appropriate for bivariate mapping, 
-    and a scale function for ggplot2 calls that adds that palette to maps. A tool 
-    for creating bivariate legends is also included.
+Description: Provides a 'ggplot2' centric approach to bivariate mapping. This is a 
+    technique that maps two quantities simultaneously rather than the single value 
+    that most thematic maps display. The package provides a suite of tools for
+    for calculating breaks using multiple different approaches, a selection of 
+    palettes appropriate for bivariate mapping and a scale function for 'ggplot2' 
+    calls that adds those palettes to maps. A tool for creating bivariate legends 
+    is also included.
 Depends: R (>= 3.3)
 License: GPL-3
 URL: https://github.com/slu-openGIS/biscale
