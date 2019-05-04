@@ -10,7 +10,7 @@ Authors@R: c(
     person("Joshua", "Stevens", , role = "ctb"))
 Description: Provides a 'ggplot2' centric approach to bivariate mapping. This is a 
     technique that maps two quantities simultaneously rather than the single value 
-    that most thematic maps display. The package provides a suite of tools for
+    that most thematic maps display. The package provides a suite of tools 
     for calculating breaks using multiple different approaches, a selection of 
     palettes appropriate for bivariate mapping and a scale function for 'ggplot2' 
     calls that adds those palettes to maps. A tool for creating bivariate legends 

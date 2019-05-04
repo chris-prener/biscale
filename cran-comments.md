@@ -1,5 +1,9 @@
 ## Release summary
-This is the first re-submission of our initial CRAN submission based on feedback from Matthias Sterrer. We've made the following changes:
+This is the second re-submission of our initial CRAN submission based on feedback from Matthias Sterrer. In the second re-submission, we've made the following changes:
+
+1. Removed the duplicate word 'for' from the description as requested.
+
+The first re-submission made the following changes:
 
 1. Changed the first word of the description to "Provides..." as suggested.
 2. Edited the 3rd sentance for clarity as suggested.
