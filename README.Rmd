@@ -13,12 +13,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-# biscale
+# biscale <img src="man/figures/logo.png" align="right" />
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis-CI Build Status](https://travis-ci.org/slu-openGIS/biscale.svg?branch=master)](https://travis-ci.org/slu-openGIS/biscale)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?branch=master&svg=true)](https://ci.appveyor.com/project/chris-prener/biscale)
 [![Coverage status](https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=master)
+[![DOI](https://zenodo.org/badge/183024212.svg)](https://zenodo.org/badge/latestdoi/183024212)
 [![CRAN_status_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 
 `biscale` implements a set of functions for bivariate thematic mapping based on the [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens's [tutorial](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The package currently supports two-by-two and three-by-three bivariate maps:
@@ -32,7 +33,13 @@ Since the package does not directly use functions from `sf`, it is a suggested d
 
 For Linux users, steps will vary based on the flavor being used. Our [configuration file](https://github.com/slu-openGIS/biscale/blob/master/.travis.yml) for Travis CI and its associated [bash script](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh) should be useful in determining the necessary components to install.
 
-Once `sf` is installed, the development version of `biscale` can be accessed from GitHub with `remotes`:
+Once `sf` is installed, the easiest way to get `biscale` is to install it from CRAN:
+
+```r
+install.packages("biscale")
+```
+
+Alternatively, the development version of `biscale` can be accessed from GitHub with `remotes`:
 
 ```r
 # install.packages("remotes")

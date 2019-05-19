@@ -28,7 +28,13 @@ Since the package does not directly use functions from `sf`, it is a suggested d
 
 For Linux users, steps will vary based on the flavor being used. Our [configuration file](https://github.com/slu-openGIS/biscale/blob/master/.travis.yml) for Travis CI and its associated [bash script](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh) should be useful in determining the necessary components to install.
 
-Once `sf` is installed, the development version of `biscale` can be accessed from GitHub with `remotes`:
+Once `sf` is installed, the easiest way to get `biscale` is to install it from CRAN:
+
+```r
+install.packages("biscale")
+```
+
+Alternatively, the development version of `biscale` can be accessed from GitHub with `remotes`:
 
 ```r
 # install.packages("remotes")
