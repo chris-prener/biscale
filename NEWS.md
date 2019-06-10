@@ -1,3 +1,7 @@
+# biscale 0.1.2.9000
+
+* Add non-standard evaluation to `bi_legend()`
+
 # biscale 0.1.1
 
 * CRAN release version
