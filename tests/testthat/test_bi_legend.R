@@ -37,6 +37,13 @@ test_that("correctly specified functions execute without error", {
   expect_error(bi_legend(pal = "GrPink", dim = 3, xlab = "ham", ylab = "bacon"), NA)
 })
 
+a <- "ham"
+b <- "bacon"
+
+test_that("correctly specified functions execute without error", {
+  expect_error(bi_legend(pal = "Brown", dim = 2, xlab = a, ylab = b), NA)
+})
+
 # test results ------------------------------------------------
 
 result1 <- bi_legend(pal = "GrPink", dim = 2)
