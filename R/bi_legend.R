@@ -18,6 +18,7 @@
 #' @importFrom dplyr mutate tibble
 #' @importFrom ggplot2 aes coord_fixed element_text geom_tile ggplot labs
 #'     scale_fill_identity theme
+#' @importFrom rlang enquo quo_name
 #' @importFrom tidyr separate
 #'
 #' @examples
@@ -84,6 +85,10 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
     stop("The 'size' argument must be a numeric value.")
   }
 
+  # nse
+  xQN <- rlang::quo_name(rlang::enquo(xlab))
+  yQN <- rlang::quo_name(rlang::enquo(ylab))
+
   # return palette colors
   if (pal == "DkViolet"){
     x <- pal_dkviolet(n = dim)
@@ -111,7 +116,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
   legend <- ggplot2::ggplot() +
     ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill)) +
     ggplot2::scale_fill_identity() +
-    ggplot2::labs(x = substitute(paste(xlab, ""%->%"")), y = substitute(paste(ylab, ""%->%""))) +
+    ggplot2::labs(x = substitute(paste(xQN, ""%->%"")), y = substitute(paste(yQN, ""%->%""))) +
     bi_theme() +
     ggplot2::theme(axis.title = ggplot2::element_text(size = size)) +
     ggplot2::coord_fixed()
