@@ -73,7 +73,7 @@ Once breaks are created, we can use `bi_scale_fill()` as part of our `ggplot()` 
 ```r
 # create map
 map <- ggplot() +
-  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  geom_sf(data = data, mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
   bi_scale_fill(pal = "DkBlue", dim = 3) +
   labs(
     title = "Race and Income in St. Louis, MO",
