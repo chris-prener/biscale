@@ -1,16 +1,8 @@
 ## Release summary
-This is the second re-submission of our initial CRAN submission based on feedback from Matthias Sterrer. In the second re-submission, we've made the following changes:
-
-1. Removed the duplicate word 'for' from the description as requested.
-
-The first re-submission made the following changes:
-
-1. Changed the first word of the description to "Provides..." as suggested.
-2. Edited the 3rd sentance for clarity as suggested.
-3. Added quotes around package names as requested.
+This is a minor update to the package that (1) adds some new functionaliy to the `bi_legend()` function, (2) fixes various typos in the documentation, and (3) reduces the number of examples in `bi_pal()` in an effort to shrink the installed size of the package (which is generating 1 NOTE on CRAN's Solaris check of the current release). 
 
 ## Test environments
-* local OS X install, R 3.5.2
+* local OS X install, R 3.6.0
 * ubuntu 14.04 (on Travis CI), R-release, R-oldrel, R-devel
 * macOS (on Travis CI), R-release, R-oldrel
 * windows i386 (on Appveyor), R-release, R-oldrel, R-devel
@@ -20,16 +12,7 @@ The first re-submission made the following changes:
 * r-hub not used because it lacks dependencies needed to build `sf` on Debian
 
 ## R CMD check results
-There were no ERRORs, WARNINGs, or NOTEs with local checks or on Appveyor.
-
-On TRAVIS, we are currently failing on R-oldrel macOS due to a switch in the TeX set-up. This does not appear to having anything to do with our package specifically.
-
-On winbuilder checks, we get one NOTE:
-
-* checking CRAN incoming feasibility ... NOTE
-Maintainer: 'Christopher Prener <chris.prener@slu.edu>'
-
-New submission
+There were no ERRORs, WARNINGs, or NOTEs with local or CI checks.
 
 ## Reverse dependencies
 Not applicable.
