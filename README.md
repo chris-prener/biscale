@@ -28,14 +28,19 @@ In addition to support for both two-by-two and three-by-three maps, the
 package also supports four methods for calculating breaks for bivariate
 maps.
 
-## What’s New
+## What’s New?
 
-`biscale` v0.1.2.9000 is underway\! This will be a maintence release
-that includes typo corrections. It does add the ability to pass objects
-to `bi_legend()`’s x and y axis label arguments, which may be useful to
-some users. The `biscale` workflow has also been tested with the new
-[release candidate for `cowplot`](https://github.com/wilkelab/cowplot)
-as well as the amazing `ggplot2` update and works as expected.
+`biscale` v0.1.2 is out\! This is a maintence release that includes typo
+corrections. It does add the ability to pass objects to `bi_legend()`’s
+x and y axis label arguments, which may be useful to some users. The
+`biscale` workflow has also been tested with the new [release candidate
+for `cowplot`](https://github.com/wilkelab/cowplot) as well as the
+amazing `ggplot2` update and works as expected.
+
+## What’s on the Roadmap?
+
+A companion to `bi_scale_fill()`, `bi_scale_color()`, is planned to
+accommodate bivariate mapping with point data.
 
 ## Installation
 
@@ -188,5 +193,5 @@ website](https://slu-opengis.github.io/biscale/reference/bi_pal.html).
 ## Contributor Code of Conduct
 
 Please note that this project is released with a [Contributor Code of
-Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project
-you agree to abide by its terms.
+Conduct](https://slu-opengis.github.io/biscale/CODE_OF_CONDUCT.html). By
+participating in this project you agree to abide by its terms.

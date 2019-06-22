@@ -28,8 +28,11 @@ knitr::opts_chunk$set(
 
 In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.
 
-## What's New
-`biscale` v0.1.2.9000 is underway! This will be a maintence release that includes typo corrections. It does add the ability to pass objects to `bi_legend()`'s x and y axis label arguments, which may be useful to some users. The `biscale` workflow has also been tested with the new [release candidate for `cowplot`](https://github.com/wilkelab/cowplot) as well as the amazing `ggplot2` update and works as expected.
+## What's New?
+`biscale` v0.1.2 is out! This is a maintence release that includes typo corrections. It does add the ability to pass objects to `bi_legend()`'s x and y axis label arguments, which may be useful to some users. The `biscale` workflow has also been tested with the new [release candidate for `cowplot`](https://github.com/wilkelab/cowplot) as well as the amazing `ggplot2` update and works as expected.
+
+## What's on the Roadmap?
+A companion to `bi_scale_fill()`, `bi_scale_color()`, is planned to accommodate bivariate mapping with point data.
 
 ## Installation
 Since the package does not directly use functions from `sf`, it is a suggested dependency rather than a required one. However, the most direct approach to using `biscale` is with `sf` objects, and we therefore recommend users install `sf` before proceeding with using `biscale`. Windows users should be able to install `sf` without significant issues, but macOS and Linux users will need to install several open source spatial libraries to get `sf` itself up and running. The easiest approach for macOS users is to install the GDAL 2.0 Complete framework from [Kyng Chaos](https://www.kyngchaos.com/software/frameworks/). 
@@ -125,4 +128,4 @@ These same options exist for three-by-three mapping as well:
 All color palettes, including `"Brown"`, can be previewed by using the `bi_pal()` function or by checking out that function's documentation on the [package website](https://slu-opengis.github.io/biscale/reference/bi_pal.html).
 
 ## Contributor Code of Conduct
-Please note that this project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://slu-opengis.github.io/biscale/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
