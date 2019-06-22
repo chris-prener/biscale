@@ -2,6 +2,8 @@
 
 * Add non-standard evaluation to `bi_legend()`
 * Fix typos in `README.Rmd`, `index.Rmd`, and in `bi_class.R`
+* Remove examples of 2x2 palettes in the `bi_pal()` help file to address NOTE on CRAN checks (only appeared for Solaris)
+* Test `biscale` with new release of `ggplot2` and the `cowplot` release candidate - no problems detected
 
 # biscale 0.1.1
 

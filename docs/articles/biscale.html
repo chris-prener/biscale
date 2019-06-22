@@ -171,8 +171,8 @@
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># combine map with legend</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a>finalPlot &lt;-<span class="st"> </span><span class="kw">ggdraw</span>() <span class="op">+</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="st">  </span><span class="kw">draw_plot</span>(map, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>) <span class="op">+</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="st">  </span><span class="kw">draw_plot</span>(legend, <span class="fl">0.2</span>, <span class="fl">.7</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)</span></code></pre></div>
-<p>This approach allows us to customize legend’s placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach.</p>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="st">  </span><span class="kw">draw_plot</span>(legend, <span class="fl">0.2</span>, <span class="fl">.65</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span>)</span></code></pre></div>
+<p>This approach allows us to customize legend’s placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. <em>As of June 21, this workflow has been tested with the new <a href="https://github.com/wilkelab/cowplot">release candidate for <code>cowplot</code></a> and works as expected.</em></p>
 </div>
 </div>
 <div id="getting-help" class="section level2">

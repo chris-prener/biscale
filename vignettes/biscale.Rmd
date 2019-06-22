@@ -134,16 +134,16 @@ legend <- bi_legend(pal = "DkBlue",
 
 The palette and dimensions should match what has been used for both `bi_class()` (in terms of dimensions) and `bi_scale_fill()` (in terms of both dimensions and palette). The `size` argument controls the font size used on the legend. Note that [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html) is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of `bi_legend()` - you don't need to include them in your `xlab` and `ylab` arguments!
 
-With our legend drawn, we can then combine the legend and the map with `cowplot`. Like `sf`, `cowplot` is a suggested rather than required dependency. The values needed for this stage will be subject to experimentation depending on the shape of the map itself.
+With our legend drawn, we can then combine the legend and the map with `cowplot`. Like `sf`, `cowplot` is a suggested rather than required dependency. The values needed for this stage will be subject to experimentation depending on the shape of the map itself. 
 
 ```r
 # combine map with legend
 finalPlot <- ggdraw() +
   draw_plot(map, 0, 0, 1, 1) +
-  draw_plot(legend, 0.2, .7, 0.2, 0.2)
+  draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
 
-This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach.
+This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. *As of June 21, this workflow has been tested with the new [release candidate for `cowplot`](https://github.com/wilkelab/cowplot) and works as expected.*
 
 ## Getting Help
 * If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](http://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.

@@ -148,13 +148,15 @@ them in your `xlab` and `ylab` arguments\!
 
 With our legend drawn, we can then combine the legend and the map with
 `cowplot`. The values needed for this stage will be subject to
-experimentation depending on the shape of the map itself.
+experimentation depending on the shape of the map itself. *As of June
+21, this workflow has been tested with the new [release candidate for
+`cowplot`](https://github.com/wilkelab/cowplot) and works as expected.*
 
 ``` r
 # combine map with legend
 finalPlot <- ggdraw() +
   draw_plot(map, 0, 0, 1, 1) +
-  draw_plot(legend, 0.2, .7, 0.2, 0.2)
+  draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
 
 ### Breaks for Bivariate Mapping
