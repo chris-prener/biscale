@@ -152,4 +152,4 @@ This approach allows us to customize legend's placement and size to suit differe
 * If you think you've found a bug, please create a [`reprex`](http://reprex.tidyverse.org/) and then open an issue on [GitHub](https://github.com/slu-openGIS/biscale/issues/new/choose).
 
 ## Suggesting Features or Changes
-If you have features or suggestions you want to see implemented, please open an issue on [GitHub](https://github.com/slu-openGIS/biscale/issues/new/choose) (and ideally created a [`reprex`](http://reprex.tidyverse.org/) to go with it!). Please note that this project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+If you have features or suggestions you want to see implemented, please open an issue on [GitHub](https://github.com/slu-openGIS/biscale/issues/new/choose) (and ideally created a [`reprex`](http://reprex.tidyverse.org/) to go with it!). Please note that this project is released with a [Contributor Code of Conduct](https://slu-opengis.github.io/biscale/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.

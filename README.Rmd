@@ -128,4 +128,4 @@ These same options exist for three-by-three mapping as well:
 All color palettes, including `"Brown"`, can be previewed by using the `bi_pal()` function or by checking out that function's documentation on the [package website](https://slu-opengis.github.io/biscale/reference/bi_pal.html).
 
 ## Contributor Code of Conduct
-Please note that this project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](https://slu-opengis.github.io/biscale/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
