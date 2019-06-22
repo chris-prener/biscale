@@ -65,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biscale</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.9000</span>
       </span>
     </div>
 
@@ -156,8 +156,8 @@
 <span class='no'>data</span> <span class='kw'>&lt;-</span> <span class='fu'>bi_class</span>(<span class='no'>stl_race_income</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>pctWhite</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>medInc</span>, <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fl'>3</span>)
 
 <span class='co'># create map</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>() +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggsf'>geom_sf</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>bi_class</span>), <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) +
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>() +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggsf.html'>geom_sf</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>bi_class</span>), <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"white"</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) +
   <span class='fu'>bi_scale_fill</span>(<span class='kw'>pal</span> <span class='kw'>=</span> <span class='st'>"GrPink"</span>, <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fl'>3</span>) +
   <span class='fu'>bi_theme</span>()</div><div class='img'><img src='bi_theme-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>

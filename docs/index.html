@@ -10,12 +10,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Tools and Palettes for Bivariate Thematic Mapping">
-<meta property="og:description" content="A ggplot2 centric approach to bivariate mapping. This is a technique
-    that maps two quantities simultaneously rather than the single value that most 
-    thematic maps display. A suite of tools for calculating breaks using multiple 
-    different approaches, a selection of palettes appropriate for bivariate mapping, 
-    and a scale function for ggplot2 calls that adds that palette to maps. A tool 
-    for creating bivariate legends is also included.">
+<meta property="og:description" content="Provides a 'ggplot2' centric approach to bivariate mapping. This is a 
+    technique that maps two quantities simultaneously rather than the single value 
+    that most thematic maps display. The package provides a suite of tools 
+    for calculating breaks using multiple different approaches, a selection of 
+    palettes appropriate for bivariate mapping and a scale function for 'ggplot2' 
+    calls that adds those palettes to maps. A tool for creating bivariate legends 
+    is also included.">
 <meta property="og:image" content="https://slu-openGIS.github.io/biscale/logo.png">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -36,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">biscale</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.9000</span>
       </span>
     </div>
 
@@ -89,14 +90,19 @@
 <p><code>biscale</code> implements a set of functions for bivariate thematic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens’s <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">tutorial</a>. The package currently supports two-by-two and three-by-three bivariate maps:</p>
 <p><img src="reference/figures/biscale.001.png" width="100%"></p>
 <p>In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.</p>
+<div id="whats-new" class="section level2">
+<h2 class="hasAnchor">
+<a href="#whats-new" class="anchor"></a>What’s New</h2>
+<p><code>biscale</code> v0.1.2.9000 is underway! This will be a maintence release that includes typo corrections. It does add the ability to pass objects to <code>bi_legend()</code>’s x and y axis label arguments, which may be useful to some users.</p>
+</div>
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>Quick Start</h2>
 <p>If the <code>sf</code> package is already installed, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"biscale"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"biscale"</span>)</span></code></pre></div>
 <p>Alternatively, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"slu-openGIS/biscale"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># install.packages("remotes")</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"slu-openGIS/biscale"</span>)</span></code></pre></div>
 <p>Additional details, including some tips for installing <code>sf</code>, can be found in the <a href="articles/biscale.html#getting-started">Get started article</a>.</p>
 </div>
 <div id="resources" class="section level2">
@@ -117,6 +123,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=biscale">https://​cloud.r-project.org/​package=biscale</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/slu-openGIS/biscale">https://​github.com/​slu-openGIS/​biscale</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/slu-openGIS/biscale/issues">https://​github.com/​slu-openGIS/​biscale/​issues</a>

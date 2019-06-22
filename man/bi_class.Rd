@@ -21,7 +21,7 @@ and \code{"jenks"}.}
 \code{3} for a three-by-three palette.}
 
 \item{keep_factors}{A logical scalar; if \code{TRUE}, the intermediate factor
-variables created as part of the calculation of \code{bs_class} will be
+variables created as part of the calculation of \code{bi_class} will be
 retained. If \code{FALSE} (default), they will not be returned.}
 }
 \value{

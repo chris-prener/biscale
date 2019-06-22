@@ -15,7 +15,7 @@
 #' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
 #'     \code{3} for a three-by-three palette.
 #' @param keep_factors A logical scalar; if \code{TRUE}, the intermediate factor
-#'     variables created as part of the calculation of \code{bs_class} will be
+#'     variables created as part of the calculation of \code{bi_class} will be
 #'     retained. If \code{FALSE} (default), they will not be returned.
 #'
 #' @return A copy of \code{.data} with a new variable \code{bi_class} that contains

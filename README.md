@@ -28,6 +28,13 @@ In addition to support for both two-by-two and three-by-three maps, the
 package also supports four methods for calculating breaks for bivariate
 maps.
 
+## What’s New
+
+`biscale` v0.1.2.9000 is underway\! This will be a maintence release
+that includes typo corrections. It does add the ability to pass objects
+to `bi_legend()`’s x and y axis label arguments, which may be useful to
+some users.
+
 ## Installation
 
 Since the package does not directly use functions from `sf`, it is a

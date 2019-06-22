@@ -28,6 +28,9 @@ knitr::opts_chunk$set(
 
 In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.
 
+## What's New
+`biscale` v0.1.2.9000 is underway! This will be a maintence release that includes typo corrections. It does add the ability to pass objects to `bi_legend()`'s x and y axis label arguments, which may be useful to some users.
+
 ## Installation
 Since the package does not directly use functions from `sf`, it is a suggested dependency rather than a required one. However, the most direct approach to using `biscale` is with `sf` objects, and we therefore recommend users install `sf` before proceeding with using `biscale`. Windows users should be able to install `sf` without significant issues, but macOS and Linux users will need to install several open source spatial libraries to get `sf` itself up and running. The easiest approach for macOS users is to install the GDAL 2.0 Complete framework from [Kyng Chaos](https://www.kyngchaos.com/software/frameworks/). 
 
