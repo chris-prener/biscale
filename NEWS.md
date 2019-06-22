@@ -1,6 +1,7 @@
 # biscale 0.1.2.9000
 
 * Add non-standard evaluation to `bi_legend()`
+* Fix typos in `README.Rmd`, `index.Rmd`, and in `bi_class.R`
 
 # biscale 0.1.1
 
