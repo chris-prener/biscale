@@ -33,7 +33,9 @@ maps.
 `biscale` v0.1.2.9000 is underway\! This will be a maintence release
 that includes typo corrections. It does add the ability to pass objects
 to `bi_legend()`’s x and y axis label arguments, which may be useful to
-some users.
+some users. The `biscale` workflow has also been tested with the new
+[release candidate for `cowplot`](https://github.com/wilkelab/cowplot)
+as well as the amazing `ggplot2` update and works as expected.
 
 ## Installation
 
@@ -148,9 +150,7 @@ them in your `xlab` and `ylab` arguments\!
 
 With our legend drawn, we can then combine the legend and the map with
 `cowplot`. The values needed for this stage will be subject to
-experimentation depending on the shape of the map itself. *As of June
-21, this workflow has been tested with the new [release candidate for
-`cowplot`](https://github.com/wilkelab/cowplot) and works as expected.*
+experimentation depending on the shape of the map itself.
 
 ``` r
 # combine map with legend

@@ -143,7 +143,7 @@ finalPlot <- ggdraw() +
   draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
 
-This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. *As of June 21, this workflow has been tested with the new [release candidate for `cowplot`](https://github.com/wilkelab/cowplot) and works as expected.*
+This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach.
 
 ## Getting Help
 * If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](http://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.
