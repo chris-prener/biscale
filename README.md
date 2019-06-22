@@ -30,12 +30,12 @@ maps.
 
 ## What’s New?
 
-`biscale` v0.1.2 is out\! This is a maintence release that includes typo
-corrections. It does add the ability to pass objects to `bi_legend()`’s
-x and y axis label arguments, which may be useful to some users. The
-`biscale` workflow has also been tested with the new [release candidate
-for `cowplot`](https://github.com/wilkelab/cowplot) as well as the
-amazing `ggplot2` update and works as expected.
+`biscale` v0.1.2 is out\! This is a maintenance release that includes
+typo corrections. It does add the ability to pass objects to
+`bi_legend()`’s x and y axis label arguments, which may be useful to
+some users. The `biscale` workflow has also been tested with the new
+[release candidate for `cowplot`](https://github.com/wilkelab/cowplot)
+as well as the amazing `ggplot2` update and works as expected.
 
 ## What’s on the Roadmap?
 
