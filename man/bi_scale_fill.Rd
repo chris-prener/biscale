@@ -2,7 +2,7 @@
 % Please edit documentation in R/bi_scale_fill.R
 \name{bi_scale_fill}
 \alias{bi_scale_fill}
-\title{Apply Bivariate Scale to ggplot Object}
+\title{Apply Bivariate Fill to ggplot Object}
 \usage{
 bi_scale_fill(pal, dim = 3, ...)
 }
