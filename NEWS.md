@@ -1,3 +1,7 @@
+# biscale 0.2.0.9000
+
+* Add `bi_scale_color()` as a compliment to existing functionality. This adds the ability to create bivariate point and line maps as well.
+
 # biscale 0.1.2
 
 * Add non-standard evaluation to `bi_legend()`

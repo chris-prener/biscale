@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">biscale</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0.9000</span>
       </span>
     </div>
 
@@ -93,21 +93,21 @@
 <div id="whats-new-on-cran" class="section level2">
 <h2 class="hasAnchor">
 <a href="#whats-new-on-cran" class="anchor"></a>What’s New on CRAN?</h2>
-<p><code>biscale</code> v0.1.2 is out! This is a maintenance release that includes typo corrections. It does add the ability to pass objects to <code><a href="reference/bi_legend.html">bi_legend()</a></code>’s x and y axis label arguments, which may be useful to some users. The <code>biscale</code> workflow has also been tested with the new <a href="https://github.com/wilkelab/cowplot">release candidate for <code>cowplot</code></a> as well as the amazing <code>ggplot2</code> update and works as expected.</p>
+<p><code>biscale</code> v0.1.2 is out! This is a maintenance release that includes typo corrections. It does add the ability to pass objects to <code>bi_legend()</code>’s x and y axis label arguments, which may be useful to some users. The <code>biscale</code> workflow has also been tested with the new <a href="https://github.com/wilkelab/cowplot">release candidate for <code>cowplot</code></a> as well as the amazing <code>ggplot2</code> update and works as expected.</p>
 </div>
 <div id="whats-new-on-the-development-version" class="section level2">
 <h2 class="hasAnchor">
 <a href="#whats-new-on-the-development-version" class="anchor"></a>What’s New on the Development Version?</h2>
-<p>The development version contains a new function, <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code>, which replicates the bivariate mapping workflow for point and line data. We don’t have any sample data for it yet, but the workflow mapping point data looks like this:</p>
+<p>The development version contains a new function, <code>bi_scale_color()</code>, which replicates the bivariate mapping workflow for point and line data. We don’t have any sample data for it yet, but the workflow mapping point data looks like this:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># create classes</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a>data &lt;-<span class="st"> </span><span class="kw"><a href="reference/bi_class.html">bi_class</a></span>(pointData, <span class="dt">x =</span> xvar, <span class="dt">y =</span> yvar, <span class="dt">style =</span> <span class="st">"quantile"</span>, <span class="dt">dim =</span> <span class="dv">3</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>data &lt;-<span class="st"> </span><span class="kw">bi_class</span>(pointData, <span class="dt">x =</span> xvar, <span class="dt">y =</span> yvar, <span class="dt">style =</span> <span class="st">"quantile"</span>, <span class="dt">dim =</span> <span class="dv">3</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co"># create map</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a>map &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
 <span id="cb1-6"><a href="#cb1-6"></a><span class="st">  </span><span class="kw">geom_sf</span>(<span class="dt">data =</span> pointData, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> bi_class), <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></span>
-<span id="cb1-7"><a href="#cb1-7"></a><span class="st">  </span><span class="kw"><a href="reference/bi_scale_color.html">bi_scale_color</a></span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>, <span class="dt">dim =</span> <span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb1-8"><a href="#cb1-8"></a><span class="st">  </span><span class="kw"><a href="reference/bi_theme.html">bi_theme</a></span>()</span></code></pre></div>
-<p>The creation of classes works the same way. The only difference is (a) the use of the <code>color</code> (or <code>colour</code>) argument in the aesthetic mapping for <code>geom_sf()</code> and the use of <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code> afterwards!</p>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="st">  </span><span class="kw">bi_scale_color</span>(<span class="dt">pal =</span> <span class="st">"DkBlue"</span>, <span class="dt">dim =</span> <span class="dv">3</span>) <span class="op">+</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="st">  </span><span class="kw">bi_theme</span>()</span></code></pre></div>
+<p>The creation of classes works the same way. The only difference is (a) the use of the <code>color</code> (or <code>colour</code>) argument in the aesthetic mapping for <code>geom_sf()</code> and the use of <code>bi_scale_color()</code> afterwards!</p>
 </div>
 <div id="quick-start" class="section level2">
 <h2 class="hasAnchor">
