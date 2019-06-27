@@ -49,9 +49,6 @@ map <- ggplot() +
 
 The creation of classes works the same way. The only difference is (a) the use of the `color` (or `colour`) argument in the aesthetic mapping for `geom_sf()` and the use of `bi_scale_color()` afterwards!
 
-## What's on the Roadmap?
-A companion to `bi_scale_fill()`, `bi_scale_color()`, is planned to accommodate bivariate mapping with point data.
-
 ## Quick Start
 If the `sf` package is already installed, the development version of `biscale` can be accessed from GitHub with `remotes`:
 
