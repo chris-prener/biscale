@@ -42,28 +42,13 @@ test_that("correctly specified functions execute without error", {
                  bi_scale_fill(pal = "Brown", dim = 2), NA)
   expect_error(ggplot() +
                  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-                 bi_scale_fill(pal = "Brown", dim = 2), NA)
-  expect_error(ggplot() +
-                 geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-                 bi_scale_fill(pal = "DkBlue", dim = 2), NA)
-  expect_error(ggplot() +
-                 geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
                  bi_scale_fill(pal = "DkBlue", dim = 2), NA)
   expect_error(ggplot() +
                  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
                  bi_scale_fill(pal = "DkCyan", dim = 2), NA)
   expect_error(ggplot() +
                  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-                 bi_scale_fill(pal = "DkCyan", dim = 2), NA)
-  expect_error(ggplot() +
-                 geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
                  bi_scale_fill(pal = "DkViolet", dim = 2), NA)
-  expect_error(ggplot() +
-                 geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-                 bi_scale_fill(pal = "DkViolet", dim = 2), NA)
-  expect_error(ggplot() +
-                 geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-                 bi_scale_fill(pal = "GrPink", dim = 2), NA)
   expect_error(ggplot() +
                  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
                  bi_scale_fill(pal = "GrPink", dim = 2), NA)
