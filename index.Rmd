@@ -30,11 +30,24 @@ knitr::include_graphics("man/figures/biscale.001.png")
 
 In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.
 
-## What's New?
+## What's New on CRAN?
 `biscale` v0.1.2 is out! This is a maintenance release that includes typo corrections. It does add the ability to pass objects to `bi_legend()`'s x and y axis label arguments, which may be useful to some users. The `biscale` workflow has also been tested with the new [release candidate for `cowplot`](https://github.com/wilkelab/cowplot) as well as the amazing `ggplot2` update and works as expected.
 
-## What's on the Roadmap?
-A companion to `bi_scale_fill()`, `bi_scale_color()`, is planned to accommodate bivariate mapping with point data.
+## What's New on the Development Version?
+The development version contains a new function, `bi_scale_color()`, which replicates the bivariate mapping workflow for point and line data. We don't have any sample data for it yet, but the workflow mapping point data looks like this:
+
+```r
+# create classes
+data <- bi_class(pointData, x = xvar, y = yvar, style = "quantile", dim = 3)
+
+# create map
+map <- ggplot() +
+  geom_sf(data = pointData, mapping = aes(color = bi_class), show.legend = FALSE) +
+  bi_scale_color(pal = "DkBlue", dim = 3) +
+  bi_theme()
+```
+
+The creation of classes works the same way. The only difference is (a) the use of the `color` (or `colour`) argument in the aesthetic mapping for `geom_sf()` and the use of `bi_scale_color()` afterwards!
 
 ## Quick Start
 If the `sf` package is already installed, the development version of `biscale` can be accessed from GitHub with `remotes`:

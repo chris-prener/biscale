@@ -15,6 +15,7 @@ reference:
     contents:
     - bi_pal
     - bi_scale_fill
+    - bi_scale_color
     - bi_theme
     - bi_legend
 
