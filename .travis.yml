@@ -1,8 +1,8 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-sudo: false
-# cache: packages
+sudo: required
+cache: packages
 
 r:
   - oldrel
@@ -30,6 +30,7 @@ r_packages:
 before_install:
   - chmod +x ./.travis/install.sh
   - ./.travis/install.sh
+  - R -e 'install.packages("rgdal", repos="http://R-Forge.R-project.org")'
 
 after_success:
   - dropdb postgis

@@ -26,9 +26,9 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
   # sudo ldconfig
 
   # install postgis from source:
-  wget http://download.osgeo.org/postgis/source/postgis-2.3.2.tar.gz
-  (mv postgis* /tmp; cd /tmp; tar xzf postgis-2.3.2.tar.gz)
-  (cd /tmp/postgis-2.3.2 ; ./configure; make; sudo make install)
+  wget http://download.osgeo.org/postgis/source/postgis-2.4.3.tar.gz
+  (mv postgis* /tmp; cd /tmp; tar xzf postgis-2.4.3.tar.gz)
+  (cd /tmp/postgis-2.4.3 ; ./configure; make; sudo make install)
 
   # create postgis databases:
   sudo service postgresql restart
