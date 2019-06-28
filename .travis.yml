@@ -8,6 +8,9 @@ r:
   - oldrel
   - release
   - devel
+  - 3.4
+  - 3.3
+  - 3.2
 
 os:
   - linux
