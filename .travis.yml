@@ -2,7 +2,7 @@
 
 language: R
 sudo: required
-# cache: packages
+cache: packages
 
 r:
   - oldrel
@@ -14,6 +14,8 @@ r:
 os:
   - linux
   - osx
+
+dist: xenial
 
 matrix:
   fast_finish: true
@@ -35,8 +37,6 @@ r_packages:
 before_install:
   - chmod +x ./.travis/install.sh
   - ./.travis/install.sh
-  - R -e 'install.packages("sp", repos="http://R-Forge.R-project.org")'
-  - R -e 'install.packages("rgdal", repos="http://R-Forge.R-project.org")'
 
 after_success:
   - dropdb postgis
