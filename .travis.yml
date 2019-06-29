@@ -32,8 +32,8 @@ addons:
   homebrew:
     packages:
     - udunits
-#  apt:
-#    update: true
+  apt:
+    update: true
 
 r_packages:
   - devtools

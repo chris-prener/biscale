@@ -24,32 +24,20 @@ environment:
     - R_VERSION: devel
       R_ARCH: x64
 
-    - R_VERSION: devel
-
     - R_VERSION: patched
       R_ARCH: x64
-
-    - R_VERSION: patched
 
     - R_VERSION: release
       R_ARCH: x64
 
-    - R_VERSION: release
-
     - R_VERSION: oldrel
       R_ARCH: x64
-
-    - R_VERSION: oldrel
 
     - R_VERSION: 3.4.4
       R_ARCH: x64
 
-    - R_VERSION: 3.4.4
-
     - R_VERSION: 3.3.3
       R_ARCH: x64
-
-    - R_VERSION: 3.3.3
 
 matrix:
   fast_finish: true
