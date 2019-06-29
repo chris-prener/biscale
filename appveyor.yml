@@ -10,8 +10,8 @@ init:
 install:
   ps: Bootstrap
 
-# cache:
-#  - C:\RLibrary
+cache:
+  - C:\RLibrary
 
 # Adapt as necessary starting from here
 
@@ -43,6 +43,7 @@ matrix:
   fast_finish: true
 
 build_script:
+  - Rscript -e install.packages('classInt',type='source',repos='https://cran.rstudio.com')
   - travis-tool.sh install_deps
 
 test_script:
