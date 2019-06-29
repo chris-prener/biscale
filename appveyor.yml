@@ -10,14 +10,6 @@ init:
 install:
   ps: Bootstrap
 
-# caching not working as of June 2019 - classInt throws an error on old release
-# because it needs to be reinstalled. Installing classInt from source prior
-# to the build script does not address this, and introduces longer run times
-# and other errors instead.
-
-cache:
-  - C:\RLibrary
-
 # Adapt as necessary starting from here
 
 environment:
@@ -52,7 +44,6 @@ matrix:
       R_ARCH: x64
 
 build_script:
-  - Rscript -e install.packages('classInt',type='source',repos='https://cran.rstudio.com')
   - travis-tool.sh install_deps
 
 test_script:
