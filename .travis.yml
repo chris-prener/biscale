@@ -29,10 +29,10 @@ matrix:
 
 addons:
   postgresql: "9.6"
-#  homebrew:
-#    packages:
-#    - udunits
-#    update: true
+
+before_install:
+  - chmod +x ./.travis/install.sh
+  - ./.travis/install.sh
 
 r_packages:
   - devtools
@@ -40,12 +40,6 @@ r_packages:
 
 before_cache:
   - brew cleanup
-#  - sudo chown -R $(whoami) /usr/local/share/man/man7
-#  - chmod u+w /usr/local/share/man/man7
-
-before_install:
-  - chmod +x ./.travis/install.sh
-  - ./.travis/install.sh
 
 after_success:
   - dropdb postgis
