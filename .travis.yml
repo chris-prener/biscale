@@ -38,6 +38,11 @@ r_packages:
   - devtools
   - lazyeval
 
+before_cache:
+  - brew cleanup
+  - sudo chown -R $(whoami) /usr/local/share/man/man7
+  - chmod u+w /usr/local/share/man/man7
+
 before_install:
   - chmod +x ./.travis/install.sh
   - ./.travis/install.sh
