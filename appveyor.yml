@@ -47,6 +47,9 @@ environment:
 
 matrix:
   fast_finish: true
+  allow_failures:
+    - R_VERSION: devel
+      R_ARCH: x64
 
 build_script:
   - travis-tool.sh install_deps
