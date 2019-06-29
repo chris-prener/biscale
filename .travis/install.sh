@@ -2,15 +2,13 @@
 
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
 
+  # install sources
   sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable --yes
-  sudo apt-get --yes --force-yes update -qq
-
-  # install tmap dependencies
-  sudo apt-get install --yes libprotobuf-dev protobuf-compiler libv8-3.14-dev
-
-  # install tmap dependencies; for 16.04 libjq-dev this ppa is needed:
   sudo add-apt-repository -y ppa:opencpu/jq
   sudo apt-get --yes --force-yes update -qq
+
+  # install packages
+  sudo apt-get install --yes libprotobuf-dev protobuf-compiler libv8-3.14-dev
   sudo apt-get install libjq-dev
 
   # units/udunits2 dependency:
@@ -35,6 +33,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
   createdb postgis
   psql -d postgis -c "CREATE EXTENSION postgis;"
   psql -d postgis -c "GRANT CREATE ON DATABASE postgis TO travis"
+  psql -d postgis -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO travis"
   createdb empty
   psql -d empty -c "CREATE EXTENSION postgis;"
 
