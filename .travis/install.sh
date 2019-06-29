@@ -46,6 +46,6 @@ elif [[ $TRAVIS_OS_NAME == 'osx' ]]; then
 
   # homebrew
   brew update
-  brew udunits
+  brew install udunits
 
 fi
