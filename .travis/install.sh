@@ -38,4 +38,14 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
   createdb empty
   psql -d empty -c "CREATE EXTENSION postgis;"
 
+elif [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+
+  # update directories
+  sudo chown -R $(whoami) /usr/local/share/man/man7
+  chmod u+w /usr/local/share/man/man7
+
+  # homebrew
+  brew update
+  brew udunits
+
 fi
