@@ -1,6 +1,7 @@
 # biscale 0.2.0.9000
 
 * Add `bi_scale_color()` as a compliment to existing functionality. This adds the ability to create bivariate point and line maps as well.
+* Additional confirmatory CI testing for R 3.3 and 3.4 added to Linux (now the `xenial` distribution), macOS, and Windows. 
 
 # biscale 0.1.2
 
