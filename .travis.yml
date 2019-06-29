@@ -32,7 +32,6 @@ addons:
   homebrew:
     packages:
     - udunits
-  apt:
     update: true
 
 r_packages:
