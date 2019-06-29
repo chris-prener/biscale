@@ -2,7 +2,17 @@
 
 language: R
 sudo: required
-cache: packages
+cache:
+  - packages
+  - ccache
+
+latex: false
+
+os:
+  - linux
+  - osx
+
+dist: xenial
 
 r:
   - oldrel
@@ -10,12 +20,6 @@ r:
   - devel
   - 3.4
   - 3.3
-
-os:
-  - linux
-  - osx
-
-dist: xenial
 
 matrix:
   fast_finish: true
@@ -28,11 +32,12 @@ addons:
   homebrew:
     packages:
     - udunits
-  apt:
-    update: true
+#  apt:
+#    update: true
 
 r_packages:
   - devtools
+  - lazyeval
 
 before_install:
   - chmod +x ./.travis/install.sh
