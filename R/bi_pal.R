@@ -313,7 +313,8 @@ pal_brown <- function(n){
 #'     only the 'val_1_1', 'val_1_2', 'val_2_1', and 'val_2_2' parameters are required. For
 #'     three-by-three palettes, all parameters are required.
 #'
-#' @usage bi_pal_custom(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3, val_3_1, val_3_2, val_3_3)
+#' @usage bi_pal_custom(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
+#'     val_3_1, val_3_2, val_3_3)
 #'
 #' @param val_1_1 A hex value for cell 1-1
 #' @param val_1_2 A hex value for cell 1-2

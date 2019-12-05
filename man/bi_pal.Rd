@@ -33,11 +33,23 @@ The \code{"Brown"}, \code{"DkBlue"}, \code{"DkCyan"}, and \code{"GrPink"}
     \href{https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/}{Timo Grossenbacher and Angelo Zehr}.
 }
 \examples{
+# brown palette, 2x2 preview
+bi_pal(pal = "Brown", dim = 2)
+
+# brown palette, 2x2 hex values
+bi_pal(pal = "Brown", dim = 2, preview = FALSE)
+
 # brown palette, 3x3 preview
 bi_pal(pal = "Brown", dim = 3)
 
 # brown palette, 3x3 hex values
 bi_pal(pal = "Brown", dim = 3, preview = FALSE)
+
+# dark blue palette, 2x2 preview
+bi_pal(pal = "DkBlue", dim = 2)
+
+# dark blue palette, 2x2 hex values
+bi_pal(pal = "DkBlue", dim = 2, preview = FALSE)
 
 # dark blue palette, 3x3 preview
 bi_pal(pal = "DkBlue", dim = 3)
@@ -45,17 +57,35 @@ bi_pal(pal = "DkBlue", dim = 3)
 # dark blue palette, 3x3 hex values
 bi_pal(pal = "DkBlue", dim = 3, preview = FALSE)
 
+# dark cyan palette, 2x2
+bi_pal(pal = "DkCyan", dim = 2)
+
+# dark cyan palette, 2x2 hex values
+bi_pal(pal = "DkCyan", dim = 2, preview = FALSE)
+
 # dark cyan palette, 3x3
 bi_pal(pal = "DkCyan", dim = 3)
 
 # dark cyan palette, 3x3 hex values
 bi_pal(pal = "DkCyan", dim = 3, preview = FALSE)
 
+# dark violet palette, 2x2
+bi_pal(pal = "DkViolet", dim = 2)
+
+# dark violet palette, 2x2 hex values
+bi_pal(pal = "DkViolet", dim = 2, preview = FALSE)
+
 # dark violet palette, 3x3
 bi_pal(pal = "DkViolet", dim = 3)
 
 # dark violet palette, 3x3 hex values
 bi_pal(pal = "DkViolet", dim = 3, preview = FALSE)
+
+# gray pink palette, 2x2
+bi_pal(pal = "GrPink", dim = 2)
+
+# gray pink palette, 2x2 hex values
+bi_pal(pal = "GrPink", dim = 2, preview = FALSE)
 
 # gray pink palette, 3x3
 bi_pal(pal = "GrPink", dim = 3)

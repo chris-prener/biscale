@@ -7,8 +7,9 @@
 bi_scale_fill(pal, dim = 3, ...)
 }
 \arguments{
-\item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
-\code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
+\item{pal}{Either palette name (one of \code{"Brown"}, \code{"DkBlue"},
+\code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}) or a custom palette
+object created with \code{\link{bi_pal_custom}}.}
 
 \item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
 \code{3} for a three-by-three palette.}
