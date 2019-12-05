@@ -23,11 +23,23 @@
 #'     and their corresponding hex color values.
 #'
 #' @examples
+#' # brown palette, 2x2 preview
+#' bi_pal(pal = "Brown", dim = 2)
+#'
+#' # brown palette, 2x2 hex values
+#' bi_pal(pal = "Brown", dim = 2, preview = FALSE)
+#'
 #' # brown palette, 3x3 preview
 #' bi_pal(pal = "Brown", dim = 3)
 #'
 #' # brown palette, 3x3 hex values
 #' bi_pal(pal = "Brown", dim = 3, preview = FALSE)
+#'
+#' # dark blue palette, 2x2 preview
+#' bi_pal(pal = "DkBlue", dim = 2)
+#'
+#' # dark blue palette, 2x2 hex values
+#' bi_pal(pal = "DkBlue", dim = 2, preview = FALSE)
 #'
 #' # dark blue palette, 3x3 preview
 #' bi_pal(pal = "DkBlue", dim = 3)
@@ -35,17 +47,35 @@
 #' # dark blue palette, 3x3 hex values
 #' bi_pal(pal = "DkBlue", dim = 3, preview = FALSE)
 #'
+#' # dark cyan palette, 2x2
+#' bi_pal(pal = "DkCyan", dim = 2)
+#'
+#' # dark cyan palette, 2x2 hex values
+#' bi_pal(pal = "DkCyan", dim = 2, preview = FALSE)
+#'
 #' # dark cyan palette, 3x3
 #' bi_pal(pal = "DkCyan", dim = 3)
 #'
 #' # dark cyan palette, 3x3 hex values
 #' bi_pal(pal = "DkCyan", dim = 3, preview = FALSE)
 #'
+#' # dark violet palette, 2x2
+#' bi_pal(pal = "DkViolet", dim = 2)
+#'
+#' # dark violet palette, 2x2 hex values
+#' bi_pal(pal = "DkViolet", dim = 2, preview = FALSE)
+#'
 #' # dark violet palette, 3x3
 #' bi_pal(pal = "DkViolet", dim = 3)
 #'
 #' # dark violet palette, 3x3 hex values
 #' bi_pal(pal = "DkViolet", dim = 3, preview = FALSE)
+#'
+#' # gray pink palette, 2x2
+#' bi_pal(pal = "GrPink", dim = 2)
+#'
+#' # gray pink palette, 2x2 hex values
+#' bi_pal(pal = "GrPink", dim = 2, preview = FALSE)
 #'
 #' # gray pink palette, 3x3
 #' bi_pal(pal = "GrPink", dim = 3)
@@ -272,5 +302,37 @@ pal_brown <- function(n){
 
   # return output
   return(out)
+
+}
+
+#' Create Custom Palette
+#'
+#' @export
+bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3, val_3_1, val_3_2, val_3_3){
+
+  if (missing(val_1_3) == TRUE & missing(val_2_3) == TRUE & missing(val_3_3) == TRUE){
+
+    out <- c(
+      "2-2" = val_2_2, # high x, high y
+      "1-2" = val_1_2, # low x, high y
+      "2-1" = val_2_1, # high x, low y
+      "1-1" = val_1_1 # low x, low y
+    )
+
+  } else {
+
+    out <- c(
+      "3-3" = val_3_3, # high x, high y
+      "2-3" = val_2_3,
+      "1-3" = val_1_3, # low x, high y
+      "3-2" = val_3_2,
+      "2-2" = val_2_2, # medium x, medium y
+      "1-2" = val_1_2,
+      "3-1" = val_3_1, # high x, low y
+      "2-1" = val_2_1,
+      "1-1" = val_1_1 # low x, low y
+    )
+
+  }
 
 }
