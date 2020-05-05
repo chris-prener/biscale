@@ -1,6 +1,7 @@
 # biscale 0.2.0
 
 * Add `sf` as a *required* instead of a *suggested* dependency. This resolves issues that appeared with newer releases of the `tibble` packages.
+* Drop support for R 3.3 because CI tests now fail on this release. Minimum release of R is now 3.4.
 * Add `bi_scale_color()` as a compliment to existing functionality. This adds the ability to create bivariate point and line maps as well.
 * Add `bi_pal_custom()` to support custom palettes.
 * Additional confirmatory CI testing for R 3.4 added to Linux (now the `xenial` distribution), macOS, and Windows. 
