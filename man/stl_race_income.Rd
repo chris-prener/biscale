@@ -4,13 +4,15 @@
 \name{stl_race_income}
 \alias{stl_race_income}
 \title{Race and Median Income in St. Louis by Census Tract, 2017}
-\format{A data frame with 106 rows and 4 variables:
+\format{
+A data frame with 106 rows and 4 variables:
 \describe{
   \item{GEOID}{full GEOID string}
   \item{pctWhite}{Percent of white residents per tract}
   \item{medInc}{Median household income of tract}
   \item{geometry}{simple features geometry}
-  }}
+  }
+}
 \source{
 \code{tidycensus} package
 }

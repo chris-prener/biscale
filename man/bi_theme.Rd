@@ -4,8 +4,13 @@
 \alias{bi_theme}
 \title{Basic Theme for Bivariate Mapping}
 \usage{
-bi_theme(base_family = "sans", base_size = 24, bg_color = "#ffffff",
-  font_color = "#000000", ...)
+bi_theme(
+  base_family = "sans",
+  base_size = 24,
+  bg_color = "#ffffff",
+  font_color = "#000000",
+  ...
+)
 }
 \arguments{
 \item{base_family}{A character string representing the font family to be used in the map.}

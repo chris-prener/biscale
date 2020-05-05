@@ -4,21 +4,6 @@ context("test bi_class function")
 
 data("stl_race_income", package = "biscale")
 
-# test warnings ------------------------------------------------
-
-test_that("sf warning is triggered",{
-  expect_warning(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2),
-                 "The 'sf' package is not loaded, and the class 'sf' attribute of the given data set has been lost. Load 'sf' to retain the class when using 'bi_class'.")
-})
-
-# load suggested dependencies ------------------------------------------------
-
-library(sf)
-
-# load test data again ------------------------------------------------
-
-data("stl_race_income", package = "biscale")
-
 # test errors ------------------------------------------------
 
 test_that("missing parameters trigger appropriate errors", {

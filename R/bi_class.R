@@ -70,6 +70,12 @@ bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FA
     stop("An object containing data must be specified for the '.data' argument.")
   }
 
+  # check data
+#  if ("sf" %in% class(.data) == TRUE & "sf" %in% (.packages()) == FALSE){
+#    warning("The 'sf' package is not loaded, and the class 'sf' attribute of the given data set has been lost. Load 'sf' to retain the class when using 'bi_class'.")
+#  }
+
+  # check inputs
   if (missing(x)) {
     stop("A variable must be given for the 'x' argument.")
   }
@@ -92,11 +98,6 @@ bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FA
 
   if (is.logical(keep_factors) == FALSE){
     stop("A logical scalar must be supplied for 'keep_factors'. Please provide either 'TRUE' or 'FALSE'.")
-  }
-
-  # check data
-  if ("sf" %in% class(.data) == TRUE & "sf" %in% (.packages()) == FALSE){
-    warning("The 'sf' package is not loaded, and the class 'sf' attribute of the given data set has been lost. Load 'sf' to retain the class when using 'bi_class'.")
   }
 
   # save parameters to list
