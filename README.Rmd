@@ -29,9 +29,10 @@ knitr::opts_chunk$set(
 In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.
 
 ## What's New on CRAN?
-`biscale` v0.1.2 is out! This is a maintenance release that includes typo corrections. It does add the ability to pass objects to `bi_legend()`'s x and y axis label arguments, which may be useful to some users. The `biscale` workflow has also been tested with the new [release candidate for `cowplot`](https://github.com/wilkelab/cowplot) as well as the amazing `ggplot2` update and works as expected.
+### Dependency Change
+In order to resolve a conflict between the `tibble` package and `biscale`, the `sf` package is now a required dependency as opposed to being a suggested dependency.
 
-## What's New on the Development Version?
+### Mapping Points
 The development version contains a new function, `bi_scale_color()`, which replicates the bivariate mapping workflow for point and line data. We don't have any sample data for it yet, but the workflow mapping point data looks like this:
 
 ```r
@@ -47,11 +48,30 @@ map <- ggplot() +
 
 The creation of classes works the same way. The only difference is (a) the use of the `color` (or `colour`) argument in the aesthetic mapping for `geom_sf()` and the use of `bi_scale_color()` afterwards!
 
+### Custom Palettes
+If you want to use a different palette with `biscale` plots, you can use the new `bi_pal_custom()` function to create the plot and then apply it to `bi_scale_fill()` or `bi_scale_color()` using the `pal` argument.
+
+```r
+# create classes
+data <- bi_class(pointData, x = xvar, y = yvar, style = "quantile", dim = 2)
+
+# create custom palette
+custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+
+# create map
+map <- ggplot() +
+  geom_sf(data = pointData, mapping = aes(color = bi_class), show.legend = FALSE) +
+  bi_scale_color(pal = custom_pal, dim = 3) +
+  bi_theme()
+```
+
 ## Installation
-Since the package does not directly use functions from `sf`, it is a suggested dependency rather than a required one. However, the most direct approach to using `biscale` is with `sf` objects, and we therefore recommend users install `sf` before proceeding with using `biscale`. Windows users should be able to install `sf` without significant issues, but macOS and Linux users will need to install several open source spatial libraries to get `sf` itself up and running. The easiest approach for macOS users is to install the GDAL 2.0 Complete framework from [Kyng Chaos](https://www.kyngchaos.com/software/frameworks/). 
+### Installing Dependencies
+You should check the [`sf` package website](https://r-spatial.github.io/sf/) and the [`areal` package website](https://slu-openGIS.github.io/areal/) for the latest details on installing dependencies for that package. Instructions vary significantly by operating system. For best results, have `sf` installed before you install `biscale`. Other dependencies, like `dplyr`, will be installed automatically with `areal` if they are not already present.
 
 For Linux users, steps will vary based on the flavor being used. Our [configuration file](https://github.com/slu-openGIS/biscale/blob/master/.travis.yml) for Travis CI and its associated [bash script](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh) should be useful in determining the necessary components to install.
 
+### Installing biscale
 Once `sf` is installed, the easiest way to get `biscale` is to install it from CRAN:
 
 ```r
