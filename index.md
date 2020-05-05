@@ -5,7 +5,7 @@
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis-CI Build
-Status](https://travis-ci.org/slu-openGIS/biscale.svg?branch=master)](https://travis-ci.org/slu-openGIS/biscale)
+Status](https://travis-ci.com/slu-openGIS/biscale.svg?branch=master)](https://travis-ci.com/slu-openGIS/biscale)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?branch=master&svg=true)](https://ci.appveyor.com/project/chris-prener/biscale)
 [![Coverage
@@ -58,10 +58,10 @@ The creation of classes works the same way. The only difference is (a)
 the use of the `color` (or `colour`) argument in the aesthetic mapping
 for `geom_sf()` and the use of `bi_scale_color()` afterwards\!
 
-### Custom Palettes
+### Manual Palettes
 
 If you want to use a different palette with `biscale` plots, you can use
-the new `bi_pal_custom()` function to create the plot and then apply it
+the new `bi_pal_manual()` function to create the plot and then apply it
 to `bi_scale_fill()` or `bi_scale_color()` using the `pal` argument.
 
 ``` r
@@ -69,7 +69,7 @@ to `bi_scale_fill()` or `bi_scale_color()` using the `pal` argument.
 data <- bi_class(pointData, x = xvar, y = yvar, style = "quantile", dim = 2)
 
 # create custom palette
-custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+custom_pal <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
 
 # create map
 map <- ggplot() +

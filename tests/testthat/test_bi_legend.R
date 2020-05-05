@@ -44,7 +44,7 @@ test_that("correctly specified functions execute without error", {
   expect_error(bi_legend(pal = "Brown", dim = 2, xlab = a, ylab = b), NA)
 })
 
-custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+custom_pal <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
 
 test_that("correctly specified functions execute without error", {
   expect_error(bi_legend(pal = custom_pal, dim = 2, xlab = a, ylab = b), NA)

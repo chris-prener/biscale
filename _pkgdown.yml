@@ -14,7 +14,7 @@ reference:
     desc: "Bivariate mapping with ggplot2"
     contents:
     - bi_pal
-    - bi_pal_custom
+    - bi_pal_manual
     - bi_scale_fill
     - bi_scale_color
     - bi_theme

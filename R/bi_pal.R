@@ -305,15 +305,15 @@ pal_brown <- function(n){
 
 }
 
-#' Create Custom Palette
+#' Create Manual Palette
 #'
-#' @description A function for structuring custom bi-variate palettes. All values must be entered
+#' @description A function for structuring manual bi-variate palettes. All values must be entered
 #'     as six-digit hex values (e.g. #000000) and must be preceded by the number symbol. Short
 #'     forms of hex values (e.g. #000) are not accepted as valid inputs. For two-by-two palettes,
 #'     only the 'val_1_1', 'val_1_2', 'val_2_1', and 'val_2_2' parameters are required. For
 #'     three-by-three palettes, all parameters are required.
 #'
-#' @usage bi_pal_custom(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
+#' @usage bi_pal_manual(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
 #'     val_3_1, val_3_2, val_3_3, preview = FALSE)
 #'
 #' @param val_1_1 A hex value for cell 1-1
@@ -329,11 +329,11 @@ pal_brown <- function(n){
 #'     be generated. If \code{FALSE}, a vector with hex color values will be returned.
 #'
 #' @examples
-#' custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80",
+#' custom_pal <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80",
 #'   val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
 #'
 #' @export
-bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
+bi_pal_manual <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
                           val_3_1, val_3_2, val_3_3, preview = FALSE){
 
   # save parameters to list

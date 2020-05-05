@@ -5,7 +5,7 @@
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis-CI Build
-Status](https://travis-ci.org/slu-openGIS/biscale.svg?branch=master)](https://travis-ci.org/slu-openGIS/biscale)
+Status](https://travis-ci.com/slu-openGIS/biscale.svg?branch=master)](https://travis-ci.com/slu-openGIS/biscale)
 [![AppVeyor Build
 Status](https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?branch=master&svg=true)](https://ci.appveyor.com/project/chris-prener/biscale)
 [![Coverage
@@ -61,7 +61,7 @@ for `geom_sf()` and the use of `bi_scale_color()` afterwards\!
 ### Custom Palettes
 
 If you want to use a different palette with `biscale` plots, you can use
-the new `bi_pal_custom()` function to create the plot and then apply it
+the new `bi_pal_manual()` function to create the plot and then apply it
 to `bi_scale_fill()` or `bi_scale_color()` using the `pal` argument.
 
 ``` r
@@ -69,7 +69,7 @@ to `bi_scale_fill()` or `bi_scale_color()` using the `pal` argument.
 data <- bi_class(pointData, x = xvar, y = yvar, style = "quantile", dim = 2)
 
 # create custom palette
-custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+custom_pal <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
 
 # create map
 map <- ggplot() +
@@ -121,8 +121,8 @@ remotes::install_github("slu-openGIS/biscale")
 Creating bivariate plots in the style described by [Grossenbacher and
 Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/)
 requires a number of dependencies in addition to `biscale` - `ggplot2`
-for plotting, `cowplot` for combining the legend and the main map, and
-`sf` for working with spatial objects in `R`:
+for plotting and `sf` for working with spatial objects in `R`. We’ll
+also use `cowplot` in these examples:
 
 ``` r
 # load dependencies

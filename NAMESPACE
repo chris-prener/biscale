@@ -3,7 +3,7 @@
 export(bi_class)
 export(bi_legend)
 export(bi_pal)
-export(bi_pal_custom)
+export(bi_pal_manual)
 export(bi_scale_color)
 export(bi_scale_fill)
 export(bi_theme)
