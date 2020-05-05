@@ -326,11 +326,22 @@ pal_brown <- function(n){
 #' @param val_3_2 A hex value for cell 3-2
 #' @param val_3_3 A hex value for cell 3-3
 #'
+#' @examples
+#' custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+#'
 #' @export
-bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3, val_3_1, val_3_2, val_3_3){
+bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3, val_3_1, val_3_2, val_3_3,
+                          preview = FALSE){
+
+  # save parameters to list
+  paramList <- as.list(match.call())
 
   # test length of input
-  input <- length(match.call())-1
+  if ("preview" %in% names(paramList) == TRUE){
+    input <- length(match.call())-2
+  } else {
+    input <- length(match.call())-1
+  }
 
   if (input != 4 & input != 9){
     stop("Incorrect number of values specified. For two-by-two palettes, there should be four values.
@@ -406,6 +417,8 @@ bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3, 
       "1-1" = val_1_1 # low x, low y
     )
 
+    dim <- 2
+
   } else if (input == 9) {
 
     out <- c(
@@ -420,10 +433,20 @@ bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3, 
       "1-1" = val_1_1 # low x, low y
     )
 
+    dim <- 3
+
   }
 
   # assign class
   class(out) <- append(class(out),"bi_pal_custom")
+
+  # create output
+  if (preview == TRUE){
+
+    # construct image
+    out <- bi_legend(pal = out, dim = dim, size = 16)
+
+  }
 
   # return output
   return(out)

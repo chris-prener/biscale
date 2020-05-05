@@ -33,3 +33,7 @@ A function for structuring custom bi-variate palettes. All values must be entere
     only the 'val_1_1', 'val_1_2', 'val_2_1', and 'val_2_2' parameters are required. For
     three-by-three palettes, all parameters are required.
 }
+\examples{
+custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+
+}

@@ -9,6 +9,7 @@ library(sf)
 
 load("data_central.rda")
 pointData <- bi_class(pointData, x = totalsnow, y = Ratio1517, dim = 3)
+pointData_2 <- bi_class(pointData, x = totalsnow, y = Ratio1517, dim = 2)
 
 # test errors ------------------------------------------------
 
@@ -54,3 +55,12 @@ test_that("correctly specified functions execute without error", {
                  bi_scale_fill(pal = "GrPink", dim = 3), NA)
 })
 
+# test custom palette ------------------------------------------------
+
+custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+
+test_that("correctly specified functions execute without error", {
+  expect_error(ggplot() +
+                 geom_sf(data = pointData_2, aes(color = bi_class), show.legend = FALSE) +
+                 bi_scale_fill(pal = custom_pal, dim = 2), NA)
+})
