@@ -8,7 +8,7 @@
 #'
 #' @param pal Either palette name (one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}) or a custom palette
-#'     object created with \code{\link{bi_pal_custom}}.
+#'     object created with \code{\link{bi_pal_manual}}.
 #' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
 #'     \code{3} for a three-by-three palette.
 #' @param ... Arguments to pass to \code{\link{scale_fill_manual}}
