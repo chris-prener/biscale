@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Apply Bivariate Color to ggplot Object — bi_scale_color • biscale</title>
+<title>Create Manual Palette — bi_pal_manual • biscale</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,12 @@
 
 
 
-<meta property="og:title" content="Apply Bivariate Color to ggplot Object — bi_scale_color" />
-<meta property="og:description" content="Applies the selected palette as the color aesthetic when geom_sf
-    is used and the bi_class variable is given as the color in the aesthetic
-    mapping." />
+<meta property="og:title" content="Create Manual Palette — bi_pal_manual" />
+<meta property="og:description" content="A function for structuring manual bi-variate palettes. All values must be entered
+    as six-digit hex values (e.g. #000000) and must be preceded by the number symbol. Short
+    forms of hex values (e.g. #000) are not accepted as valid inputs. For two-by-two palettes,
+    only the 'val_1_1', 'val_1_2', 'val_2_1', and 'val_2_2' parameters are required. For
+    three-by-three palettes, all parameters are required." />
 <meta property="og:image" content="https://slu-openGIS.github.io/biscale/logo.png" />
 
 
@@ -124,43 +126,72 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Apply Bivariate Color to ggplot Object</h1>
-    <small class="dont-index">Source: <a href='https://github.com/slu-openGIS/biscale/blob/master/R/bi_scale_color.R'><code>R/bi_scale_color.R</code></a></small>
-    <div class="hidden name"><code>bi_scale_color.Rd</code></div>
+    <h1>Create Manual Palette</h1>
+    <small class="dont-index">Source: <a href='https://github.com/slu-openGIS/biscale/blob/master/R/bi_pal.R'><code>R/bi_pal.R</code></a></small>
+    <div class="hidden name"><code>bi_pal_manual.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Applies the selected palette as the color aesthetic when <code>geom_sf</code>
-    is used and the <code>bi_class</code> variable is given as the <code>color</code> in the aesthetic
-    mapping.</p>
+    <p>A function for structuring manual bi-variate palettes. All values must be entered
+    as six-digit hex values (e.g. #000000) and must be preceded by the number symbol. Short
+    forms of hex values (e.g. #000) are not accepted as valid inputs. For two-by-two palettes,
+    only the 'val_1_1', 'val_1_2', 'val_2_1', and 'val_2_2' parameters are required. For
+    three-by-three palettes, all parameters are required.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bi_scale_color</span>(<span class='no'>pal</span>, <span class='kw'>dim</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>bi_pal_manual</span>(<span class='no'>val_1_1</span>, <span class='no'>val_1_2</span>, <span class='no'>val_1_3</span>, <span class='no'>val_2_1</span>, <span class='no'>val_2_2</span>, <span class='no'>val_2_3</span>,
+    <span class='no'>val_3_1</span>, <span class='no'>val_3_2</span>, <span class='no'>val_3_3</span>, <span class='kw'>preview</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>pal</th>
-      <td><p>Either palette name (one of <code>"Brown"</code>, <code>"DkBlue"</code>,
-<code>"DkCyan"</code>, <code>"DkViolet"</code>, or <code>"GrPink"</code>) or a custom palette
-object created with <code><a href='bi_pal_manual.html'>bi_pal_manual</a></code>.</p></td>
+      <th>val_1_1</th>
+      <td><p>A hex value for cell 1-1</p></td>
     </tr>
     <tr>
-      <th>dim</th>
-      <td><p>The dimensions of the palette, either <code>2</code> for a two-by-two palette or
-<code>3</code> for a three-by-three palette.</p></td>
+      <th>val_1_2</th>
+      <td><p>A hex value for cell 1-2</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments to pass to <code>scale_fill_manual</code></p></td>
+      <th>val_1_3</th>
+      <td><p>A hex value for cell 1-3</p></td>
+    </tr>
+    <tr>
+      <th>val_2_1</th>
+      <td><p>A hex value for cell 2-1</p></td>
+    </tr>
+    <tr>
+      <th>val_2_2</th>
+      <td><p>A hex value for cell 2-2</p></td>
+    </tr>
+    <tr>
+      <th>val_2_3</th>
+      <td><p>A hex value for cell 2-3</p></td>
+    </tr>
+    <tr>
+      <th>val_3_1</th>
+      <td><p>A hex value for cell 3-1</p></td>
+    </tr>
+    <tr>
+      <th>val_3_2</th>
+      <td><p>A hex value for cell 3-2</p></td>
+    </tr>
+    <tr>
+      <th>val_3_3</th>
+      <td><p>A hex value for cell 3-3</p></td>
+    </tr>
+    <tr>
+      <th>preview</th>
+      <td><p>A logical scalar; if <code>TRUE</code> (default), an image preview will
+be generated. If <code>FALSE</code>, a vector with hex color values will be returned.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>ggplot</code> object with the given bivariate palette applied to the data.</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>custom_pal</span> <span class='kw'>&lt;-</span> <span class='fu'>bi_pal_manual</span>(<span class='kw'>val_1_1</span> <span class='kw'>=</span> <span class='st'>"#E8E8E8"</span>, <span class='kw'>val_1_2</span> <span class='kw'>=</span> <span class='st'>"#73AE80"</span>,
+  <span class='kw'>val_2_1</span> <span class='kw'>=</span> <span class='st'>"#6C83B5"</span>, <span class='kw'>val_2_2</span> <span class='kw'>=</span> <span class='st'>"#2A5A5B"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

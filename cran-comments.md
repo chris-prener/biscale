@@ -14,7 +14,7 @@ In addition, two new functions are added to extend the package's functionality f
 * r-hub not used because it lacks dependencies needed to build `sf` on Debian
 
 ## R CMD check results
-There were no ERRORs, WARNINGs, or NOTEs with local or CI checks.
+There were no ERRORs, WARNINGs, or NOTEs with local or CI checks except for R-3.5.3 on macOS (via Travis), which is having an issue installing the `DT` package. Other checks of R-3.5.3 install `DT` without issue on Linux and Windows.
 
 ## Reverse dependencies
 Not applicable.
