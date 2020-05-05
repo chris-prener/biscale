@@ -5,7 +5,7 @@
 \title{Create Custom Palette}
 \usage{
 bi_pal_custom(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
-    val_3_1, val_3_2, val_3_3)
+    val_3_1, val_3_2, val_3_3, preview = FALSE)
 }
 \arguments{
 \item{val_1_1}{A hex value for cell 1-1}
@@ -25,6 +25,9 @@ bi_pal_custom(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
 \item{val_3_2}{A hex value for cell 3-2}
 
 \item{val_3_3}{A hex value for cell 3-3}
+
+\item{preview}{A logical scalar; if \code{TRUE} (default), an image preview will
+be generated. If \code{FALSE}, a vector with hex color values will be returned.}
 }
 \description{
 A function for structuring custom bi-variate palettes. All values must be entered
@@ -34,6 +37,7 @@ A function for structuring custom bi-variate palettes. All values must be entere
     three-by-three palettes, all parameters are required.
 }
 \examples{
-custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80",
+  val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
 
 }

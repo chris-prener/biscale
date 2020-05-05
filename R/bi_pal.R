@@ -314,7 +314,7 @@ pal_brown <- function(n){
 #'     three-by-three palettes, all parameters are required.
 #'
 #' @usage bi_pal_custom(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
-#'     val_3_1, val_3_2, val_3_3)
+#'     val_3_1, val_3_2, val_3_3, preview = FALSE)
 #'
 #' @param val_1_1 A hex value for cell 1-1
 #' @param val_1_2 A hex value for cell 1-2
@@ -325,13 +325,16 @@ pal_brown <- function(n){
 #' @param val_3_1 A hex value for cell 3-1
 #' @param val_3_2 A hex value for cell 3-2
 #' @param val_3_3 A hex value for cell 3-3
+#' @param preview A logical scalar; if \code{TRUE} (default), an image preview will
+#'     be generated. If \code{FALSE}, a vector with hex color values will be returned.
 #'
 #' @examples
-#' custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+#' custom_pal <- bi_pal_custom(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80",
+#'   val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
 #'
 #' @export
-bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3, val_3_1, val_3_2, val_3_3,
-                          preview = FALSE){
+bi_pal_custom <- function(val_1_1, val_1_2, val_1_3, val_2_1, val_2_2, val_2_3,
+                          val_3_1, val_3_2, val_3_3, preview = FALSE){
 
   # save parameters to list
   paramList <- as.list(match.call())

@@ -59,6 +59,8 @@
 #' # summarize jenks breaks, 3x3
 #' table(data$bi_class)
 #'
+#' @import sf
+#'
 #' @export
 bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE){
 
