@@ -48,7 +48,7 @@ All functions within `biscale` use the prefix `bi_` to leverage the auto-complet
 `biscale` contains a data set of U.S. Census tracts for the City of St. Louis in Missouri. Both median income and the percentage of white residents are included, both of which can be used to demonstrate the package's functionality.
 
 ### Preparing Data
-Once data are loaded, bivariate classes can be applied with the `bi_class()` function. There is an *important caveat*, however:
+Once data are loaded, bivariate classes can be applied with the `bi_class()` function:
 
 ```r
 > # load dependencies
@@ -56,23 +56,9 @@ Once data are loaded, bivariate classes can be applied with the `bi_class()` fun
 >
 > # create classes
 > data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
-Warning message:
-In bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 3) :
-  The 'sf' package is not loaded, and the class 'sf' attribute of the given data set has been lost. Load 'sf' to retain the class when using 'bi_class'.
 ```
 
-If you are going to be using `sf` objects, it is important that you load the `sf` package as well so that its methods can be correctly applied to your data:
-
-```r
-> # load dependencies
-> library(biscale)
-> library(sf)
->
-> # create classes
-> data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
-```
-
-This warning will not be generated if `sf` is loaded, or if you are using `bi_class()` on a non-`sf` object (which leaves room for folks who use other tools like `sp`, or who are applying classes to tibbles or data frames).
+Note that, as of v0.2 of the `biscale` package, `sf` is imported when you load `biscale`. This resolves issues related to not loading `sf` ahead of time, though it does add a dependency that a small number of users may have wished not to install.
 
 The `dim` argument is used to control the extent of the legend - do you want to produce a two-by-two map (`dim = 2`) or a three-by-three map (`dim = 3`)?
 
@@ -121,6 +107,8 @@ The `"Brown"` palette is not pictured, but can be previewed (along with the othe
 
 The example above also includes `bi_theme()`, which is based on the theme designed by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/). This theme creates a simple, clean canvas for bivariate mapping that removes any possible distracting elements.
 
+Note that it is also possible to apply custom color palettes as well using the `bi_pal_manual()` function
+
 ### Creating Legends
 We've set `show.legend = FALSE` so that we can add (manually) our own bivariate legend. The legend itself can be created with the `bi_legend()` function:
 
@@ -134,7 +122,7 @@ legend <- bi_legend(pal = "DkBlue",
 
 The palette and dimensions should match what has been used for both `bi_class()` (in terms of dimensions) and `bi_scale_fill()` (in terms of both dimensions and palette). The `size` argument controls the font size used on the legend. Note that [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html) is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of `bi_legend()` - you don't need to include them in your `xlab` and `ylab` arguments!
 
-With our legend drawn, we can then combine the legend and the map with `cowplot`. Like `sf`, `cowplot` is a suggested rather than required dependency. The values needed for this stage will be subject to experimentation depending on the shape of the map itself. 
+With our legend drawn, we can then combine the legend and the map with a package like `cowplot`. The values needed for this stage will be subject to experimentation depending on the shape of the map itself. 
 
 ```r
 # combine map with legend
@@ -143,7 +131,7 @@ finalPlot <- ggdraw() +
   draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
 
-This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach.
+This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. There are other approaches you could take as well that do not use `cowplot`. To maintain backward compatibility, `cowplot` is no longer a suggested dependency of `biscale`.
 
 ## Getting Help
 * If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](http://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.

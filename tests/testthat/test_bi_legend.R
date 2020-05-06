@@ -4,12 +4,12 @@ context("test bi_legend function")
 
 test_that("missing parameters trigger appropriate errors", {
   expect_error(bi_legend(dim = 3),
-               "A palette must be specified for the 'pal' argument. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+               "A palette must be specified for the 'pal' argument.")
 })
 
 test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_legend(pal = "ham", dim = 3),
-               "The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+               "The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', or 'GrPink'.")
   expect_error(bi_legend(pal = "DkBlue", dim = 5),
                "The 'dim' argument only accepts the numeric values '2' or '3'.")
   expect_error(bi_legend(pal = "DkBlue", dim = "ham"),
@@ -44,12 +44,20 @@ test_that("correctly specified functions execute without error", {
   expect_error(bi_legend(pal = "Brown", dim = 2, xlab = a, ylab = b), NA)
 })
 
+custom_pal <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = "#6C83B5", val_2_2 = "#2A5A5B")
+
+test_that("correctly specified functions execute without error", {
+  expect_error(bi_legend(pal = custom_pal, dim = 2, xlab = a, ylab = b), NA)
+})
+
 # test results ------------------------------------------------
 
 result1 <- bi_legend(pal = "GrPink", dim = 2)
 result2 <- bi_legend(pal = "GrPink", dim = 3)
+result3 <- bi_legend(pal = custom_pal, dim = 2)
 
 test_that("correct classes of output are returned", {
   expect_equal("ggplot" %in% class(result1), TRUE)
   expect_equal("ggplot" %in% class(result2), TRUE)
+  expect_equal("ggplot" %in% class(result3), TRUE)
 })

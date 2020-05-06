@@ -34,14 +34,14 @@ environment:
     - R_VERSION: oldrel
       R_ARCH: x64
 
+    - R_VERSION: 3.5.3
+      R_ARCH: x64
+
     - R_VERSION: 3.4.4
       R_ARCH: x64
 
-    - R_VERSION: 3.3.3
-      R_ARCH: x64
-
 matrix:
-  fast_finish: true
+  fast_finish: false
   allow_failures:
     - R_VERSION: devel
       R_ARCH: x64
