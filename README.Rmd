@@ -21,6 +21,8 @@ knitr::opts_chunk$set(
 [![Coverage status](https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=master)
 [![DOI](https://zenodo.org/badge/183024212.svg)](https://zenodo.org/badge/latestdoi/183024212)
 [![CRAN_status_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
+[![cran checks](https://cranchecks.info/badges/worst/biscale)](https://cran.r-project.org/web/checks/check_results_biscale.html)
+[![Downloads](http://cranlogs.r-pkg.org/badges/biscale?color=brightgreen)](http://www.r-pkg.org/pkg/biscale)
 
 `biscale` implements a set of functions for bivariate thematic mapping based on the [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens's [tutorial](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The package currently supports two-by-two and three-by-three bivariate maps:
 
@@ -61,7 +63,7 @@ custom_pal <- bi_pal_manual(val_1_1 = "#E8E8E8", val_1_2 = "#73AE80", val_2_1 = 
 # create map
 map <- ggplot() +
   geom_sf(data = pointData, mapping = aes(color = bi_class), show.legend = FALSE) +
-  bi_scale_color(pal = custom_pal, dim = 3) +
+  bi_scale_color(pal = custom_pal, dim = 2) +
   bi_theme()
 ```
 

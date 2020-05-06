@@ -83,7 +83,7 @@
       <h1 data-toc-skip>Bivarite Mapping with ggplot2</h1>
                         <h4 class="author">Christopher Prener, Ph.D.</h4>
             
-            <h4 class="date">2020-05-05</h4>
+            <h4 class="date">2020-05-06</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/slu-openGIS/biscale/blob/master/vignettes/biscale.Rmd"><code>vignettes/biscale.Rmd</code></a></small>
       <div class="hidden name"><code>biscale.Rmd</code></div>
@@ -121,7 +121,7 @@
 <div id="preparing-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#preparing-data" class="anchor"></a>Preparing Data</h3>
-<p>Once data are loaded, bivariate classes can be applied with the <code><a href="../reference/bi_class.html">bi_class()</a></code> function:</p>
+<p>Once data are loaded, bivariate classes can be applied with the <code>bi_class()</code> function:</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r">&gt; # load dependencies
 &gt; library(biscale)
 &gt;
@@ -137,35 +137,35 @@
 <div id="mapping-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#mapping-data" class="anchor"></a>Mapping Data</h3>
-<p>Once breaks are created, we can use <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code> as part of our <code>ggplot()</code> call:</p>
+<p>Once breaks are created, we can use <code>bi_scale_fill()</code> as part of our <code>ggplot()</code> call:</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co"># create map</span>
 <span class="no">map</span> <span class="kw">&lt;-</span> <span class="fu">ggplot</span>() +
   <span class="fu">geom_sf</span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data</span>, <span class="kw">mapping</span> <span class="kw">=</span> <span class="fu">aes</span>(<span class="kw">fill</span> <span class="kw">=</span> <span class="no">bi_class</span>), <span class="kw">color</span> <span class="kw">=</span> <span class="st">"white"</span>, <span class="kw">size</span> <span class="kw">=</span> <span class="fl">0.1</span>, <span class="kw">show.legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="../reference/bi_scale_fill.html">bi_scale_fill</a></span>(<span class="kw">pal</span> <span class="kw">=</span> <span class="st">"DkBlue"</span>, <span class="kw">dim</span> <span class="kw">=</span> <span class="fl">3</span>) +
+  <span class="fu">bi_scale_fill</span>(<span class="kw">pal</span> <span class="kw">=</span> <span class="st">"DkBlue"</span>, <span class="kw">dim</span> <span class="kw">=</span> <span class="fl">3</span>) +
   <span class="fu">labs</span>(
     <span class="kw">title</span> <span class="kw">=</span> <span class="st">"Race and Income in St. Louis, MO"</span>,
     <span class="kw">subtitle</span> <span class="kw">=</span> <span class="st">"Dark Blue (DkBlue) Palette"</span>
   ) +
-  <span class="fu"><a href="../reference/bi_theme.html">bi_theme</a></span>()</pre></body></html></div>
-<p>This requires that the variable <code>bi_class</code>, created with <code><a href="../reference/bi_class.html">bi_class()</a></code>, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.</p>
-<p>The dimensions of the scale must again be supplied for <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code> (they should match the dimensions given for <code><a href="../reference/bi_class.html">bi_class()</a></code>!), and a palette must be given. Options for palettes are <code>"Brown"</code>, <code>"DkBlue"</code>, <code>"DkCyan"</code>, <code>"DkViolet"</code>, or <code>"GrPink"</code>. The <code>"DkViolet"</code> was created by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">Timo Grossenbacher and Angelo Zehr</a>, and the other four palettes were created by <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">Joshua Stevens</a>. The first map in this vignette uses the <code>"GrPink"</code> palette. Other two-by-two palettes look like so:</p>
+  <span class="fu">bi_theme</span>()</pre></body></html></div>
+<p>This requires that the variable <code>bi_class</code>, created with <code>bi_class()</code>, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.</p>
+<p>The dimensions of the scale must again be supplied for <code>bi_scale_fill()</code> (they should match the dimensions given for <code>bi_class()</code>!), and a palette must be given. Options for palettes are <code>"Brown"</code>, <code>"DkBlue"</code>, <code>"DkCyan"</code>, <code>"DkViolet"</code>, or <code>"GrPink"</code>. The <code>"DkViolet"</code> was created by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">Timo Grossenbacher and Angelo Zehr</a>, and the other four palettes were created by <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/">Joshua Stevens</a>. The first map in this vignette uses the <code>"GrPink"</code> palette. Other two-by-two palettes look like so:</p>
 <p><img src="../man/figures/biscale.002.png" width="100%"></p>
 <p>Here are several other three-by-three palettes:</p>
 <p><img src="../man/figures/biscale.003.png" width="100%"></p>
-<p>The <code>"Brown"</code> palette is not pictured, but can be previewed (along with the other palettes) using the <code><a href="../reference/bi_pal.html">bi_pal()</a></code> function. The same function can also be used to return vectors of color hex values as well. Samples of each palette are available on the <a href="https://slu-opengis.github.io/biscale/reference/bi_pal.html">package website</a>.</p>
-<p>The example above also includes <code><a href="../reference/bi_theme.html">bi_theme()</a></code>, which is based on the theme designed by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">Timo Grossenbacher and Angelo Zehr</a>. This theme creates a simple, clean canvas for bivariate mapping that removes any possible distracting elements.</p>
-<p>Note that it is also possible to apply custom color palettes as well using the <code><a href="../reference/bi_pal_manual.html">bi_pal_manual()</a></code> function</p>
+<p>The <code>"Brown"</code> palette is not pictured, but can be previewed (along with the other palettes) using the <code>bi_pal()</code> function. The same function can also be used to return vectors of color hex values as well. Samples of each palette are available on the <a href="https://slu-opengis.github.io/biscale/reference/bi_pal.html">package website</a>.</p>
+<p>The example above also includes <code>bi_theme()</code>, which is based on the theme designed by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/">Timo Grossenbacher and Angelo Zehr</a>. This theme creates a simple, clean canvas for bivariate mapping that removes any possible distracting elements.</p>
+<p>Note that it is also possible to apply custom color palettes as well using the <code>bi_pal_manual()</code> function</p>
 </div>
 <div id="creating-legends" class="section level3">
 <h3 class="hasAnchor">
 <a href="#creating-legends" class="anchor"></a>Creating Legends</h3>
-<p>We’ve set <code>show.legend = FALSE</code> so that we can add (manually) our own bivariate legend. The legend itself can be created with the <code><a href="../reference/bi_legend.html">bi_legend()</a></code> function:</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">legend</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span>(<span class="kw">pal</span> <span class="kw">=</span> <span class="st">"DkBlue"</span>,
+<p>We’ve set <code>show.legend = FALSE</code> so that we can add (manually) our own bivariate legend. The legend itself can be created with the <code>bi_legend()</code> function:</p>
+<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">legend</span> <span class="kw">&lt;-</span> <span class="fu">bi_legend</span>(<span class="kw">pal</span> <span class="kw">=</span> <span class="st">"DkBlue"</span>,
                     <span class="kw">dim</span> <span class="kw">=</span> <span class="fl">3</span>,
                     <span class="kw">xlab</span> <span class="kw">=</span> <span class="st">"Higher % White "</span>,
                     <span class="kw">ylab</span> <span class="kw">=</span> <span class="st">"Higher Income "</span>,
                     <span class="kw">size</span> <span class="kw">=</span> <span class="fl">8</span>)</pre></body></html></div>
-<p>The palette and dimensions should match what has been used for both <code><a href="../reference/bi_class.html">bi_class()</a></code> (in terms of dimensions) and <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code> (in terms of both dimensions and palette). The <code>size</code> argument controls the font size used on the legend. Note that <a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html"><code>plotmath</code></a> is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of <code><a href="../reference/bi_legend.html">bi_legend()</a></code> - you don’t need to include them in your <code>xlab</code> and <code>ylab</code> arguments!</p>
+<p>The palette and dimensions should match what has been used for both <code>bi_class()</code> (in terms of dimensions) and <code>bi_scale_fill()</code> (in terms of both dimensions and palette). The <code>size</code> argument controls the font size used on the legend. Note that <a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html"><code>plotmath</code></a> is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of <code>bi_legend()</code> - you don’t need to include them in your <code>xlab</code> and <code>ylab</code> arguments!</p>
 <p>With our legend drawn, we can then combine the legend and the map with a package like <code>cowplot</code>. The values needed for this stage will be subject to experimentation depending on the shape of the map itself.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="co"># combine map with legend</span>
 <span class="no">finalPlot</span> <span class="kw">&lt;-</span> <span class="fu">ggdraw</span>() +
