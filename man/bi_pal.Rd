@@ -15,6 +15,8 @@ bi_pal(pal, dim = 3, preview = TRUE)
 
 \item{preview}{A logical scalar; if \code{TRUE} (default), an image preview will
 be generated. If \code{FALSE}, a vector with hex color values will be returned.}
+
+\item{flip_axis}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
 }
 \value{
 If \code{preview = TRUE}, an image preview of the legend will be returned.

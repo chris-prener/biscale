@@ -18,6 +18,8 @@ bi_legend(pal, dim = 3, xlab, ylab, size)
 \item{ylab}{Text for desired y axis label on legend}
 
 \item{size}{Size of axis labels}
+
+\item{flip_axis}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
 }
 \value{
 A \code{ggplot} object with a bivariate legend.

@@ -12,6 +12,7 @@
 #' @param xlab Text for desired x axis label on legend
 #' @param ylab Text for desired y axis label on legend
 #' @param size Size of axis labels
+#' @param flip_axis A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
@@ -43,7 +44,7 @@
 #' legend
 #'
 #' @export
-bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
+bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axis = FALSE){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -118,6 +119,10 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
       x <- pal_dkcyan(n = dim)
     } else if (pal == "Brown"){
       x <- pal_brown(n = dim)
+    }
+
+    if(flip_axis){
+      x <- bi_pal_flip(x)
     }
 
   }
