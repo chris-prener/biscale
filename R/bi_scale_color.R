@@ -24,8 +24,7 @@ bi_scale_color <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, 
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', or 'GrPink'
-         or supply a custom palette created with 'bi_pal_custom()'.")
+    stop("A palette must be specified for the 'pal' argument. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis' or supply a custom palette created with 'bi_pal_custom()'.")
   }
 
   if ("bi_pal_custom" %in% class(pal) == TRUE) {

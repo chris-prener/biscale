@@ -3,7 +3,8 @@
 #' @description Creates a \code{ggplot} object containing a legend that is specific
 #'     to bivariate mapping.
 #'
-#' @usage bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = NA)
+#' @usage bi_legend(pal, dim = 3, xlab, ylab, size,
+#'  flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = NA)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.

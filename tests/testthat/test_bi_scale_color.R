@@ -17,7 +17,7 @@ test_that("missing parameters trigger appropriate errors", {
   expect_error(ggplot() +
                  geom_sf(data = pointData, aes(color = bi_class), show.legend = FALSE) +
                  bi_scale_color(dim = 3),
-               "A palette must be specified for the 'pal' argument. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', or 'GrPink'.")
+               "A palette must be specified for the 'pal' argument. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis' or supply a custom palette created with 'bi_pal_custom()'.", fixed = TRUE)
 })
 
 test_that("incorrectly specified parameters trigger appropriate errors", {

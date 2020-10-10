@@ -60,6 +60,7 @@ jobs:
         run: |
           brew install udunits
           brew install gdal
+          brew link ---overwrite gcc
 
       - name: Install system dependencies
         if: runner.os == 'Linux'

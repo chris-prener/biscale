@@ -90,7 +90,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', and 'GrPink'.")
+    stop("A palette must be specified for the 'pal' argument. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis'.")
   }
 
   if (pal %in% c("BlGold", "BlOrange", "BlYellow", "Brown", "Diverging", "DkBlue", "DkCyan", "DkViolet", "Fire", "GnPink", "GnPurple", "GrPink", "OrgPurple", "Reds", "Viridis") == FALSE){
@@ -136,16 +136,15 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
       "Reds" = pal_reds(n = dim)
     )
 
-  }
+    if(flip_axes){
+      out <- bi_pal_flip(out)
+    }
 
-  if(flip_axis){
-    out <- bi_pal_flip(out)
-  }
+    if(rotate_pal){
+      out <- bi_pal_rotate(out)
+    }
 
-  if(rotate_pal){
-    out <- bi_pal_rotate(out)
   }
-
   # return output
   return(out)
 
