@@ -58,9 +58,8 @@ jobs:
       - name: Install macOS Specific Dependencies for sf
         if: runner.os == 'macOS'
         run: |
-          brew install --ignore-dependencies udunits
-          brew install --ignore-dependencies gdal
-          brew install --ignore-dependencies proj
+          sudo rm /usr/local/bin/gfortran
+          brew install udunits gdal proj
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
