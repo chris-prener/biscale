@@ -3,7 +3,7 @@
 #' @description Creates a \code{ggplot} object containing a legend that is specific
 #'     to bivariate mapping.
 #'
-#' @usage bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE, rotate_pal = FALSE)
+#' @usage bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = NA)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
@@ -14,6 +14,8 @@
 #' @param size Size of axis labels
 #' @param flip_axes A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
 #' @param rotate_pal A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.
+#' @param pad_width An optional numeric scalar; Controls the width of padding between tiles in the legend
+#' @param pad_color An optional character scalar (valid to ggplot::geom_tile); Controls the color of padding between tiles in the legend
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
@@ -45,7 +47,7 @@
 #' legend
 #'
 #' @export
-bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, rotate_pal = FALSE){
+bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = NA){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -144,7 +146,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   # create ggplot2 legend object
   legend <- ggplot2::ggplot() +
-    ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill)) +
+    ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill), lwd = pad_width, col = pad_color) +
     ggplot2::scale_fill_identity() +
     ggplot2::labs(x = substitute(paste(xQN, ""%->%"")), y = substitute(paste(yQN, ""%->%""))) +
     bi_theme() +
