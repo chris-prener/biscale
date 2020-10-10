@@ -67,8 +67,8 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
-      stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', or 'GrPink'.")
+    if (pal %in% c("BlGold", "BlOrange", "BlYellow", "Brown", "Diverging", "DkBlue", "DkCyan", "DkViolet", "Fire", "GnPink", "GnPurple", "GrPink", "OrgPurple", "Reds", "Viridis") == FALSE){
+      stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis'.")
     }
 
   }
@@ -112,17 +112,23 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    if (pal == "DkViolet"){
-      x <- pal_dkviolet(n = dim)
-    } else if (pal == "GrPink"){
-      x <- pal_grpink(n = dim)
-    } else if (pal == "DkBlue"){
-      x <- pal_dkblue(n = dim)
-    } else if (pal == "DkCyan"){
-      x <- pal_dkcyan(n = dim)
-    } else if (pal == "Brown"){
-      x <- pal_brown(n = dim)
-    }
+    x <- switch(pal,
+      "DkViolet" = pal_dkviolet(n = dim),
+      "GrPink" = pal_grpink(n = dim),
+      "DkBlue" = pal_dkblue(n = dim),
+      "DkCyan" = pal_dkcyan(n = dim),
+      "Brown" = pal_brown(n = dim),
+      "BlGold" = pal_blgold(n = dim),
+      "BlOrange" = pal_blorange(n = dim),
+      "BlYellow" = pal_blyellow(n = dim),
+      "Viridis" = pal_viridis(n = dim),
+      "Diverging" = pal_diverging(n = dim),
+      "GnPink" = pal_gnpink(n = dim),
+      "GnPurple" = pal_gnpurp(n = dim),
+      "OrgPurple" = pal_orgpurp(n = dim),
+      "Fire" = pal_fire(n = dim),
+      "Reds" = pal_reds(n = dim)
+    )
 
     if(flip_axis){
       x <- bi_pal_flip(x)
