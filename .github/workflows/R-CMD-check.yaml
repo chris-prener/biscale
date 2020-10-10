@@ -58,9 +58,8 @@ jobs:
       - name: Install macOS Specific Dependencies for sf
         if: runner.os == 'macOS'
         run: |
-          brew link --overwrite gcc
-          brew install udunits
-          brew install gdal
+          brew install --ignore-dependencies udunits
+          brew install --ignore-dependencies gdal
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
