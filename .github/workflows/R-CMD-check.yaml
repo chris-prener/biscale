@@ -55,11 +55,21 @@ jobs:
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-1-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-1-
 
+      - name: Install macOS Specific Dependencies for sf
+        if: runner.os == 'macOS'
+        run: |
+          brew update
+          brew install udunits
+          brew install gdal
+
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
+          sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
+          sudo apt-get update -y -qq
+          sudo apt-get install -y libproj-dev libgeos-dev libgdal-dev
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
