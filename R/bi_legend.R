@@ -130,7 +130,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
       "Reds" = pal_reds(n = dim)
     )
 
-    if(flip_axis){
+    if(flip_axes){
       x <- bi_pal_flip(x)
     }
 

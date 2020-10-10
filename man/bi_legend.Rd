@@ -4,7 +4,7 @@
 \alias{bi_legend}
 \title{Create Object for Drawing Legend}
 \usage{
-bi_legend(pal, dim = 3, xlab, ylab, size)
+bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = NA)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
@@ -19,7 +19,13 @@ bi_legend(pal, dim = 3, xlab, ylab, size)
 
 \item{size}{Size of axis labels}
 
-\item{flip_axis}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
+\item{flip_axes}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
+
+\item{rotate_pal}{A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.}
+
+\item{pad_width}{An optional numeric scalar; Controls the width of padding between tiles in the legend}
+
+\item{pad_color}{An optional character scalar (valid to ggplot::geom_tile); Controls the color of padding between tiles in the legend}
 }
 \value{
 A \code{ggplot} object with a bivariate legend.

@@ -20,7 +20,7 @@
 #' @importFrom ggplot2 scale_color_manual
 #'
 #' @export
-bi_scale_color <- function(pal, dim = 3, flip_axis = FALSE, rotate_pal = FALSE, ...){
+bi_scale_color <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...){
 
   # check parameters
   if (missing(pal) == TRUE){
