@@ -3,7 +3,7 @@
 #' @description Creates a \code{ggplot} object containing a legend that is specific
 #'     to bivariate mapping.
 #'
-#' @usage bi_legend(pal, dim = 3, xlab, ylab, size)
+#' @usage bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE, rotate_pal = FALSE)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
@@ -12,7 +12,8 @@
 #' @param xlab Text for desired x axis label on legend
 #' @param ylab Text for desired y axis label on legend
 #' @param size Size of axis labels
-#' @param flip_axis A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
+#' @param flip_axes A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
+#' @param rotate_pal A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
@@ -44,7 +45,7 @@
 #' legend
 #'
 #' @export
-bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axis = FALSE){
+bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, rotate_pal = FALSE){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -123,6 +124,10 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axis = FALSE){
 
     if(flip_axis){
       x <- bi_pal_flip(x)
+    }
+
+    if(rotate_pal){
+      x <- bi_pal_rotate(x)
     }
 
   }

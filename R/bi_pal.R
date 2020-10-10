@@ -9,7 +9,7 @@
 #'     The \code{"DkViolet"} palette was made by
 #'     \href{https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/}{Timo Grossenbacher and Angelo Zehr}.
 #'
-#' @usage bi_pal(pal, dim = 3, preview = TRUE)
+#' @usage bi_pal(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
@@ -17,7 +17,8 @@
 #'     \code{3} for a three-by-three palette.
 #' @param preview A logical scalar; if \code{TRUE} (default), an image preview will
 #'     be generated. If \code{FALSE}, a vector with hex color values will be returned.
-#' @param flip_axis A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
+#' @param flip_axes A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
+#' @param rotate_pal A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.
 #'
 #' @return If \code{preview = TRUE}, an image preview of the legend will be returned.
 #'     Otherwise, if \code{preview = FALSE}, a named vector with class values for names
@@ -85,7 +86,7 @@
 #' bi_pal(pal = "GrPink", dim = 3, preview = FALSE)
 #'
 #' @export
-bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axis = FALSE){
+bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE){
 
   # check parameters
   if (missing(pal) == TRUE){
@@ -112,7 +113,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axis = FALSE){
   if (preview == TRUE){
 
     # construct image
-    out <- bi_legend(pal = pal, dim = dim, size = 16, flip_axis = flip_axis)
+    out <- bi_legend(pal = pal, dim = dim, size = 16, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
   } else if (preview == FALSE){
 
@@ -133,6 +134,10 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axis = FALSE){
 
   if(flip_axis){
     out <- bi_pal_flip(out)
+  }
+
+  if(rotate_pal){
+    out <- bi_pal_rotate(out)
   }
 
   # return output
@@ -483,4 +488,32 @@ bi_pal_flip <- function(pal){
     stop('Palette is not of a supported dimension, cannot be flipped.')
   }
   return(flipped)
+}
+
+# Rotate the Axes of a Palette (Not Exported)
+#
+# @param pal A named atomic, character vector of length 4 or 9
+#
+# @return A named atomic, character vector equal to input length, with palette rotated 180 degrees
+bi_pal_rotate <- function(pal){
+  if(length(pal) == 4){
+    rotated <- pal
+    rotated['1-1'] <- pal['2-2']
+    rotated['1-2'] <- pal['2-1']
+    rotated['2-2'] <- pal['1-1']
+    rotated['2-1'] <- pal['1-2']
+  }else if(length(pal) == 9){
+    rotated <- pal
+    rotated['1-1'] <- pal['3-3']
+    rotated['1-2'] <- pal['3-2']
+    rotated['1-3'] <- pal['3-1']
+    rotated['2-1'] <- pal['2-3']
+    rotated['2-3'] <- pal['2-1']
+    rotated['3-1'] <- pal['1-3']
+    rotated['3-2'] <- pal['1-2']
+    rotated['3-3'] <- pal['1-1']
+  }else{
+    stop('Palette is not of a supported dimension, cannot be rotated.')
+  }
+  return(rotated)
 }

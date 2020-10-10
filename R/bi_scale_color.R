@@ -4,14 +4,15 @@
 #'     is used and the \code{bi_class} variable is given as the \code{color} in the aesthetic
 #'     mapping.
 #'
-#' @usage bi_scale_color(pal, dim = 3, flip_axis = FALSE, ...)
+#' @usage bi_scale_color(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...)
 #'
 #' @param pal Either palette name (one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}) or a custom palette
 #'     object created with \code{\link{bi_pal_manual}}.
 #' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
 #'     \code{3} for a three-by-three palette.
-#' @param flip_axis A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
+#' @param flip_axes A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
+#' @param rotate_pal A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.
 #' @param ... Arguments to pass to \code{\link{scale_fill_manual}}
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
@@ -19,7 +20,7 @@
 #' @importFrom ggplot2 scale_color_manual
 #'
 #' @export
-bi_scale_color <- function(pal, dim = 3, flip_axis = FALSE, ...){
+bi_scale_color <- function(pal, dim = 3, flip_axis = FALSE, rotate_pal = FALSE, ...){
 
   # check parameters
   if (missing(pal) == TRUE){
@@ -70,9 +71,14 @@ bi_scale_color <- function(pal, dim = 3, flip_axis = FALSE, ...){
       x <- pal_brown(n = dim)
     }
 
-    if(flip_axis){
+    if(flip_axes){
       x <- bi_pal_flip(x)
     }
+
+    if(rotate_pal){
+      x <- bi_pal_rotate(x)
+    }
+
   }
 
   # apply to ggplot object
