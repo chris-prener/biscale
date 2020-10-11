@@ -501,7 +501,7 @@ pal_gnpink <- function(n){
       "2-2" = "#8a6458", # high x, high y
       "1-2" = "#cf1989", # low x, high y
       "2-1" = "#4caa25", # high x, low y
-      "1-1" = "#f7f7f7" # low x, low y
+      "1-1" = "#e8e8e8" # low x, low y
     )
 
   } else if (n == 3){
@@ -515,7 +515,7 @@ pal_gnpink <- function(n){
       "1-2" = "#f2b7df",
       "3-1" = "#4caa25", # high x, low y
       "2-1" = "#b6de86",
-      "1-1" = "#f7f7f7" # low x, low y
+      "1-1" = "#e8e8e8" # low x, low y
     )
 
   }
@@ -535,7 +535,7 @@ pal_gnpurp <- function(n){
       "2-2" = "#3e4f61", # high x, high y
       "1-2" = "#7a3192", # low x, high y
       "2-1" = "#028633", # high x, low y
-      "1-1" = "#f8f5f4" # low x, low y
+      "1-1" = "#e8e8e8" # low x, low y
     )
 
   } else if (n == 3){
@@ -549,7 +549,7 @@ pal_gnpurp <- function(n){
       "1-2" = "#c3a4cc",
       "3-1" = "#028633", # high x, low y
       "2-1" = "#a7da9f",
-      "1-1" = "#f8f5f4" # low x, low y
+      "1-1" = "#e8e8e8" # low x, low y
     )
 
   }
@@ -569,7 +569,7 @@ pal_orgpurp <- function(n){
       "2-2" = "#a04e50", # high x, high y
       "1-2" = "#5e3c94", # low x, high y
       "2-1" = "#e75f01", # high x, low y
-      "1-1" = "#f7f7f5" # low x, low y
+      "1-1" = "#e8e8e8" # low x, low y
     )
 
   } else if (n == 3){
@@ -583,7 +583,7 @@ pal_orgpurp <- function(n){
       "1-2" = "#b2a9cd",
       "3-1" = "#e75f01", # high x, low y
       "2-1" = "#fdb861",
-      "1-1" = "#f7f7f5" # low x, low y
+      "1-1" = "#e8e8e8" # low x, low y
     )
 
   }
