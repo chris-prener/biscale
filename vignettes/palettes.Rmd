@@ -41,8 +41,9 @@ gridExtra::grid.arrange(ncol = 3,
   bi_pal("Reds") + labs(title = "Reds")
 )
 ```
-
-![](../man/figures/all_palettes.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/all_palettes.png')
+```
 
 ## Palette Manipulations
 The native palettes were prior restricted to an exact arrangement. However, there may be a desire to change the axes of the color scale. To do this, you need only supply `flip_axes = TRUE` to `bi_legend`, `bi_scale_fill` or `bi_scale_color`. **Very Important:** this argument must be specified to both your legend function **and** your scale function, or the colors will not align.
@@ -54,8 +55,9 @@ regular <- bi_pal('DkViolet') + labs(title = 'Regular')
 flipped <- bi_pal('DkViolet', flip_axes = TRUE) + labs(title = 'Flipped')
 gridExtra::grid.arrange(regular, flipped, ncol = 2)
 ```
-
-![](../man/figures/flipped_pal.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/flipped_pal.png')
+```
 
 Rotating the palette rotates the entire color scale 180 degrees. For example:
 ```r
@@ -63,8 +65,9 @@ regular <- bi_pal('DkViolet') + labs(title = 'Regular')
 rotated <- bi_pal('DkViolet', rotate_pal = TRUE) + labs(title = 'Rotated')
 gridExtra::grid.arrange(regular, rotated, ncol = 2)
 ```
-
-![](../man/figures/rotated_pal.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/rotated_pal.png')
+```
 
 These techniques can be combined as well, to produce a palette that has been both flipped and rotated.
 ```r
@@ -74,8 +77,9 @@ rotated <- bi_pal('DkViolet', rotate_pal = TRUE) + labs(title = 'Rotated')
 flipAndRotate <- bi_pal('DkViolet', flip_axes = TRUE, rotate_pal = TRUE) + labs(title = 'Flipped and Rotated')
 gridExtra::grid.arrange(regular, flipped, rotated, flipAndRotate, ncol = 2)
 ```
-
-![](../man/figures/manipulated_pal.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/manipulated_pal.png')
+```
 
 As you may discern, this can drastically affect the way a bivariate map looks.
 
@@ -100,8 +104,9 @@ flipAndRotate <- map +
 
 gridExtra::grid.arrange(regular, flipped, rotated, flipAndRotate, ncol = 2)
 ```
-
-![](../man/figures/palette_maps.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/palette_maps.png')
+```
 
 ## Padding within the Legend
 
@@ -114,20 +119,24 @@ gridExtra::grid.arrange(ncol = 3,
   bi_legend('BlGold', pad_width = 2, pad_color = '#000000')
 )
 ```
-
-![](../man/figures/pal_border.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/pal_border.png')
+```
 
 ## Special Palettes
 `biscale` now includes some special palettes. The decision to use these palettes depends on the context of data, and this decision is left to the user. However, these consideration may be useful:
 
 * For divergent data (where one axis represents two opposites), consider `bi_pal('Diverging')`
-
-![](../man/figures/diverging_pal.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/diverging_pal.png')
+```
 
 * For data with a measure of uncertainty, consider `bi_pal('BlYellow')`
-
-![](../man/figures/blyellow_pal.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/blyellow_pal.png')
+```
 
 * For categorical data, or for the most accessible palette for distinguishing between classes, consider `bi_pal('Virids')`
-
-![](../man/figures/viridis_pal.png)
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/viridis_pal.png')
+```
