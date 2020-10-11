@@ -5,7 +5,7 @@
 \title{Create Object for Drawing Legend}
 \usage{
 bi_legend(pal, dim = 3, xlab, ylab, size,
- flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = NA)
+ flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
