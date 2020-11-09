@@ -4,7 +4,7 @@
 \alias{bi_scale_color}
 \title{Apply Bivariate Color to ggplot Object}
 \usage{
-bi_scale_color(pal, dim = 3, ...)
+bi_scale_color(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...)
 }
 \arguments{
 \item{pal}{Either palette name (one of \code{"Brown"}, \code{"DkBlue"},
@@ -13,6 +13,10 @@ object created with \code{\link{bi_pal_manual}}.}
 
 \item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
 \code{3} for a three-by-three palette.}
+
+\item{flip_axes}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
+
+\item{rotate_pal}{A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.}
 
 \item{...}{Arguments to pass to \code{\link{scale_fill_manual}}}
 }

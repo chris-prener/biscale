@@ -4,7 +4,7 @@
 \alias{bi_pal}
 \title{Palette Preview and Hex Values}
 \usage{
-bi_pal(pal, dim = 3, preview = TRUE)
+bi_pal(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE)
 }
 \arguments{
 \item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
@@ -15,6 +15,10 @@ bi_pal(pal, dim = 3, preview = TRUE)
 
 \item{preview}{A logical scalar; if \code{TRUE} (default), an image preview will
 be generated. If \code{FALSE}, a vector with hex color values will be returned.}
+
+\item{flip_axes}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
+
+\item{rotate_pal}{A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.}
 }
 \value{
 If \code{preview = TRUE}, an image preview of the legend will be returned.

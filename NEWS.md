@@ -1,3 +1,10 @@
+# biscale 0.3.0
+
+* Add 10 new palettes for a total of 15 native palettes.
+* Add options to flip and/or rotate palettes
+* Add option to add padding/border to legend
+* Add vignette for palette use: see `palettes`
+
 # biscale 0.2.0
 
 * Add `sf` as a *required* instead of a *suggested* dependency. This resolves issues that appeared with newer releases of the `tibble` packages.

@@ -9,7 +9,7 @@ test_that("missing parameters trigger appropriate errors", {
 
 test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_legend(pal = "ham", dim = 3),
-               "The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', or 'GrPink'.")
+               "The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis'.")
   expect_error(bi_legend(pal = "DkBlue", dim = 5),
                "The 'dim' argument only accepts the numeric values '2' or '3'.")
   expect_error(bi_legend(pal = "DkBlue", dim = "ham"),

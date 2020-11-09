@@ -3,7 +3,8 @@
 #' @description Creates a \code{ggplot} object containing a legend that is specific
 #'     to bivariate mapping.
 #'
-#' @usage bi_legend(pal, dim = 3, xlab, ylab, size)
+#' @usage bi_legend(pal, dim = 3, xlab, ylab, size,
+#'  flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color)
 #'
 #' @param pal A palette name; one of \code{"Brown"}, \code{"DkBlue"},
 #'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.
@@ -12,6 +13,10 @@
 #' @param xlab Text for desired x axis label on legend
 #' @param ylab Text for desired y axis label on legend
 #' @param size Size of axis labels
+#' @param flip_axes A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
+#' @param rotate_pal A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.
+#' @param pad_width An optional numeric scalar; Controls the width of padding between tiles in the legend
+#' @param pad_color An optional character scalar (valid to ggplot::geom_tile); Controls the color of padding between tiles in the legend
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
@@ -43,7 +48,7 @@
 #' legend
 #'
 #' @export
-bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
+bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = '#ffffff'){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -63,8 +68,8 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    if (pal %in% c("Brown", "DkBlue", "DkCyan", "DkViolet", "GrPink") == FALSE){
-      stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'Brown', 'DkBlue', 'DkCyan', 'DkViolet', or 'GrPink'.")
+    if (pal %in% c("BlGold", "BlOrange", "BlYellow", "Brown", "Diverging", "DkBlue", "DkCyan", "DkViolet", "Fire", "GnPink", "GnPurple", "GrPink", "OrgPurple", "Reds", "Viridis") == FALSE){
+      stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis'.")
     }
 
   }
@@ -108,16 +113,30 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    if (pal == "DkViolet"){
-      x <- pal_dkviolet(n = dim)
-    } else if (pal == "GrPink"){
-      x <- pal_grpink(n = dim)
-    } else if (pal == "DkBlue"){
-      x <- pal_dkblue(n = dim)
-    } else if (pal == "DkCyan"){
-      x <- pal_dkcyan(n = dim)
-    } else if (pal == "Brown"){
-      x <- pal_brown(n = dim)
+    x <- switch(pal,
+      "DkViolet" = pal_dkviolet(n = dim),
+      "GrPink" = pal_grpink(n = dim),
+      "DkBlue" = pal_dkblue(n = dim),
+      "DkCyan" = pal_dkcyan(n = dim),
+      "Brown" = pal_brown(n = dim),
+      "BlGold" = pal_blgold(n = dim),
+      "BlOrange" = pal_blorange(n = dim),
+      "BlYellow" = pal_blyellow(n = dim),
+      "Viridis" = pal_viridis(n = dim),
+      "Diverging" = pal_diverging(n = dim),
+      "GnPink" = pal_gnpink(n = dim),
+      "GnPurple" = pal_gnpurp(n = dim),
+      "OrgPurple" = pal_orgpurp(n = dim),
+      "Fire" = pal_fire(n = dim),
+      "Reds" = pal_reds(n = dim)
+    )
+
+    if(flip_axes){
+      x <- bi_pal_flip(x)
+    }
+
+    if(rotate_pal){
+      x <- bi_pal_rotate(x)
     }
 
   }
@@ -134,7 +153,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10){
 
   # create ggplot2 legend object
   legend <- ggplot2::ggplot() +
-    ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill)) +
+    ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill), lwd = pad_width, col = pad_color) +
     ggplot2::scale_fill_identity() +
     ggplot2::labs(x = substitute(paste(xQN, ""%->%"")), y = substitute(paste(yQN, ""%->%""))) +
     bi_theme() +
