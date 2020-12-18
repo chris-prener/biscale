@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+      - master
+
+name: pkgdown
+
+jobs:
+  pkgdown:
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-pandoc@master
+      - name: Install R Depedencies
+        run: |
+          Rscript -e 'install.packages("remotes")' \
+                  -e 'remotes::install_deps(dependencies = TRUE)' \
+                  -e 'install.packages("pkgdown")'
+      - name: Install package
+        run: R CMD INSTALL .
+      - name: Build pkgdown Site
+        run: |
+          Rscript -e "pkgdown::build_site()"
+      - name: Commit Site Changes
+        run: |
+          git config --local user.name "biscale GHA"
+          git commit -m "Rebuild pkgdown Site" -a
+      - name: Push Site Changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: website
