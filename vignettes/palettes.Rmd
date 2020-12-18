@@ -4,7 +4,7 @@ author: "Branson Fox"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Bivarite Mapping with ggplot2}
+  %\VignetteIndexEntry{Palettes In Biscale}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
