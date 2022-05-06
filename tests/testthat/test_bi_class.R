@@ -32,18 +32,19 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
 
 # test inputs ------------------------------------------------
 
-test_that("correctly specified functions execute without error", {
+test_that("correctly specified functions execute without error, continuous intputs", {
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2), NA)
   expect_error(bi_class(stl_race_income, x = "pctWhite", y = "medInc", style = "quantile", dim = 3), NA)
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal", dim = 2), NA)
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal", dim = 3), NA)
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher", dim = 2), NA)
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher", dim = 3), NA)
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 2), NA)
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 3), NA)
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 3, keep_factors = TRUE), NA)
 })
 
-# test results ------------------------------------------------
+bins_x <- classInt::classIntervals(stl_race_income$pctWhite, n = 3, style = "quantile")$brks
+bins_y <- classInt::classIntervals(stl_race_income$medInc, n = 3, style = "quantile")$brks
+stl_race_income$factor_x <- cut(stl_race_income$pctWhite, breaks = bins_x, include.lowest = TRUE)
+stl_race_income$factor_y <- cut(stl_race_income$medInc, breaks = bins_y, include.lowest = TRUE)
 
-
+test_that("correctly specified functions execute without error, continuous intputs", {
+  expect_error(bi_class(stl_race_income, x = factor_x, y = factor_y, dim = 3), NA)
+  expect_error(bi_class(stl_race_income, x = factor_x, y = medInc, style = "quantile", dim = 3), NA)
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = factor_y, style = "quantile", dim = 3), NA)
+})
