@@ -22,12 +22,6 @@
 #'     combinations of values that correspond to an observations values for \code{x}
 #'     and \code{y}. This is the basis for applying a bivariate color palette.
 #'
-#' @importFrom classInt classIntervals
-#' @importFrom dplyr mutate pull select
-#' @importFrom glue glue
-#' @importFrom rlang enquo quo quo_name sym
-#' @importFrom stats quantile
-#'
 #' @examples
 #' # quantile breaks, 2x2
 #' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2)
@@ -59,10 +53,8 @@
 #' # summarize jenks breaks, 3x3
 #' table(data$bi_class)
 #'
-#' @import sf
-#'
 #' @export
-bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE){
+bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
 
   # global bindings
   bi_x = bi_y = NULL
@@ -72,11 +64,6 @@ bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FA
     stop("An object containing data must be specified for the '.data' argument.")
   }
 
-  # check data
-#  if ("sf" %in% class(.data) == TRUE & "sf" %in% (.packages()) == FALSE){
-#    warning("The 'sf' package is not loaded, and the class 'sf' attribute of the given data set has been lost. Load 'sf' to retain the class when using 'bi_class'.")
-#  }
-
   # check inputs
   if (missing(x)) {
     stop("A variable must be given for the 'x' argument.")
@@ -84,10 +71,6 @@ bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FA
 
   if (missing(y)) {
     stop("A variable must be given for the 'y' argument.")
-  }
-
-  if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
-    stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
   }
 
   if (is.numeric(dim) == FALSE){
@@ -102,24 +85,8 @@ bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FA
     stop("A logical scalar must be supplied for 'keep_factors'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
-  # save parameters to list
-  paramList <- as.list(match.call())
-
   # nse
-  if (!is.character(paramList$x)) {
-    xQ <- rlang::enquo(x)
-  } else if (is.character(paramList$x)) {
-    xQ <- rlang::quo(!! rlang::sym(x))
-  }
-
   xQN <- rlang::quo_name(rlang::enquo(x))
-
-  if (!is.character(paramList$y)) {
-    yQ <- rlang::enquo(y)
-  } else if (is.character(paramList$y)) {
-    yQ <- rlang::quo(!! rlang::sym(y))
-  }
-
   yQN <- rlang::quo_name(rlang::enquo(y))
 
   # check variables
@@ -133,48 +100,85 @@ bi_class <- function(.data, x, y, style = "quantile", dim = 3, keep_factors = FA
                     var = yQN))
   }
 
-  # create three bins for x and y
-  bins_x <- dplyr::pull(.data, !!xQ)
-  bins_y <- dplyr::pull(.data, !!yQ)
+  # evaluate x
+  if (class(.data[[xQN]]) %in% c("integer", "double", "numeric")){
 
-  # calculate breaks
-  if (style == "quantile"){
+    if (missing(style)){
+      stop("Please specify a style for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+    }
 
-    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "quantile")
-    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "quantile")
+    if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
+      stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+    }
 
-  } else if (style == "equal"){
+    out <- .data
+    out$bi_x <- cut(out[[xQN]], breaks = bi_class_continuous(.data, var = xQN, style = style, dim = dim),
+                    include.lowest = TRUE)
 
-    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "equal")
-    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "equal")
+  } else if (class(.data[[xQN]]) == "factor"){
 
-  } else if (style == "fisher"){
+    if (length(levels(.data[[xQN]])) != dim){
+      stop(glue::glue("The given 'x' variable '{var}' has a different number of levels than the value given for the 'dim' argument.",
+                      var = xQN))
+    }
 
-    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "fisher")
-    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "fisher")
+    out <- .data
+    names(out)[names(out) == xQN] <- "bi_x"
 
-  } else if (style == "jenks"){
 
-    bins_x <- classInt::classIntervals(bins_x, n = dim, style = "jenks")
-    bins_y <- classInt::classIntervals(bins_y, n = dim, style = "jenks")
-
+  } else {
+    stop(glue::glue("The given 'x' variable '{var}' is not the correct class. It must be either integer, double, or factor.",
+                    var = xQN))
   }
 
-  # convert to breaks
-  bins_x <- bins_x$brks
-  bins_y <- bins_y$brks
+  # evaluate y
+  if (class(.data[[yQN]]) %in% c("integer", "double", "numeric")){
 
-  # cut into groups defined above
-  out <- dplyr::mutate(.data, bi_x = cut(!!xQ, breaks = bins_x, include.lowest = TRUE))
-  out <- dplyr::mutate(out, bi_y = cut(!!yQ, breaks = bins_y, include.lowest = TRUE))
-  out <- dplyr::mutate(out, bi_class = paste0(as.numeric(bi_x), "-", as.numeric(bi_y)))
+    if (missing(style)){
+      stop("Please specify a style for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+    }
+
+    if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
+      stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+    }
+
+    out$bi_y <- cut(out[[yQN]], breaks = bi_class_continuous(.data, var = yQN, style = style, dim = dim),
+                    include.lowest = TRUE)
+
+  } else if (class(.data[[yQN]]) == "factor"){
+
+    if (length(levels(.data[[yQN]])) != dim){
+      stop(glue::glue("The given 'y' variable '{var}' has a different number of levels than the value given for the 'dim' argument.",
+                      var = yQN))
+    }
+
+    names(out)[names(out) == yQN] <- "bi_y"
+
+  } else {
+    stop(glue::glue("The given 'y' variable '{var}' is not the correct class. It must be either integer, double, or factor.",
+                    var = yQN))
+  }
+
+  # combine
+  out$bi_class <- paste0(as.numeric(out$bi_x), "-", as.numeric(out$bi_y))
 
   # optionally remove factors
   if (keep_factors == FALSE){
-    out <- dplyr::select(out, -c(bi_x, bi_y))
+    out <- subset(out, select = -c(bi_x, bi_y))
   }
 
   # return output
   return(out)
+
+}
+
+# return breaks
+bi_class_continuous <- function(.data, var, style, dim){
+
+  # calculate breaks
+  bins_var <- classInt::classIntervals(.data[[var]], n = dim, style = style)
+
+  # convert to breaks
+  bins_var <- bins_var$brks
 
 }
