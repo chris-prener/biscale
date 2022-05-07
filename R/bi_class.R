@@ -95,7 +95,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
     }
 
     out <- .data
-    out$bi_x <- cut(out[[xQN]], breaks = bi_class_continuous(.data, var = xQN, style = style, dim = dim),
+    out$bi_y <- cut(out[[xQN]], breaks = classInt::classIntervals(out[[xQN]], n = dim, style = style)$brks,
                     include.lowest = TRUE)
 
   } else if (class(.data[[xQN]]) == "factor"){
@@ -125,7 +125,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
       stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
     }
 
-    out$bi_y <- cut(out[[yQN]], breaks = bi_class_continuous(.data, var = yQN, style = style, dim = dim),
+    out$bi_y <- cut(out[[yQN]], breaks = classInt::classIntervals(out[[yQN]], n = dim, style = style)$brks,
                     include.lowest = TRUE)
 
   } else if (class(.data[[yQN]]) == "factor"){
@@ -152,16 +152,5 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
 
   # return output
   return(out)
-
-}
-
-# return breaks
-bi_class_continuous <- function(.data, var, style, dim){
-
-  # calculate breaks
-  bins_var <- classInt::classIntervals(.data[[var]], n = dim, style = style)
-
-  # convert to breaks
-  bins_var <- bins_var$brks
 
 }
