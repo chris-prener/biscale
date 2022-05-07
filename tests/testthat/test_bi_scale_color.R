@@ -8,8 +8,8 @@ library(sf)
 # load test data ------------------------------------------------
 
 load("data_central.rda")
-pointData <- bi_class(pointData, x = totalsnow, y = Ratio1517, dim = 3)
-pointData_2 <- bi_class(pointData, x = totalsnow, y = Ratio1517, dim = 2)
+pointData <- bi_class(pointData, x = totalsnow, y = Ratio1517, style = "quantile", dim = 3)
+pointData_2 <- bi_class(pointData, x = totalsnow, y = Ratio1517, style = "quantile", dim = 2)
 
 # test errors ------------------------------------------------
 

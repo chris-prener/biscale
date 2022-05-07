@@ -24,16 +24,8 @@
 #' library(ggplot2)
 #' library(sf)
 #'
-#' # add breaks, 2x2
-#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 2)
-#'
-#' # create map
-#' ggplot() +
-#'   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-#'   bi_scale_fill(pal = "GrPink", dim = 2)
-#'
 #' # add breaks, 3x3
-#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 3)
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile, dim = 3)
 #'
 #' # create map
 #' ggplot() +

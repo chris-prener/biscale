@@ -4,7 +4,7 @@
 \alias{bi_class}
 \title{Create Classes for Bivariate Maps}
 \usage{
-bi_class(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE)
+bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE)
 }
 \arguments{
 \item{.data}{A data frame, tibble, or \code{sf} object}
@@ -15,7 +15,8 @@ bi_class(.data, x, y, style = "quantile", dim = 3, keep_factors = FALSE)
 
 \item{style}{A string identifying the style used to calculate breaks. Currently
 supported styles are \code{"quantile"} (default), \code{"equal"}, \code{"fisher"},
-and \code{"jenks"}.}
+and \code{"jenks"}. If both \code{x} and \code{y} are factors, this argument can
+be omitted.}
 
 \item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
 \code{3} for a three-by-three palette.}
@@ -45,24 +46,6 @@ table(data$bi_class)
 data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
 
 # summarize quantile breaks, 3x3
-table(data$bi_class)
-
-# equal breaks
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "equal", dim = 3)
-
-# summarize equal breaks, 3x3
-table(data$bi_class)
-
-# fisher breaks
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "fisher", dim = 3)
-
-# summarize fisher breaks, 3x3
-table(data$bi_class)
-
-# jenks breaks
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "jenks", dim = 3)
-
-# summarize jenks breaks, 3x3
 table(data$bi_class)
 
 }

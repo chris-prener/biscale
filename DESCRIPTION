@@ -1,7 +1,7 @@
 Package: biscale
 Type: Package
 Title: Tools and Palettes for Bivariate Thematic Mapping
-Version: 0.3.0
+Version: 1.0.0.9000
 Authors@R: c(
     person("Christopher", "Prener", , "chris.prener@slu.edu", c("aut", "cre"),
     comment = c(ORCID = "0000-0002-4310-9888")),
@@ -30,7 +30,7 @@ Imports:
   sf,
   stats,
   tidyr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests:
   covr,
   knitr,
