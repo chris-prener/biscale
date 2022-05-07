@@ -13,7 +13,7 @@
 #'     \code{3} for a three-by-three palette.
 #' @param flip_axes A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
 #' @param rotate_pal A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.
-#' @param ... Arguments to pass to \code{\link{scale_fill_manual}}
+#' @param ... Arguments to pass to \code{\link{scale_color_manual}}
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
 #'
