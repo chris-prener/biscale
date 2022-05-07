@@ -3,7 +3,7 @@ context("test bi_scale_fill function")
 # load test data ------------------------------------------------
 
 data("stl_race_income", package = "biscale")
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 2)
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2)
 
 # load suggested dependencies ------------------------------------------------
 

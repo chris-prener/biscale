@@ -27,13 +27,13 @@ Imports:
   ggplot2,
   glue,
   rlang,
+  sf,
   stats,
   tidyr
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests:
   covr,
   knitr,
   rmarkdown,
-  sf,
   testthat
 VignetteBuilder: knitr

@@ -32,7 +32,7 @@ library(ggplot2)
 library(sf)
 
 # add breaks, 3x3
-data <- bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 3)
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
 
 # create map
 ggplot() +
