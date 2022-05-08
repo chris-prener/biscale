@@ -15,7 +15,7 @@ GrPink = list(
     "3-2" = "#",
     "1-3" = "#", # low x, high y
     "2-3" = "#",
-    "3-3" = "#", # high x, high y
+    "3-3" = "#" # high x, high y
   ),
   d4 = c(
     "1-1" = "#", # low x, low y
@@ -33,6 +33,6 @@ GrPink = list(
     "1-4" = "#", # low x, high y
     "2-4" = "#",
     "3-4" = "#",
-    "4-4" = "#", # high x, high y
+    "4-4" = "#" # high x, high y
   )
 )

@@ -48,7 +48,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
     stop("A palette must be specified for the 'pal' argument. Please choose one of: .")
   }
 
-  if (pal %in% c("DkViolet", "DkViolet2") == FALSE){
+  if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2") == FALSE){
     stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: .")
   }
 
@@ -60,8 +60,24 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
     stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
   }
 
+  if (dim == 4 & pal %in% c("DkViolet", "GrPink")){
+    if(pal == "DkViolet"){
+      stop("The legacy 'DkViolet' palette does not support 4x4 bivarite mapping. Please use 'DkViolet2' instead.")
+    } else if (pal == "GrPink"){
+      stop("The legacy 'GrPink' palette does not support 4x4 bivarite mapping. Please use 'GrPink2' instead.")
+    }
+  }
+
   if (is.logical(preview) == FALSE){
     stop("A logical scalar must be supplied for 'preview'. Please provide either 'TRUE' or 'FALSE'.")
+  }
+
+  if (is.logical(flip_axes) == FALSE){
+    stop("A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
+  }
+
+  if (is.logical(rotate_pal) == FALSE){
+    stop("A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
   # create vector
