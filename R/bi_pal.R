@@ -49,7 +49,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
   }
 
   if (pal %in% c("DkViolet", "DkViolet2") == FALSE){
-    stop("The given palette is not one of the allowed options for bivariate mapping.")
+    stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: .")
   }
 
   if (is.numeric(dim) == FALSE){

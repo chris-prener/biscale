@@ -63,7 +63,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
     if (pal %in% c("DkViolet", "DkViolet2") == FALSE){
-      stop("The given palette is not one of the allowed options for bivariate mapping.")
+      stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: .")
     }
 
   }
