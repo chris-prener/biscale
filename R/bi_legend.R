@@ -55,7 +55,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument.")
+    stop("A palette must be specified for the 'pal' argument. Please choose one of: .")
   }
 
   if ("bi_pal_custom" %in% class(pal) == TRUE) {
@@ -68,18 +68,18 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    if (pal %in% c("BlGold", "BlOrange", "BlYellow", "Brown", "Diverging", "DkBlue", "DkCyan", "DkViolet", "Fire", "GnPink", "GnPurple", "GrPink", "OrgPurple", "Reds", "Viridis") == FALSE){
-      stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis'.")
+    if (pal %in% c("DkViolet", "DkViolet2") == FALSE){
+      stop("The given palette is not one of the allowed options for bivariate mapping.")
     }
 
   }
 
   if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
   }
 
-  if (dim != 2 & dim != 3){
-    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+  if (dim %in% c(2:4) == FALSE){
+    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
   }
 
   if (missing(xlab) == TRUE){
@@ -113,31 +113,8 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    x <- switch(pal,
-      "DkViolet" = pal_dkviolet(n = dim),
-      "GrPink" = pal_grpink(n = dim),
-      "DkBlue" = pal_dkblue(n = dim),
-      "DkCyan" = pal_dkcyan(n = dim),
-      "Brown" = pal_brown(n = dim),
-      "BlGold" = pal_blgold(n = dim),
-      "BlOrange" = pal_blorange(n = dim),
-      "BlYellow" = pal_blyellow(n = dim),
-      "Viridis" = pal_viridis(n = dim),
-      "Diverging" = pal_diverging(n = dim),
-      "GnPink" = pal_gnpink(n = dim),
-      "GnPurple" = pal_gnpurp(n = dim),
-      "OrgPurple" = pal_orgpurp(n = dim),
-      "Fire" = pal_fire(n = dim),
-      "Reds" = pal_reds(n = dim)
-    )
-
-    if(flip_axes){
-      x <- bi_pal_flip(x)
-    }
-
-    if(rotate_pal){
-      x <- bi_pal_rotate(x)
-    }
+    # create vector
+    x <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
   }
 
