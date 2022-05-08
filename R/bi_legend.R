@@ -62,7 +62,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    if (pal %in% c("DkViolet", "DkViolet2") == FALSE){
+    if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2") == FALSE){
       stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: .")
     }
 
@@ -74,6 +74,20 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   if (dim %in% c(2:4) == FALSE){
     stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
+  }
+
+  if (dim == 4 & pal %in% c("DkViolet", "GrPink", "DkBlue", "DkCyan", "Brown")){
+    if(pal == "DkViolet"){
+      stop("The legacy 'DkViolet' palette does not support 4x4 bivarite mapping. Please use 'DkViolet2' instead.")
+    } else if (pal == "GrPink"){
+      stop("The legacy 'GrPink' palette does not support 4x4 bivarite mapping. Please use 'GrPink2' instead.")
+    } else if (pal == "DkBlue"){
+      stop("The legacy 'DkBlue' palette does not support 4x4 bivarite mapping. Please use 'DkBlue2' instead.")
+    } else if (pal == "DkCyan"){
+      stop("The legacy 'DkCyan' palette does not support 4x4 bivarite mapping. Please use 'DkCyan2' instead.")
+    } else if (pal == "Brown"){
+      stop("The legacy 'Brown' palette does not support 4x4 bivarite mapping. Please use 'Brown2' instead.")
+    }
   }
 
   if (missing(xlab) == TRUE){

@@ -131,8 +131,156 @@ pals <- list(
       "2-3" = "#8c62aa",
       "3-3" = "#3b4994" # high x, high y
     )
+  ),
+  DkBlue2 = list(
+    d2 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#52b6b6", # high x, low y
+      "1-2" = "#ad5b9c", # low x, high y
+      "2-2" = "#434e87" # high x, high y
+    ),
+    d3 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#97c5c5",
+      "3-1" = "#52b6b6", # high x, low y
+      "1-2" = "#c098b9",
+      "2-2" = "#898ead", # medium x, medium y
+      "3-2" = "#4a839f",
+      "1-3" = "#ad5b9c", # low x, high y
+      "2-3" = "#7c5592",
+      "3-3" = "#434e87" # high x, high y
+    ),
+    d4 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#accaca",
+      "3-1" = "#81c1c1",
+      "4-1" = "#52b6b6", # high x, low y
+      "1-2" = "#c6acc1",
+      "2-2" = "#a2a5b9",
+      "3-2" = "#799db0",
+      "4-2" = "#4d94a6",
+      "1-3" = "#ba85b0",
+      "2-3" = "#977fa8",
+      "3-3" = "#7279a0",
+      "4-3" = "#487397",
+      "1-4" = "#ad5b9c", # low x, high y
+      "2-4" = "#8d5796",
+      "3-4" = "#6a538f",
+      "4-4" = "#434e87" # high x, high y
+    )
+  ),
+  DkCyan = list(
+    d2 = c(
+      "1-1" = "#e8e8e8", # low x, low y
+      "2-1" = "#6c83b5", # high x, low y
+      "1-2" = "#73ae80", # low x, high y
+      "2-2" = "#2a5a5b" # high x, high y
+    ),
+    d3 = c(
+      "1-1" = "#e8e8e8", # low x, low y
+      "2-1" = "#b5c0da",
+      "3-1" = "#6c83b5", # high x, low y
+      "1-2" = "#b8d6be",
+      "2-2" = "#90b2b3", # medium x, medium y
+      "3-2" = "#567994",
+      "1-3" = "#73ae80", # low x, high y
+      "2-3" = "#5a9178",
+      "3-3" = "#2a5a5b" # high x, high y
+    )
+  ),
+  DkCyan2 = list(
+    d2 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#6277a5", # high x, low y
+      "1-2" = "#699e74", # low x, high y
+      "2-2" = "#31595b" # high x, high y
+    ),
+    d3 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#9aa5bb",
+      "3-1" = "#6277a5", # high x, low y
+      "1-2" = "#9eb9a4",
+      "2-2" = "#739091", # medium x, medium y
+      "3-2" = "#4a6880",
+      "1-3" = "#699e74", # low x, high y
+      "2-3" = "#4c7c67",
+      "3-3" = "#31595b" # high x, high y
+    ),
+    d4 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#adb4c4",
+      "3-1" = "#8795b4",
+      "4-1" = "#6277a5", # high x, low y
+      "1-2" = "#b0c2b3",
+      "2-2" = "#90a5a6",
+      "3-2" = "#708999",
+      "4-2" = "#526d8c",
+      "1-3" = "#8cb094",
+      "2-3" = "#739689",
+      "3-3" = "#597c7f",
+      "4-3" = "#416374",
+      "1-4" = "#699e74", # low x, high y
+      "2-4" = "#56876c",
+      "3-4" = "#437063",
+      "4-4" = "#31595b" # high x, high y
+    )
+  ),
+  Brown = list(
+    d2 = c(
+      "1-1" = "#e8e8e8", # low x, low y
+      "2-1" = "#c8b35a", # high x, low y
+      "1-2" = "#9972af", # low x, high y
+      "2-2" = "#804d36" # high x, high y
+    ),
+    d3 = c(
+      "1-1" = "#e8e8e8", # low x, low y
+      "2-1" = "#e4d9ac",
+      "3-1" = "#c8b35a", # high x, low y
+      "1-2" = "#cbb8d7",
+      "2-2" = "#c8ada0", # medium x, medium y
+      "3-2" = "#af8e53",
+      "1-3" = "#9972af", # low x, high y
+      "2-3" = "#976b82",
+      "3-3" = "#804d36" # high x, high y
+    )
+  ),
+  Brown2 = list(
+    d2 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#b6a352", # high x, low y
+      "1-2" = "#8b689f", # low x, high y
+      "2-2" = "#78503e" # high x, high y
+    ),
+    d3 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#c5bb93",
+      "3-1" = "#b6a352", # high x, low y
+      "1-2" = "#af9cb9",
+      "2-2" = "#a38b81", # medium x, medium y
+      "3-2" = "#977948",
+      "1-3" = "#8b689f", # low x, high y
+      "2-3" = "#825c6f",
+      "3-3" = "#78503e" # high x, high y
+    ),
+    d4 = c(
+      "1-1" = "#d3d3d3", # low x, low y
+      "2-1" = "#cac4a8",
+      "3-1" = "#c0b37e",
+      "4-1" = "#b6a352", # high x, low y
+      "1-2" = "#bbafc2",
+      "2-2" = "#b2a29b",
+      "3-2" = "#aa9473",
+      "4-2" = "#a1874b",
+      "1-3" = "#a38bb1",
+      "2-3" = "#9c818d",
+      "3-3" = "#947669",
+      "4-3" = "#8c6b44",
+      "1-4" = "#8b689f", # low x, high y
+      "2-4" = "#85607f",
+      "3-4" = "#7f585f",
+      "4-4" = "#78503e" # high x, high y
+    )
   )
 )
 
 save(pals, file = "R/sysdata.rda")
-
