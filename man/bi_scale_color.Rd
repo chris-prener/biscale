@@ -18,7 +18,7 @@ object created with \code{\link{bi_pal_manual}}.}
 
 \item{rotate_pal}{A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.}
 
-\item{...}{Arguments to pass to \code{\link{scale_fill_manual}}}
+\item{...}{Arguments to pass to \code{\link{scale_color_manual}}}
 }
 \value{
 A \code{ggplot} object with the given bivariate palette applied to the data.

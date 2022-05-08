@@ -40,6 +40,9 @@
 #' @export
 bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE){
 
+  # global bindings
+  x = y = bi_fill = NULL
+
   # check parameters
   if (missing(pal) == TRUE){
     stop("A palette must be specified for the 'pal' argument. Please choose one of: .")
@@ -67,24 +70,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
   # optionally create preview
   if (preview == TRUE){
 
-    # construct image
-    # create tibble for plotting
-    x <- data.frame(
-      bi_class = names(out),
-      bi_fill = out
-    )
-
-    # reformat
-    leg <- tidyr::separate(x, bi_class, into = c("x", "y"), sep = "-")
-    leg <- dplyr::mutate(leg, x = as.integer(x), y = as.integer(y))
-
-    # create ggplot2 legend object
-    out <- ggplot2::ggplot() +
-      ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill), lwd = NA, col = "#ffffff") +
-      ggplot2::scale_fill_identity() +
-      ggplot2::labs(x = substitute(paste("x var ", ""%->%"")), y = substitute(paste("y var ", ""%->%""))) +
-      bi_theme() +
-      ggplot2::coord_fixed()
+    out <- bi_legend_build(leg = out, xlab = "x var ", ylab = "y var ", size = 10, pad_width = NA, pad_color = "#ffffff")
 
   }
 

@@ -20,12 +20,6 @@
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
-#' @importFrom dplyr mutate tibble
-#' @importFrom ggplot2 aes coord_fixed element_text geom_tile ggplot labs
-#'     scale_fill_identity theme
-#' @importFrom rlang enquo quo_name
-#' @importFrom tidyr separate
-#'
 #' @examples
 #' # construct 2x2 legend
 #' legend <- bi_legend(pal = "GrPink",
@@ -102,31 +96,44 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
     stop("The 'size' argument must be a numeric value.")
   }
 
+  # create palette
+  if ("bi_pal_custom" %in% class(pal) == FALSE) {
+
+    # built-in
+    leg <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
+
+  } else if ("bi_pal_custom" %in% class(pal) == TRUE){
+
+    # custom
+    leg <- pal
+
+  }
+
+  # build legend
+  out <- bi_legend_build(leg = leg, xlab = xlab, ylab = ylab, size = size, pad_width = pad_width, pad_color = pad_color)
+
+  # return output
+  return(out)
+
+}
+
+bi_legend_build <- function(leg, xlab, ylab, size, pad_width, pad_color){
+
   # nse
   xQN <- rlang::quo_name(rlang::enquo(xlab))
   yQN <- rlang::quo_name(rlang::enquo(ylab))
 
-  # obtain palette
-  if ("bi_pal_custom" %in% class(pal) == TRUE) {
-
-    x <- pal
-
-  } else if ("bi_pal_custom" %in% class(pal) == FALSE){
-
-    # create vector
-    x <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
-
-  }
-
   # create tibble for plotting
-  x <- dplyr::tibble(
-    bi_class = names(x),
-    bi_fill = x
+  leg <- data.frame(
+    bi_class = names(leg),
+    bi_fill = leg
   )
 
   # reformat
-  leg <- tidyr::separate(x, bi_class, into = c("x", "y"), sep = "-")
-  leg <- dplyr::mutate(leg, x = as.integer(x), y = as.integer(y))
+  split <- utils::read.table(text = leg$bi_class, sep="-", col.names=c('x', 'y'))
+  split$x <- as.integer(split$x)
+  split$y <- as.integer(split$y)
+  leg <- cbind(leg, split)
 
   # create ggplot2 legend object
   legend <- ggplot2::ggplot() +
