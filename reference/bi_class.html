@@ -78,17 +78,25 @@
     <dl><dt>.data</dt>
 <dd><p>A data frame, tibble, or <code>sf</code> object</p></dd>
 <dt>x</dt>
-<dd><p>The <code>x</code> variable</p></dd>
+<dd><p>The <code>x</code> variable, either a numeric (including double and integer
+classes) or factor</p></dd>
 <dt>y</dt>
-<dd><p>The <code>y</code> variable</p></dd>
+<dd><p>The <code>y</code> variable, either a numeric (including double and integer
+classes) or factor</p></dd>
 <dt>style</dt>
 <dd><p>A string identifying the style used to calculate breaks. Currently
 supported styles are <code>"quantile"</code> (default), <code>"equal"</code>, <code>"fisher"</code>,
 and <code>"jenks"</code>. If both <code>x</code> and <code>y</code> are factors, this argument can
 be omitted.</p></dd>
 <dt>dim</dt>
-<dd><p>The dimensions of the palette, either <code>2</code> for a two-by-two palette or
-<code>3</code> for a three-by-three palette.</p></dd>
+<dd><p>The dimensions of the palette. To use the built-in palettes,
+    this value must be either <code>2</code>, <code>3</code>, or <code>4</code>. A value of
+    <code>3</code>, for example, would be used to create a three-by-three bivariate
+    map with a total of 9 classes.</p>
+<p>If you are using a custom palette, this value may be larger (though these
+    maps can be very hard to interpret).</p>
+<p>If you are using pre-made factors, both factors must have the same number
+    of levels as this value.</p></dd>
 <dt>keep_factors</dt>
 <dd><p>A logical scalar; if <code>TRUE</code>, the intermediate factor
 variables created as part of the calculation of <code>bi_class</code> will be

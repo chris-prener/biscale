@@ -76,28 +76,28 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>pal</dt>
-<dd><p>A palette name; one of <code>"Bluegill"</code>, <code>"BlueGold"</code>,
-    <code>"BlueOr"</code>, <code>"BlueYl"</code>, <code>"Brown"</code>/<code>"Brown2"</code>,
-    <code>"DkBlue"</code>/<code>"DkBlue2"</code>, <code>"DkCyan"</code>/<code>"DkCyan2"</code>,
-    <code>"DkViolet"</code>/<code>"DkViolet2"</code>, <code>"GrPink"</code>/<code>"GrPink2"</code>,
-    <code>"PinkGrn"</code>, <code>"PurpleGrn"</code>, or <code>"PurpleOr"</code>.</p>
-<p>Pairs of palettes, such as <code>"GrPink"</code>/<code>"GrPink2"</code>, are included
-    for legacy support. The numbered palettes support four-by-four bivarite
-    maps while the un-numbered ones, which were the five included in the
-    original release of the package, only support two-by-two and
-    three-by-three maps.</p></dd>
+<dd><p>A palette name or a vector containing a custom palette. See
+the help file for <code>bi_pal</code> for complete list of built-in palette
+names. If you are providing a custom palette, it must follow the formatting
+described in the 'Advanced Options' vignette.</p></dd>
 <dt>dim</dt>
-<dd><p>The dimensions of the palette, either <code>2</code> for a
-two-by-two palette, <code>3</code> for a three-by-three palette, or <code>4</code>
-for a four-by-four palette.</p></dd>
+<dd><p>The dimensions of the palette. To use the built-in palettes,
+    this value must be either <code>2</code>, <code>3</code>, or <code>4</code>. A value of
+    <code>3</code>, for example, would be used to create a three-by-three bivariate
+    map with a total of 9 classes.</p>
+<p>If you are using a custom palette, this value may be larger (though these
+    maps can be very hard to interpret). See the 'Advanced Options' vignette
+    for details on the relationship between <code>dim</code> values and palette size.</p></dd>
 <dt>flip_axes</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> the axes of the palette
 will be flipped. If <code>FALSE</code> (default), the palette will be displayed
-on its original axes.</p></dd>
+on its original axes. Custom palettes with 'dim' greater
+than 4 cannot take advantage of flipping axes.</p></dd>
 <dt>rotate_pal</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> the palette will be
 rotated 180 degrees. If <code>FALSE</code> (default), the palette will be
-displayed in its original orientation</p></dd>
+displayed in its original orientation. Custom palettes with 'dim' greater
+than 4 cannot take advantage of palette rotation.</p></dd>
 <dt>...</dt>
 <dd><p>Arguments to pass to <code>scale_color_manual</code></p></dd>
 </dl></div>

@@ -74,20 +74,28 @@
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>pal</dt>
-<dd><p>A palette name; one of <code>"Bluegill"</code>, <code>"BlueGold"</code>,
-    <code>"BlueOr"</code>, <code>"BlueYl"</code>, <code>"Brown"</code>/<code>"Brown2"</code>,
-    <code>"DkBlue"</code>/<code>"DkBlue2"</code>, <code>"DkCyan"</code>/<code>"DkCyan2"</code>,
-    <code>"DkViolet"</code>/<code>"DkViolet2"</code>, <code>"GrPink"</code>/<code>"GrPink2"</code>,
-    <code>"PinkGrn"</code>, <code>"PurpleGrn"</code>, or <code>"PurpleOr"</code>.</p>
+<dd><p>A palette name or a vector containing a custom palette.
+    If you are providing a palette name, it must be one of:
+    <code>"Bluegill"</code>, <code>"BlueGold"</code>, <code>"BlueOr"</code>, <code>"BlueYl"</code>,
+    <code>"Brown"</code>/<code>"Brown2"</code>, <code>"DkBlue"</code>/<code>"DkBlue2"</code>,
+    <code>"DkCyan"</code>/<code>"DkCyan2"</code>, <code>"DkViolet"</code>/<code>"DkViolet2"</code>,
+    <code>"GrPink"</code>/<code>"GrPink2"</code>, <code>"PinkGrn"</code>, <code>"PurpleGrn"</code>,
+    or <code>"PurpleOr"</code>.</p>
 <p>Pairs of palettes, such as <code>"GrPink"</code>/<code>"GrPink2"</code>, are included
     for legacy support. The numbered palettes support four-by-four bivarite
     maps while the un-numbered ones, which were the five included in the
     original release of the package, only support two-by-two and
-    three-by-three maps.</p></dd>
+    three-by-three maps.</p>
+<p>If you are providing a custom palette, it must follow the formatting
+    described in the 'Advanced Options' vignette.</p></dd>
 <dt>dim</dt>
-<dd><p>The dimensions of the palette, either <code>2</code> for a
-two-by-two palette, <code>3</code> for a three-by-three palette, or <code>4</code>
-for a four-by-four palette.</p></dd>
+<dd><p>The dimensions of the palette. To use the built-in palettes,
+    this value must be either <code>2</code>, <code>3</code>, or <code>4</code>. A value of
+    <code>3</code>, for example, would be used to create a three-by-three bivariate
+    map with a total of 9 classes.</p>
+<p>If you are using a custom palette, this value may be larger (though these
+    maps can be very hard to interpret). See the 'Advanced Options' vignette
+    for details on the relationship between <code>dim</code> values and palette size.</p></dd>
 <dt>preview</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> (default), an image preview
 will be generated. If <code>FALSE</code>, a vector with hex color values will
@@ -95,11 +103,13 @@ be returned.</p></dd>
 <dt>flip_axes</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> the axes of the palette
 will be flipped. If <code>FALSE</code> (default), the palette will be displayed
-on its original axes.</p></dd>
+on its original axes. Custom palettes with 'dim' greater
+than 4 cannot take advantage of flipping axes.</p></dd>
 <dt>rotate_pal</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> the palette will be
 rotated 180 degrees. If <code>FALSE</code> (default), the palette will be
-displayed in its original orientation</p></dd>
+displayed in its original orientation. Custom palettes with 'dim' greater
+than 4 cannot take advantage of palette rotation.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -137,6 +147,18 @@ displayed in its original orientation</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "#e8e8e8" "#e4acac" "#c85a5a" "#b0d5df" "#ad9ea5" "#985356" "#64acbe" "#627f8c" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       3-3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "#574249" </span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># custom palette</span></span>
+<span class="r-in"><span class="va">custom_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span class="r-in">    <span class="st">"1-1"</span> <span class="op">=</span> <span class="st">"#cabed0"</span>, <span class="co"># low x, low y</span></span>
+<span class="r-in">    <span class="st">"2-1"</span> <span class="op">=</span> <span class="st">"#ae3a4e"</span>, <span class="co"># high x, low y</span></span>
+<span class="r-in">    <span class="st">"1-2"</span> <span class="op">=</span> <span class="st">"#4885c1"</span>, <span class="co"># low x, high y</span></span>
+<span class="r-in">    <span class="st">"2-2"</span> <span class="op">=</span> <span class="st">"#3f2949"</span> <span class="co"># high x, high y</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="va">custom_pal</span>, dim <span class="op">=</span> <span class="fl">2</span>, preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       1-1       2-1       1-2       2-2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> "#cabed0" "#ae3a4e" "#4885c1" "#3f2949" </span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
