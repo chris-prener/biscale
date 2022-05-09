@@ -24,3 +24,6 @@ reference:
     desc: "Sample data for demonstrating bivariate mapping"
     contents:
     - stl_race_income
+
+development:
+  mode: auto
