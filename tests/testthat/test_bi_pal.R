@@ -102,11 +102,29 @@ custom_pal_invalid2 <- c(
   "2-2" = "#3f" # high x, high y
 )
 
+custom_pal_invalid3 <- c(
+  "1-1" = "#cabed0", # low x, low y
+  "2-1" = "#ae3a4e", # high x, low y
+  "1-2" = "#4885c1", # low x, high y
+  "1-2" = "#3f2949" # high x, high y
+)
+
+custom_pal_invalid4 <- c(
+  "1-1" = "#cabed0", # low x, low y
+  "1-2" = "#4885c1", # low x, high y
+  "2-1" = "#ae3a4e", # high x, low y
+  "2-2" = "#3f2949" # high x, high y
+)
+
 test_that("custom palettes with common errors are caught", {
   expect_error(bi_pal(pal = custom_pal_invalid1, dim = 2, preview = FALSE),
                "Custom palette contains formatting errors - at least one entry does not begin with a hash.")
   expect_error(bi_pal(pal = custom_pal_invalid2, dim = 2, preview = FALSE),
                "Custom palette contains formatting errors - at least one entry is not the right length.")
+  expect_error(bi_pal(pal = custom_pal_invalid3, dim = 2, preview = FALSE),
+               "Custom palette contains formatting errors - at least one entry name is incorrect.")
+  expect_error(bi_pal(pal = custom_pal_invalid4, dim = 2, preview = FALSE),
+               "Custom palette contains formatting errors - at least one entry name is incorrect.")
   expect_error(bi_pal(pal = custom_pal_valid2, dim = 2, preview = FALSE),
                "The custom palette provided does not have the correct number of entries for the given dimensions.")
   expect_error(bi_pal(pal = custom_pal_valid2, dim = 5, preview = FALSE, flip_axes = TRUE),

@@ -170,6 +170,8 @@ pal_validate <- function(pal, dim, flip_axes, rotate_pal){
       stop("The custom palette provided does not have the correct number of entries for the given dimensions.")
     }
 
+    pal_custom_validate_names(pal = pal, dim = dim)
+
     x <- lapply(pal, pal_custom_validate_hash)
     x <- lapply(pal, pal_custom_validate_length)
 
@@ -197,6 +199,19 @@ pal_custom_validate_length <- function(x){
 
   if(nchar(x) != 7){
     stop("Custom palette contains formatting errors - at least one entry is not the right length.")
+  }
+
+}
+
+pal_custom_validate_names <- function(pal, dim){
+
+  x <- rep(x = 1:dim, times = dim)
+  y <- sort(rep(x = 1:dim, times = dim))
+
+  std <- paste(x, y, sep = "-")
+
+  if (all(names(pal) == std) == FALSE){
+    stop("Custom palette contains formatting errors - at least one entry name is incorrect.")
   }
 
 }
