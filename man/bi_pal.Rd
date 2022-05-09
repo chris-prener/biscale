@@ -2,23 +2,38 @@
 % Please edit documentation in R/bi_pal.R
 \name{bi_pal}
 \alias{bi_pal}
-\title{Palette Preview and Hex Values}
+\title{Preview Palettes and Hex Values}
 \usage{
 bi_pal(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE)
 }
 \arguments{
-\item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
-\code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
+\item{pal}{A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
+    \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
+    \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
+    \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
+    \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
 
-\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
-\code{3} for a three-by-three palette.}
+    Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
+    for legacy support. The numbered palettes support four-by-four bivarite
+    maps while the un-numbered ones, which were the five included in the
+    original release of the package, only support two-by-two and
+    three-by-three maps.}
 
-\item{preview}{A logical scalar; if \code{TRUE} (default), an image preview will
-be generated. If \code{FALSE}, a vector with hex color values will be returned.}
+\item{dim}{The dimensions of the palette, either \code{2} for a
+two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
+for a four-by-four palette.}
 
-\item{flip_axes}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
+\item{preview}{A logical scalar; if \code{TRUE} (default), an image preview
+will be generated. If \code{FALSE}, a vector with hex color values will
+be returned.}
 
-\item{rotate_pal}{A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.}
+\item{flip_axes}{A logical scalar; if \code{TRUE} the axes of the palette
+will be flipped. If \code{FALSE} (default), the palette will be displayed
+on its original axes.}
+
+\item{rotate_pal}{A logical scalar; if \code{TRUE} the palette will be
+rotated 180 degrees. If \code{FALSE} (default), the palette will be
+displayed in its original orientation}
 }
 \value{
 If \code{preview = TRUE}, an image preview of the legend will be returned.
