@@ -1,33 +1,40 @@
 on:
   push:
     branches:
-      - master
+      - main
 
 name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@master
-      - uses: r-lib/actions/setup-r@master
-      - uses: r-lib/actions/setup-pandoc@master
-      - name: Install R Depedencies
-        run: |
-          Rscript -e 'install.packages("remotes")' \
-                  -e 'remotes::install_deps(dependencies = TRUE)' \
-                  -e 'install.packages("pkgdown")'
-      - name: Install package
-        run: R CMD INSTALL .
-      - name: Build pkgdown Site
-        run: |
-          Rscript -e "pkgdown::build_site()"
-      - name: Commit Site Changes
-        run: |
-          git config --local user.name "biscale GHA"
-          git commit -m "Rebuild pkgdown Site" -a
-      - name: Push Site Changes
-        uses: ad-m/github-push-action@v0.6.0
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          branch: website
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::pkgdown, local::.
+          needs: website
+
+      - name: Build site
+        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+        shell: Rscript {0}
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          clean: false
+          branch: main
+          folder: docs
