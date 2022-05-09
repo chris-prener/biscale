@@ -60,11 +60,11 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument. Please choose one of: .")
+    stop("A palette must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
   }
 
   if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2", "Bluegill", "BlueGold", "BlueOr", "BlueYl", "PinkGrn", "PurpleGrn", "PurpleOr") == FALSE){
-    stop("The given palette is not one of the allowed options for bivariate mapping. Please see the help file '?bi_pal' for a list of included palettes.")
+    stop("The given palette is not one of the allowed options for bivariate mapping. Please see bi_pal's help file for a list of included palettes.")
   }
 
   if (is.numeric(dim) == FALSE){
@@ -117,9 +117,6 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
 }
 
 bi_pal_pull <- function(pal, dim, flip_axes, rotate_pal){
-
-  ## load palette list
-  load("R/sysdata.rda")
 
   ## pull palette vector
   out <- pals[[pal]][[paste0("d", dim)]]
