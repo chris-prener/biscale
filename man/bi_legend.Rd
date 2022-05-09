@@ -8,21 +8,19 @@ bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE,
     rotate_pal = FALSE, pad_width = NA, pad_color)
 }
 \arguments{
-\item{pal}{A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
-    \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
-    \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
-    \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
-    \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
+\item{pal}{A palette name or a vector containing a custom palette. See
+the help file for \code{bi_pal} for complete list of built-in palette
+names. If you are providing a custom palette, it must follow the formatting
+described in the 'Advanced Options' vignette.}
 
-    Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
-    for legacy support. The numbered palettes support four-by-four bivarite
-    maps while the un-numbered ones, which were the five included in the
-    original release of the package, only support two-by-two and
-    three-by-three maps.}
+\item{dim}{The dimensions of the palette. To use the built-in palettes,
+    this value must be either \code{2}, \code{3}, or \code{4}. A value of
+    \code{3}, for example, would be used to create a three-by-three bivariate
+    map with a total of 9 classes.
 
-\item{dim}{The dimensions of the palette, either \code{2} for a
-two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
-for a four-by-four palette.}
+    If you are using a custom palette, this value may be larger (though these
+    maps can be very hard to interpret). See the 'Advanced Options' vignette
+    for details on the relationship between \code{dim} values and palette size.}
 
 \item{xlab}{Text for desired x axis label on legend}
 
@@ -32,11 +30,13 @@ for a four-by-four palette.}
 
 \item{flip_axes}{A logical scalar; if \code{TRUE} the axes of the palette
 will be flipped. If \code{FALSE} (default), the palette will be displayed
-on its original axes.}
+on its original axes. Custom palettes with 'dim' greater
+than 4 cannot take advantage of flipping axes.}
 
 \item{rotate_pal}{A logical scalar; if \code{TRUE} the palette will be
 rotated 180 degrees. If \code{FALSE} (default), the palette will be
-displayed in its original orientation}
+displayed in its original orientation. Custom palettes with 'dim' greater
+than 4 cannot take advantage of palette rotation.}
 
 \item{pad_width}{An optional numeric scalar; controls the width of padding
 between tiles in the legend}

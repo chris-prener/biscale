@@ -30,7 +30,7 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),
                "The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = "ham"),
-               "The 'dim' argument only accepts the numeric values.")
+               "The 'dim' argument only accepts numeric values.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2, keep_factors = "ham"),
                "A logical scalar must be supplied for 'keep_factors'. Please provide either 'TRUE' or 'FALSE'.")
   expect_error(bi_class(stl_race_income, x = factor_x, y = factor_y, dim = 2),

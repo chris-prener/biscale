@@ -7,21 +7,31 @@
 bi_pal(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE)
 }
 \arguments{
-\item{pal}{A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
-    \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
-    \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
-    \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
-    \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
+\item{pal}{A palette name or a vector containing a custom palette.
+    If you are providing a palette name, it must be one of:
+    \code{"Bluegill"}, \code{"BlueGold"}, \code{"BlueOr"}, \code{"BlueYl"},
+    \code{"Brown"}/\code{"Brown2"}, \code{"DkBlue"}/\code{"DkBlue2"},
+    \code{"DkCyan"}/\code{"DkCyan2"}, \code{"DkViolet"}/\code{"DkViolet2"},
+    \code{"GrPink"}/\code{"GrPink2"}, \code{"PinkGrn"}, \code{"PurpleGrn"},
+    or \code{"PurpleOr"}.
 
     Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
     for legacy support. The numbered palettes support four-by-four bivarite
     maps while the un-numbered ones, which were the five included in the
     original release of the package, only support two-by-two and
-    three-by-three maps.}
+    three-by-three maps.
 
-\item{dim}{The dimensions of the palette, either \code{2} for a
-two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
-for a four-by-four palette.}
+    If you are providing a custom palette, it must follow the formatting
+    described in the 'Advanced Options' vignette.}
+
+\item{dim}{The dimensions of the palette. To use the built-in palettes,
+    this value must be either \code{2}, \code{3}, or \code{4}. A value of
+    \code{3}, for example, would be used to create a three-by-three bivariate
+    map with a total of 9 classes.
+
+    If you are using a custom palette, this value may be larger (though these
+    maps can be very hard to interpret). See the 'Advanced Options' vignette
+    for details on the relationship between \code{dim} values and palette size.}
 
 \item{preview}{A logical scalar; if \code{TRUE} (default), an image preview
 will be generated. If \code{FALSE}, a vector with hex color values will
@@ -29,11 +39,13 @@ be returned.}
 
 \item{flip_axes}{A logical scalar; if \code{TRUE} the axes of the palette
 will be flipped. If \code{FALSE} (default), the palette will be displayed
-on its original axes.}
+on its original axes. Custom palettes with 'dim' greater
+than 4 cannot take advantage of flipping axes.}
 
 \item{rotate_pal}{A logical scalar; if \code{TRUE} the palette will be
 rotated 180 degrees. If \code{FALSE} (default), the palette will be
-displayed in its original orientation}
+displayed in its original orientation. Custom palettes with 'dim' greater
+than 4 cannot take advantage of palette rotation.}
 }
 \value{
 If \code{preview = TRUE}, an image preview of the legend will be returned.
@@ -63,5 +75,15 @@ bi_pal(pal = "GrPink", dim = 3)
 
 # gray pink palette, 3x3 hex values
 bi_pal(pal = "GrPink", dim = 3, preview = FALSE)
+
+# custom palette
+custom_pal <- c(
+    "1-1" = "#cabed0", # low x, low y
+    "2-1" = "#ae3a4e", # high x, low y
+    "1-2" = "#4885c1", # low x, high y
+    "2-2" = "#3f2949" # high x, high y
+)
+
+bi_pal(pal = custom_pal, dim = 2, preview = FALSE)
 
 }

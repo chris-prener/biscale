@@ -11,29 +11,41 @@
 #'
 #' @usage bi_pal(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE)
 #'
-#' @param pal A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
-#'     \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
-#'     \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
-#'     \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
-#'     \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
+#' @param pal A palette name or a vector containing a custom palette.
+#'     If you are providing a palette name, it must be one of:
+#'     \code{"Bluegill"}, \code{"BlueGold"}, \code{"BlueOr"}, \code{"BlueYl"},
+#'     \code{"Brown"}/\code{"Brown2"}, \code{"DkBlue"}/\code{"DkBlue2"},
+#'     \code{"DkCyan"}/\code{"DkCyan2"}, \code{"DkViolet"}/\code{"DkViolet2"},
+#'     \code{"GrPink"}/\code{"GrPink2"}, \code{"PinkGrn"}, \code{"PurpleGrn"},
+#'     or \code{"PurpleOr"}.
 #'
 #'     Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
 #'     for legacy support. The numbered palettes support four-by-four bivarite
 #'     maps while the un-numbered ones, which were the five included in the
 #'     original release of the package, only support two-by-two and
 #'     three-by-three maps.
-#' @param dim The dimensions of the palette, either \code{2} for a
-#'     two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
-#'     for a four-by-four palette.
+#'
+#'     If you are providing a custom palette, it must follow the formatting
+#'     described in the 'Advanced Options' vignette.
+#' @param dim The dimensions of the palette. To use the built-in palettes,
+#'     this value must be either \code{2}, \code{3}, or \code{4}. A value of
+#'     \code{3}, for example, would be used to create a three-by-three bivariate
+#'     map with a total of 9 classes.
+#'
+#'     If you are using a custom palette, this value may be larger (though these
+#'     maps can be very hard to interpret). See the 'Advanced Options' vignette
+#'     for details on the relationship between \code{dim} values and palette size.
 #' @param preview A logical scalar; if \code{TRUE} (default), an image preview
 #'     will be generated. If \code{FALSE}, a vector with hex color values will
 #'     be returned.
 #' @param flip_axes A logical scalar; if \code{TRUE} the axes of the palette
 #'     will be flipped. If \code{FALSE} (default), the palette will be displayed
-#'     on its original axes.
+#'     on its original axes. Custom palettes with 'dim' greater
+#'     than 4 cannot take advantage of flipping axes.
 #' @param rotate_pal A logical scalar; if \code{TRUE} the palette will be
 #'     rotated 180 degrees. If \code{FALSE} (default), the palette will be
-#'     displayed in its original orientation
+#'     displayed in its original orientation. Custom palettes with 'dim' greater
+#'     than 4 cannot take advantage of palette rotation.
 #'
 #' @return If \code{preview = TRUE}, an image preview of the legend will be returned.
 #'     Otherwise, if \code{preview = FALSE}, a named vector with class values for names
@@ -52,6 +64,16 @@
 #' # gray pink palette, 3x3 hex values
 #' bi_pal(pal = "GrPink", dim = 3, preview = FALSE)
 #'
+#' # custom palette
+#' custom_pal <- c(
+#'     "1-1" = "#cabed0", # low x, low y
+#'     "2-1" = "#ae3a4e", # high x, low y
+#'     "1-2" = "#4885c1", # low x, high y
+#'     "2-2" = "#3f2949" # high x, high y
+#' )
+#'
+#' bi_pal(pal = custom_pal, dim = 2, preview = FALSE)
+#'
 #' @export
 bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal = FALSE){
 
@@ -60,33 +82,11 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
-  }
-
-  if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2", "Bluegill", "BlueGold", "BlueOr", "BlueYl", "PinkGrn", "PurpleGrn", "PurpleOr") == FALSE){
-    stop("The given palette is not one of the allowed options for bivariate mapping. Please see bi_pal's help file for a list of included palettes.")
+    stop("A palette name or a custom palette vector must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
   }
 
   if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
-  }
-
-  if (dim %in% c(2:4) == FALSE){
-    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
-  }
-
-  if (dim == 4 & pal %in% c("DkViolet", "GrPink", "DkBlue", "DkCyan", "Brown")){
-    if(pal == "DkViolet"){
-      stop("The legacy 'DkViolet' palette does not support 4x4 bivarite mapping. Please use 'DkViolet2' instead.")
-    } else if (pal == "GrPink"){
-      stop("The legacy 'GrPink' palette does not support 4x4 bivarite mapping. Please use 'GrPink2' instead.")
-    } else if (pal == "DkBlue"){
-      stop("The legacy 'DkBlue' palette does not support 4x4 bivarite mapping. Please use 'DkBlue2' instead.")
-    } else if (pal == "DkCyan"){
-      stop("The legacy 'DkCyan' palette does not support 4x4 bivarite mapping. Please use 'DkCyan2' instead.")
-    } else if (pal == "Brown"){
-      stop("The legacy 'Brown' palette does not support 4x4 bivarite mapping. Please use 'Brown2' instead.")
-    }
+    stop("The 'dim' argument only accepts numeric values.")
   }
 
   if (is.logical(preview) == FALSE){
@@ -101,8 +101,14 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
     stop("A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
+  pal_validate(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
+
   # create vector
-  out <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
+  if (length(pal) == 1){
+    out <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
+  } else if (length(pal) > 1){
+    out <- pal
+  }
 
   # optionally create preview
   if (preview == TRUE){
@@ -135,6 +141,65 @@ bi_pal_pull <- function(pal, dim, flip_axes, rotate_pal){
 
 }
 
+pal_validate <- function(pal, dim, flip_axes, rotate_pal){
+
+  if(length(pal) == 1){
+
+    if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2", "Bluegill", "BlueGold", "BlueOr", "BlueYl", "PinkGrn", "PurpleGrn", "PurpleOr") == FALSE){
+      stop("The given palette is not one of the allowed options for bivariate mapping. Please see bi_pal's help file for a list of included palettes.")
+    }
+
+    if (dim == 4 & pal %in% c("DkViolet", "GrPink", "DkBlue", "DkCyan", "Brown")){
+
+      if(pal == "DkViolet"){
+        stop("The legacy 'DkViolet' palette does not support 4x4 bivarite mapping. Please use 'DkViolet2' instead.")
+      } else if (pal == "GrPink"){
+        stop("The legacy 'GrPink' palette does not support 4x4 bivarite mapping. Please use 'GrPink2' instead.")
+      } else if (pal == "DkBlue"){
+        stop("The legacy 'DkBlue' palette does not support 4x4 bivarite mapping. Please use 'DkBlue2' instead.")
+      } else if (pal == "DkCyan"){
+        stop("The legacy 'DkCyan' palette does not support 4x4 bivarite mapping. Please use 'DkCyan2' instead.")
+      } else if (pal == "Brown"){
+        stop("The legacy 'Brown' palette does not support 4x4 bivarite mapping. Please use 'Brown2' instead.")
+      }
+
+    }
+  } else if (length(pal) > 1){
+
+    if (length(pal)/dim != dim){
+      stop("The custom palette provided does not have the correct number of entries for the given dimensions.")
+    }
+
+    x <- lapply(pal, pal_custom_validate_hash)
+    x <- lapply(pal, pal_custom_validate_length)
+
+    if (dim > 4 & flip_axes == TRUE){
+      stop("Flipping axes for custom palettes is only available when 'dim' is 4 or less.")
+    }
+
+    if (dim > 4 & rotate_pal == TRUE){
+      stop("Rotation for custom palettes is only available when 'dim' is 4 or less.")
+    }
+
+  }
+
+}
+
+pal_custom_validate_hash <- function(x){
+
+  if(substr(x, 1, 1) != "#"){
+    stop("Custom palette contains formatting errors - at least one entry does not begin with a hash.")
+  }
+
+}
+
+pal_custom_validate_length <- function(x){
+
+  if(nchar(x) != 7){
+    stop("Custom palette contains formatting errors - at least one entry is not the right length.")
+  }
+
+}
 
 # Flip the Axes of a Palette (Not Exported)
 #

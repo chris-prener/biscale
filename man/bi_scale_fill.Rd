@@ -7,17 +7,10 @@
 bi_scale_fill(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...)
 }
 \arguments{
-\item{pal}{A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
-    \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
-    \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
-    \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
-    \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
-
-    Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
-    for legacy support. The numbered palettes support four-by-four bivarite
-    maps while the un-numbered ones, which were the five included in the
-    original release of the package, only support two-by-two and
-    three-by-three maps.}
+\item{pal}{A palette name or a vector containing a custom palette. See
+the help file for \code{bi_pal} for complete list of built-in palette
+names. If you are providing a custom palette, it must follow the formatting
+described in the 'Advanced Options' vignette.}
 
 \item{dim}{The dimensions of the palette, either \code{2} for a
 two-by-two palette, \code{3} for a three-by-three palette, or \code{4}

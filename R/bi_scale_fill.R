@@ -6,17 +6,10 @@
 #'
 #' @usage bi_scale_fill(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...)
 #'
-#' @param pal A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
-#'     \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
-#'     \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
-#'     \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
-#'     \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
-#'
-#'     Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
-#'     for legacy support. The numbered palettes support four-by-four bivarite
-#'     maps while the un-numbered ones, which were the five included in the
-#'     original release of the package, only support two-by-two and
-#'     three-by-three maps.
+#' @param pal A palette name or a vector containing a custom palette. See
+#'     the help file for \code{bi_pal} for complete list of built-in palette
+#'     names. If you are providing a custom palette, it must follow the formatting
+#'     described in the 'Advanced Options' vignette.
 #' @param dim The dimensions of the palette, either \code{2} for a
 #'     two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
 #'     for a four-by-four palette.
@@ -50,42 +43,28 @@ bi_scale_fill <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, .
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
-  }
-
-  if ("bi_pal_custom" %in% class(pal) == TRUE) {
-
-    if (dim == 2 & length(pal) != 4){
-      stop("There is a mismatch between the length of your custom palette object and the given dimensions.")
-    } else if (dim == 3 & length(pal) != 9){
-      stop("There is a mismatch between the length of your custom palette object and the given dimensions.")
-    }
-
-  } else if ("bi_pal_custom" %in% class(pal) == FALSE){
-
-    if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2", "Bluegill", "BlueGold", "BlueOr", "BlueYl", "PinkGrn", "PurpleGrn", "PurpleOr") == FALSE){
-      stop("The given palette is not one of the allowed options for bivariate mapping. Please see bi_scale_fill's help file for a list of included palettes.")
-    }
-
+    stop("A palette name or a custom palette vector must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
   }
 
   if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
+    stop("The 'dim' argument only accepts numeric values.")
   }
 
-  if (dim %in% c(2:4) == FALSE){
-    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
+  if (is.logical(flip_axes) == FALSE){
+    stop("A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
-  # obtain palette
-  if ("bi_pal_custom" %in% class(pal) == TRUE) {
+  if (is.logical(rotate_pal) == FALSE){
+    stop("A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
+  }
 
-    x <- pal
+  pal_validate(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
-  } else if ("bi_pal_custom" %in% class(pal) == FALSE){
-
+  # create palette
+  if (length(pal) == 1){
     x <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
-
+  } else if (length(pal) > 1){
+    x <- pal
   }
 
   # apply to ggplot object

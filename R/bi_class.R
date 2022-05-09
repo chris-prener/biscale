@@ -16,10 +16,15 @@
 #'     and \code{"jenks"}. If both \code{x} and \code{y} are factors, this argument can
 #'     be omitted.
 #' @param dim The dimensions of the palette. To use the built-in palettes,
-#'     this value must be either '2', '3', or '4'. If you are using a custom
-#'     palette, this value may be larger (though these maps can be very hard
-#'     to interpret). If you are using pre-made factors, both factors must have
-#'     the same number of levels as this value.
+#'     this value must be either \code{2}, \code{3}, or \code{4}. A value of
+#'     \code{3}, for example, would be used to create a three-by-three bivariate
+#'     map with a total of 9 classes.
+#'
+#'     If you are using a custom palette, this value may be larger (though these
+#'     maps can be very hard to interpret).
+#'
+#'     If you are using pre-made factors, both factors must have the same number
+#'     of levels as this value.
 #' @param keep_factors A logical scalar; if \code{TRUE}, the intermediate factor
 #'     variables created as part of the calculation of \code{bi_class} will be
 #'     retained. If \code{FALSE} (default), they will not be returned.
@@ -62,7 +67,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
   }
 
   if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts the numeric values.")
+    stop("The 'dim' argument only accepts numeric values.")
   }
 
   if (is.logical(keep_factors) == FALSE){
