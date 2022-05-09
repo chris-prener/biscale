@@ -1,0 +1,11 @@
+pandoc: 2.14.2
+pkgdown: 2.0.3
+pkgdown_sha: ~
+articles:
+  biscale: biscale.html
+  palettes: palettes.html
+last_built: 2022-05-09T19:05Z
+urls:
+  reference: https://slu-openGIS.github.io/biscale/reference
+  article: https://slu-openGIS.github.io/biscale/articles
+
