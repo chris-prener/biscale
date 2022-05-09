@@ -4,49 +4,55 @@
 \alias{bi_legend}
 \title{Create Object for Drawing Legend}
 \usage{
-bi_legend(pal, dim = 3, xlab, ylab, size,
- flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color)
+bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE,
+    rotate_pal = FALSE, pad_width = NA, pad_color)
 }
 \arguments{
-\item{pal}{A palette name; one of \code{"Brown"}, \code{"DkBlue"},
-\code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}.}
+\item{pal}{A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
+    \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
+    \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
+    \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
+    \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
 
-\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
-\code{3} for a three-by-three palette.}
+    Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
+    for legacy support. The numbered palettes support four-by-four bivarite
+    maps while the un-numbered ones, which were the five included in the
+    original release of the package, only support two-by-two and
+    three-by-three maps.}
+
+\item{dim}{The dimensions of the palette, either \code{2} for a
+two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
+for a four-by-four palette.}
 
 \item{xlab}{Text for desired x axis label on legend}
 
 \item{ylab}{Text for desired y axis label on legend}
 
-\item{size}{Size of axis labels}
+\item{size}{A numeric scalar; size of axis labels}
 
-\item{flip_axes}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
+\item{flip_axes}{A logical scalar; if \code{TRUE} the axes of the palette
+will be flipped. If \code{FALSE} (default), the palette will be displayed
+on its original axes.}
 
-\item{rotate_pal}{A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.}
+\item{rotate_pal}{A logical scalar; if \code{TRUE} the palette will be
+rotated 180 degrees. If \code{FALSE} (default), the palette will be
+displayed in its original orientation}
 
-\item{pad_width}{An optional numeric scalar; Controls the width of padding between tiles in the legend}
+\item{pad_width}{An optional numeric scalar; controls the width of padding
+between tiles in the legend}
 
-\item{pad_color}{An optional character scalar (valid to ggplot::geom_tile); Controls the color of padding between tiles in the legend}
+\item{pad_color}{An optional character scalar; controls the color of padding
+between tiles in the legend}
 }
 \value{
 A \code{ggplot} object with a bivariate legend.
 }
 \description{
-Creates a \code{ggplot} object containing a legend that is specific
-    to bivariate mapping.
+Creates a \code{ggplot} object containing a legend that is
+    specific to bivariate mapping.
 }
 \examples{
-# construct 2x2 legend
-legend <- bi_legend(pal = "GrPink",
-                    dim = 2,
-                    xlab = "Higher \% White ",
-                    ylab = "Higher Income ",
-                    size = 16)
-
-# print legend
-legend
-
-# construct 3x3 legend
+# sample 3x3 legend
 legend <- bi_legend(pal = "GrPink",
                     dim = 3,
                     xlab = "Higher \% White ",

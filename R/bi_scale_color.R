@@ -6,25 +6,36 @@
 #'
 #' @usage bi_scale_color(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...)
 #'
-#' @param pal Either palette name (one of \code{"Brown"}, \code{"DkBlue"},
-#'     \code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}) or a custom palette
-#'     object created with \code{\link{bi_pal_manual}}.
-#' @param dim The dimensions of the palette, either \code{2} for a two-by-two palette or
-#'     \code{3} for a three-by-three palette.
-#' @param flip_axes A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.
-#' @param rotate_pal A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.
-#' @param ... Arguments to pass to \code{\link{scale_fill_manual}}
+#' @param pal A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
+#'     \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
+#'     \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
+#'     \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
+#'     \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
+#'
+#'     Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
+#'     for legacy support. The numbered palettes support four-by-four bivarite
+#'     maps while the un-numbered ones, which were the five included in the
+#'     original release of the package, only support two-by-two and
+#'     three-by-three maps.
+#' @param dim The dimensions of the palette, either \code{2} for a
+#'     two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
+#'     for a four-by-four palette.
+#' @param flip_axes A logical scalar; if \code{TRUE} the axes of the palette
+#'     will be flipped. If \code{FALSE} (default), the palette will be displayed
+#'     on its original axes.
+#' @param rotate_pal A logical scalar; if \code{TRUE} the palette will be
+#'     rotated 180 degrees. If \code{FALSE} (default), the palette will be
+#'     displayed in its original orientation
+#' @param ... Arguments to pass to \code{\link{scale_color_manual}}
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
-#'
-#' @importFrom ggplot2 scale_color_manual
 #'
 #' @export
 bi_scale_color <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...){
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis' or supply a custom palette created with 'bi_pal_custom()'.")
+    stop("A palette must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
   }
 
   if ("bi_pal_custom" %in% class(pal) == TRUE) {
@@ -37,18 +48,18 @@ bi_scale_color <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, 
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    if (pal %in% c("BlGold", "BlOrange", "BlYellow", "Brown", "Diverging", "DkBlue", "DkCyan", "DkViolet", "Fire", "GnPink", "GnPurple", "GrPink", "OrgPurple", "Reds", "Viridis") == FALSE){
-      stop("The given palette is not one of the allowed options for bivariate mapping. Please choose one of: 'BlGold', 'BlOrange', 'BlYellow', 'Brown', 'Diverging', 'DkBlue', 'DkCyan', 'DkViolet', 'Fire', 'GnPink', 'GnPurple', 'GrPink', 'OrgPurple', 'Reds' or 'Viridis'.")
+    if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2", "Bluegill", "BlueGold", "BlueOr", "BlueYl", "PinkGrn", "PurpleGrn", "PurpleOr") == FALSE){
+      stop("The given palette is not one of the allowed options for bivariate mapping. Please see bi_scale_color's help file for a list of included palettes.")
     }
 
   }
 
   if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
   }
 
-  if (dim != 2 & dim != 3){
-    stop("The 'dim' argument only accepts the numeric values '2' or '3'.")
+  if (dim %in% c(2:4) == FALSE){
+    stop("The 'dim' argument only accepts the numeric values '2', '3', or '4'.")
   }
 
   # obtain palette
@@ -58,31 +69,7 @@ bi_scale_color <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, 
 
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
-    x <- switch(pal,
-      "DkViolet" = pal_dkviolet(n = dim),
-      "GrPink" = pal_grpink(n = dim),
-      "DkBlue" = pal_dkblue(n = dim),
-      "DkCyan" = pal_dkcyan(n = dim),
-      "Brown" = pal_brown(n = dim),
-      "BlGold" = pal_blgold(n = dim),
-      "BlOrange" = pal_blorange(n = dim),
-      "BlYellow" = pal_blyellow(n = dim),
-      "Viridis" = pal_viridis(n = dim),
-      "Diverging" = pal_diverging(n = dim),
-      "GnPink" = pal_gnpink(n = dim),
-      "GnPurple" = pal_gnpurp(n = dim),
-      "OrgPurple" = pal_orgpurp(n = dim),
-      "Fire" = pal_fire(n = dim),
-      "Reds" = pal_reds(n = dim)
-    )
-
-    if(flip_axes){
-      x <- bi_pal_flip(x)
-    }
-
-    if(rotate_pal){
-      x <- bi_pal_rotate(x)
-    }
+    x <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
   }
 

@@ -15,7 +15,7 @@ Description: Provides a 'ggplot2' centric approach to bivariate mapping. This is
     palettes appropriate for bivariate mapping and a scale function for 'ggplot2' 
     calls that adds those palettes to maps. A tool for creating bivariate legends 
     is also included.
-Depends: R (>= 3.4)
+Depends: R (>= 3.5.0)
 License: GPL-3
 URL: https://github.com/slu-openGIS/biscale
 BugReports: https://github.com/slu-openGIS/biscale/issues
@@ -23,17 +23,16 @@ Encoding: UTF-8
 LazyData: true
 Imports:
   classInt,
-  dplyr,
   ggplot2,
   glue,
   rlang,
-  sf,
   stats,
-  tidyr
+  utils
 RoxygenNote: 7.1.2
 Suggests:
   covr,
   knitr,
   rmarkdown,
+  sf,
   testthat
 VignetteBuilder: knitr
