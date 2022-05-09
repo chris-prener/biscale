@@ -90,6 +90,7 @@ jobs:
       - name: Test Coverage
         if: matrix.config.r == 'devel'
         run: |
+          Rscript -e 'install.packages("xml2")'
           Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")'
           Rscript -e 'covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")'
 
