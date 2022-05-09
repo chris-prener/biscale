@@ -139,6 +139,9 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
 bi_legend_build <- function(leg, xlab, ylab, size, pad_width, pad_color){
 
+  # global bindings
+  bi_fill = x = y = NULL
+
   # nse
   xQN <- rlang::quo_name(rlang::enquo(xlab))
   yQN <- rlang::quo_name(rlang::enquo(ylab))
