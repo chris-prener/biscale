@@ -34,9 +34,19 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
                "The legacy 'Brown' palette does not support 4x4 bivarite mapping. Please use 'Brown2' instead.")
   expect_error(bi_pal(pal = "GrPink", dim = 3, preview = "ham"),
                "A logical scalar must be supplied for 'preview'. Please provide either 'TRUE' or 'FALSE'.")
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, flip_axes = "ham"),
+               "A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, rotate_pal = "ham"),
+               "A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
 })
 
 # test inputs ------------------------------------------------
+
+test_that("correctly specified functions execute without error", {
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, flip_axes = TRUE, rotate_pal = FALSE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, flip_axes = FALSE, rotate_pal = TRUE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, flip_axes = TRUE, rotate_pal = TRUE), NA)
+})
 
 # test results ------------------------------------------------
 
