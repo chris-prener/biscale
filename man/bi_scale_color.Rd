@@ -41,3 +41,6 @@ Applies the selected palette as the color aesthetic when \code{\link{geom_sf}}
     is used and the \code{bi_class} variable is given as the \code{color} in the aesthetic
     mapping.
 }
+\seealso{
+bi_pal
+}

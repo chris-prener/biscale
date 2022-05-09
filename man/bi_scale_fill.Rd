@@ -48,3 +48,6 @@ plot <- ggplot() +
   bi_scale_fill(pal = "GrPink", dim = 3)
 
 }
+\seealso{
+bi_pals
+}

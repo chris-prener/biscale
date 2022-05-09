@@ -23,6 +23,8 @@
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
 #'
+#' @seealso bi_pals
+#'
 #' @importFrom ggplot2 scale_fill_manual
 #'
 #' @examples

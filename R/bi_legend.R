@@ -36,6 +36,8 @@
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
+#' @seealso bi_pal
+#'
 #' @examples
 #' # sample 3x3 legend
 #' legend <- bi_legend(pal = "GrPink",

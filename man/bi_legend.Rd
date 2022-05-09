@@ -63,3 +63,6 @@ legend <- bi_legend(pal = "GrPink",
 legend
 
 }
+\seealso{
+bi_pal
+}

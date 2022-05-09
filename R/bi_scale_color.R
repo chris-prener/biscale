@@ -30,6 +30,8 @@
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
 #'
+#' @seealso bi_pal
+#'
 #' @export
 bi_scale_color <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...){
 
