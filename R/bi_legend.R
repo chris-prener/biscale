@@ -55,7 +55,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
 
   # check parameters
   if (missing(pal) == TRUE){
-    stop("A palette must be specified for the 'pal' argument. Please choose one of: .")
+    stop("A palette must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
   }
 
   if ("bi_pal_custom" %in% class(pal) == TRUE) {
@@ -69,7 +69,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
   } else if ("bi_pal_custom" %in% class(pal) == FALSE){
 
     if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2", "Bluegill", "BlueGold", "BlueOr", "BlueYl", "PinkGrn", "PurpleGrn", "PurpleOr") == FALSE){
-      stop("The given palette is not one of the allowed options for bivariate mapping. Please see the help file '?bi_legend' for a list of included palettes.")
+      stop("The given palette is not one of the allowed options for bivariate mapping. Please see bi_pal's help file for a list of included palettes.")
     }
 
   }
