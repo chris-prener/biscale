@@ -9,17 +9,27 @@ bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE)
 \arguments{
 \item{.data}{A data frame, tibble, or \code{sf} object}
 
-\item{x}{The \code{x} variable}
+\item{x}{The \code{x} variable, either a numeric (including double and integer
+classes) or factor}
 
-\item{y}{The \code{y} variable}
+\item{y}{The \code{y} variable, either a numeric (including double and integer
+classes) or factor}
 
 \item{style}{A string identifying the style used to calculate breaks. Currently
 supported styles are \code{"quantile"} (default), \code{"equal"}, \code{"fisher"},
 and \code{"jenks"}. If both \code{x} and \code{y} are factors, this argument can
 be omitted.}
 
-\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
-\code{3} for a three-by-three palette.}
+\item{dim}{The dimensions of the palette. To use the built-in palettes,
+    this value must be either \code{2}, \code{3}, or \code{4}. A value of
+    \code{3}, for example, would be used to create a three-by-three bivariate
+    map with a total of 9 classes.
+
+    If you are using a custom palette, this value may be larger (though these
+    maps can be very hard to interpret).
+
+    If you are using pre-made factors, both factors must have the same number
+    of levels as this value.}
 
 \item{keep_factors}{A logical scalar; if \code{TRUE}, the intermediate factor
 variables created as part of the calculation of \code{bi_class} will be
