@@ -7,16 +7,29 @@
 bi_scale_fill(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...)
 }
 \arguments{
-\item{pal}{Either palette name (one of \code{"Brown"}, \code{"DkBlue"},
-\code{"DkCyan"}, \code{"DkViolet"}, or \code{"GrPink"}) or a custom palette
-object created with \code{\link{bi_pal_manual}}.}
+\item{pal}{A palette name; one of \code{"Bluegill"}, \code{"BlueGold"},
+    \code{"BlueOr"}, \code{"BlueYl"}, \code{"Brown"}/\code{"Brown2"},
+    \code{"DkBlue"}/\code{"DkBlue2"}, \code{"DkCyan"}/\code{"DkCyan2"},
+    \code{"DkViolet"}/\code{"DkViolet2"}, \code{"GrPink"}/\code{"GrPink2"},
+    \code{"PinkGrn"}, \code{"PurpleGrn"}, or \code{"PurpleOr"}.
 
-\item{dim}{The dimensions of the palette, either \code{2} for a two-by-two palette or
-\code{3} for a three-by-three palette.}
+    Pairs of palettes, such as \code{"GrPink"}/\code{"GrPink2"}, are included
+    for legacy support. The numbered palettes support four-by-four bivarite
+    maps while the un-numbered ones, which were the five included in the
+    original release of the package, only support two-by-two and
+    three-by-three maps.}
 
-\item{flip_axes}{A logical scalar; if \code{TRUE} (default: FALSE) the axes of the palette will be flipped.}
+\item{dim}{The dimensions of the palette, either \code{2} for a
+two-by-two palette, \code{3} for a three-by-three palette, or \code{4}
+for a four-by-four palette.}
 
-\item{rotate_pal}{A logical scalar; if \code{TRUE} (default: FALSE) the palette will be rotated 180 degrees.}
+\item{flip_axes}{A logical scalar; if \code{TRUE} the axes of the palette
+will be flipped. If \code{FALSE} (default), the palette will be displayed
+on its original axes.}
+
+\item{rotate_pal}{A logical scalar; if \code{TRUE} the palette will be
+rotated 180 degrees. If \code{FALSE} (default), the palette will be
+displayed in its original orientation}
 
 \item{...}{Arguments to pass to \code{\link{scale_fill_manual}}}
 }
@@ -27,4 +40,18 @@ A \code{ggplot} object with the given bivariate palette applied to the data.
 Applies the selected palette as the fill aesthetic when \code{\link{geom_sf}}
     is used and the \code{bi_class} variable is given as the \code{fill} in the aesthetic
     mapping.
+}
+\examples{
+# load suggested dependencies
+library(ggplot2)
+library(sf)
+
+# add breaks, 3x3
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
+
+# create map
+plot <- ggplot() +
+  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  bi_scale_fill(pal = "GrPink", dim = 3)
+
 }
