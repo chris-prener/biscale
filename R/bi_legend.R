@@ -125,7 +125,8 @@ bi_legend_build <- function(leg, xlab, ylab, size, pad_width, pad_color){
   )
 
   # reformat
-  split <- utils::read.table(text = leg$bi_class, sep="-", col.names=c('x', 'y'))
+  split <- utils::read.table(text = leg$bi_class, sep="-", col.names=c('x', 'y'),
+                             encoding = "UTF-8")
   split$x <- as.integer(split$x)
   split$y <- as.integer(split$y)
   leg <- cbind(leg, split)
