@@ -10,6 +10,7 @@ data <- bi_class(data, style = "quantile", x = pctWhite, y = medInc, dim = 4, ke
 # draw map
 map <- ggplot() +
   geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  geom_sf(data = x, fill = NA, color = "#ffffff", size = 1.5) +
   bi_scale_fill(pal = "DkBlue2", dim = 4) +
   labs(
     title = "",

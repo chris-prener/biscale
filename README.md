@@ -17,7 +17,7 @@ checks](https://cranchecks.info/badges/worst/biscale)](https://cran.r-project.or
 based on the
 [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/)
 written by Timo Grossenbacher and Angelo Zehr as well as a set of
-bivariate mapping palettes, including Joshua Stevens’ [classive color
+bivariate mapping palettes, including Joshua Stevens’ [classic color
 schemes](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
 
 ![](man/figures/biscale.001.jpeg)
