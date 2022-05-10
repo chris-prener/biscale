@@ -124,12 +124,8 @@ bi_legend_build <- function(leg, xlab, ylab, size, pad_width, pad_color){
     bi_fill = leg
   )
 
-  # reformat
-  split <- utils::read.table(text = leg$bi_class, sep="-", col.names=c('x', 'y'),
-                             encoding = "UTF-8")
-  split$x <- as.integer(split$x)
-  split$y <- as.integer(split$y)
-  leg <- cbind(leg, split)
+  leg$x <- as.integer(substr(leg$bi_class, 1, 1))
+  leg$y <- as.integer(substr(leg$bi_class, 3, 3))
 
   # create ggplot2 legend object
   legend <- ggplot2::ggplot() +
