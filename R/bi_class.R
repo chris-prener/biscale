@@ -106,7 +106,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
     }
 
     out <- .data
-    out$bi_y <- cut(out[[xQN]], breaks = classInt::classIntervals(out[[xQN]], n = dim, style = style)$brks,
+    out$bi_x <- cut(out[[xQN]], breaks = classInt::classIntervals(out[[xQN]], n = dim, style = style)$brks,
                     include.lowest = TRUE)
 
   } else if (class(.data[[xQN]]) == "factor"){
@@ -146,7 +146,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
                       var = yQN))
     }
 
-    out$bi_y <- out[[xQN]]
+    out$bi_y <- out[[yQN]]
 
   } else {
     stop(glue::glue("The given 'y' variable '{var}' is not the correct class. It must be either integer, double, or factor.",

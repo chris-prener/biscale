@@ -102,7 +102,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
   }
 
   # build legend
-  out <- bi_legend_build(leg = leg, xlab = xlab, ylab = ylab, size = size, pad_width = pad_width, pad_color = pad_color)
+  out <- bi_legend_build(leg = leg, xlab = !!xlab, ylab = !!ylab, size = size, pad_width = pad_width, pad_color = pad_color)
 
   # return output
   return(out)
