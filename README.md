@@ -4,13 +4,11 @@
 # biscale <img src="man/figures/logo.png" align="right" />
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![Travis-CI Build
-Status](https://travis-ci.com/slu-openGIS/biscale.svg?branch=master)](https://travis-ci.com/slu-openGIS/biscale)
-[![AppVeyor Build
-Status](https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?branch=master&svg=true)](https://ci.appveyor.com/project/chris-prener/biscale)
+![GitHub
+Workflow](https://github.com/slu-openGIS/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![Coverage
-status](https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=master)
-[![CRAN\_status\_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
+status](https://codecov.io/gh/slu-openGIS/biscale/branch/main/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=main)
+[![CRAN_status_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 [![cran
 checks](https://cranchecks.info/badges/worst/biscale)](https://cran.r-project.org/web/checks/check_results_biscale.html)
 [![Downloads](http://cranlogs.r-pkg.org/badges/biscale?color=brightgreen)](http://www.r-pkg.org/pkg/biscale)
@@ -59,7 +57,7 @@ map <- ggplot() +
 
 The creation of classes works the same way. The only difference is (a)
 the use of the `color` (or `colour`) argument in the aesthetic mapping
-for `geom_sf()` and the use of `bi_scale_color()` afterwards\!
+for `geom_sf()` and the use of `bi_scale_color()` afterwards!
 
 ### Custom Palettes
 
@@ -191,7 +189,7 @@ Note that
 [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html)
 is used to draw the arrows since Unicode arrows are font dependent. This
 happens internally as part of `bi_legend()` - you don’t need to include
-them in your `xlab` and `ylab` arguments\!
+them in your `xlab` and `ylab` arguments!
 
 With our legend drawn, we can then combine the legend and the map with
 `cowplot`. The values needed for this stage will be subject to
