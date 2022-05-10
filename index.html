@@ -126,13 +126,13 @@
 <div class="section level3">
 <h3 id="manual-palettes">Manual Palettes<a class="anchor" aria-label="anchor" href="#manual-palettes"></a>
 </h3>
-<p>If you want to use a different palette with <code>biscale</code> plots, you can use the new <code>bi_pal_manual()</code> function to create the plot and then apply it to <code><a href="reference/bi_scale_fill.html">bi_scale_fill()</a></code> or <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code> using the <code>pal</code> argument.</p>
+<p>If you want to use a different palette with <code>biscale</code> plots, you can use the new <code><a href="reference/bi_pal_manual.html">bi_pal_manual()</a></code> function to create the plot and then apply it to <code><a href="reference/bi_scale_fill.html">bi_scale_fill()</a></code> or <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code> using the <code>pal</code> argument.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create classes</span>
 <span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">pointData</span>, x <span class="op">=</span> <span class="va">xvar</span>, y <span class="op">=</span> <span class="va">yvar</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
 <span class="co"># create custom palette</span>
-<span class="va">custom_pal</span> <span class="op">&lt;-</span> <span class="fu">bi_pal_manual</span><span class="op">(</span>val_1_1 <span class="op">=</span> <span class="st">"#E8E8E8"</span>, val_1_2 <span class="op">=</span> <span class="st">"#73AE80"</span>, val_2_1 <span class="op">=</span> <span class="st">"#6C83B5"</span>, val_2_2 <span class="op">=</span> <span class="st">"#2A5A5B"</span><span class="op">)</span>
+<span class="va">custom_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/bi_pal_manual.html">bi_pal_manual</a></span><span class="op">(</span>val_1_1 <span class="op">=</span> <span class="st">"#E8E8E8"</span>, val_1_2 <span class="op">=</span> <span class="st">"#73AE80"</span>, val_2_1 <span class="op">=</span> <span class="st">"#6C83B5"</span>, val_2_2 <span class="op">=</span> <span class="st">"#2A5A5B"</span><span class="op">)</span>
 
 <span class="co"># create map</span>
 <span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
