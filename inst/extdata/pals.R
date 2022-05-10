@@ -542,4 +542,4 @@ pals <- list(
   )
 )
 
-save(pals, file = "R/sysdata.rda")
+save(pals, file = "R/sysdata.rda", version = 2)
