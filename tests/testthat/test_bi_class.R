@@ -20,13 +20,13 @@ test_that("missing parameters trigger appropriate errors", {
                "A variable must be given for the 'y' argument.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 2),
                "Please specify a style for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),
+               "The style 'ham' is not a valid method for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
 })
 
 test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_class(stl_race_income, x = ham, y = medInc, style = "quantile", dim = 2),
-               "The given 'x' variable 'ham' is not found in the given data set.")
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = ham, style = "quantile", dim = 2),
-               "The given 'y' variable 'ham' is not found in the given data set.")
+               "The variable 'ham' is not found in the given data set.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),
                "The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = "ham"),
@@ -34,9 +34,7 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2, keep_factors = "ham"),
                "A logical scalar must be supplied for 'keep_factors'. Please provide either 'TRUE' or 'FALSE'.")
   expect_error(bi_class(stl_race_income, x = factor_x, y = factor_y, dim = 2),
-               "The given 'x' variable 'factor_x' has a different number of levels than the value given for the 'dim' argument.")
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = factor_y, style = "quantile", dim = 2),
-               "The given 'y' variable 'factor_y' has a different number of levels than the value given for the 'dim' argument.")
+               "The variable 'factor_x' has a different number of levels than the value given for the 'dim' argument.")
 })
 
 # test inputs ------------------------------------------------

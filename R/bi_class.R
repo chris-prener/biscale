@@ -74,6 +74,10 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
     stop("A logical scalar must be supplied for 'keep_factors'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
+  if (missing(style)){
+    style <- NULL
+  }
+
   # high dimension warning
   if (dim > 4){
     warning("Maps that are larger than 4x4 dimensions can be difficult to interpret, and biscale does not provide built-in palettes for these maps. If you proceed, you will need to supply a custom palette for these data.")
@@ -83,85 +87,91 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
   xQN <- rlang::quo_name(rlang::enquo(x))
   yQN <- rlang::quo_name(rlang::enquo(y))
 
-  # check variables
-  if (xQN %in% names(.data) == FALSE){
-    stop(glue::glue("The given 'x' variable '{var}' is not found in the given data set.",
-                    var = xQN))
-  }
+  # evaluate inputs
+  bi_var_validate(.data, var = xQN, dim = dim, style = style)
+  bi_var_validate(.data, var = yQN, dim = dim, style = style)
 
-  if (yQN %in% names(.data) == FALSE){
-    stop(glue::glue("The given 'y' variable '{var}' is not found in the given data set.",
-                    var = yQN))
-  }
-
-  # evaluate x
-  if (class(.data[[xQN]]) %in% c("integer", "double", "numeric")){
-
-    if (missing(style)){
-      stop("Please specify a style for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
-    }
-
-    if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
-      stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
-    }
-
-    out <- .data
-    out$bi_x <- cut(out[[xQN]], breaks = classInt::classIntervals(out[[xQN]], n = dim, style = style)$brks,
-                    include.lowest = TRUE)
-
-  } else if (class(.data[[xQN]]) == "factor"){
-
-    if (length(levels(.data[[xQN]])) != dim){
-      stop(glue::glue("The given 'x' variable '{var}' has a different number of levels than the value given for the 'dim' argument.",
-                      var = xQN))
-    }
-
-    out <- .data
-    out$bi_x <- out[[xQN]]
-
-
-  } else {
-    stop(glue::glue("The given 'x' variable '{var}' is not the correct class. It must be either integer, double, or factor.",
-                    var = xQN))
-  }
-
-  # evaluate y
-  if (class(.data[[yQN]]) %in% c("integer", "double", "numeric")){
-
-    if (missing(style)){
-      stop("Please specify a style for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
-    }
-
-    if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
-      stop("The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
-    }
-
-    out$bi_y <- cut(out[[yQN]], breaks = classInt::classIntervals(out[[yQN]], n = dim, style = style)$brks,
-                    include.lowest = TRUE)
-
-  } else if (class(.data[[yQN]]) == "factor"){
-
-    if (length(levels(.data[[yQN]])) != dim){
-      stop(glue::glue("The given 'y' variable '{var}' has a different number of levels than the value given for the 'dim' argument.",
-                      var = yQN))
-    }
-
-    out$bi_y <- out[[yQN]]
-
-  } else {
-    stop(glue::glue("The given 'y' variable '{var}' is not the correct class. It must be either integer, double, or factor.",
-                    var = yQN))
-  }
+  # calculate classes
+  .data <- bi_var_cut(.data, var = xQN, new_var = "bi_x", dim = dim, style = style)
+  .data <- bi_var_cut(.data, var = yQN, new_var = "bi_y", dim = dim, style = style)
 
   # combine
-  out$bi_class <- paste0(as.numeric(out$bi_x), "-", as.numeric(out$bi_y))
+  .data$bi_class <- paste0(as.numeric(.data$bi_x), "-", as.numeric(.data$bi_y))
 
   # optionally remove factors
   if (keep_factors == FALSE){
-    out <- subset(out, select = -c(bi_x, bi_y))
+    .data <- subset(.data, select = -c(bi_x, bi_y))
   }
 
   # return output
-  return(out)
+  return(.data)
+
+}
+
+#' Return Breaks
+#'
+#' @export
+bi_class_breaks <- function(.data, x, y, style, dim){
+
+  return(.data)
+
+}
+
+#' Validate
+#'
+#'
+bi_var_validate <- function(.data, var, dim, style){
+
+  if (var %in% names(.data) == FALSE){
+    stop(glue::glue("The variable '{var}' is not found in the given data set.",
+                    var = var))
+  }
+
+  if (inherits(x = .data[[var]], what = "factor")){
+
+    if (length(levels(.data[[var]])) != dim){
+      stop(glue::glue("The variable '{var}' has a different number of levels than the value given for the 'dim' argument.",
+                      var = var))
+    }
+
+  } else if (inherits(x = .data[[var]], what = c("integer", "double", "numeric"))){
+
+    if (is.null(style) == TRUE){
+      stop("Please specify a style for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
+    }
+
+    if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
+      stop(glue::glue("The style '{style}' is not a valid method for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.",
+                      var = style))
+    }
+
+  } else {
+
+    stop(glue::glue("The variable '{var}' is not the correct class. It must be either integer, double, or factor.",
+                    var = var))
+
+  }
+
+}
+
+
+#' Cut
+#'
+#'
+bi_var_cut <- function(.data, var, new_var, dim, style){
+
+  if (inherits(x = .data[[var]], what = "factor")){
+
+    .data[[new_var]] <- .data[[var]]
+
+  } else if (inherits(x = .data[[var]], what = c("integer", "double", "numeric"))){
+
+    .data[[new_var]] <- cut(.data[[var]], breaks = classInt::classIntervals(.data[[var]], n = dim, style = style)$brks,
+                            include.lowest = TRUE)
+
+  }
+
+  # return output
+  return(.data)
 
 }
