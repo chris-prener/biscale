@@ -16,10 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 
-Thematic choropleth maps are used to display quantities of some variable within areas, such as mapping median income across a city's neighborhoods. However, we often think in bivariate terms - "how do race and income vary together?". Maps that captures this, known as bivariate choropleth maps, are often perceived as difficult to create and interpret. The goal of `biscale` is to implement a consistent approach to bivariate mapping entirely within `R`. The package's workflow is based on a recent [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr, and supports both two-by-two and three-by-three bivariate maps.
+Thematic choropleth maps are used to display quantities of some variable within areas, such as mapping median income across a city's neighborhoods. However, we often think in bivariate terms - "how do race and income vary together?". Maps that captures this, known as bivariate choropleth maps, are often perceived as difficult to create and interpret. The goal of `biscale` is to implement a consistent approach to bivariate mapping entirely within `R`. The package's workflow is based on a 2019 [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr. `biscale` also contains a set of bivariate mapping palettes, including Joshua Stevens' [classive color schemes](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). 
 
 ```{r exampleMap, echo=FALSE, out.width = '100%'}
-knitr::include_graphics("../man/figures/biscale.001.png")
+knitr::include_graphics("../man/figures/biscale.001.jpeg")
 ```
 
 ## Getting Started

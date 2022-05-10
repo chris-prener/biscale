@@ -3,7 +3,6 @@
 
 # biscale <img src="man/figures/logo.png" align="right" />
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 ![GitHub
 Workflow](https://github.com/slu-openGIS/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![Coverage
@@ -24,8 +23,8 @@ schemes](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-ma
 ![](man/figures/biscale.001.jpeg)
 
 In addition to support for two-by-two, three-by-three, and four-by-four
-maps, the package also supports four methods for calculating breaks for
-bivariate maps.
+maps, the package also supports a range of methods for calculating
+breaks for bivariate maps.
 
 ## What’s New in v1.0.0.9000?
 
