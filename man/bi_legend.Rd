@@ -9,7 +9,7 @@ bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE,
 }
 \arguments{
 \item{pal}{A palette name or a vector containing a custom palette. See
-the help file for \code{bi_pal} for complete list of built-in palette
+the help file for \code{\link{bi_pal}} for complete list of built-in palette
 names. If you are providing a custom palette, it must follow the formatting
 described in the 'Advanced Options' vignette.}
 
@@ -64,5 +64,5 @@ legend
 
 }
 \seealso{
-bi_pal
+\code{\link{bi_pal}}
 }

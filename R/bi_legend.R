@@ -7,7 +7,7 @@
 #'     rotate_pal = FALSE, pad_width = NA, pad_color)
 #'
 #' @param pal A palette name or a vector containing a custom palette. See
-#'     the help file for \code{bi_pal} for complete list of built-in palette
+#'     the help file for \code{\link{bi_pal}} for complete list of built-in palette
 #'     names. If you are providing a custom palette, it must follow the formatting
 #'     described in the 'Advanced Options' vignette.
 #' @param dim The dimensions of the palette. To use the built-in palettes,
@@ -36,7 +36,7 @@
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
-#' @seealso bi_pal
+#' @seealso \code{\link{bi_pal}}
 #'
 #' @examples
 #' # sample 3x3 legend
