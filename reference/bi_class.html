@@ -116,8 +116,8 @@ retained. If <code>FALSE</code> (default), they will not be returned.</p></dd>
 <span class="r-in"><span class="co"># summarize quantile breaks, 2x2</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">bi_class</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1 -2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53 53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1-1 1-2 2-1 2-2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  45   8   8  45 </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># quantile breaks, 3x3</span></span>
 <span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">bi_class</span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
@@ -125,8 +125,8 @@ retained. If <code>FALSE</code> (default), they will not be returned.</p></dd>
 <span class="r-in"><span class="co"># summarize quantile breaks, 3x3</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">bi_class</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1 -2 -3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 35 35 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1-1 1-2 2-1 2-2 2-3 3-2 3-3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  25  11  11  17   7   7  28 </span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>
