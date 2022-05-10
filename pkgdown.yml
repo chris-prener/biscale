@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   biscale: biscale.html
   palettes: palettes.html
-last_built: 2022-05-10T12:56Z
+last_built: 2022-05-10T14:01Z
 urls:
   reference: https://slu-openGIS.github.io/biscale/reference
   article: https://slu-openGIS.github.io/biscale/articles

@@ -97,58 +97,54 @@
 <div class="page-header"><h1 id="biscale-">biscale <img src="reference/figures/logo.png" align="right"><a class="anchor" aria-label="anchor" href="#biscale-"></a>
 </h1></div>
 
-<p><code>biscale</code> implements a set of functions for bivariate thematic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes from Joshua Stevens’s <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">tutorial</a>. The package currently supports two-by-two and three-by-three bivariate maps:</p>
+<p><code>biscale</code> implements a set of functions for bivariate thematic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes, including Joshua Stevens’ <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">classive color schemes</a>.</p>
 <p><img src="reference/figures/biscale.001.png" width="100%"></p>
-<p>In addition to support for both two-by-two and three-by-three maps, the package also supports four methods for calculating breaks for bivariate maps.</p>
+<p>In addition to support for two-by-two, three-by-three, and four-by-four maps, the package also supports a range of methods for calculating breaks for bivariate maps.</p>
 <div class="section level2">
-<h2 id="whats-new-on-cran">What’s New on CRAN?<a class="anchor" aria-label="anchor" href="#whats-new-on-cran"></a>
+<h2 id="whats-new-in-v1009000">What’s New in v1.0.0.9000?<a class="anchor" aria-label="anchor" href="#whats-new-in-v1009000"></a>
 </h2>
 <div class="section level3">
-<h3 id="dependency-change">Dependency Change<a class="anchor" aria-label="anchor" href="#dependency-change"></a>
+<h3 id="new-features">New Features<a class="anchor" aria-label="anchor" href="#new-features"></a>
 </h3>
-<p>In order to resolve a conflict between the <code>tibble</code> package and <code>biscale</code>, the <code>sf</code> package is now a required dependency as opposed to being a suggested dependency.</p>
+<ul>
+<li>
+<code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors for one or both of the <code>x</code> and <code>y</code> variables, allowing more flexibility for how breaks are calculated</li>
+<li>
+<code><a href="reference/bi_pal.html">bi_pal()</a></code>, <code><a href="reference/bi_legend.html">bi_legend()</a></code>, and <code>bi_scale_...</code> functions all support four-by-four bivariate maps when <code>dim = 4</code>. Note that the original five palettes do not support four-by-four mapping, but very close approximations (e.g. <code>DkBlue2</code> instead of <code>DkBlue</code>) are now provided in their place. The legacy palettes are all still included in the package.</li>
+<li>The number of built-in palettes has been greatly expanded</li>
+<li>Palettes can now be flipped and rotated (or both!), so that each built-in palette can be displayed in four different configurations</li>
+<li>The workflow for allowing custom palettes has been overhauled to simply the process - users can provide a named vector for the <code>pal</code> arguments in the <code><a href="reference/bi_pal.html">bi_pal()</a></code>, <code><a href="reference/bi_legend.html">bi_legend()</a></code>, and <code>bi_scale_...</code> functions</li>
+<li>
+<code><a href="reference/bi_class.html">bi_class()</a></code> can be used to calculate bivariate breaks for maps larger than four-by-four, though it will return a warning reminding you that these maps are hard to read and that <code>biscale</code> does not provide palettes for larger maps. Instead, you should provide a custom palette.</li>
+</ul>
 </div>
 <div class="section level3">
-<h3 id="mapping-points">Mapping Points<a class="anchor" aria-label="anchor" href="#mapping-points"></a>
+<h3 id="breaking-changes">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes"></a>
 </h3>
-<p>The development version contains a new function, <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code>, which replicates the bivariate mapping workflow for point and line data. We don’t have any sample data for it yet, but the workflow mapping point data looks like this:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># create classes</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">pointData</span>, x <span class="op">=</span> <span class="va">xvar</span>, y <span class="op">=</span> <span class="va">yvar</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
-
-<span class="co"># create map</span>
-<span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_sf</span><span class="op">(</span>data <span class="op">=</span> <span class="va">pointData</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">bi_class</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="reference/bi_scale_color.html">bi_scale_color</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"DkBlue"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="reference/bi_theme.html">bi_theme</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>The creation of classes works the same way. The only difference is (a) the use of the <code>color</code> (or <code>colour</code>) argument in the aesthetic mapping for <code>geom_sf()</code> and the use of <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code> afterwards!</p>
+<ul><li>There is no default supplied for <code><a href="reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors as well</li></ul>
 </div>
 <div class="section level3">
-<h3 id="manual-palettes">Manual Palettes<a class="anchor" aria-label="anchor" href="#manual-palettes"></a>
+<h3 id="deprecated-functions">Deprecated Functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a>
 </h3>
-<p>If you want to use a different palette with <code>biscale</code> plots, you can use the new <code><a href="reference/bi_pal_manual.html">bi_pal_manual()</a></code> function to create the plot and then apply it to <code><a href="reference/bi_scale_fill.html">bi_scale_fill()</a></code> or <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code> using the <code>pal</code> argument.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># create classes</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">pointData</span>, x <span class="op">=</span> <span class="va">xvar</span>, y <span class="op">=</span> <span class="va">yvar</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-
-<span class="co"># create custom palette</span>
-<span class="va">custom_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/bi_pal_manual.html">bi_pal_manual</a></span><span class="op">(</span>val_1_1 <span class="op">=</span> <span class="st">"#E8E8E8"</span>, val_1_2 <span class="op">=</span> <span class="st">"#73AE80"</span>, val_2_1 <span class="op">=</span> <span class="st">"#6C83B5"</span>, val_2_2 <span class="op">=</span> <span class="st">"#2A5A5B"</span><span class="op">)</span>
-
-<span class="co"># create map</span>
-<span class="va">map</span> <span class="op">&lt;-</span> <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_sf</span><span class="op">(</span>data <span class="op">=</span> <span class="va">pointData</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">bi_class</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="reference/bi_scale_color.html">bi_scale_color</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="va">custom_pal</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="reference/bi_theme.html">bi_theme</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<ul><li>
+<code><a href="reference/bi_pal_manual.html">bi_pal_manual()</a></code> now returns a warning that it has been deprecated and will be removed in a later release of <code>biscale</code>. Please update your workflows to use the new approach to generating custom palettes.</li></ul>
+</div>
+<div class="section level3">
+<h3 id="internal-improvements">Internal Improvements<a class="anchor" aria-label="anchor" href="#internal-improvements"></a>
+</h3>
+<ul><li>
+<code>sf</code> is now a suggested package instead of an imported package, and several dependencies have been removed in the process of re-factoring all of the code in <code>biscale</code>
+</li></ul>
 </div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <p>If the <code>sf</code> package is already installed, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"slu-openGIS/biscale"</span><span class="op">)</span></code></pre></div>
 <p>Additional details, including some tips for installing <code>sf</code>, can be found in the <a href="articles/biscale.html#getting-started">Get started article</a>.</p>
@@ -213,10 +209,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing" class="external-link"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
-<li><a href="https://travis-ci.com/slu-openGIS/biscale" class="external-link"><img src="https://travis-ci.com/slu-openGIS/biscale.svg?branch=master" alt="Travis-CI Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/chris-prener/biscale" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/github/slu-openGIS/biscale?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a></li>
-<li><a href="https://codecov.io/github/slu-openGIS/biscale?branch=master" class="external-link"><img src="https://codecov.io/gh/slu-openGIS/biscale/branch/master/graph/badge.svg" alt="Coverage status"></a></li>
+<li><a href="https://codecov.io/github/slu-openGIS/biscale?branch=main" class="external-link"><img src="https://codecov.io/gh/slu-openGIS/biscale/branch/main/graph/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://cran.r-project.org/package=biscale" class="external-link"><img src="http://www.r-pkg.org/badges/version/biscale" alt="CRAN_status_badge"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_biscale.html" class="external-link"><img src="https://cranchecks.info/badges/worst/biscale" alt="cran checks"></a></li>
 <li><a href="http://www.r-pkg.org/pkg/biscale" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/biscale?color=brightgreen" alt="Downloads"></a></li>
