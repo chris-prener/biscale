@@ -4,7 +4,7 @@
 #'     in a new variable named \code{bi_class}, which will be added to the given
 #'     data object.
 #'
-#' @usage bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE)
+#' @usage bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3)
 #'
 #' @param .data A data frame, tibble, or \code{sf} object
 #' @param x The \code{x} variable, either a numeric (including double and integer
@@ -28,6 +28,7 @@
 #' @param keep_factors A logical scalar; if \code{TRUE}, the intermediate factor
 #'     variables created as part of the calculation of \code{bi_class} will be
 #'     retained. If \code{FALSE} (default), they will not be returned.
+#' @param dig_lab An integer that is passed to \code{base::cut()}
 #'
 #' @return A copy of \code{.data} with a new variable \code{bi_class} that contains
 #'     combinations of values that correspond to an observations values for \code{x}
@@ -47,7 +48,7 @@
 #' table(data$bi_class)
 #'
 #' @export
-bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
+bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3){
 
   # global bindings
   bi_x = bi_y = NULL
@@ -78,6 +79,8 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
     style <- NULL
   }
 
+  dig_vals <- format_dig_lab(dig_lab = dig_lab)
+
   # high dimension warning
   if (dim > 4){
     warning("Maps that are larger than 4x4 dimensions can be difficult to interpret, and biscale does not provide built-in palettes for these maps. If you proceed, you will need to supply a custom palette for these data.")
@@ -92,8 +95,8 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
   bi_var_validate(.data, var = yQN, dim = dim, style = style)
 
   # calculate classes
-  .data <- bi_var_cut(.data, var = xQN, new_var = "bi_x", dim = dim, style = style)
-  .data <- bi_var_cut(.data, var = yQN, new_var = "bi_y", dim = dim, style = style)
+  .data <- bi_var_cut(.data, var = xQN, new_var = "bi_x", dim = dim, style = style, dig_lab = dig_vals[1])
+  .data <- bi_var_cut(.data, var = yQN, new_var = "bi_y", dim = dim, style = style, dig_lab = dig_vals[2])
 
   # combine
   .data$bi_class <- paste0(as.numeric(.data$bi_x), "-", as.numeric(.data$bi_y))
@@ -110,10 +113,103 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE){
 
 #' Return Breaks
 #'
+#' @description Creates...
+#'
+#' @usage bi_class_breaks(.data, x, y, style, dim = 3, clean_levels = FALSE,
+#'     dig_lab = 3, split = FALSE)
+#'
+#' @param .data A data frame, tibble, or \code{sf} object
+#' @param x The \code{x} variable, either a numeric (including double and integer
+#'     classes) or factor
+#' @param y The \code{y} variable, either a numeric (including double and integer
+#'     classes) or factor
+#' @param style A string identifying the style used to calculate breaks. Currently
+#'     supported styles are \code{"quantile"} (default), \code{"equal"}, \code{"fisher"},
+#'     and \code{"jenks"}. If both \code{x} and \code{y} are factors, this argument can
+#'     be omitted.
+#' @param dim The dimensions of the palette. To use the built-in palettes,
+#'     this value must be either \code{2}, \code{3}, or \code{4}. A value of
+#'     \code{3}, for example, would be used to create a three-by-three bivariate
+#'     map with a total of 9 classes.
+#'
+#'     If you are using a custom palette, this value may be larger (though these
+#'     maps can be very hard to interpret).
+#'
+#'     If you are using pre-made factors, both factors must have the same number
+#'     of levels as this value.
+#' @param clean_levels A logical scalar; if \code{TRUE} (default), the levels
+#'     will be returned with brackets and parantheses. If \code{FALSE}...
+#' @param dig_lab An integer that is passed to \code{base::cut()}
+#' @param split A logical scalar...
+#'
 #' @export
-bi_class_breaks <- function(.data, x, y, style, dim){
+bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = FALSE,
+                            dig_lab = 3, split = FALSE){
 
-  return(.data)
+  # global bindings
+  bi_x = bi_y = NULL
+
+  # check inputs
+  if (missing(.data)) {
+    stop("An object containing data must be specified for the '.data' argument.")
+  }
+
+  # check inputs
+  if (missing(x)) {
+    stop("A variable must be given for the 'x' argument.")
+  }
+
+  if (missing(y)) {
+    stop("A variable must be given for the 'y' argument.")
+  }
+
+  if (is.numeric(dim) == FALSE){
+    stop("The 'dim' argument only accepts numeric values.")
+  }
+
+  if (is.logical(clean_levels) == FALSE){
+    stop("A logical scalar must be supplied for 'clean_levels'. Please provide either 'TRUE' or 'FALSE'.")
+  }
+
+  if (is.logical(split) == FALSE){
+    stop("A logical scalar must be supplied for 'split'. Please provide either 'TRUE' or 'FALSE'.")
+  }
+
+  if (missing(style)){
+    style <- NULL
+  }
+
+  dig_vals <- format_dig_lab(dig_lab = dig_lab)
+
+  # high dimension warning
+  if (dim > 4){
+    warning("Maps that are larger than 4x4 dimensions can be difficult to interpret, and biscale does not provide built-in palettes for these maps. If you proceed, you will need to supply a custom palette for these data.")
+  }
+
+  # nse
+  xQN <- rlang::quo_name(rlang::enquo(x))
+  yQN <- rlang::quo_name(rlang::enquo(y))
+
+  # evaluate inputs
+  bi_var_validate(.data, var = xQN, dim = dim, style = style)
+  bi_var_validate(.data, var = yQN, dim = dim, style = style)
+
+  # calculate classes
+  .data <- bi_var_cut(.data, var = xQN, new_var = "bi_x", dim = dim, style = style, dig_lab = dig_vals[1])
+  .data <- bi_var_cut(.data, var = yQN, new_var = "bi_y", dim = dim, style = style, dig_lab = dig_vals[2])
+
+  # create levels
+  out <- list(
+    bi_x = levels(.data$bi_x),
+    bi_y = levels(.data$bi_y)
+  )
+
+  if (clean_levels == TRUE){
+    out <- bi_levels_clean(levels_list = out, split = split)
+  }
+
+  # return output
+  return(out)
 
 }
 
@@ -158,7 +254,7 @@ bi_var_validate <- function(.data, var, dim, style){
 # Cut
 #
 #
-bi_var_cut <- function(.data, var, new_var, dim, style){
+bi_var_cut <- function(.data, var, new_var, dim, style, dig_lab){
 
   if (inherits(x = .data[[var]], what = "factor")){
 
@@ -167,11 +263,60 @@ bi_var_cut <- function(.data, var, new_var, dim, style){
   } else if (inherits(x = .data[[var]], what = c("integer", "double", "numeric"))){
 
     .data[[new_var]] <- cut(.data[[var]], breaks = classInt::classIntervals(.data[[var]], n = dim, style = style)$brks,
-                            include.lowest = TRUE)
+                            include.lowest = TRUE, dig.lab = dig_lab)
 
   }
 
   # return output
   return(.data)
+
+}
+
+bi_levels_clean <- function(levels_list, split){
+
+  # remove braces
+  levels_list$bi_x <- gsub("[][()]", "", levels_list$bi_x)
+  levels_list$bi_y <- gsub("[][()]", "", levels_list$bi_y)
+
+  # add dashes
+  levels_list$bi_x <- gsub(",", "-", levels_list$bi_x)
+  levels_list$bi_y <- gsub(",", "-", levels_list$bi_y)
+
+  # optionally split
+  if (split == TRUE){
+
+    levels_list$bi_x <- unique(as.numeric(unlist(strsplit(levels_list$bi_x, "-"))))
+    levels_list$bi_y <- unique(as.numeric(unlist(strsplit(levels_list$bi_y, "-"))))
+
+  }
+
+  # return output
+  return(levels_list)
+
+}
+
+format_dig_lab <- function(dig_lab){
+
+  if (length(dig_lab) == 1){
+
+    if(is.numeric(dig_lab) == FALSE){
+      stop("The value for the 'dig_lab' argument must be numeric.")
+    }
+
+    dig_vals <- c(dig_lab, dig_lab)
+
+  } else if (length(dig_lab) == 2){
+
+    if(is.numeric(dig_lab) == FALSE){
+      stop("The values for the 'dig_lab' argument must be numeric.")
+    }
+
+    dig_vals <- dig_lab
+
+  } else {
+    stop("The 'dig_lab' argument is misspecified.")
+  }
+
+  return(dig_vals)
 
 }

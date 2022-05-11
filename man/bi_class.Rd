@@ -4,7 +4,7 @@
 \alias{bi_class}
 \title{Create Classes for Bivariate Maps}
 \usage{
-bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE)
+bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3)
 }
 \arguments{
 \item{.data}{A data frame, tibble, or \code{sf} object}
@@ -34,6 +34,8 @@ be omitted.}
 \item{keep_factors}{A logical scalar; if \code{TRUE}, the intermediate factor
 variables created as part of the calculation of \code{bi_class} will be
 retained. If \code{FALSE} (default), they will not be returned.}
+
+\item{dig_lab}{An integer that is passed to \code{base::cut()}}
 }
 \value{
 A copy of \code{.data} with a new variable \code{bi_class} that contains

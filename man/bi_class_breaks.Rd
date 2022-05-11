@@ -4,8 +4,41 @@
 \alias{bi_class_breaks}
 \title{Return Breaks}
 \usage{
-bi_class_breaks(.data, x, y, style, dim)
+bi_class_breaks(.data, x, y, style, dim = 3, clean_levels = FALSE,
+    dig_lab = 3, split = FALSE)
+}
+\arguments{
+\item{.data}{A data frame, tibble, or \code{sf} object}
+
+\item{x}{The \code{x} variable, either a numeric (including double and integer
+classes) or factor}
+
+\item{y}{The \code{y} variable, either a numeric (including double and integer
+classes) or factor}
+
+\item{style}{A string identifying the style used to calculate breaks. Currently
+supported styles are \code{"quantile"} (default), \code{"equal"}, \code{"fisher"},
+and \code{"jenks"}. If both \code{x} and \code{y} are factors, this argument can
+be omitted.}
+
+\item{dim}{The dimensions of the palette. To use the built-in palettes,
+    this value must be either \code{2}, \code{3}, or \code{4}. A value of
+    \code{3}, for example, would be used to create a three-by-three bivariate
+    map with a total of 9 classes.
+
+    If you are using a custom palette, this value may be larger (though these
+    maps can be very hard to interpret).
+
+    If you are using pre-made factors, both factors must have the same number
+    of levels as this value.}
+
+\item{clean_levels}{A logical scalar; if \code{TRUE} (default), the levels
+will be returned with brackets and parantheses. If \code{FALSE}...}
+
+\item{dig_lab}{An integer that is passed to \code{base::cut()}}
+
+\item{split}{A logical scalar...}
 }
 \description{
-Return Breaks
+Creates...
 }
