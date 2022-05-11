@@ -117,9 +117,9 @@ bi_class_breaks <- function(.data, x, y, style, dim){
 
 }
 
-#' Validate
-#'
-#'
+# Validate
+#
+#
 bi_var_validate <- function(.data, var, dim, style){
 
   if (var %in% names(.data) == FALSE){
@@ -155,9 +155,9 @@ bi_var_validate <- function(.data, var, dim, style){
 }
 
 
-#' Cut
-#'
-#'
+# Cut
+#
+#
 bi_var_cut <- function(.data, var, new_var, dim, style){
 
   if (inherits(x = .data[[var]], what = "factor")){
