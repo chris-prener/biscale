@@ -4,8 +4,9 @@
 \alias{bi_legend}
 \title{Create Object for Drawing Legend}
 \usage{
-bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE,
-    rotate_pal = FALSE, pad_width = NA, pad_color)
+bi_legend(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
+    rotate_pal = FALSE, pad_width = NA, pad_color = "#ffffff",
+    breaks = NULL)
 }
 \arguments{
 \item{pal}{A palette name or a vector containing a custom palette. See
@@ -43,6 +44,11 @@ between tiles in the legend}
 
 \item{pad_color}{An optional character scalar; controls the color of padding
 between tiles in the legend}
+
+\item{breaks}{An optional list created by \code{bi_class_breaks}. Depending
+on the options selected when making the list, labels will placed
+showing the corresponding range of values for each axis or, if
+\code{split = TRUE}, showing the individual breaks.}
 }
 \value{
 A \code{ggplot} object with a bivariate legend.

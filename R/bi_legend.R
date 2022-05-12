@@ -3,8 +3,9 @@
 #' @description Creates a \code{ggplot} object containing a legend that is
 #'     specific to bivariate mapping.
 #'
-#' @usage bi_legend(pal, dim = 3, xlab, ylab, size, flip_axes = FALSE,
-#'     rotate_pal = FALSE, pad_width = NA, pad_color)
+#' @usage bi_legend(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
+#'     rotate_pal = FALSE, pad_width = NA, pad_color = "#ffffff",
+#'     breaks = NULL)
 #'
 #' @param pal A palette name or a vector containing a custom palette. See
 #'     the help file for \code{\link{bi_pal}} for complete list of built-in palette
@@ -33,6 +34,10 @@
 #'     between tiles in the legend
 #' @param pad_color An optional character scalar; controls the color of padding
 #'     between tiles in the legend
+#' @param breaks An optional list created by \code{bi_class_breaks}. Depending
+#'     on the options selected when making the list, labels will placed
+#'     showing the corresponding range of values for each axis or, if
+#'     \code{split = TRUE}, showing the individual breaks.
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
@@ -50,7 +55,9 @@
 #' legend
 #'
 #' @export
-bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, rotate_pal = FALSE, pad_width = NA, pad_color = '#ffffff'){
+bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
+                      rotate_pal = FALSE, pad_width = NA, pad_color = '#ffffff',
+                      breaks = NULL){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -102,14 +109,14 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE, ro
   }
 
   # build legend
-  out <- bi_legend_build(leg = leg, xlab = !!xlab, ylab = !!ylab, size = size, pad_width = pad_width, pad_color = pad_color)
+  out <- bi_legend_build(leg = leg, dim = dim, xlab = !!xlab, ylab = !!ylab, size = size, pad_width = pad_width, pad_color = pad_color, breaks = breaks)
 
   # return output
   return(out)
 
 }
 
-bi_legend_build <- function(leg, xlab, ylab, size, pad_width, pad_color){
+bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, breaks){
 
   # global bindings
   bi_fill = x = y = NULL
@@ -128,13 +135,54 @@ bi_legend_build <- function(leg, xlab, ylab, size, pad_width, pad_color){
   leg$y <- as.integer(substr(leg$bi_class, 3, 3))
 
   # create ggplot2 legend object
+  ## initial build
   legend <- ggplot2::ggplot() +
     ggplot2::geom_tile(data = leg, mapping = ggplot2::aes(x = x, y = y, fill = bi_fill), lwd = pad_width, col = pad_color) +
-    ggplot2::scale_fill_identity() +
+    ggplot2::scale_fill_identity()
+
+  ## optionally add breaks
+  if (is.null(breaks) == FALSE){
+
+    breaks_include <- TRUE
+
+    if (length(breaks$bi_x) == dim){
+
+      breaks_seq <- seq(from = 1, to = dim, by = 1)
+
+    } else if (length(breaks$bi_x) == dim+1){
+
+      breaks_seq <- seq(from = 0.5, to = dim+0.5, by = 1)
+
+    }
+
+    legend <- legend +
+      ggplot2::scale_x_continuous(
+        breaks = breaks_seq,
+        labels = breaks$bi_x,
+        expand = c(.015, .015)) +
+      ggplot2::scale_y_continuous(
+        breaks = breaks_seq,
+        labels = breaks$bi_y,
+        expand = c(.015, .015))
+
+  } else {
+
+    breaks_include <- FALSE
+
+  }
+
+  ## final legend elements
+  legend <- legend +
     ggplot2::labs(x = substitute(paste(xQN, ""%->%"")), y = substitute(paste(yQN, ""%->%""))) +
-    bi_theme() +
     ggplot2::theme(axis.title = ggplot2::element_text(size = size)) +
     ggplot2::coord_fixed()
+
+  ## add theme
+  if (breaks_include == TRUE){
+    legend <- legend + bi_theme_legend(base_size = size)
+  } else if (breaks_include == FALSE){
+    legend <- legend + bi_theme(base_size = size)
+  }
 
   # return output
   return(legend)

@@ -7,7 +7,8 @@ library(sf)
 data <- stl_race_income
 data <- bi_class(data, style = "quantile", x = pctWhite, y = medInc, dim = 4, keep_factors = TRUE)
 
-bi_class_breaks(data, style = "quantile", x = pctWhite, y = medInc, dim = 4, cutlabels = FALSE)
+x <- bi_class_breaks(data, style = "quantile", x = pctWhite, y = medInc, dim = 4,
+                clean_levels = TRUE, dig_lab = c(4,5), split = TRUE)
 
 # draw map
 map <- ggplot() +
