@@ -20,7 +20,7 @@ written by Timo Grossenbacher and Angelo Zehr as well as a set of
 bivariate mapping palettes, including Joshua Stevens’ [classic color
 schemes](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
 
-![](man/figures/biscale.001.jpeg)
+![](man/figures/biscale_01.jpeg)
 
 In addition to support for two-by-two, three-by-three, and four-by-four
 maps, the package also supports a range of methods for calculating

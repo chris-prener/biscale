@@ -10,7 +10,7 @@
 
 `biscale` implements a set of functions for bivariate thematic mapping based on the [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes, including Joshua Stevens' [classic color schemes](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). 
 
-<img src="reference/figures/biscale.001.jpeg" width="100%">
+<img src="/reference/figures/biscale_01.jpeg" width="100%">
 
 In addition to support for two-by-two, three-by-three, and four-by-four maps, the package also supports a range of methods for calculating breaks for bivariate maps.
 
