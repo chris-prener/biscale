@@ -36,9 +36,11 @@ In addition to support for two-by-two, three-by-three, and four-by-four maps, th
   * Palettes can now be flipped and rotated (or both!), so that each built-in palette can be displayed in four different configurations
   * The workflow for allowing custom palettes has been overhauled to simply the process - users can provide a named vector for the `pal` arguments in the `bi_pal()`, `bi_legend()`, and `bi_scale_...` functions
   * `bi_class()` can be used to calculate bivariate breaks for maps larger than four-by-four, though it will return a warning reminding you that these maps are hard to read and that `biscale` does not provide palettes for larger maps. Instead, you should provide a custom palette.
+  * `bi_class_breaks()` can be used with `bi_legend()` to facilitate optionally adding break values to your legends
 
 ### Breaking Changes
   * There is no default supplied for `bi_class()`'s `style` argument since `bi_class()` now accepts factors as well
+  * Changes to `bi_legend()` to facilitate breaks mean that there are new arguments to be aware of
 
 ### Deprecated Functions
   * `bi_pal_manual()` now returns a warning that it has been deprecated and will be removed in a later release of `biscale`. Please update your workflows to use the new approach to generating custom palettes.

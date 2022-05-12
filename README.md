@@ -50,11 +50,15 @@ breaks for bivariate maps.
     you that these maps are hard to read and that `biscale` does not
     provide palettes for larger maps. Instead, you should provide a
     custom palette.
+-   `bi_class_breaks()` can be used with `bi_legend()` to facilitate
+    optionally adding break values to your legends
 
 ### Breaking Changes
 
 -   There is no default supplied for `bi_class()`’s `style` argument
     since `bi_class()` now accepts factors as well
+-   Changes to `bi_legend()` to facilitate breaks mean that there are
+    new arguments to be aware of
 
 ### Deprecated Functions
 
