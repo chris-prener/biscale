@@ -68,6 +68,23 @@ legend <- bi_legend(pal = "GrPink",
 # print legend
 legend
 
+# sample 3x3 legend with breaks
+## create vector of breaks
+break_vals <- bi_class_breaks(stl_race_income, style = "quantile",
+    x = pctWhite, y = medInc, dim = 3, dig_lab = c(x = 4, y = 5),
+    split = TRUE)
+
+## create legend
+legend <- bi_legend(pal = "GrPink",
+                    dim = 3,
+                    xlab = "Higher \% White ",
+                    ylab = "Higher Income ",
+                    size = 16,
+                    breaks = break_vals)
+
+# print legend
+legend
+
 }
 \seealso{
 \code{\link{bi_pal}}

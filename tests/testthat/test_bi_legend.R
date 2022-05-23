@@ -77,6 +77,24 @@ test_that("custom palettes are accepted without error", {
   expect_error(bi_legend(pal = custom_pal_valid2, dim = 5, xlab = a, ylab = b), NA)
 })
 
+break_vals <- bi_class_breaks(stl_race_income, style = "quantile",
+                              x = pctWhite, y = medInc, dim = 3,
+                              dig_lab = c(x = 4, y = 5), split = TRUE)
+
+test_that("accepts split breaks without error", {
+  expect_error(bi_legend(pal = "GrPink", dim = 3, xlab = "ham", ylab = "bacon",
+                         breaks = break_vals), NA)
+})
+
+break_vals <- bi_class_breaks(stl_race_income, style = "quantile",
+                              x = pctWhite, y = medInc, dim = 3,
+                              dig_lab = c(x = 4, y = 5), split = FALSE)
+
+test_that("accepts break ranges without error", {
+  expect_error(bi_legend(pal = "GrPink", dim = 3, xlab = "ham", ylab = "bacon",
+                         breaks = break_vals), NA)
+})
+
 # test results ------------------------------------------------
 
 result1 <- bi_legend(pal = "GrPink", dim = 2)
@@ -88,3 +106,5 @@ test_that("correct classes of output are returned", {
   expect_equal("ggplot" %in% class(result2), TRUE)
   expect_equal("ggplot" %in% class(result3), TRUE)
 })
+
+

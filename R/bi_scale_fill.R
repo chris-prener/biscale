@@ -28,7 +28,7 @@
 #' @importFrom ggplot2 scale_fill_manual
 #'
 #' @examples
-#' # load suggested dependencies
+#' # load dependencies
 #' library(ggplot2)
 #' library(sf)
 #'

@@ -79,7 +79,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
     style <- NULL
   }
 
-  dig_vals <- format_dig_lab(dig_lab = dig_lab)
+  dig_vals <- bi_validate_dig_lab(dig_lab = dig_lab)
 
   # high dimension warning
   if (dim > 4){
@@ -113,9 +113,13 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
 
 #' Return Breaks
 #'
-#' @description Creates...
+#' @description This function can be used to return a list containing vectors
+#'     of either the ranges of values included in each category of \code{x}
+#'     and \code{y} or, alternatively, the individual break values including
+#'     the minimum and maximum values. This function supports simplified
+#'     reporting as well as more descriptive legends.
 #'
-#' @usage bi_class_breaks(.data, x, y, style, dim = 3, clean_levels = FALSE,
+#' @usage bi_class_breaks(.data, x, y, style, dim = 3, clean_levels = TRUE,
 #'     dig_lab = 3, split = FALSE)
 #'
 #' @param .data A data frame, tibble, or \code{sf} object
@@ -137,13 +141,50 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
 #'
 #'     If you are using pre-made factors, both factors must have the same number
 #'     of levels as this value.
-#' @param clean_levels A logical scalar; if \code{TRUE} (default), the levels
-#'     will be returned with brackets and parantheses. If \code{FALSE}...
-#' @param dig_lab An integer that is passed to \code{base::cut()}
-#' @param split A logical scalar...
+#' @param clean_levels A logical scalar; if \code{TRUE} (default), the
+#'     brackets and parentheses will be stripped from the output. If \code{FALSE}
+#'     (default), the levels will be returned with brackets and parentheses. If
+#'     \code{split} is \code{TRUE} and \code{clean_levels} is \code{FALSE},
+#'     the \code{clean_levels} argument will be overridden.
+#' @param dig_lab An integer that is passed to \code{base::cut()}; it determines
+#'     the number of digits used in formatting break numbers. It can either be
+#'     a scalar or a vector. If it is a scalar, the value will be applied to both
+#'     the \code{x} and \code{y} variables. If it is a vector, the first element
+#'     will be applied to the \code{x} variable and the second will be applied
+#'     to the \code{y} variable.
+#' @param split A logical scalar; if \code{FALSE} (default), the range of values
+#'     for each factor level (corresponds to \code{dim}) will be returned for
+#'     both the \code{x} and \code{y} variables. If \code{TRUE}, the individual
+#'     values for each break (including the minimum and maximum values) will be
+#'     returned.
+#'
+#' @return A list where \code{bi_x} is a vector containing the breaks for the
+#'     \code{x} variable and \code{bi_y} is a vector containing the breaks for
+#'     the \code{y} variable.
+#'
+#' @examples
+#' # return ranges for each category of x and y
+#' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
+#'     dim = 4, dig_lab = c(4, 5), split = FALSE)
+#'
+#' # ranges can be returned with brackets and parentheses
+#' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
+#'     clean_levels = FALSE, dim = 4, dig_lab = 3, split = FALSE)
+#'
+#' # return breaks for each category of x and y
+#' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
+#'     dim = 4, dig_lab = c(4, 5), split = TRUE)
+#'
+#' # optionally name vector for dig_lab for increased clarity of code
+#' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
+#'     dim = 4, dig_lab = c(x = 4, y = 5), split = TRUE)
+#'
+#' # scalars can also be used for dig_lab, though results may be less optimal
+#' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
+#'     dim = 4, dig_lab = 3, split = TRUE)
 #'
 #' @export
-bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = FALSE,
+bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
                             dig_lab = 3, split = FALSE){
 
   # global bindings
@@ -175,11 +216,15 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = FALSE,
     stop("A logical scalar must be supplied for 'split'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
+  if (split == TRUE & clean_levels == FALSE){
+    warning("Splitting levels requires level cleaning as well. The 'clean_levels' argument has been overridden.")
+  }
+
   if (missing(style)){
     style <- NULL
   }
 
-  dig_vals <- format_dig_lab(dig_lab = dig_lab)
+  dig_vals <- bi_validate_dig_lab(dig_lab = dig_lab)
 
   # high dimension warning
   if (dim > 4){
@@ -204,7 +249,7 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = FALSE,
     bi_y = levels(.data$bi_y)
   )
 
-  if (clean_levels == TRUE){
+  if (clean_levels == TRUE | split == TRUE){
     out <- bi_levels_clean(levels_list = out, split = split)
   }
 
@@ -213,9 +258,7 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = FALSE,
 
 }
 
-# Validate
-#
-#
+# validate variable input
 bi_var_validate <- function(.data, var, dim, style){
 
   if (var %in% names(.data) == FALSE){
@@ -251,9 +294,7 @@ bi_var_validate <- function(.data, var, dim, style){
 }
 
 
-# Cut
-#
-#
+# cut variable
 bi_var_cut <- function(.data, var, new_var, dim, style, dig_lab){
 
   if (inherits(x = .data[[var]], what = "factor")){
@@ -272,6 +313,7 @@ bi_var_cut <- function(.data, var, new_var, dim, style, dig_lab){
 
 }
 
+# clean levels created by bi_var_cut
 bi_levels_clean <- function(levels_list, split){
 
   # remove braces
@@ -295,26 +337,29 @@ bi_levels_clean <- function(levels_list, split){
 
 }
 
-format_dig_lab <- function(dig_lab){
+# validate dig_lab inputs
+bi_validate_dig_lab <- function(dig_lab){
+
+  if (is.numeric(dig_lab) == FALSE){
+    stop("A numeric scalar or vector must be supplied for 'dig_lab'.")
+  }
 
   if (length(dig_lab) == 1){
-
-    if(is.numeric(dig_lab) == FALSE){
-      stop("The value for the 'dig_lab' argument must be numeric.")
-    }
 
     dig_vals <- c(dig_lab, dig_lab)
 
   } else if (length(dig_lab) == 2){
 
-    if(is.numeric(dig_lab) == FALSE){
-      stop("The values for the 'dig_lab' argument must be numeric.")
+    if (is.null(names(dig_lab)) == TRUE){
+      dig_vals <- dig_lab
+    } else if (all(names(dig_lab) %in% c("x", "y")) == TRUE){
+      dig_vals <- c(dig_lab[["x"]], dig_lab[["y"]])
+    } else if (all(names(dig_lab) %in% c("x", "y")) == FALSE){
+      stop("The vector supplied for the 'dig_lab' argument contains invalid names. Only 'x' and 'y' are accepted for named vectors.")
     }
 
-    dig_vals <- dig_lab
-
-  } else {
-    stop("The 'dig_lab' argument is misspecified.")
+  } else if (length(dig_lab) > 2) {
+    stop("The vector supplied for the 'dig_lab' argument is too long.")
   }
 
   return(dig_vals)

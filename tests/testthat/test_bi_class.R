@@ -20,11 +20,11 @@ test_that("missing parameters trigger appropriate errors", {
                "A variable must be given for the 'y' argument.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, dim = 2),
                "Please specify a style for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
-  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),
-               "The style 'ham' is not a valid method for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
 })
 
 test_that("incorrectly specified parameters trigger appropriate errors", {
+  expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),
+               "The style 'ham' is not a valid method for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.")
   expect_error(bi_class(stl_race_income, x = ham, y = medInc, style = "quantile", dim = 2),
                "The variable 'ham' is not found in the given data set.")
   expect_error(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "ham", dim = 2),

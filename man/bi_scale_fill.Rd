@@ -35,7 +35,7 @@ Applies the selected palette as the fill aesthetic when \code{\link{geom_sf}}
     mapping.
 }
 \examples{
-# load suggested dependencies
+# load dependencies
 library(ggplot2)
 library(sf)
 
