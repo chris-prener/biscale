@@ -9,6 +9,7 @@ reference:
     desc: "Create classes for bivariate mapping"
     contents:
     - bi_class
+    - bi_class_breaks
 
   - title: "Mapping"
     desc: "Bivariate mapping with ggplot2"
