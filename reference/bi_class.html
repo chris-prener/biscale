@@ -70,7 +70,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">bi_class</span><span class="op">(</span><span class="va">.data</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">style</span>, dim <span class="op">=</span> <span class="fl">3</span>, keep_factors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">bi_class</span><span class="op">(</span><span class="va">.data</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">style</span>, dim <span class="op">=</span> <span class="fl">3</span>, keep_factors <span class="op">=</span> <span class="cn">FALSE</span>, dig_lab <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -101,6 +101,8 @@ be omitted.</p></dd>
 <dd><p>A logical scalar; if <code>TRUE</code>, the intermediate factor
 variables created as part of the calculation of <code>bi_class</code> will be
 retained. If <code>FALSE</code> (default), they will not be returned.</p></dd>
+<dt>dig_lab</dt>
+<dd><p>An integer that is passed to <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">base::cut()</a></code></p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>

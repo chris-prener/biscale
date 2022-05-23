@@ -97,9 +97,7 @@
 <div class="page-header"><h1 id="biscale-">biscale <img src="reference/figures/logo.png" align="right"><a class="anchor" aria-label="anchor" href="#biscale-"></a>
 </h1></div>
 
-<p><code>biscale</code> implements a set of functions for bivariate thematic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes, including Joshua Stevens’ <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">classive color schemes</a>.</p>
-<p><img src="reference/figures/biscale.001.png" width="100%"></p>
-<p>In addition to support for two-by-two, three-by-three, and four-by-four maps, the package also supports a range of methods for calculating breaks for bivariate maps.</p>
+<p><code>biscale</code> implements a set of functions for bivariate thematic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes, including Joshua Stevens’ <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">classic color schemes</a>. In addition to support for two-by-two, three-by-three, and four-by-four maps, the package also supports a range of methods for calculating breaks for bivariate maps.</p>
 <div class="section level2">
 <h2 id="whats-new-in-v1009000">What’s New in v1.0.0.9000?<a class="anchor" aria-label="anchor" href="#whats-new-in-v1009000"></a>
 </h2>
@@ -116,12 +114,17 @@
 <li>The workflow for allowing custom palettes has been overhauled to simply the process - users can provide a named vector for the <code>pal</code> arguments in the <code><a href="reference/bi_pal.html">bi_pal()</a></code>, <code><a href="reference/bi_legend.html">bi_legend()</a></code>, and <code>bi_scale_...</code> functions</li>
 <li>
 <code><a href="reference/bi_class.html">bi_class()</a></code> can be used to calculate bivariate breaks for maps larger than four-by-four, though it will return a warning reminding you that these maps are hard to read and that <code>biscale</code> does not provide palettes for larger maps. Instead, you should provide a custom palette.</li>
+<li>
+<code><a href="reference/bi_class_breaks.html">bi_class_breaks()</a></code> can be used with <code><a href="reference/bi_legend.html">bi_legend()</a></code> to facilitate optionally adding break values to your legends</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="breaking-changes">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes"></a>
 </h3>
-<ul><li>There is no default supplied for <code><a href="reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors as well</li></ul>
+<ul>
+<li>There is no default supplied for <code><a href="reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors as well</li>
+<li>Changes to <code><a href="reference/bi_legend.html">bi_legend()</a></code> to facilitate breaks mean that there are new arguments to be aware of</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="deprecated-functions">Deprecated Functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a>
