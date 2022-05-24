@@ -58,7 +58,7 @@ Once data are loaded, bivariate classes can be applied with the `bi_class()` fun
 > data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
 ```
 
-The `dim` argument is used to control the extent of the legend - do you want to produce a two-by-two map (`dim = 2`), a three-by-three map (`dim = 3`), or a four-by-four map (`dim = 4`)? 
+The `dim` argument is used to control the extent of the legend - do you want to produce a two-by-two map (`dim = 2`), a three-by-three map (`dim = 3`), or a four-by-four map (`dim = 4`)? *Note that support for four-by-four mapping is new as of v1.0.0!*
 
 Classes can be applied with the `style` parameter using four approaches for calculating breaks: `"quantile"` (default), `"equal"`, `"fisher"`, and `"jenks"`. The default `"quantile"` approach will create relatively equal "buckets" of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map. For a four-by-four map, breaks are created at the 25th, 50th (median), and 75th percentiles.
 
@@ -72,7 +72,9 @@ With the sample data, this creates a *very* broad range for the percent white me
 knitr::include_graphics("../man/figures/biscale.005.png")
 ```
 
-As of `v1.0`, `biscale` now supports larger dimension maps as well as custom breaks for maps. For an overview of these options, see the "Advanced Options" vignette.
+Users should therefore choose methods for calculating breaks carefully as well as the number of dimensions mapped.
+
+*As of `v1.0`, `biscale` now supports larger dimension maps as well as custom breaks for maps. For an overview of these options, see the "Advanced Options" vignette.*
 
 ### Mapping Data
 Once breaks are created, we can use `bi_scale_fill()` as part of our `ggplot()` call:
@@ -91,23 +93,9 @@ map <- ggplot() +
 
 This requires that the variable `bi_class`, created with `bi_class()`, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.
 
-The dimensions of the scale must again be supplied for `bi_scale_fill()` (they should match the dimensions given for `bi_class()`!), and a palette must be given. Options for palettes are `"Brown"`, `"DkBlue"`, `"DkCyan"`, `"DkViolet"`, or `"GrPink"`. The `"DkViolet"` was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). The first map in this vignette uses the `"GrPink"` palette. Other two-by-two palettes look like so:
-
-```{r 2by2Pals, echo=FALSE, out.width = '100%'}
-knitr::include_graphics("../man/figures/biscale.002.png")
-```
-
-Here are several other three-by-three palettes:
-
-```{r 3by3Pals, echo=FALSE, out.width = '100%'}
-knitr::include_graphics("../man/figures/biscale.003.png")
-```
-
-The `"Brown"` palette is not pictured, but can be previewed (along with the other palettes) using the `bi_pal()` function. The same function can also be used to return vectors of color hex values as well. Samples of each palette are available on the [package website](https://slu-opengis.github.io/biscale/reference/bi_pal.html).
+The dimensions of the scale must again be supplied for `bi_scale_fill()` (they should match the dimensions given for `bi_class()`!), and a palette must be given. *Note that, as of v1.0.0, the number of options for palettes has been expanded and there is increased support for custom palettes.* See the "Palettes" vignette or `?bi_pal` for more details.
 
 The example above also includes `bi_theme()`, which is based on the theme designed by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/). This theme creates a simple, clean canvas for bivariate mapping that removes any possible distracting elements.
-
-Note that it is also possible to apply custom color palettes as well using the `bi_pal_manual()` function
 
 ### Creating Legends
 We've set `show.legend = FALSE` so that we can add (manually) our own bivariate legend. The legend itself can be created with the `bi_legend()` function:
@@ -131,7 +119,9 @@ finalPlot <- ggdraw() +
   draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
 
-This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. There are other approaches you could take as well that do not use `cowplot`. To maintain backward compatibility, `cowplot` is no longer a suggested dependency of `biscale`.
+This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. There are other approaches you could take as well that do not use `cowplot`. Note that, because `cowplot` requires `R` v3.5, it is not included as a *suggested* package (to maintain backward compatibility).
+
+*Beginning with v1.0.0, there are additional options for constructing legends with `biscale`.* Please see the "Advanced Options" vignette for more details!
 
 ## Getting Help
 * If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](http://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.
