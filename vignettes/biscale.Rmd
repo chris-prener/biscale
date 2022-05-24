@@ -24,11 +24,8 @@ knitr::include_graphics("../man/figures/biscale.001.jpeg")
 
 ## Getting Started
 ### Installation
-Since the package does not directly use functions from `sf`, it is a suggested dependency rather than a required one. However, the most direct approach to using `biscale` is with `sf` objects, and we therefore recommend users install `sf` before proceeding with using `biscale`. Windows users should be able to install `sf` without significant issues, but macOS and Linux users will need to install several open source spatial libraries to get `sf` itself up and running. The easiest approach for macOS users is to install the GDAL 2.0 Complete framework from [Kyng Chaos](https://www.kyngchaos.com/software/frameworks/). 
 
-For Linux users, steps will vary based on the flavor being used. Our [configuration file](https://github.com/slu-openGIS/biscale/blob/master/.travis.yml) for Travis CI and its associated [bash script](https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh) should be useful in determining the necessary components to install.
-
-Once `sf` is installed, the easiest way to get `biscale` is to install it from CRAN:
+The easiest way to get `biscale` is to install it from CRAN:
 
 ```r
 install.packages("biscale")
@@ -40,6 +37,9 @@ Alternatively, the development version of `biscale` can be accessed from GitHub 
 # install.packages("remotes")
 remotes::install_github("slu-openGIS/biscale")
 ```
+
+### Installing Dependencies
+Since the package does not directly use functions from `sf`, it is a suggested dependency rather than a required one. However, the most direct approach to using `biscale` is with `sf` objects, and we therefore recommend users install `sf`. Windows and macOS users should be able to install `sf` without significant issues unless they are building from source. Linux users will need to install several open source spatial libraries to get `sf` itself up and running. 
 
 ### Functions
 All functions within `biscale` use the prefix `bi_` to leverage the auto-completion features of RStudio and other IDEs. 
@@ -58,11 +58,9 @@ Once data are loaded, bivariate classes can be applied with the `bi_class()` fun
 > data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
 ```
 
-Note that, as of v0.2 of the `biscale` package, `sf` is imported when you load `biscale`. This resolves issues related to not loading `sf` ahead of time, though it does add a dependency that a small number of users may have wished not to install.
+The `dim` argument is used to control the extent of the legend - do you want to produce a two-by-two map (`dim = 2`), a three-by-three map (`dim = 3`), or a four-by-four map (`dim = 4`)? 
 
-The `dim` argument is used to control the extent of the legend - do you want to produce a two-by-two map (`dim = 2`) or a three-by-three map (`dim = 3`)?
-
-Classes can be applied with the `style` parameter using four approaches for calculating breaks: `"quantile"` (default), `"equal"`, `"fisher"`, and `"jenks"`. The default `"quantile"` approach will create relatively equal "buckets" of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map. 
+Classes can be applied with the `style` parameter using four approaches for calculating breaks: `"quantile"` (default), `"equal"`, `"fisher"`, and `"jenks"`. The default `"quantile"` approach will create relatively equal "buckets" of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map. For a four-by-four map, breaks are created at the 25th, 50th (median), and 75th percentiles.
 
 ```{r quantileBreaks, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("../man/figures/biscale.004.png")
@@ -73,6 +71,8 @@ With the sample data, this creates a *very* broad range for the percent white me
 ```{r otherBreaks, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("../man/figures/biscale.005.png")
 ```
+
+As of `v1.0`, `biscale` now supports larger dimension maps as well as custom breaks for maps. For an overview of these options, see the "Advanced Options" vignette.
 
 ### Mapping Data
 Once breaks are created, we can use `bi_scale_fill()` as part of our `ggplot()` call:

@@ -1,10 +1,10 @@
 ---
-title: "Palettes In Biscale"
-author: "Branson Fox"
+title: "Palettes in Biscale"
+author: "Branson Fox and Christopher Prener, Ph.D."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Palettes In Biscale}
+  %\VignetteIndexEntry{Palettes in Biscale}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Palettes In Biscale
+## Palettes in Biscale
 Perhaps the most important aspect of data visualization is color choice. That is why as of version `0.3.0`, `biscale` now includes support for a variety of palette manipulations, as well as including 15 palettes natively. This vignette outlines the semantics of palette manipulation, and important considerations in palette choice.
 
 ## Included Palettes
