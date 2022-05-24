@@ -5,7 +5,7 @@ library(sf)
 
 # prep data
 data <- stl_race_income
-data <- bi_class(data, x = pctWhite, y = medInc, keep_factors = TRUE)
+data <- bi_class(data, x = pctWhite, y = medInc, style = "quantile", keep_factors = TRUE)
 
 # draw map
 map <- ggplot() +
@@ -34,3 +34,39 @@ finalPlot
 # save map
 ggsave(filename = "inst/extdata/dkblue.png", height = 12.54, width = 8.505, dpi = 500)
 
+# create palette
+custom_pal3 <- c(
+  "1-1" = "#d3d3d3", # low x, low y
+  "2-1" = "#ba8890",
+  "3-1" = "#9e3547", # high x, low y
+  "1-2" = "#8aa6c2",
+  "2-2" = "#7a6b84", # medium x, medium y
+  "3-2" = "#682a41",
+  "1-3" = "#4279b0", # low x, high y
+  "2-3" = "#3a4e78",
+  "3-3" = "#311e3b" # high x, high y
+)
+
+# draw map
+map <- ggplot() +
+  geom_sf(data = data, aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
+  bi_scale_fill(pal = custom_pal3) +
+  labs(
+    title = "Race and Income in St. Louis, MO",
+    subtitle = "Dark Blue (DkBlue) Palette"
+  ) +
+  bi_theme()
+
+# draw legend
+legend <- bi_legend(pal = custom_pal3,
+                    xlab = "Higher % White ",
+                    ylab = "Higher Income ",
+                    size = 12)
+
+# combine map with legend
+finalPlot <- ggdraw() +
+  draw_plot(map, 0, 0, 1, 1) +
+  draw_plot(legend, 0.23, 0.66, 0.22, 0.22)
+
+# print map
+finalPlot

@@ -59,3 +59,12 @@ pals <- gridExtra::grid.arrange(ncol = 3,
 
 ggsave(pals, filename = "man/figures/pals_primary.jpeg", dpi = 200,
        width = 6, height = 16, units = "in")
+
+pals <- gridExtra::grid.arrange(ncol = 2,
+  bi_pal(pal = "PurpleOr", dim = 3) + labs(subtitle = "Original"),
+  bi_pal(pal = "PurpleOr", dim = 3, flip_axes = TRUE) + labs(subtitle = "Flipped"),
+  bi_pal(pal = "PurpleOr", dim = 3, rotate_pal = TRUE) + labs(subtitle = "Rotated"),
+  bi_pal(pal = "PurpleOr", dim = 3, flip_axes = TRUE, rotate_pal = TRUE) + labs(subtitle = "Flipped and Rotated"))
+
+ggsave(pals, filename = "man/figures/manipulated_pal.jpeg", dpi = 200,
+       width = 6, height = 3, units = "in")
