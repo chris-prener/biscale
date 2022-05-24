@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 ## Palettes in Biscale
 Perhaps the most important aspect of data visualization is color choice. That is why as of version `0.3.0`, `biscale` now includes support for a variety of palette manipulations, as well as including 15 palettes natively. This vignette outlines the semantics of palette manipulation, and important considerations in palette choice.
 
+The `"DkViolet"` was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
+
 ## Included Palettes
 `Biscale` now includes 15 palettes. The entire list of palettes is as follows:
 

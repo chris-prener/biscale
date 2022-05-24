@@ -1,5 +1,5 @@
 ,
-GrPink = list(
+palName = list(
   d2 = c(
     "1-1" = "#", # low x, low y
     "2-1" = "#", # high x, low y

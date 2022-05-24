@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 Thematic choropleth maps are used to display quantities of some variable within areas, such as mapping median income across a city's neighborhoods. However, we often think in bivariate terms - "how do race and income vary together?". Maps that captures this, known as bivariate choropleth maps, are often perceived as difficult to create and interpret. The goal of `biscale` is to implement a consistent approach to bivariate mapping entirely within `R`. The package's workflow is based on a 2019 [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr. `biscale` also contains a set of bivariate mapping palettes, including Joshua Stevens' [classive color schemes](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). 
 
-```{r exampleMap, echo=FALSE, out.width = '100%'}
+```{r example-maps, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("../man/figures/biscale.001.jpeg")
 ```
 
@@ -62,14 +62,14 @@ The `dim` argument is used to control the extent of the legend - do you want to 
 
 Classes can be applied with the `style` parameter using four approaches for calculating breaks: `"quantile"` (default), `"equal"`, `"fisher"`, and `"jenks"`. The default `"quantile"` approach will create relatively equal "buckets" of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map. For a four-by-four map, breaks are created at the 25th, 50th (median), and 75th percentiles.
 
-```{r quantileBreaks, echo=FALSE, out.width = '100%'}
-knitr::include_graphics("../man/figures/biscale.004.png")
+```{r quantile-breaks, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("../man/figures/biscale.002.jpeg")
 ```
 
 With the sample data, this creates a *very* broad range for the percent white measure in particular. Using one of the other approaches to calculating breaks yields a narrower range for the breaks and produces a map that does not overstate the percent of white residents living on the north side of St. Louis:
 
-```{r otherBreaks, echo=FALSE, out.width = '100%'}
-knitr::include_graphics("../man/figures/biscale.005.png")
+```{r other-breaks, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("../man/figures/biscale.003.jpeg")
 ```
 
 Users should therefore choose methods for calculating breaks carefully as well as the number of dimensions mapped.
@@ -86,14 +86,16 @@ map <- ggplot() +
   bi_scale_fill(pal = "DkBlue", dim = 3) +
   labs(
     title = "Race and Income in St. Louis, MO",
-    subtitle = "Dark Blue (DkBlue) Palette"
+    subtitle = "Gray Pink (GrPink) Palette"
   ) +
   bi_theme()
 ```
 
 This requires that the variable `bi_class`, created with `bi_class()`, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.
 
-The dimensions of the scale must again be supplied for `bi_scale_fill()` (they should match the dimensions given for `bi_class()`!), and a palette must be given. *Note that, as of v1.0.0, the number of options for palettes has been expanded and there is increased support for custom palettes.* See the "Palettes" vignette or `?bi_pal` for more details.
+The dimensions of the scale must again be supplied for `bi_scale_fill()` (they should match the dimensions given for `bi_class()`!), and a palette must be given. For reference, the top image above uses the `"DkBlue"` palette while the map images in the breaks section above use the `"DkViolet"` palette. *Note that, as of v1.0.0, the number of options for palettes has been expanded and there is increased support for custom palettes.* See the "Palettes" vignette or `?bi_pal` for more details.
+
+If you are mapping point data, there is an alternative function `bi_scale_color()` that works the same way as `bi_scale_fill()`.
 
 The example above also includes `bi_theme()`, which is based on the theme designed by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/). This theme creates a simple, clean canvas for bivariate mapping that removes any possible distracting elements.
 
@@ -119,9 +121,13 @@ finalPlot <- ggdraw() +
   draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
 
-This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. There are other approaches you could take as well that do not use `cowplot`. Note that, because `cowplot` requires `R` v3.5, it is not included as a *suggested* package (to maintain backward compatibility).
+This approach allows us to customize legend's placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. There are other approaches you could take as well that do not use `cowplot`. Note that, because `cowplot` requires `R` v3.5, it is not included as a *suggested* package (to maintain backward compatibility). *Beginning with v1.0.0, there are additional options for constructing legends with `biscale`. Please see the "Advanced Options" vignette for more details!*
 
-*Beginning with v1.0.0, there are additional options for constructing legends with `biscale`.* Please see the "Advanced Options" vignette for more details!
+The completed map, created with the sample code in this vignette, looks like this:
+
+```{r final-map, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("../man/figures/biscale.004.jpeg")
+```
 
 ## Getting Help
 * If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](http://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.
