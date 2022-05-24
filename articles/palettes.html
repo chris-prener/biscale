@@ -103,54 +103,42 @@
 
     
     
-<div class="section level2">
-<h2 id="palettes-in-biscale">Palettes in Biscale<a class="anchor" aria-label="anchor" href="#palettes-in-biscale"></a>
-</h2>
-<p>Perhaps the most important aspect of data visualization is color choice. That is why as of version <code>0.3.0</code>, <code>biscale</code> now includes support for a variety of palette manipulations, as well as including 15 palettes natively. This vignette outlines the semantics of palette manipulation, and important considerations in palette choice.</p>
-<p>The <code>"DkViolet"</code> was created by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">Timo Grossenbacher and Angelo Zehr</a>, and the other four palettes were created by <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">Joshua Stevens</a>.</p>
-</div>
+<p>One of the important aspects of cartography and data visualization is color choice. <em>As of v1.0.0, <code>biscale</code> supports a dozen built-in palettes and expanded ability to utilize custom palettes.</em> This vignette illustrates the palettes included with <code>biscale</code>, provides an overview of palette manipulation tools, and describes the revised approach to utilizing custom palettes.</p>
 <div class="section level2">
 <h2 id="included-palettes">Included Palettes<a class="anchor" aria-label="anchor" href="#included-palettes"></a>
 </h2>
-<p><code>Biscale</code> now includes 15 palettes. The entire list of palettes is as follows:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">gridExtra</span><span class="fu">::</span><span class="fu">grid.arrange</span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">3</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"DkViolet"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"DkViolet"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"GrPink"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"GrPink"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"DkBlue"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"DkBlue"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"DkCyan"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"DkCyan"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"Brown"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Brown"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"BlGold"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"BlGold"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"BlOrange"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"BlOrange"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"BlYellow"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"BlYellow"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"Viridis"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Viridis"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"Diverging"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Diverging"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"GnPink"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"GnPink"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"GnPurple"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"GnPurple"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"OrgPurple"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"OrgPurple"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"Fire"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Fire"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">"Reds"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Reds"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<p><img src="../reference/figures/all_palettes.png" width="100%"></p>
+<div class="section level3">
+<h3 id="primary-palettes">Primary Palettes<a class="anchor" aria-label="anchor" href="#primary-palettes"></a>
+</h3>
+<p>All of the primary palettes listed here can be used with two-by-two (<code>dim = 2</code>), three-by-three (<code>dim = 3</code>), and four-by-four (<code>dim = 4</code>) maps. The palettes that contain a <code>2</code> at the end of their name are visually similar to the original, “legacy” palettes (see below) but utilize slightly different hex values for colors. <img src="../reference/figures/pals_primary.jpeg" width="100%"></p>
+<p>Most of the newly added palettes not based on legacy designs were adapted from earlier work by Branson Fox.</p>
+</div>
+<div class="section level3">
+<h3 id="legacy-palettes">Legacy Palettes<a class="anchor" aria-label="anchor" href="#legacy-palettes"></a>
+</h3>
+<p>To ensure compatibility with scripts written with older versions of <code>biscale</code>, the original five palettes included in the package are still available. They can be used only for two-by-two (<code>dim = 2</code>) and three-by-three (<code>dim = 3</code>) maps.</p>
+<p><img src="../reference/figures/pals_legancy.jpeg" width="100%"></p>
+<p>The <code>"DkViolet"</code> palette was created by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">Timo Grossenbacher and Angelo Zehr</a>, and the other four palettes were created by <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">Joshua Stevens</a>.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="palette-manipulations">Palette Manipulations<a class="anchor" aria-label="anchor" href="#palette-manipulations"></a>
 </h2>
 <p>The native palettes were prior restricted to an exact arrangement. However, there may be a desire to change the axes of the color scale. To do this, you need only supply <code>flip_axes = TRUE</code> to <code>bi_legend</code>, <code>bi_scale_fill</code> or <code>bi_scale_color</code>. <strong>Very Important:</strong> this argument must be specified to both your legend function <strong>and</strong> your scale function, or the colors will not align.</p>
 <p>Flipping the axes inverts the color scale for the x and y axes. For example:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regular</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">'DkViolet'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Regular'</span><span class="op">)</span>
 <span class="va">flipped</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">'DkViolet'</span>, flip_axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Flipped'</span><span class="op">)</span>
 <span class="fu">gridExtra</span><span class="fu">::</span><span class="fu">grid.arrange</span><span class="op">(</span><span class="va">regular</span>, <span class="va">flipped</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="../reference/figures/flipped_pal.png" width="100%"></p>
 <p>Rotating the palette rotates the entire color scale 180 degrees. For example:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regular</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">'DkViolet'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Regular'</span><span class="op">)</span>
 <span class="va">rotated</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">'DkViolet'</span>, rotate_pal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Rotated'</span><span class="op">)</span>
 <span class="fu">gridExtra</span><span class="fu">::</span><span class="fu">grid.arrange</span><span class="op">(</span><span class="va">regular</span>, <span class="va">rotated</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="../reference/figures/rotated_pal.png" width="100%"></p>
 <p>These techniques can be combined as well, to produce a palette that has been both flipped and rotated.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">regular</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">'DkViolet'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Regular'</span><span class="op">)</span>
 <span class="va">flipped</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">'DkViolet'</span>, flip_axes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Flipped'</span><span class="op">)</span>
 <span class="va">rotated</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span><span class="st">'DkViolet'</span>, rotate_pal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">'Rotated'</span><span class="op">)</span>
@@ -158,7 +146,7 @@
 <span class="fu">gridExtra</span><span class="fu">::</span><span class="fu">grid.arrange</span><span class="op">(</span><span class="va">regular</span>, <span class="va">flipped</span>, <span class="va">rotated</span>, <span class="va">flipAndRotate</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="../reference/figures/manipulated_pal.png" width="100%"></p>
 <p>As you may discern, this can drastically affect the way a bivariate map looks.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">bi_class</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">'white'</span>, size <span class="op">=</span> <span class="fl">0.1</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
@@ -179,18 +167,6 @@
 
 <span class="fu">gridExtra</span><span class="fu">::</span><span class="fu">grid.arrange</span><span class="op">(</span><span class="va">regular</span>, <span class="va">flipped</span>, <span class="va">rotated</span>, <span class="va">flipAndRotate</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="../reference/figures/palette_maps.png" width="100%"></p>
-</div>
-<div class="section level2">
-<h2 id="padding-within-the-legend">Padding within the Legend<a class="anchor" aria-label="anchor" href="#padding-within-the-legend"></a>
-</h2>
-<p>You may desire a clearer delineation of the classifications within the palette, or just prefer the style. To pad the cells in the legend, you need to specify a width for padding, and optionally a color. (The default is white)</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">gridExtra</span><span class="fu">::</span><span class="fu">grid.arrange</span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">3</span>,
-  <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">'BlGold'</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">'BlGold'</span>, pad_width <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">'BlGold'</span>, pad_width <span class="op">=</span> <span class="fl">2</span>, pad_color <span class="op">=</span> <span class="st">'#000000'</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<p><img src="../reference/figures/pal_border.png" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="special-palettes">Special Palettes<a class="anchor" aria-label="anchor" href="#special-palettes"></a>

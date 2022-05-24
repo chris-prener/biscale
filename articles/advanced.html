@@ -110,6 +110,18 @@
 <div class="section level2">
 <h2 id="customizing-legends">Customizing Legends<a class="anchor" aria-label="anchor" href="#customizing-legends"></a>
 </h2>
+<div class="section level3">
+<h3 id="padding-within-the-legend">Padding within the Legend<a class="anchor" aria-label="anchor" href="#padding-within-the-legend"></a>
+</h3>
+<p>You may desire a clearer delineation of the classifications within the palette, or just prefer the style. To pad the cells in the legend, you need to specify a width for padding, and optionally a color. (The default is white)</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">gridExtra</span><span class="fu">::</span><span class="fu">grid.arrange</span><span class="op">(</span>ncol <span class="op">=</span> <span class="fl">3</span>,
+  <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">'BlGold'</span><span class="op">)</span>,
+  <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">'BlGold'</span>, pad_width <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,
+  <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">'BlGold'</span>, pad_width <span class="op">=</span> <span class="fl">2</span>, pad_color <span class="op">=</span> <span class="st">'#000000'</span><span class="op">)</span>
+<span class="op">)</span></code></pre></div>
+<p><img src="../reference/figures/pal_border.png" width="100%"></p>
+</div>
 </div>
   </div>
 
