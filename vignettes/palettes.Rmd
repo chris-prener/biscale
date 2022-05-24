@@ -137,7 +137,7 @@ You can preview and validate your named vector using `bi_pal()`. For example, we
 bi_pal(pal = custom_pal3, dim = 3)
 ```
 
-Once you have created your named vector, you can use it any place where you would ordinarily provide a quoted palette name in `biscale` functions. In this example, the `custom_pal3` vector created above is passed to `bi_sscale_fill()` and `bi_legend()`:
+Once you have created your named vector, you can use it any place where you would ordinarily provide a quoted palette name in `biscale` functions. In this example, the `custom_pal3` vector created above is passed to `bi_scale_fill()` and `bi_legend()`:
 
 ```r
 # prep data

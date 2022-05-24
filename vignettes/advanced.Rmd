@@ -17,10 +17,12 @@ knitr::opts_chunk$set(
 ```
 
 ## Calculating Breaks
+*As of v1.0.0, `biscale` functions accept factors as well as numeric vectors.* This allows users to exert far greater control over how bivariate classes are ultimately calculated.
 
 ## Customizing Legends
+### Adding Labels to the Legend
 
-### Padding within the Legend
+### Padding Within the Legend
 
 You may desire a clearer delineation of the classifications within the palette, or just prefer the style. To pad the cells in the legend, you need to specify a width for padding, and optionally a color. (The default is white)
 
