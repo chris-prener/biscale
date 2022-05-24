@@ -76,7 +76,7 @@ Utilizing both flipping axes and palette rotations also yields a considerable ch
 knitr::include_graphics('../man/figures/biscale.006.jpeg')
 ```
 
-*Be careful to ensure that your use of `flip_axes` and/or `rotate_pal` is consistent across `bi_scale_fill()`/`bi_scale_color()` as well as `bi_legend()`.*
+Be careful to ensure that your use of `flip_axes` and/or `rotate_pal` is consistent across `bi_scale_fill()`/`bi_scale_color()` as well as `bi_legend()`.
 
 ## Custom Palettes
 In addition the built-in palettes described above, `biscale` supports custom palettes. *As of v1.0.0, the workflow for using custom palettes is different than prior releases and the old approach, using `bi_pal_manual()`, has been deprecated. We plan to remove `bi_pal_manual()` in late 2022. Please update your workflows accordingly.*
@@ -134,6 +134,10 @@ custom_pal4 <- c(
 You can preview and validate your named vector using `bi_pal()`. For example, we can preview the `custom_pal3` vector created above:
 
 ```r
+#  load dependencies
+library(biscale)
+
+# preview palette
 bi_pal(pal = custom_pal3, dim = 3)
 ```
 
