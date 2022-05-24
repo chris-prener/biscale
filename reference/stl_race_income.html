@@ -101,30 +101,28 @@
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">stl_race_income</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classes ‘sf’ and 'data.frame':	106 obs. of  4 variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ GEOID   : chr  "29510112100" "29510116500" "29510110300" "29510103700" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ pctWhite: num  66.47 47.8 2.43 90.77 87.73 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ medInc  : num  56118 43913 17448 50565 74425 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ GEOID   : chr  "29510102300" "29510102400" "29510104500" "29510106100" ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ pctWhite: num  82.93 90.12 74.72 1.75 2.38 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ medInc  : num  51650 45375 54286 18895 36130 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  $ geometry:sfc_POLYGON of length 106; first list element: List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ : num [1:284, 1:2] -90.3 -90.3 -90.3 -90.3 -90.3 ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ..$ : num [1:137, 1:2] -90.3 -90.3 -90.3 -90.3 -90.3 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "class")= chr [1:3] "XY" "POLYGON" "sfg"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "sf_column")= chr "geometry"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  - attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ..- attr(*, "names")= chr [1:3] "GEOID" "pctWhite" "medInc"</span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">stl_race_income</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> old-style crs object detected; please recreate object with a recent sf::st_crs()</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> old-style crs object detected; please recreate object with a recent sf::st_crs()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 6 features and 3 fields</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POLYGON</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -90.32052 ymin: 38.59208 xmax: -90.22502 ymax: 38.67066</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: -90.29702 ymin: 38.55542 xmax: -90.2645 ymax: 38.67565</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  NAD83</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         GEOID  pctWhite medInc                       geometry</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 29510112100 66.470727  56118 POLYGON ((-90.30445 38.6328...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 29510116500 47.799564  43913 POLYGON ((-90.24302 38.5975...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3 29510110300  2.427686  17448 POLYGON ((-90.24032 38.6643...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 29510103700 90.773067  50565 POLYGON ((-90.29877 38.6028...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5 29510103800 87.733402  74425 POLYGON ((-90.32052 38.5941...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6 29510104500 74.723618  54286 POLYGON ((-90.29432 38.6209...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 29510102300 82.925682  51650 POLYGON ((-90.29702 38.5623...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 29510102400 90.116046  45375 POLYGON ((-90.28452 38.5740...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 29510104500 74.723618  54286 POLYGON ((-90.29432 38.6209...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 29510106100  1.752464  18895 POLYGON ((-90.29005 38.6705...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5 29510105500  2.376729  36130 POLYGON ((-90.28601 38.6589...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6 29510105200 36.833277  60938 POLYGON ((-90.29462 38.6485...</span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">stl_race_income</span><span class="op">$</span><span class="va">medInc</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   10545   23474   34688   37140   51379   74425 </span>
