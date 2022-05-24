@@ -152,7 +152,7 @@ Once breaks are created, we can use `bi_scale_fill()` as part of our
 # create map
 map <- ggplot() +
   geom_sf(data = data, mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "DkBlue", dim = 3) +
+  bi_scale_fill(pal = "GrPink", dim = 3) +
   labs(
     title = "Race and Income in St. Louis, MO",
     subtitle = "Dark Blue (DkBlue) Palette"
@@ -172,7 +172,7 @@ specify the fill palette, the x and y axis labels, and their size along
 with the dimensions of the palette:
 
 ``` r
-legend <- bi_legend(pal = "DkBlue",
+legend <- bi_legend(pal = "GrPink",
                     dim = 3,
                     xlab = "Higher % White ",
                     ylab = "Higher Income ",
@@ -195,6 +195,11 @@ finalPlot <- ggdraw() +
   draw_plot(map, 0, 0, 1, 1) +
   draw_plot(legend, 0.2, .65, 0.2, 0.2)
 ```
+
+The completed map, created with the sample code in this README, looks
+like this:
+
+![](man/figures/biscale.004.jpeg)
 
 ## Contributor Code of Conduct
 

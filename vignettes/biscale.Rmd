@@ -83,7 +83,7 @@ Once breaks are created, we can use `bi_scale_fill()` as part of our `ggplot()` 
 # create map
 map <- ggplot() +
   geom_sf(data = data, mapping = aes(fill = bi_class), color = "white", size = 0.1, show.legend = FALSE) +
-  bi_scale_fill(pal = "DkBlue", dim = 3) +
+  bi_scale_fill(pal = "GrPink", dim = 3) +
   labs(
     title = "Race and Income in St. Louis, MO",
     subtitle = "Gray Pink (GrPink) Palette"
@@ -93,7 +93,7 @@ map <- ggplot() +
 
 This requires that the variable `bi_class`, created with `bi_class()`, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.
 
-The dimensions of the scale must again be supplied for `bi_scale_fill()` (they should match the dimensions given for `bi_class()`!), and a palette must be given. For reference, the top image above uses the `"DkBlue"` palette while the map images in the breaks section above use the `"DkViolet"` palette. *Note that, as of v1.0.0, the number of options for palettes has been expanded and there is increased support for custom palettes.* See the "Palettes" vignette or `?bi_pal` for more details.
+The dimensions of the scale must again be supplied for `bi_scale_fill()` (they should match the dimensions given for `bi_class()`!), and a palette must be given. For reference, the top image above uses the `"DkBlue"` palette, the map images in the breaks section above use the `"DkViolet"` palette, and the map constructed in this section (and displayed below) uses the `"GrPink"` palette. *Note that, as of v1.0.0, the number of options for palettes has been expanded and there is increased support for custom palettes. See the "Palettes" vignette or `?bi_pal` for more details.*
 
 If you are mapping point data, there is an alternative function `bi_scale_color()` that works the same way as `bi_scale_fill()`.
 
@@ -103,7 +103,7 @@ The example above also includes `bi_theme()`, which is based on the theme design
 We've set `show.legend = FALSE` so that we can add (manually) our own bivariate legend. The legend itself can be created with the `bi_legend()` function:
 
 ```r
-legend <- bi_legend(pal = "DkBlue",
+legend <- bi_legend(pal = "GrPink",
                     dim = 3,
                     xlab = "Higher % White ",
                     ylab = "Higher Income ",
