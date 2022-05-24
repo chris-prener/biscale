@@ -93,17 +93,12 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
   pal_validate(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
   # create vector
-  if (length(pal) == 1){
-    out <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
-  } else if (length(pal) > 1){
-    out <- pal
-  }
+  out <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
   # optionally create preview
   if (preview == TRUE){
-
-    out <- bi_legend_build(leg = out, xlab = "x var ", ylab = "y var ", size = 10, pad_width = NA, pad_color = "#ffffff", breaks = NULL)
-
+    out <- bi_legend_build(leg = out, xlab = "x var ", ylab = "y var ", size = 10,
+                           pad_width = NA, pad_color = "#ffffff", breaks = NULL)
   }
 
   # return output
@@ -115,7 +110,11 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
 bi_pal_pull <- function(pal, dim, flip_axes, rotate_pal){
 
   ## pull palette vector
-  out <- pals[[pal]][[paste0("d", dim)]]
+  if (length(pal) == 1){
+    out <- pals[[pal]][[paste0("d", dim)]]
+  } else {
+    out <- pal
+  }
 
   ## optionally flip axes (high x becomes high y and high y becomes high x)
   if (flip_axes == TRUE){
