@@ -21,7 +21,7 @@
   * `bi_class_breaks()` can be used with `bi_legend()` to facilitate optionally adding break values to your legends. Like `bi_class()`, this new function accepts both continuous and pre-made factors.
 
 ### Breaking Changes
-  * There is no default supplied for `bi_class()`'s `style` argument since `bi_class()` now accepts factors as well. Users that relied on the default behavior of `bi_class()` will now receieve an error asking you to specify a `style` for calculating breaks.
+  * There is no default supplied for `bi_class()`'s `style` argument since `bi_class()` now accepts factors as well. Users that relied on the default behavior of `bi_class()` will now receive an error asking you to specify a `style` for calculating breaks.
   * Changes to `bi_legend()` to facilitate breaks mean that there are new arguments to be aware of when calling the function.
 
 ### Deprecated Functions

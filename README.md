@@ -65,7 +65,7 @@ breaks for bivariate maps.
 
 -   There is no default supplied for `bi_class()`’s `style` argument
     since `bi_class()` now accepts factors as well. Users that relied on
-    the default behavior of `bi_class()` will now receieve an error
+    the default behavior of `bi_class()` will now receive an error
     asking you to specify a `style` for calculating breaks.
 -   Changes to `bi_legend()` to facilitate breaks mean that there are
     new arguments to be aware of when calling the function.
@@ -160,11 +160,11 @@ map <- ggplot() +
   bi_theme()
 ```
 
-Other options for palettes include `"Brown"`, `"DkCyan"`, `"DkViolet"`,
-and `"GrPink"`. The `bi_theme()` function applies a simple theme without
-distracting elements, which is preferable given the already elevated
-complexity of a bivariate map. We need to specify the dimensions of the
-palette for `bi_scale_fill()` as well.
+There are a variety of other options for palettes. See the “Palettes”
+vignette or `?bi_pal` for more details. The `bi_theme()` function
+applies a simple theme without distracting elements, which is preferable
+given the already elevated complexity of a bivariate map. We need to
+specify the dimensions of the palette for `bi_scale_fill()` as well.
 
 To add a legend to our map, we need to create a second `ggplot` object.
 We can use `bi_legend()` to accomplish this, which allows us to easily
