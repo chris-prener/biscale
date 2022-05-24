@@ -19,3 +19,19 @@ knitr::opts_chunk$set(
 ## Calculating Breaks
 
 ## Customizing Legends
+
+### Padding within the Legend
+
+You may desire a clearer delineation of the classifications within the palette, or just prefer the style. To pad the cells in the legend, you need to specify a width for padding, and optionally a color. (The default is white)
+
+```r
+gridExtra::grid.arrange(ncol = 3,
+  bi_legend('BlGold'),
+  bi_legend('BlGold', pad_width = 2),
+  bi_legend('BlGold', pad_width = 2, pad_color = '#000000')
+)
+```
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/pal_border.png')
+```
+

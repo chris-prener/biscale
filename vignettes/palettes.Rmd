@@ -16,36 +16,25 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Palettes in Biscale
-Perhaps the most important aspect of data visualization is color choice. That is why as of version `0.3.0`, `biscale` now includes support for a variety of palette manipulations, as well as including 15 palettes natively. This vignette outlines the semantics of palette manipulation, and important considerations in palette choice.
-
-The `"DkViolet"` was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
+One of the important aspects of cartography and data visualization is color choice. *As of v1.0.0, `biscale` supports a dozen built-in palettes and expanded ability to utilize custom palettes.* This vignette illustrates the palettes included with `biscale`, provides an overview of palette manipulation tools, and describes the revised approach to utilizing custom palettes.
 
 ## Included Palettes
-`Biscale` now includes 15 palettes. The entire list of palettes is as follows:
-
-```r
-gridExtra::grid.arrange(ncol = 3,
-  bi_pal("DkViolet") + labs(title = "DkViolet"),
-  bi_pal("GrPink") + labs(title = "GrPink"),
-  bi_pal("DkBlue") + labs(title = "DkBlue"),
-  bi_pal("DkCyan") + labs(title = "DkCyan"),
-  bi_pal("Brown") + labs(title = "Brown"),
-  bi_pal("BlGold") + labs(title = "BlGold"),
-  bi_pal("BlOrange") + labs(title = "BlOrange"),
-  bi_pal("BlYellow") + labs(title = "BlYellow"),
-  bi_pal("Viridis") + labs(title = "Viridis"),
-  bi_pal("Diverging") + labs(title = "Diverging"),
-  bi_pal("GnPink") + labs(title = "GnPink"),
-  bi_pal("GnPurple") + labs(title = "GnPurple"),
-  bi_pal("OrgPurple") + labs(title = "OrgPurple"),
-  bi_pal("Fire") + labs(title = "Fire"),
-  bi_pal("Reds") + labs(title = "Reds")
-)
-```
+### Primary Palettes
+All of the primary palettes listed here can be used with two-by-two (`dim = 2`), three-by-three (`dim = 3`), and four-by-four (`dim = 4`) maps. The palettes that contain a `2` at the end of their name are visually similar to the original, "legacy" palettes (see below) but utilize slightly different hex values for colors. 
 ```{r echo=FALSE, out.width='100%'}
-knitr::include_graphics('../man/figures/all_palettes.png')
+knitr::include_graphics('../man/figures/pals_primary.jpeg')
 ```
+
+Most of the newly added palettes not based on legacy designs were adapted from earlier work by Branson Fox.
+
+### Legacy Palettes
+To ensure compatibility with scripts written with older versions of `biscale`, the original five palettes included in the package are still available. They can be used only for two-by-two (`dim = 2`) and three-by-three (`dim = 3`) maps.
+
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/pals_legancy.jpeg')
+```
+
+The `"DkViolet"` palette was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
 
 ## Palette Manipulations
 The native palettes were prior restricted to an exact arrangement. However, there may be a desire to change the axes of the color scale. To do this, you need only supply `flip_axes = TRUE` to `bi_legend`, `bi_scale_fill` or `bi_scale_color`. **Very Important:** this argument must be specified to both your legend function **and** your scale function, or the colors will not align.
@@ -108,21 +97,6 @@ gridExtra::grid.arrange(regular, flipped, rotated, flipAndRotate, ncol = 2)
 ```
 ```{r echo=FALSE, out.width='100%'}
 knitr::include_graphics('../man/figures/palette_maps.png')
-```
-
-## Padding within the Legend
-
-You may desire a clearer delineation of the classifications within the palette, or just prefer the style. To pad the cells in the legend, you need to specify a width for padding, and optionally a color. (The default is white)
-
-```r
-gridExtra::grid.arrange(ncol = 3,
-  bi_legend('BlGold'),
-  bi_legend('BlGold', pad_width = 2),
-  bi_legend('BlGold', pad_width = 2, pad_color = '#000000')
-)
-```
-```{r echo=FALSE, out.width='100%'}
-knitr::include_graphics('../man/figures/pal_border.png')
 ```
 
 ## Special Palettes
