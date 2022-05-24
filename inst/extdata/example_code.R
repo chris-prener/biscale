@@ -70,3 +70,39 @@ finalPlot <- ggdraw() +
 
 # print map
 finalPlot
+
+## example 1
+labels1 <- bi_class_breaks(data, style = "quantile", x = pctWhite, y = medInc,
+                           dim = 3, dig_lab = c(2, 5), split = FALSE)
+
+## example 2
+breaks2 <- bi_class_breaks(data, style = "quantile", x = pctWhite, y = medInc,
+                           dim = 3, dig_lab = c(x = 2, y = 5), split = TRUE)
+
+legend1 <- bi_legend(pal = "PurpleGrn",
+                     xlab = "% White",
+                     ylab = "Income",
+                    size = 12,
+                    breaks = labels1,
+                    arrows = FALSE)
+
+ggsave(legend1, filename = "man/figures/legend1.jpeg", dpi = 200,
+       width = 6, height = 3, units = "in")
+
+legend2 <- bi_legend(pal = "PurpleGrn",
+                     xlab = "% White",
+                     ylab = "Income",
+                     size = 12,
+                     breaks = breaks2,
+                     arrows = FALSE)
+
+ggsave(legend2, filename = "man/figures/legend2.jpeg", dpi = 200,
+       width = 6, height = 3, units = "in")
+
+legend3 <- bi_legend(pal = "PurpleGrn",
+                     xlab = "Higher % White",
+                     ylab = "Higher Income",
+                     size = 12)
+
+ggsave(legend3, filename = "man/figures/legend3.jpeg", dpi = 200,
+       width = 6, height = 3, units = "in")
