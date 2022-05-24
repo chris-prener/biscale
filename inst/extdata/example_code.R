@@ -84,7 +84,8 @@ legend1 <- bi_legend(pal = "PurpleGrn",
                      ylab = "Income",
                     size = 12,
                     breaks = labels1,
-                    arrows = FALSE)
+                    arrows = FALSE) +
+  labs (subtitle = "Legend with Labels")
 
 ggsave(legend1, filename = "man/figures/legend1.jpeg", dpi = 200,
        width = 6, height = 3, units = "in")
@@ -94,7 +95,8 @@ legend2 <- bi_legend(pal = "PurpleGrn",
                      ylab = "Income",
                      size = 12,
                      breaks = breaks2,
-                     arrows = FALSE)
+                     arrows = FALSE) +
+  labs (subtitle = "Legend with Breaks")
 
 ggsave(legend2, filename = "man/figures/legend2.jpeg", dpi = 200,
        width = 6, height = 3, units = "in")
@@ -102,7 +104,17 @@ ggsave(legend2, filename = "man/figures/legend2.jpeg", dpi = 200,
 legend3 <- bi_legend(pal = "PurpleGrn",
                      xlab = "Higher % White",
                      ylab = "Higher Income",
-                     size = 12)
+                     size = 12) +
+  labs (subtitle = "Legend with Default Configuration")
 
 ggsave(legend3, filename = "man/figures/legend3.jpeg", dpi = 200,
+       width = 6, height = 3, units = "in")
+
+legend4 <- gridExtra::grid.arrange(ncol = 3,
+                        bi_legend("BlueGold") + labs(subtitle = "Original"),
+                        bi_legend("BlueGold", pad_width = 1.5) + labs(subtitle = "With Padding"),
+                        bi_legend("BlueGold", pad_width = 1.5, pad_color = '#000000') + labs(subtitle = "With Colored Padding")
+)
+
+ggsave(legend4, filename = "man/figures/legend_padding.jpeg", dpi = 200,
        width = 6, height = 3, units = "in")

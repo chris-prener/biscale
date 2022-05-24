@@ -38,7 +38,7 @@ If we investigate the `pctWhite` vector in our sample data, we'll see that the d
 
 Using `style = "quantile"` will group these based on the distribution of values, yielding breaks at approximately 14% and 62%. Perhaps we would rather group our values manually, making breaks at 33.3% and 66.6% instead.
 
-Now that `biscale` accepts factors, we can construct our bins ahead of time and pass them to the `cut()` function from `base` `R`. We need to ensure that the bins created have one more value than what we will use for the `dim` argument in `biscale`'s functions. Therefore, if we intend to create a three-by-three bivariate map, our bins that are passed to `cut()`'s `breaks` argument need to have four values.
+Now that `biscale` accepts factors, we can construct our breaks ahead of time and pass them to the `cut()` function from `base` `R`. We need to ensure that the breaks created have one more value than what we will use for the `dim` argument in `biscale`'s functions. Therefore, if we intend to create a three-by-three bivariate map, our breaks that are passed to `cut()`'s `breaks` argument need to have four values.
 
 ```r
 data$pctWhite_bin <- cut(data$pctWhite, breaks = c(0,33.3,66.6, max(data$pctWhite)), include.lowest = TRUE)
@@ -72,11 +72,11 @@ To take advantage of `biscale`'s new functionality for adding labels or breaks t
 
 ```r
 ## example 1
-labels1 <- bi_class_breaks(data, style = "quantile", x = pctWhite, y = medInc, 
+labels1 <- bi_class_breaks(data, x = pctWhite, y = medInc, style = "quantile", 
                            dim = 3, dig_lab = 3, split = FALSE)
                           
 ## example 2
-breaks2 <- bi_class_breaks(data, style = "quantile", x = pctWhite, y = medInc, 
+breaks2 <- bi_class_breaks(data, x = pctWhite, y = medInc, style = "quantile", 
                           dim = 3, dig_lab = c(x = 2, y = 5), split = TRUE)
 ```
 
@@ -111,11 +111,20 @@ The specific values needed for `dig_lab` are entirely dependent on your data, an
 
 ```r
 ## example 1 (modified)
-labels1 <- bi_class_breaks(data, style = "quantile", x = pctWhite, y = medInc, 
+labels1 <- bi_class_breaks(data, x = pctWhite, y = medInc, style = "quantile", 
                            dim = 3, dig_lab = c(2,5), split = FALSE)
 ```
 
 Notice here that we use an unnamed vector for the `dig_lab` argument. `bi_class_breaks()` will accept either.
+
+If you are using pre-made factors, these can be passed to `bi_class_breaks()` as well. Picking up from the example above, the factor variable `` is passed to the `x` argument:
+
+```r
+bi_class_breaks(data, x = pctWhite_bin, y = medInc, style = "quantile",
+                dim = 3, dig_lab = c(x = NA, y = 5), split = FALSE)
+```
+
+Note that an `NA` value is passed to `dig_lab` since `pctWhite_bin` has already been created as a factor. If you are using `classInt::classIntervals()` to create your factor, use that functions `dig_lab` argument instead to prepare your labels or breaks to the desired number of decimal places.
 
 Once you have values that are ready to use, they can be passed to `bi_legend()`. To illustrate the difference between labels and breaks, we'll place the legends next to each other for comparison. First, our code:
 
@@ -144,7 +153,7 @@ knitr::include_graphics('../man/figures/legend1.jpeg')
 knitr::include_graphics('../man/figures/legend2.jpeg')
 ```
 
-For comparison, here is the "default" legend:
+For comparison, here is the default legend:
 
 ```r
 legend3 <- bi_legend(pal = "PurpleGrn",
@@ -156,19 +165,17 @@ legend3 <- bi_legend(pal = "PurpleGrn",
 knitr::include_graphics('../man/figures/legend3.jpeg')
 ```
 
-
 ### Padding Within the Legend
-
-You may desire a clearer delineation of the classifications within the palette, or just prefer the style. To pad the cells in the legend, you need to specify a width for padding, and optionally a color. (The default is white)
+If you desire a clearer delineation of the classifications within the palette, you can use the optional `pad_width` and `pad_color` arguments to style the legend.
 
 ```r
-gridExtra::grid.arrange(ncol = 3,
-  bi_legend('BlGold'),
-  bi_legend('BlGold', pad_width = 2),
-  bi_legend('BlGold', pad_width = 2, pad_color = '#000000')
-)
+## adjusting padding width only
+bi_legend("BlueGold", pad_width = 1.5)
+
+## adjusting padding width and color
+bi_legend("BlueGold", pad_width = 1.5, pad_color = '#000000')
 ```
 ```{r echo=FALSE, out.width='100%'}
-knitr::include_graphics('../man/figures/pal_border.png')
+knitr::include_graphics('../man/figures/legend_padding.jpeg')
 ```
 
