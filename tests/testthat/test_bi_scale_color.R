@@ -29,12 +29,30 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
                  geom_sf(data = pointData, aes(color = bi_class), show.legend = FALSE) +
                  bi_scale_color(pal = "Brown", dim = "ham"),
                "The 'dim' argument only accepts numeric values.")
+  expect_error(ggplot() +
+                 geom_sf(data = pointData, aes(color = bi_class), show.legend = FALSE) +
+                 bi_scale_color(pal = "Brown", dim = 3, flip_axes = "ham"),
+               "A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
+  expect_error(ggplot() +
+                 geom_sf(data = pointData, aes(color = bi_class), show.legend = FALSE) +
+                 bi_scale_color(pal = "Brown", dim = 3, rotate_pal = "ham"),
+               "A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
 })
 
 # test inputs ------------------------------------------------
 
+custom_pal_valid <- c(
+  "1-1" = "#cabed0", # low x, low y
+  "2-1" = "#ae3a4e", # high x, low y
+  "1-2" = "#4885c1", # low x, high y
+  "2-2" = "#3f2949" # high x, high y
+)
+
 test_that("correctly specified functions execute without error", {
   expect_error(ggplot() +
                  geom_sf(data = pointData, aes(color = bi_class), show.legend = FALSE) +
-                 bi_scale_fill(pal = "GrPink", dim = 3), NA)
+                 bi_scale_color(pal = "GrPink", dim = 3), NA)
+  expect_error(ggplot() +
+                 geom_sf(data = pointData, aes(color = bi_class), show.legend = FALSE) +
+                 bi_scale_color(pal = custom_pal_valid, dim = 2), NA)
 })

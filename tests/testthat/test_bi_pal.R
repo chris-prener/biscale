@@ -38,12 +38,33 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
                "A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
 })
 
+test_that("flipping axes for 4x4 plots triggers an error", {
+  expect_error(bi_pal(pal = "GrPink2", dim = 4, preview = FALSE,
+                      flip_axes = TRUE, rotate_pal = FALSE),
+               "Flipped axes for 4x4 plots not implemented yet!")
+})
+
 # test inputs ------------------------------------------------
 
 test_that("correctly specified functions execute without error", {
-  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, flip_axes = TRUE, rotate_pal = FALSE), NA)
-  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, flip_axes = FALSE, rotate_pal = TRUE), NA)
-  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE, flip_axes = TRUE, rotate_pal = TRUE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 2, preview = FALSE,
+                      flip_axes = TRUE, rotate_pal = FALSE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 2, preview = FALSE,
+                      flip_axes = FALSE, rotate_pal = TRUE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 2, preview = FALSE,
+                      flip_axes = TRUE, rotate_pal = TRUE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE,
+                      flip_axes = TRUE, rotate_pal = FALSE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE,
+                      flip_axes = FALSE, rotate_pal = TRUE), NA)
+  expect_error(bi_pal(pal = "GrPink", dim = 3, preview = FALSE,
+                      flip_axes = TRUE, rotate_pal = TRUE), NA)
+  # expect_error(bi_pal(pal = "GrPink2", dim = 4, preview = FALSE,
+  # flip_axes = TRUE, rotate_pal = FALSE), NA)
+  expect_error(bi_pal(pal = "GrPink2", dim = 4, preview = FALSE,
+                      flip_axes = FALSE, rotate_pal = TRUE), NA)
+  # expect_error(bi_pal(pal = "GrPink2", dim = 4, preview = FALSE,
+  # flip_axes = TRUE, rotate_pal = TRUE), NA)
 })
 
 custom_pal_valid1 <- c(

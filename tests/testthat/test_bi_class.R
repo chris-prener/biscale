@@ -35,6 +35,16 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
                "A logical scalar must be supplied for 'keep_factors'. Please provide either 'TRUE' or 'FALSE'.")
   expect_error(bi_class(stl_race_income, x = factor_x, y = factor_y, dim = 2),
                "The variable 'factor_x' has a different number of levels than the value given for the 'dim' argument.")
+  expect_error(bi_class(stl_race_income, x = factor_x, y = factor_y, dim = "ham"),
+               "The 'dim' argument only accepts numeric values.")
+})
+
+stl_race_income$pctWhite_chr <- as.character(stl_race_income$pctWhite)
+
+test_that("non-numeric or factor vectors trigger error", {
+  expect_error(bi_class(stl_race_income, x = pctWhite_chr,
+                        y = medInc, style = "ham", dim = 2),
+               "The variable 'pctWhite_chr' is not the correct class. It must be either integer, double, or factor.")
 })
 
 # test inputs ------------------------------------------------
