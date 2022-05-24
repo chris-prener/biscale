@@ -6,7 +6,7 @@
 \usage{
 bi_legend(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
     rotate_pal = FALSE, pad_width = NA, pad_color = "#ffffff",
-    breaks = NULL)
+    breaks = NULL, arrows = TRUE)
 }
 \arguments{
 \item{pal}{A palette name or a vector containing a custom palette. See
@@ -29,12 +29,12 @@ described in the 'Advanced Options' vignette.}
 
 \item{size}{A numeric scalar; size of axis labels}
 
-\item{flip_axes}{A logical scalar; if \code{TRUE} the axes of the palette
+\item{flip_axes}{A logical scalar; if \code{TRUE}, the axes of the palette
 will be flipped. If \code{FALSE} (default), the palette will be displayed
 on its original axes. Custom palettes with 'dim' greater
 than 4 cannot take advantage of flipping axes.}
 
-\item{rotate_pal}{A logical scalar; if \code{TRUE} the palette will be
+\item{rotate_pal}{A logical scalar; if \code{TRUE}, the palette will be
 rotated 180 degrees. If \code{FALSE} (default), the palette will be
 displayed in its original orientation. Custom palettes with 'dim' greater
 than 4 cannot take advantage of palette rotation.}
@@ -49,6 +49,11 @@ between tiles in the legend}
 on the options selected when making the list, labels will placed
 showing the corresponding range of values for each axis or, if
 \code{split = TRUE}, showing the individual breaks.}
+
+\item{arrows}{A logical scalar; if \code{TRUE} (default), directional arrows
+will be added to both the x and y axes of the legend. If you want to
+suppress these arrows, especially if you are supplying breaks to create
+a more detailed legend, this parameter can be set of \code{FALSE}.}
 }
 \value{
 A \code{ggplot} object with a bivariate legend.
@@ -80,7 +85,8 @@ legend <- bi_legend(pal = "GrPink",
                     xlab = "Higher \% White ",
                     ylab = "Higher Income ",
                     size = 16,
-                    breaks = break_vals)
+                    breaks = break_vals,
+                    arrows = FALSE)
 
 # print legend
 legend

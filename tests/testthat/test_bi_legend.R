@@ -10,8 +10,6 @@ test_that("missing parameters trigger appropriate errors", {
 test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_legend(pal = "ham", dim = 3),
                "The given palette is not one of the allowed options for bivariate mapping. Please see bi_pal's help file for a list of included palettes.")
-  expect_error(bi_legend(pal = "DkBlue", dim = "ham"),
-               "The 'dim' argument only accepts numeric values.")
   expect_error(bi_legend(pal = "DkViolet", dim = 4),
                "The legacy 'DkViolet' palette does not support 4x4 bivarite mapping. Please use 'DkViolet2' instead.")
   expect_error(bi_legend(pal = "DkBlue", dim = 2, xlab = 24),
@@ -20,10 +18,6 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
                "The 'ylab' argument must be a character string.")
   expect_error(bi_legend(pal = "DkBlue", dim = 2, size = "ham"),
                "The 'size' argument must be a numeric value.")
-  expect_error(bi_legend(pal = "DkBlue", dim = 2, size = 24, flip_axes = "ham"),
-               "A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
-  expect_error(bi_legend(pal = "DkBlue", dim = 2, size = 24, rotate_pal = "ham"),
-               "A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
 })
 
 # test inputs ------------------------------------------------

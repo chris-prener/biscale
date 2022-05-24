@@ -5,7 +5,7 @@
 #'
 #' @usage bi_legend(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
 #'     rotate_pal = FALSE, pad_width = NA, pad_color = "#ffffff",
-#'     breaks = NULL)
+#'     breaks = NULL, arrows = TRUE)
 #'
 #' @param pal A palette name or a vector containing a custom palette. See
 #'     the help file for \code{\link{bi_pal}} for complete list of built-in palette
@@ -22,11 +22,11 @@
 #' @param xlab Text for desired x axis label on legend
 #' @param ylab Text for desired y axis label on legend
 #' @param size A numeric scalar; size of axis labels
-#' @param flip_axes A logical scalar; if \code{TRUE} the axes of the palette
+#' @param flip_axes A logical scalar; if \code{TRUE}, the axes of the palette
 #'     will be flipped. If \code{FALSE} (default), the palette will be displayed
 #'     on its original axes. Custom palettes with 'dim' greater
 #'     than 4 cannot take advantage of flipping axes.
-#' @param rotate_pal A logical scalar; if \code{TRUE} the palette will be
+#' @param rotate_pal A logical scalar; if \code{TRUE}, the palette will be
 #'     rotated 180 degrees. If \code{FALSE} (default), the palette will be
 #'     displayed in its original orientation. Custom palettes with 'dim' greater
 #'     than 4 cannot take advantage of palette rotation.
@@ -38,6 +38,10 @@
 #'     on the options selected when making the list, labels will placed
 #'     showing the corresponding range of values for each axis or, if
 #'     \code{split = TRUE}, showing the individual breaks.
+#' @param arrows A logical scalar; if \code{TRUE} (default), directional arrows
+#'     will be added to both the x and y axes of the legend. If you want to
+#'     suppress these arrows, especially if you are supplying breaks to create
+#'     a more detailed legend, this parameter can be set of \code{FALSE}.
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
@@ -66,7 +70,8 @@
 #'                     xlab = "Higher % White ",
 #'                     ylab = "Higher Income ",
 #'                     size = 16,
-#'                     breaks = break_vals)
+#'                     breaks = break_vals,
+#'                     arrows = FALSE)
 #'
 #' # print legend
 #' legend
@@ -74,7 +79,7 @@
 #' @export
 bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
                       rotate_pal = FALSE, pad_width = NA, pad_color = '#ffffff',
-                      breaks = NULL){
+                      breaks = NULL, arrows = TRUE){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -84,19 +89,9 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
     stop("A palette name or a custom palette vector must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
   }
 
-  if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts numeric values.")
+  if (is.logical(arrows) == FALSE){
+    stop("A logical scalar must be supplied for 'arrows'. Please provide either 'TRUE' or 'FALSE'.")
   }
-
-  if (is.logical(flip_axes) == FALSE){
-    stop("A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
-  }
-
-  if (is.logical(rotate_pal) == FALSE){
-    stop("A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
-  }
-
-  pal_validate(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
   if (missing(xlab) == TRUE){
     xlab <- "x var "
@@ -118,6 +113,9 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
     stop("The 'size' argument must be a numeric value.")
   }
 
+  # validate palette
+  pal_validate(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
+
   # create palette
   if (length(pal) == 1){
     leg <- bi_pal_pull(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
@@ -126,14 +124,15 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
   }
 
   # build legend
-  out <- bi_legend_build(leg = leg, dim = dim, xlab = !!xlab, ylab = !!ylab, size = size, pad_width = pad_width, pad_color = pad_color, breaks = breaks)
+  out <- bi_legend_build(leg = leg, dim = dim, xlab = !!xlab, ylab = !!ylab, size = size,
+                         pad_width = pad_width, pad_color = pad_color, breaks = breaks, arrows = arrows)
 
   # return output
   return(out)
 
 }
 
-bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, breaks){
+bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, breaks, arrows){
 
   # global bindings
   bi_fill = x = y = NULL
@@ -188,9 +187,21 @@ bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, br
 
   }
 
+  ## add arrows
+  if (arrows == TRUE) {
+
+    legend <- legend +
+      ggplot2::labs(x = substitute(paste(xQN, ""%->%"")), y = substitute(paste(yQN, ""%->%"")))
+
+  } else if (arrows == FALSE){
+
+    legend <- legend +
+      ggplot2::labs(x = xQN, y = yQN)
+
+  }
+
   ## final legend elements
   legend <- legend +
-    ggplot2::labs(x = substitute(paste(xQN, ""%->%"")), y = substitute(paste(yQN, ""%->%""))) +
     ggplot2::theme(axis.title = ggplot2::element_text(size = size)) +
     ggplot2::coord_fixed()
 
