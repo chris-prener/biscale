@@ -248,7 +248,24 @@ bi_pal_flip <- function(pal){
 
   } else if(length(pal) == 16){
 
-    stop("Flipped axes for 4x4 plots not implemented yet!")
+    flipped <- pal
+
+    flipped['1-2'] <- pal['2-1']
+    flipped['1-3'] <- pal['3-1']
+    flipped['1-4'] <- pal['4-1']
+
+    flipped['2-4'] <- pal['4-2']
+    flipped['3-4'] <- pal['4-3']
+
+    flipped['4-2'] <- pal['2-4']
+    flipped['4-3'] <- pal['3-4']
+
+    flipped['3-2'] <- pal['2-3']
+    flipped['2-3'] <- pal['3-2']
+
+    flipped['2-1'] <- pal['1-2']
+    flipped['3-1'] <- pal['1-3']
+    flipped['4-1'] <- pal['1-4']
 
   }
 
@@ -257,11 +274,7 @@ bi_pal_flip <- function(pal){
 }
 
 
-# Rotate the Axes of a Palette (Not Exported)
-#
-# @param pal A named atomic, character vector of length 4 or 9
-#
-# @return A named atomic, character vector equal to input length, with palette rotated 180 degrees
+# rotate axes
 bi_pal_rotate <- function(pal){
 
   if (length(pal) == 4){
