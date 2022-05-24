@@ -85,22 +85,11 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
     stop("A palette name or a custom palette vector must be specified for the 'pal' argument. Please see bi_pal's help file for a list of included palettes.")
   }
 
-  if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts numeric values.")
-  }
-
   if (is.logical(preview) == FALSE){
     stop("A logical scalar must be supplied for 'preview'. Please provide either 'TRUE' or 'FALSE'.")
   }
 
-  if (is.logical(flip_axes) == FALSE){
-    stop("A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
-  }
-
-  if (is.logical(rotate_pal) == FALSE){
-    stop("A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
-  }
-
+  # validate palette
   pal_validate(pal = pal, dim = dim, flip_axes = flip_axes, rotate_pal = rotate_pal)
 
   # create vector
@@ -122,6 +111,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
 
 }
 
+# retrieve built-in palette
 bi_pal_pull <- function(pal, dim, flip_axes, rotate_pal){
 
   ## pull palette vector
@@ -141,53 +131,73 @@ bi_pal_pull <- function(pal, dim, flip_axes, rotate_pal){
 
 }
 
+# validate palette input
 pal_validate <- function(pal, dim, flip_axes, rotate_pal){
 
+  # validate dim argument
+  if (is.numeric(dim) == FALSE){
+    stop("An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  }
+
+  if (dim < 2 | (dim %% 1 == 0) == FALSE){
+    stop("An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  }
+
+  # validate logical arguments
+  if (is.logical(flip_axes) == FALSE){
+    stop("A logical scalar must be supplied for 'flip_axes'. Please provide either 'TRUE' or 'FALSE'.")
+  }
+
+  if (is.logical(rotate_pal) == FALSE){
+    stop("A logical scalar must be supplied for 'rotate_pal'. Please provide either 'TRUE' or 'FALSE'.")
+  }
+
+  # validate palette
   if(length(pal) == 1){
 
+    ## error if built-in palette supplied is not valid
     if (pal %in% c("DkViolet", "DkViolet2", "GrPink", "GrPink2", "DkBlue", "DkBlue2", "DkCyan", "DkCyan2", "Brown", "Brown2", "Bluegill", "BlueGold", "BlueOr", "BlueYl", "PinkGrn", "PurpleGrn", "PurpleOr") == FALSE){
       stop("The given palette is not one of the allowed options for bivariate mapping. Please see bi_pal's help file for a list of included palettes.")
     }
 
+    ## error if legacy palette used with 4x4 plots
     if (dim == 4 & pal %in% c("DkViolet", "GrPink", "DkBlue", "DkCyan", "Brown")){
-
-      if(pal == "DkViolet"){
-        stop("The legacy 'DkViolet' palette does not support 4x4 bivarite mapping. Please use 'DkViolet2' instead.")
-      } else if (pal == "GrPink"){
-        stop("The legacy 'GrPink' palette does not support 4x4 bivarite mapping. Please use 'GrPink2' instead.")
-      } else if (pal == "DkBlue"){
-        stop("The legacy 'DkBlue' palette does not support 4x4 bivarite mapping. Please use 'DkBlue2' instead.")
-      } else if (pal == "DkCyan"){
-        stop("The legacy 'DkCyan' palette does not support 4x4 bivarite mapping. Please use 'DkCyan2' instead.")
-      } else if (pal == "Brown"){
-        stop("The legacy 'Brown' palette does not support 4x4 bivarite mapping. Please use 'Brown2' instead.")
-      }
-
+      stop(paste0("The legacy '", pal, "' palette does not support 4x4 bivarite mapping. Please use '", pal, "2' instead."))
     }
+
+    ## error if dim is >4 with built-in palette
+    if (dim > 4){
+      stop("The palettes built-in to biscale only support bivariate maps where 'dim' is 2, 3, or 4.")
+    }
+
   } else if (length(pal) > 1){
 
+    ## ensure custom palette has correct number of values
     if (length(pal)/dim != dim){
       stop("The custom palette provided does not have the correct number of entries for the given dimensions.")
     }
 
-    pal_custom_validate_names(pal = pal, dim = dim)
+    ## ensure formatting of hex values is correct
+    bi_pal_validate_names(pal = pal, dim = dim)
 
-    x <- lapply(pal, pal_custom_validate_hash)
-    x <- lapply(pal, pal_custom_validate_length)
+    x <- lapply(pal, bi_pal_validate_hash)
+    x <- lapply(pal, bi_pal_validate_length)
 
+    ## error for flipping and roating axes if dim > 4
     if (dim > 4 & flip_axes == TRUE){
-      stop("Flipping axes for custom palettes is only available when 'dim' is 4 or less.")
+      stop("Flipping axes for custom palettes is only available when 'dim' is 2, 3, or 4.")
     }
 
     if (dim > 4 & rotate_pal == TRUE){
-      stop("Rotation for custom palettes is only available when 'dim' is 4 or less.")
+      stop("Rotation for custom palettes is only available when 'dim' is 2, 3, or 4.")
     }
 
   }
 
 }
 
-pal_custom_validate_hash <- function(x){
+# validate custom palette
+bi_pal_validate_hash <- function(x){
 
   if(substr(x, 1, 1) != "#"){
     stop("Custom palette contains formatting errors - at least one entry does not begin with a hash.")
@@ -195,7 +205,7 @@ pal_custom_validate_hash <- function(x){
 
 }
 
-pal_custom_validate_length <- function(x){
+bi_pal_validate_length <- function(x){
 
   if(nchar(x) != 7){
     stop("Custom palette contains formatting errors - at least one entry is not the right length.")
@@ -203,7 +213,7 @@ pal_custom_validate_length <- function(x){
 
 }
 
-pal_custom_validate_names <- function(pal, dim){
+bi_pal_validate_names <- function(pal, dim){
 
   x <- rep(x = 1:dim, times = dim)
   y <- sort(rep(x = 1:dim, times = dim))
@@ -216,11 +226,7 @@ pal_custom_validate_names <- function(pal, dim){
 
 }
 
-# Flip the Axes of a Palette (Not Exported)
-#
-# @param pal A named atomic, character vector of length 4 or 9
-#
-# @return A named atomic, character vector equal to input length, with palette axes inverted
+# flip palette axes
 bi_pal_flip <- function(pal){
 
   if (length(pal) == 4){

@@ -19,7 +19,11 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_pal(pal = "ham", dim = 3, preview = FALSE),
                "The given palette is not one of the allowed options for bivariate mapping. Please see bi_pal's help file for a list of included palettes.")
   expect_error(bi_pal(pal = "GrPink", dim = "ham", preview = FALSE),
-               "The 'dim' argument only accepts numeric values.")
+               "An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  expect_error(bi_pal(pal = "GrPink", dim = 1, preview = FALSE),
+               "An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  expect_error(bi_pal(pal = "GrPink", dim = 2.5, preview = FALSE),
+               "An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
   expect_error(bi_pal(pal = "DkViolet", dim = 4, preview = FALSE),
                "The legacy 'DkViolet' palette does not support 4x4 bivarite mapping. Please use 'DkViolet2' instead.")
   expect_error(bi_pal(pal = "GrPink", dim = 4, preview = FALSE),
@@ -149,9 +153,9 @@ test_that("custom palettes with common errors are caught", {
   expect_error(bi_pal(pal = custom_pal_valid2, dim = 2, preview = FALSE),
                "The custom palette provided does not have the correct number of entries for the given dimensions.")
   expect_error(bi_pal(pal = custom_pal_valid2, dim = 5, preview = FALSE, flip_axes = TRUE),
-               "Flipping axes for custom palettes is only available when 'dim' is 4 or less.")
+               "Flipping axes for custom palettes is only available when 'dim' is 2, 3, or 4.")
   expect_error(bi_pal(pal = custom_pal_valid2, dim = 5, preview = FALSE, rotate_pal = TRUE),
-               "Rotation for custom palettes is only available when 'dim' is 4 or less.")
+               "Rotation for custom palettes is only available when 'dim' is 2, 3, or 4.")
 })
 
 # test results ------------------------------------------------

@@ -43,6 +43,12 @@ test_that("incorrectly specified parameters trigger appropriate errors", {
   expect_error(bi_class_breaks(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2,
                                split = TRUE, dig_lab = c(4,5,6)),
                "The vector supplied for the 'dig_lab' argument is too long.")
+  expect_error(bi_class_breaks(stl_race_income, x = factor_x, y = factor_y, dim = "ham"),
+               "An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  expect_error(bi_class_breaks(stl_race_income, x = factor_x, y = factor_y, dim = 1),
+               "An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  expect_error(bi_class_breaks(stl_race_income, x = factor_x, y = factor_y, dim = 2.5),
+               "An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
 })
 
 # test inputs ------------------------------------------------

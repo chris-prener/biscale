@@ -68,7 +68,11 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
   }
 
   if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts numeric values.")
+    stop("An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  }
+
+  if (dim < 2 | (dim %% 1 == 0) == FALSE){
+    stop("An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
   }
 
   if (is.logical(keep_factors) == FALSE){
@@ -205,7 +209,11 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
   }
 
   if (is.numeric(dim) == FALSE){
-    stop("The 'dim' argument only accepts numeric values.")
+    stop("An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
+  }
+
+  if (dim < 2 | (dim %% 1 == 0) == FALSE){
+    stop("An integer scalar must be supplied for 'dim' that is greater than or equal to '2'.")
   }
 
   if (is.logical(clean_levels) == FALSE){
@@ -224,12 +232,13 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
     style <- NULL
   }
 
-  dig_vals <- bi_validate_dig_lab(dig_lab = dig_lab)
-
   # high dimension warning
   if (dim > 4){
     warning("Maps that are larger than 4x4 dimensions can be difficult to interpret, and biscale does not provide built-in palettes for these maps. If you proceed, you will need to supply a custom palette for these data.")
   }
+
+  # validate palette
+  dig_vals <- bi_validate_dig_lab(dig_lab = dig_lab)
 
   # nse
   xQN <- rlang::quo_name(rlang::enquo(x))
