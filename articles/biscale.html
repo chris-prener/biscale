@@ -60,7 +60,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/palettes.html">Palettes In Biscale</a>
+      <a href="../articles/advanced.html">Advanced Options for Breaks and Legends</a>
+    </li>
+    <li>
+      <a href="../articles/palettes.html">Palettes in Biscale</a>
     </li>
   </ul>
 </li>
@@ -108,15 +111,18 @@
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
-<p>Since the package does not directly use functions from <code>sf</code>, it is a suggested dependency rather than a required one. However, the most direct approach to using <code>biscale</code> is with <code>sf</code> objects, and we therefore recommend users install <code>sf</code> before proceeding with using <code>biscale</code>. Windows users should be able to install <code>sf</code> without significant issues, but macOS and Linux users will need to install several open source spatial libraries to get <code>sf</code> itself up and running. The easiest approach for macOS users is to install the GDAL 2.0 Complete framework from <a href="https://www.kyngchaos.com/software/frameworks/" class="external-link">Kyng Chaos</a>.</p>
-<p>For Linux users, steps will vary based on the flavor being used. Our <a href="https://github.com/slu-openGIS/biscale/blob/master/.travis.yml" class="external-link">configuration file</a> for Travis CI and its associated <a href="https://github.com/slu-openGIS/biscale/blob/master/.travis/install.sh" class="external-link">bash script</a> should be useful in determining the necessary components to install.</p>
-<p>Once <code>sf</code> is installed, the easiest way to get <code>biscale</code> is to install it from CRAN:</p>
+<p>The easiest way to get <code>biscale</code> is to install it from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"slu-openGIS/biscale"</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="installing-dependencies">Installing Dependencies<a class="anchor" aria-label="anchor" href="#installing-dependencies"></a>
+</h3>
+<p>Since the package does not directly use functions from <code>sf</code>, it is a suggested dependency rather than a required one. However, the most direct approach to using <code>biscale</code> is with <code>sf</code> objects, and we therefore recommend users install <code>sf</code>. Windows and macOS users should be able to install <code>sf</code> without significant issues unless they are building from source. Linux users will need to install several open source spatial libraries to get <code>sf</code> itself up and running.</p>
 </div>
 <div class="section level3">
 <h3 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
@@ -137,12 +143,12 @@
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># create classes</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> data <span class="ot">&lt;-</span> <span class="fu">bi_class</span>(stl_race_income, <span class="at">x =</span> pctWhite, <span class="at">y =</span> medInc, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">dim =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p>Note that, as of v0.2 of the <code>biscale</code> package, <code>sf</code> is imported when you load <code>biscale</code>. This resolves issues related to not loading <code>sf</code> ahead of time, though it does add a dependency that a small number of users may have wished not to install.</p>
-<p>The <code>dim</code> argument is used to control the extent of the legend - do you want to produce a two-by-two map (<code>dim = 2</code>) or a three-by-three map (<code>dim = 3</code>)?</p>
-<p>Classes can be applied with the <code>style</code> parameter using four approaches for calculating breaks: <code>"quantile"</code> (default), <code>"equal"</code>, <code>"fisher"</code>, and <code>"jenks"</code>. The default <code>"quantile"</code> approach will create relatively equal “buckets” of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map.</p>
+<p>The <code>dim</code> argument is used to control the extent of the legend - do you want to produce a two-by-two map (<code>dim = 2</code>), a three-by-three map (<code>dim = 3</code>), or a four-by-four map (<code>dim = 4</code>)?</p>
+<p>Classes can be applied with the <code>style</code> parameter using four approaches for calculating breaks: <code>"quantile"</code> (default), <code>"equal"</code>, <code>"fisher"</code>, and <code>"jenks"</code>. The default <code>"quantile"</code> approach will create relatively equal “buckets” of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map. For a four-by-four map, breaks are created at the 25th, 50th (median), and 75th percentiles.</p>
 <p><img src="../reference/figures/biscale.004.png" width="100%"></p>
 <p>With the sample data, this creates a <em>very</em> broad range for the percent white measure in particular. Using one of the other approaches to calculating breaks yields a narrower range for the breaks and produces a map that does not overstate the percent of white residents living on the north side of St. Louis:</p>
 <p><img src="../reference/figures/biscale.005.png" width="100%"></p>
+<p>As of <code>v1.0</code>, <code>biscale</code> now supports larger dimension maps as well as custom breaks for maps. For an overview of these options, see the “Advanced Options” vignette.</p>
 </div>
 <div class="section level3">
 <h3 id="mapping-data">Mapping Data<a class="anchor" aria-label="anchor" href="#mapping-data"></a>

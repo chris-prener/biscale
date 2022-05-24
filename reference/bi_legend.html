@@ -36,7 +36,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/palettes.html">Palettes In Biscale</a>
+      <a href="../articles/advanced.html">Advanced Options for Breaks and Legends</a>
+    </li>
+    <li>
+      <a href="../articles/palettes.html">Palettes in Biscale</a>
     </li>
   </ul></li>
 <li>
@@ -70,7 +73,7 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">bi_legend</span><span class="op">(</span><span class="va">pal</span>, dim <span class="op">=</span> <span class="fl">3</span>, <span class="va">xlab</span>, <span class="va">ylab</span>, size <span class="op">=</span> <span class="fl">10</span>, flip_axes <span class="op">=</span> <span class="cn">FALSE</span>,
     rotate_pal <span class="op">=</span> <span class="cn">FALSE</span>, pad_width <span class="op">=</span> <span class="cn">NA</span>, pad_color <span class="op">=</span> <span class="st">"#ffffff"</span>,
-    breaks <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    breaks <span class="op">=</span> <span class="cn">NULL</span>, arrows <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -95,12 +98,12 @@ described in the 'Advanced Options' vignette.</p></dd>
 <dt>size</dt>
 <dd><p>A numeric scalar; size of axis labels</p></dd>
 <dt>flip_axes</dt>
-<dd><p>A logical scalar; if <code>TRUE</code> the axes of the palette
+<dd><p>A logical scalar; if <code>TRUE</code>, the axes of the palette
 will be flipped. If <code>FALSE</code> (default), the palette will be displayed
 on its original axes. Custom palettes with 'dim' greater
 than 4 cannot take advantage of flipping axes.</p></dd>
 <dt>rotate_pal</dt>
-<dd><p>A logical scalar; if <code>TRUE</code> the palette will be
+<dd><p>A logical scalar; if <code>TRUE</code>, the palette will be
 rotated 180 degrees. If <code>FALSE</code> (default), the palette will be
 displayed in its original orientation. Custom palettes with 'dim' greater
 than 4 cannot take advantage of palette rotation.</p></dd>
@@ -115,6 +118,11 @@ between tiles in the legend</p></dd>
 on the options selected when making the list, labels will placed
 showing the corresponding range of values for each axis or, if
 <code>split = TRUE</code>, showing the individual breaks.</p></dd>
+<dt>arrows</dt>
+<dd><p>A logical scalar; if <code>TRUE</code> (default), directional arrows
+will be added to both the x and y axes of the legend. If you want to
+suppress these arrows, especially if you are supplying breaks to create
+a more detailed legend, this parameter can be set of <code>FALSE</code>.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -150,7 +158,8 @@ showing the corresponding range of values for each axis or, if
 <span class="r-in">                    xlab <span class="op">=</span> <span class="st">"Higher % White "</span>,</span>
 <span class="r-in">                    ylab <span class="op">=</span> <span class="st">"Higher Income "</span>,</span>
 <span class="r-in">                    size <span class="op">=</span> <span class="fl">16</span>,</span>
-<span class="r-in">                    breaks <span class="op">=</span> <span class="va">break_vals</span><span class="op">)</span></span>
+<span class="r-in">                    breaks <span class="op">=</span> <span class="va">break_vals</span>,</span>
+<span class="r-in">                    arrows <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># print legend</span></span>
 <span class="r-in"><span class="va">legend</span></span>

@@ -35,7 +35,10 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/palettes.html">Palettes In Biscale</a>
+      <a href="../articles/advanced.html">Advanced Options for Breaks and Legends</a>
+    </li>
+    <li>
+      <a href="../articles/palettes.html">Palettes in Biscale</a>
     </li>
   </ul></li>
 <li>
@@ -60,6 +63,31 @@
       <small>Source: <a href="https://github.com/slu-openGIS/biscale/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.0.9999" id="biscale-1009999">biscale 1.0.0.9999<a class="anchor" aria-label="anchor" href="#biscale-1009999"></a></h2>
+<ul><li>New features<ul><li>
+<code><a href="../reference/bi_class.html">bi_class()</a></code> now accepts factors for one or both of the <code>x</code> and <code>y</code> variables, allowing more flexibility for how breaks are calculated. If you want finer grained control over your categories, calculate them ahead of time and then pass the factors on to <code><a href="../reference/bi_class.html">bi_class()</a></code>.</li>
+<li>
+<code><a href="../reference/bi_pal.html">bi_pal()</a></code>, <code><a href="../reference/bi_legend.html">bi_legend()</a></code>, <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code>, and <code><a href="../reference/bi_scale_color.html">bi_scale_color()</a></code> functions all support four-by-four bivariate maps when <code>dim = 4</code>. Note that the original five palettes do not support four-by-four mapping, but very close approximations (e.g. <code>DkBlue2</code> instead of <code>DkBlue</code>) are now provided in their place. The legacy palettes are all still included in the package.</li>
+<li>The number of built-in palettes has been greatly expanded, though there are changes from v0.3.0, which was never released on CRAN.</li>
+<li>Palettes can now be flipped and rotated (or both!), so that each built-in palette can be displayed in four different configurations. This includes the built-in palettes and any custom palettes that are four-by-four or smaller. If you want to flip or rotate larger palettes, you should make those decisions while creating the palette itself.</li>
+<li>The workflow for allowing custom palettes has been overhauled to simply the process - users can provide a named vector for the <code>pal</code> arguments in the <code><a href="../reference/bi_pal.html">bi_pal()</a></code>, <code><a href="../reference/bi_legend.html">bi_legend()</a></code>, <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code>, and <code><a href="../reference/bi_scale_color.html">bi_scale_color()</a></code> functions. All of these functions will validate your input to ensure that it maps correctly.</li>
+<li>
+<code><a href="../reference/bi_class.html">bi_class()</a></code> can be used to calculate bivariate breaks for maps larger than four-by-four, though it will return a warning reminding you that these maps are hard to read and that <code>biscale</code> does not provide palettes for larger maps. Instead, you should provide a custom palette.</li>
+<li>
+<code><a href="../reference/bi_class_breaks.html">bi_class_breaks()</a></code> can be used with <code><a href="../reference/bi_legend.html">bi_legend()</a></code> to facilitate optionally adding break values to your legends. Like <code><a href="../reference/bi_class.html">bi_class()</a></code>, this new function accepts both continuous and pre-made factors.</li>
+</ul></li>
+<li>Breaking changes<ul><li>There is no default supplied for <code><a href="../reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="../reference/bi_class.html">bi_class()</a></code> now accepts factors as well. Users that relied on the default behavior of <code><a href="../reference/bi_class.html">bi_class()</a></code> will now receive an error asking you to specify a <code>style</code> for calculating breaks.</li>
+<li>Changes to <code><a href="../reference/bi_legend.html">bi_legend()</a></code> to facilitate breaks mean that there are new arguments to be aware of when calling the function.</li>
+</ul></li>
+<li>Deprecated functions<ul><li>
+<code><a href="../reference/bi_pal_manual.html">bi_pal_manual()</a></code> now returns a warning that it has been deprecated and will be removed in a later release of <code>biscale</code> (planned for the end of 2022). Please update your workflows to use the new approach to generating custom palettes.</li></ul></li>
+<li>Internal improvements<ul><li>
+<code>sf</code> is no longer a <em>required</em> dependency and is now <em>suggested</em> - this returns the package to its original release in terms of <em>suggesting</em> <code>sf</code>
+</li>
+<li>All functions have been rewritten to reduce dependencies and duplicative code</li>
+</ul></li>
+</ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.0" id="biscale-030">biscale 0.3.0<a class="anchor" aria-label="anchor" href="#biscale-030"></a></h2>
 <ul><li>Add 10 new palettes for a total of 15 native palettes.</li>

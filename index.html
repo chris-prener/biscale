@@ -66,7 +66,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/palettes.html">Palettes In Biscale</a>
+      <a href="articles/advanced.html">Advanced Options for Breaks and Legends</a>
+    </li>
+    <li>
+      <a href="articles/palettes.html">Palettes in Biscale</a>
     </li>
   </ul>
 </li>
@@ -98,6 +101,7 @@
 </h1></div>
 
 <p><code>biscale</code> implements a set of functions for bivariate thematic mapping based on the <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">tutorial</a> written by Timo Grossenbacher and Angelo Zehr as well as a set of bivariate mapping palettes, including Joshua Stevens’ <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">classic color schemes</a>. In addition to support for two-by-two, three-by-three, and four-by-four maps, the package also supports a range of methods for calculating breaks for bivariate maps.</p>
+<p><img src="../reference/figures/biscale.001.jpeg"></p>
 <div class="section level2">
 <h2 id="whats-new-in-v1009000">What’s New in v1.0.0.9000?<a class="anchor" aria-label="anchor" href="#whats-new-in-v1009000"></a>
 </h2>
@@ -106,51 +110,50 @@
 </h3>
 <ul>
 <li>
-<code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors for one or both of the <code>x</code> and <code>y</code> variables, allowing more flexibility for how breaks are calculated</li>
+<code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors for one or both of the <code>x</code> and <code>y</code> variables, allowing more flexibility for how breaks are calculated. If you want finer grained control over your categories, calculate them ahead of time and then pass the factors on to <code><a href="reference/bi_class.html">bi_class()</a></code>.</li>
 <li>
-<code><a href="reference/bi_pal.html">bi_pal()</a></code>, <code><a href="reference/bi_legend.html">bi_legend()</a></code>, and <code>bi_scale_...</code> functions all support four-by-four bivariate maps when <code>dim = 4</code>. Note that the original five palettes do not support four-by-four mapping, but very close approximations (e.g. <code>DkBlue2</code> instead of <code>DkBlue</code>) are now provided in their place. The legacy palettes are all still included in the package.</li>
-<li>The number of built-in palettes has been greatly expanded</li>
-<li>Palettes can now be flipped and rotated (or both!), so that each built-in palette can be displayed in four different configurations</li>
-<li>The workflow for allowing custom palettes has been overhauled to simply the process - users can provide a named vector for the <code>pal</code> arguments in the <code><a href="reference/bi_pal.html">bi_pal()</a></code>, <code><a href="reference/bi_legend.html">bi_legend()</a></code>, and <code>bi_scale_...</code> functions</li>
+<code><a href="reference/bi_pal.html">bi_pal()</a></code>, <code><a href="reference/bi_legend.html">bi_legend()</a></code>, <code><a href="reference/bi_scale_fill.html">bi_scale_fill()</a></code>, and <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code> functions all support four-by-four bivariate maps when <code>dim = 4</code>. Note that the original five palettes do not support four-by-four mapping, but very close approximations (e.g. <code>DkBlue2</code> instead of <code>DkBlue</code>) are now provided in their place. The legacy palettes are all still included in the package.</li>
+<li>The number of built-in palettes has been greatly expanded!</li>
+<li>Palettes can now be flipped and rotated (or both!), so that each built-in palette can be displayed in four different configurations. This includes the built-in palettes and any custom palettes that are four-by-four or smaller. If you want to flip or rotate larger palettes, you should make those decisions while creating the palette itself.</li>
+<li>The workflow for allowing custom palettes has been overhauled to simply the process - users can provide a named vector for the <code>pal</code> arguments in the <code><a href="reference/bi_pal.html">bi_pal()</a></code>, <code><a href="reference/bi_legend.html">bi_legend()</a></code>, <code><a href="reference/bi_scale_fill.html">bi_scale_fill()</a></code>, and <code><a href="reference/bi_scale_color.html">bi_scale_color()</a></code> functions. All of these functions will validate your input to ensure that it maps correctly.</li>
 <li>
 <code><a href="reference/bi_class.html">bi_class()</a></code> can be used to calculate bivariate breaks for maps larger than four-by-four, though it will return a warning reminding you that these maps are hard to read and that <code>biscale</code> does not provide palettes for larger maps. Instead, you should provide a custom palette.</li>
 <li>
-<code><a href="reference/bi_class_breaks.html">bi_class_breaks()</a></code> can be used with <code><a href="reference/bi_legend.html">bi_legend()</a></code> to facilitate optionally adding break values to your legends</li>
+<code><a href="reference/bi_class_breaks.html">bi_class_breaks()</a></code> can be used with <code><a href="reference/bi_legend.html">bi_legend()</a></code> to facilitate optionally adding break values to your legends. Like <code><a href="reference/bi_class.html">bi_class()</a></code>, this new function accepts both continuous and pre-made factors.</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="breaking-changes">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes"></a>
 </h3>
 <ul>
-<li>There is no default supplied for <code><a href="reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors as well</li>
-<li>Changes to <code><a href="reference/bi_legend.html">bi_legend()</a></code> to facilitate breaks mean that there are new arguments to be aware of</li>
+<li>There is no default supplied for <code><a href="reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="reference/bi_class.html">bi_class()</a></code> now accepts factors as well. Users that relied on the default behavior of <code><a href="reference/bi_class.html">bi_class()</a></code> will now receive an error asking you to specify a <code>style</code> for calculating breaks.</li>
+<li>Changes to <code><a href="reference/bi_legend.html">bi_legend()</a></code> to facilitate breaks mean that there are new arguments to be aware of when calling the function.</li>
 </ul>
 </div>
 <div class="section level3">
 <h3 id="deprecated-functions">Deprecated Functions<a class="anchor" aria-label="anchor" href="#deprecated-functions"></a>
 </h3>
 <ul><li>
-<code><a href="reference/bi_pal_manual.html">bi_pal_manual()</a></code> now returns a warning that it has been deprecated and will be removed in a later release of <code>biscale</code>. Please update your workflows to use the new approach to generating custom palettes.</li></ul>
+<code><a href="reference/bi_pal_manual.html">bi_pal_manual()</a></code> now returns a warning that it has been deprecated and will be removed in a later release of <code>biscale</code> (planned for the end of 2022). Please update your workflows to use the new approach to generating custom palettes.</li></ul>
 </div>
 <div class="section level3">
 <h3 id="internal-improvements">Internal Improvements<a class="anchor" aria-label="anchor" href="#internal-improvements"></a>
 </h3>
 <ul><li>
-<code>sf</code> is now a suggested package instead of an imported package, and several dependencies have been removed in the process of re-factoring all of the code in <code>biscale</code>
-</li></ul>
+<code>sf</code> is now a suggested package instead of an imported package, and several dependencies have been removed in the process of re-factoring all of the code in <code>biscale</code>.</li></ul>
 </div>
 </div>
 <div class="section level2">
-<h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>If the <code>sf</code> package is already installed, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
+<p>The easiest way to get <code>biscale</code> is to install it from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span><span class="op">)</span></code></pre></div>
 <p>Alternatively, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"slu-openGIS/biscale"</span><span class="op">)</span></code></pre></div>
-<p>Additional details, including some tips for installing <code>sf</code>, can be found in the <a href="articles/biscale.html#getting-started">Get started article</a>.</p>
+<p><code>biscale</code> has the <code>sf</code> package as a suggested dependency, which may require additional work install. Additional details, including some tips for installing <code>sf</code>, can be found in the <a href="articles/biscale.html#getting-started">Get started article</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="resources">Resources<a class="anchor" aria-label="anchor" href="#resources"></a>
@@ -160,8 +163,9 @@
 <li>a quick overview of bivariate mapping,</li>
 <li>a description of the workflow for creating bivariate maps,</li>
 <li>a comparison of different approaches to calculating those classes,</li>
-<li>and a comparison of different color palettes for bivariate mapping.</li>
+<li>and a quick overview for creating legends.</li>
 </ul>
+<p>There are also additional vignettes included that give <a href="articles/palettes.html">an overview of palettes</a> included in the package and working with custom palettes as well as <a href="articles/advanced.html">additional advanced options</a> for creating breaks and legends.</p>
 </div>
 </div>
   </div>
