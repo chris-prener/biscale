@@ -141,7 +141,7 @@
 <p><img src="../reference/figures/biscale.005.jpeg" width="100%"></p>
 <p>Utilizing both flipping axes and palette rotations also yields a considerable change from the original:</p>
 <p><img src="../reference/figures/biscale.006.jpeg" width="100%"></p>
-<p><em>Be careful to ensure that your use of <code>flip_axes</code> and/or <code>rotate_pal</code> is consistent across <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code>/<code><a href="../reference/bi_scale_color.html">bi_scale_color()</a></code> as well as <code><a href="../reference/bi_legend.html">bi_legend()</a></code>.</em></p>
+<p>Be careful to ensure that your use of <code>flip_axes</code> and/or <code>rotate_pal</code> is consistent across <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code>/<code><a href="../reference/bi_scale_color.html">bi_scale_color()</a></code> as well as <code><a href="../reference/bi_legend.html">bi_legend()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="custom-palettes">Custom Palettes<a class="anchor" aria-label="anchor" href="#custom-palettes"></a>
@@ -190,8 +190,12 @@
 <span class="op">)</span></code></pre></div>
 <p>You can preview and validate your named vector using <code><a href="../reference/bi_pal.html">bi_pal()</a></code>. For example, we can preview the <code>custom_pal3</code> vector created above:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="va">custom_pal3</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<p>Once you have created your named vector, you can use it any place where you would ordinarily provide a quoted palette name in <code>biscale</code> functions. In this example, the <code>custom_pal3</code> vector created above is passed to <code>bi_sscale_fill()</code> and <code><a href="../reference/bi_legend.html">bi_legend()</a></code>:</p>
+<code class="sourceCode R"><span class="co">#  load dependencies</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/slu-openGIS/biscale" class="external-link">biscale</a></span><span class="op">)</span>
+
+<span class="co"># preview palette</span>
+<span class="fu"><a href="../reference/bi_pal.html">bi_pal</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="va">custom_pal3</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<p>Once you have created your named vector, you can use it any place where you would ordinarily provide a quoted palette name in <code>biscale</code> functions. In this example, the <code>custom_pal3</code> vector created above is passed to <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code> and <code><a href="../reference/bi_legend.html">bi_legend()</a></code>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># prep data</span>
 <span class="va">data</span> <span class="op">&lt;-</span> <span class="va">stl_race_income</span>

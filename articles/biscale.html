@@ -138,11 +138,12 @@
 <h3 id="preparing-data">Preparing Data<a class="anchor" aria-label="anchor" href="#preparing-data"></a>
 </h3>
 <p>Once data are loaded, bivariate classes can be applied with the <code><a href="../reference/bi_class.html">bi_class()</a></code> function:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># load dependencies</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(biscale)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># create classes</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> data <span class="ot">&lt;-</span> <span class="fu">bi_class</span>(stl_race_income, <span class="at">x =</span> pctWhite, <span class="at">y =</span> medInc, <span class="at">style =</span> <span class="st">"quantile"</span>, <span class="at">dim =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># load dependencies</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/slu-openGIS/biscale" class="external-link">biscale</a></span><span class="op">)</span>
+
+<span class="co"># create classes</span>
+<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <p>The <code>dim</code> argument is used to control the extent of the legend - do you want to produce a two-by-two map (<code>dim = 2</code>), a three-by-three map (<code>dim = 3</code>), or a four-by-four map (<code>dim = 4</code>)? <em>Note that support for four-by-four mapping is new as of v1.0.0!</em></p>
 <p>Classes can be applied with the <code>style</code> parameter using four approaches for calculating breaks: <code>"quantile"</code> (default), <code>"equal"</code>, <code>"fisher"</code>, and <code>"jenks"</code>. The default <code>"quantile"</code> approach will create relatively equal “buckets” of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map. For a four-by-four map, breaks are created at the 25th, 50th (median), and 75th percentiles.</p>
 <p><img src="../reference/figures/biscale.002.jpeg" width="100%"></p>
