@@ -24,7 +24,6 @@ LazyData: true
 Imports:
   classInt,
   ggplot2,
-  glue,
   stats,
   utils
 RoxygenNote: 7.1.2

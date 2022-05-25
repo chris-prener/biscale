@@ -271,15 +271,13 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
 bi_var_validate <- function(.data, var, dim, style){
 
   if (var %in% names(.data) == FALSE){
-    stop(glue::glue("The variable '{var}' is not found in the given data set.",
-                    var = var))
+    stop(paste0("The variable '", var, "' is not found in the given data set."))
   }
 
   if (inherits(x = .data[[var]], what = "factor")){
 
     if (length(levels(.data[[var]])) != dim){
-      stop(glue::glue("The variable '{var}' has a different number of levels than the value given for the 'dim' argument.",
-                      var = var))
+      stop(paste0("The variable '", var, "' has a different number of levels than the value given for the 'dim' argument."))
     }
 
   } else if (inherits(x = .data[[var]], what = c("integer", "double", "numeric"))){
@@ -289,15 +287,11 @@ bi_var_validate <- function(.data, var, dim, style){
     }
 
     if (style %in% c("quantile", "equal", "fisher", "jenks") == FALSE){
-      stop(glue::glue("The style '{style}' is not a valid method for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'.",
-                      var = style))
+      stop(paste0("The style '", style, "' is not a valid method for calculating breaks. The allowed styles are 'equal', 'fisher', 'jenks', or 'quantile'."))
     }
 
   } else {
-
-    stop(glue::glue("The variable '{var}' is not the correct class. It must be either integer, double, or factor.",
-                    var = var))
-
+    stop(paste0("The variable '", var, "' is not the correct class. It must be either integer, double, or factor."))
   }
 
 }
