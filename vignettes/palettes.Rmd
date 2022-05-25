@@ -1,10 +1,10 @@
 ---
-title: "Palettes in Biscale"
+title: "Bivariate Palettes"
 author: "Christopher Prener, Ph.D. and Branson Fox"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Palettes in Biscale}
+  %\VignetteIndexEntry{Bivariate Palettes}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

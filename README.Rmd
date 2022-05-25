@@ -101,7 +101,7 @@ map <- ggplot() +
   bi_theme()
 ```
 
-There are a variety of other options for palettes. See the "Palettes" vignette or `?bi_pal` for more details. The `bi_theme()` function applies a simple theme without distracting elements, which is preferable given the already elevated complexity of a bivariate map. We need to specify the dimensions of the palette for `bi_scale_fill()` as well.
+There are a variety of other options for palettes. See the "Bivarite Palettes" vignette or `?bi_pal` for more details. The `bi_theme()` function applies a simple theme without distracting elements, which is preferable given the already elevated complexity of a bivariate map. We need to specify the dimensions of the palette for `bi_scale_fill()` as well.
 
 To add a legend to our map, we need to create a second `ggplot` object. We can use `bi_legend()` to accomplish this, which allows us to easily specify the fill palette, the x and y axis labels, and their size along with the dimensions of the palette:
 

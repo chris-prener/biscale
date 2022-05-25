@@ -1,10 +1,10 @@
 ---
-title: "Advanced Options for Breaks and Legends"
+title: "Options for Breaks and Legends"
 author: "Christopher Prener, Ph.D."
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Advanced Options}
+  %\VignetteIndexEntry{Options for Breaks and Legends}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
