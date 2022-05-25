@@ -25,7 +25,6 @@ Imports:
   classInt,
   ggplot2,
   glue,
-  rlang,
   stats,
   utils
 RoxygenNote: 7.1.2

@@ -91,8 +91,8 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
   }
 
   # nse
-  xQN <- rlang::quo_name(rlang::enquo(x))
-  yQN <- rlang::quo_name(rlang::enquo(y))
+  xQN <- as.character(substitute(x))
+  yQN <- as.character(substitute(y))
 
   # evaluate inputs
   bi_var_validate(.data, var = xQN, dim = dim, style = style)
@@ -241,8 +241,8 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
   dig_vals <- bi_validate_dig_lab(dig_lab = dig_lab)
 
   # nse
-  xQN <- rlang::quo_name(rlang::enquo(x))
-  yQN <- rlang::quo_name(rlang::enquo(y))
+  xQN <- as.character(substitute(x))
+  yQN <- as.character(substitute(y))
 
   # evaluate inputs
   bi_var_validate(.data, var = xQN, dim = dim, style = style)

@@ -124,7 +124,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
   }
 
   # build legend
-  out <- bi_legend_build(leg = leg, dim = dim, xlab = !!xlab, ylab = !!ylab, size = size,
+  out <- bi_legend_build(leg = leg, dim = dim, xlab = xlab, ylab = ylab, size = size,
                          pad_width = pad_width, pad_color = pad_color, breaks = breaks, arrows = arrows)
 
   # return output
@@ -138,8 +138,8 @@ bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, br
   bi_fill = x = y = NULL
 
   # nse
-  xQN <- rlang::quo_name(rlang::enquo(xlab))
-  yQN <- rlang::quo_name(rlang::enquo(ylab))
+  xQN <- as.name(xlab)
+  yQN <- as.name(ylab)
 
   # create tibble for plotting
   leg <- data.frame(
