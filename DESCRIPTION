@@ -32,6 +32,7 @@ RoxygenNote: 7.1.2
 Suggests:
   covr,
   knitr,
+  raster,
   rmarkdown,
   sf,
   testthat

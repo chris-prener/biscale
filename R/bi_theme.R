@@ -39,8 +39,7 @@ bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff",
 
       # remove all axes
       axis.line = ggplot2::element_blank(),
-      axis.text.x = ggplot2::element_blank(),
-      axis.text.y = ggplot2::element_blank(),
+      axis.text = ggplot2::element_blank(),
       axis.ticks = ggplot2::element_blank(),
 
       # add a grid that blends into plot background

@@ -6,8 +6,7 @@
 ^appveyor\.yml$
 ^codecov\.yml$
 ^\.github
-^docs$
-^pkgdown$
+^data-raw$
 ^_pkgdown\.yml$
 ^cran-comments\.md$
 ^README\.Rmd$
