@@ -25,8 +25,6 @@
 #'
 #' @seealso bi_pals
 #'
-#' @importFrom ggplot2 scale_fill_manual
-#'
 #' @examples
 #' # load dependencies
 #' library(ggplot2)
