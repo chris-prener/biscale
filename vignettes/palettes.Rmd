@@ -1,6 +1,6 @@
 ---
 title: "Palettes in Biscale"
-author: "Branson Fox and Christopher Prener, Ph.D."
+author: "Christopher Prener, Ph.D. and Branson Fox"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
