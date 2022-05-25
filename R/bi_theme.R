@@ -26,8 +26,6 @@
 #'   bi_scale_fill(pal = "GrPink", dim = 3) +
 #'   bi_theme()
 #'
-#' @importFrom ggplot2 theme theme_minimal element_blank element_rect element_text margin rel unit
-#'
 #' @export
 bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff", font_color = "#000000", ...) {
 
