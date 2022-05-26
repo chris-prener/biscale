@@ -26,7 +26,7 @@ In addition to support for two-by-two, three-by-three, and four-by-four
 maps, the package also supports a range of methods for calculating
 breaks for bivariate maps.
 
-## What’s New in v1.0.0.9000?
+## What’s New in v1.0.0?
 
 ### New Features
 
