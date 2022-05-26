@@ -106,7 +106,7 @@
 
     
     
-<p>Thematic choropleth maps are used to display quantities of some variable within areas, such as mapping median income across a city’s neighborhoods. However, we often think in bivariate terms - “how do race and income vary together?”. Maps that captures this, known as bivariate choropleth maps, are often perceived as difficult to create and interpret. The goal of <code>biscale</code> is to implement a consistent approach to bivariate mapping entirely within <code>R</code>. The package’s workflow is based on a 2019 <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">tutorial</a> written by Timo Grossenbacher and Angelo Zehr. <code>biscale</code> also contains a set of bivariate mapping palettes, including Joshua Stevens’ <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">classive color schemes</a>.</p>
+<p>Thematic choropleth maps are used to display quantities of some variable within areas, such as mapping median income across a city’s neighborhoods. However, we often think in bivariate terms - “how do race and income vary together?”. Maps that captures this, known as bivariate choropleth maps, are often perceived as difficult to create and interpret. The goal of <code>biscale</code> is to implement a consistent approach to bivariate mapping entirely within <code>R</code>. The package’s workflow is based on a 2019 <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">tutorial</a> written by Timo Grossenbacher and Angelo Zehr. <code>biscale</code> also contains a set of bivariate mapping palettes, including Joshua Stevens’ <a href="https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">classive color schemes</a>.</p>
 <p><img src="../reference/figures/biscale.001.jpeg" width="100%"></p>
 <div class="section level2">
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
@@ -120,7 +120,7 @@
 <p>Alternatively, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"slu-openGIS/biscale"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"chris-prener/biscale"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="installing-suggested-dependencies">Installing Suggested Dependencies<a class="anchor" aria-label="anchor" href="#installing-suggested-dependencies"></a>
@@ -216,16 +216,16 @@
 <h2 id="getting-help">Getting Help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
 </h2>
 <ul>
-<li>If you are new to <code>R</code> itself, welcome! Hadley Wickham’s <a href="http://r4ds.had.co.nz" class="external-link"><em>R for Data Science</em></a> is an excellent way to get started with data manipulation in the tidyverse, which <code>biscale</code> is designed to integrate seamlessly with.</li>
+<li>If you are new to <code>R</code> itself, welcome! Hadley Wickham’s <a href="https://r4ds.had.co.nz" class="external-link"><em>R for Data Science</em></a> is an excellent way to get started with data manipulation in the tidyverse, which <code>biscale</code> is designed to integrate seamlessly with.</li>
 <li>If you are new to spatial analysis in <code>R</code>, we strongly encourage you check out the excellent new <a href="https://geocompr.robinlovelace.net" class="external-link"><em>Geocomputation in R</em></a> by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow.</li>
-<li>If you have questions about using <code>biscale</code>, you are encouraged to use the <a href="https://community.rstudio.com" class="external-link">RStudio Community forums</a>. Please create a <a href="http://reprex.tidyverse.org/" class="external-link"><code>reprex</code></a> before posting. Feel free to tag Chris (<code>@chris.prener</code>) in any posts about <code>biscale</code>.</li>
-<li>If you think you’ve found a bug, please create a <a href="http://reprex.tidyverse.org/" class="external-link"><code>reprex</code></a> and then open an issue on <a href="https://github.com/slu-openGIS/biscale/issues/new/choose" class="external-link">GitHub</a>.</li>
+<li>If you have questions about using <code>biscale</code>, you are encouraged to use the <a href="https://community.rstudio.com" class="external-link">RStudio Community forums</a>. Please create a <a href="https://reprex.tidyverse.org/" class="external-link"><code>reprex</code></a> before posting. Feel free to tag Chris (<code>@chris.prener</code>) in any posts about <code>biscale</code>.</li>
+<li>If you think you’ve found a bug, please create a <a href="https://reprex.tidyverse.org/" class="external-link"><code>reprex</code></a> and then open an issue on <a href="https://github.com/chris-prener/biscale/issues/new/choose" class="external-link">GitHub</a>.</li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="suggesting-features-or-changes">Suggesting Features or Changes<a class="anchor" aria-label="anchor" href="#suggesting-features-or-changes"></a>
 </h2>
-<p>If you have features or suggestions you want to see implemented, please open an issue on <a href="https://github.com/slu-openGIS/biscale/issues/new/choose" class="external-link">GitHub</a> (and ideally created a <a href="http://reprex.tidyverse.org/" class="external-link"><code>reprex</code></a> to go with it!). Please note that this project is released with a <a href="https://slu-opengis.github.io/biscale/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>If you have features or suggestions you want to see implemented, please open an issue on <a href="https://github.com/chris-prener/biscale/issues/new/choose" class="external-link">GitHub</a> (and ideally created a <a href="https://reprex.tidyverse.org/" class="external-link"><code>reprex</code></a> to go with it!). Please note that this project is released with a <a href="https://chris-prener.github.io/biscale/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
   </div>
 

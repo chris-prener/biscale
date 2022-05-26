@@ -122,7 +122,7 @@
 </h3>
 <p>To ensure compatibility with scripts written with older versions of <code>biscale</code>, the original five palettes included in the package are still available. They can be used only for two-by-two (<code>dim = 2</code>) and three-by-three (<code>dim = 3</code>) maps.</p>
 <p><img src="../reference/figures/pals_legancy.jpeg" width="100%"></p>
-<p>The <code>"DkViolet"</code> palette was created by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">Timo Grossenbacher and Angelo Zehr</a>, and the other four palettes were created by <a href="http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">Joshua Stevens</a>.</p>
+<p>The <code>"DkViolet"</code> palette was created by <a href="https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/" class="external-link">Timo Grossenbacher and Angelo Zehr</a>, and the other four palettes were created by <a href="https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">Joshua Stevens</a>.</p>
 </div>
 </div>
 <div class="section level2">
@@ -150,7 +150,8 @@
 <h2 id="custom-palettes">Custom Palettes<a class="anchor" aria-label="anchor" href="#custom-palettes"></a>
 </h2>
 <p>In addition the built-in palettes described above, <code>biscale</code> supports custom palettes. <em>As of v1.0.0, the workflow for using custom palettes is different than prior releases and the old approach, using <code><a href="../reference/bi_pal_manual.html">bi_pal_manual()</a></code>, has been deprecated. We plan to remove <code><a href="../reference/bi_pal_manual.html">bi_pal_manual()</a></code> in late 2022. Please update your workflows accordingly.</em></p>
-<p>To create a custom palette, users must create a named vector. The first example below is a named vector for a two-by-two (<code>dim = 2</code>) map. The pairs correspond to <code>x,y</code> coordinates on the legend where the first value is the <code>x</code> value and the second is the <code>y</code> value. The <code>1-1</code> pair is therefore the lower left corner of the legend and, in the example, the <code>2-2</code> pair is the upper right corner. The named vector should have 4 values in total.</p>
+<p>To create a custom palette, users must create a named vector and supply associated hex values. We recommend checking out <a href="https://bvgsoftware.com" class="external-link">Benjamin Brooke’s</a> <a href="https://observablehq.com/@benjaminadk/bivariate-choropleth-color-generator" class="external-link">Bivariate Choropleth Color Generator</a> if you want to experiment with creating your own palettes. <a href="https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/" class="external-link">Joshua Steves’ blogpost from 2015</a> also contains tips for creating palettes.</p>
+<p>The first example below is a named vector for a two-by-two (<code>dim = 2</code>) map. The pairs correspond to <code>x,y</code> coordinates on the legend where the first value is the <code>x</code> value and the second is the <code>y</code> value. The <code>1-1</code> pair is therefore the lower left corner of the legend and, in the example, the <code>2-2</code> pair is the upper right corner. The named vector should have 4 values in total.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">custom_pal2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>
   <span class="st">"1-1"</span> <span class="op">=</span> <span class="st">"#d3d3d3"</span>, <span class="co"># low x, low y</span>
