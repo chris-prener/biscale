@@ -81,7 +81,7 @@ neon_harv <- bi_class(neon_harv, x = ele, y = sim, style = "quantile")
 ```
 
 ## Bivariate Raster Mapping
-Mapping these raster data follows the same general workflow as our vector data examples, but requires a few minor modifications. Instead of using `ggplot2::geom_sf()`, we'll use `ggplot2::geom_raster()`. The arguments passed to `geom_raster()` remain the same, however:
+Mapping these raster data follows the same general workflow as our vector data examples, but requires a few minor modifications. Instead of using `ggplot2::geom_sf()`, we'll use `ggplot2::geom_raster()`. The arguments passed to `geom_raster()` remain generally the same, however we need to explicitly name the `x` and `y` columns:
 
 ```r
 map <- ggplot() +
@@ -98,7 +98,10 @@ map <- ggplot() +
   theme(legend.position="none")
 ```
 
-To project the data, we'll use `ggplot2::coord_quickmap()`. To suppress the default legend, we need to use `theme(legend.position="none")` instead, however. Likewise, we need to explicitly hide the `x` and `y` axis labels using the `labs()` function.
+There are a few other key differences with the raster workflow to note:
+  * To project the data, we'll use `ggplot2::coord_quickmap()`
+  * To suppress the default legend, we need to use `theme(legend.position="none")` 
+  * Likewise, we need to explicitly hide the `x` and `y` axis labels using the `labs()` function
 
 All of the legend construction steps are the same as for vector data:
 
