@@ -17,8 +17,8 @@ Description: Provides a 'ggplot2' centric approach to bivariate mapping. This is
     are also included.
 Depends: R (>= 3.5)
 License: GPL-3
-URL: https://github.com/slu-openGIS/biscale
-BugReports: https://github.com/slu-openGIS/biscale/issues
+URL: https://chris-prener.github.io/biscale/
+BugReports: https://github.com/chris-prener/biscale/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
