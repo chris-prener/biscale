@@ -16,16 +16,19 @@
     <loc>https://slu-openGIS.github.io/biscale/PULL_REQUEST_TEMPLATE.html</loc>
   </url>
   <url>
-    <loc>https://slu-openGIS.github.io/biscale/articles/advanced.html</loc>
+    <loc>https://slu-openGIS.github.io/biscale/articles/biscale.html</loc>
   </url>
   <url>
-    <loc>https://slu-openGIS.github.io/biscale/articles/biscale.html</loc>
+    <loc>https://slu-openGIS.github.io/biscale/articles/breaks.html</loc>
   </url>
   <url>
     <loc>https://slu-openGIS.github.io/biscale/articles/index.html</loc>
   </url>
   <url>
     <loc>https://slu-openGIS.github.io/biscale/articles/palettes.html</loc>
+  </url>
+  <url>
+    <loc>https://slu-openGIS.github.io/biscale/articles/rasters.html</loc>
   </url>
   <url>
     <loc>https://slu-openGIS.github.io/biscale/authors.html</loc>
@@ -65,5 +68,8 @@
   </url>
   <url>
     <loc>https://slu-openGIS.github.io/biscale/reference/stl_race_income.html</loc>
+  </url>
+  <url>
+    <loc>https://slu-openGIS.github.io/biscale/reference/stl_race_income_point.html</loc>
   </url>
 </urlset>
