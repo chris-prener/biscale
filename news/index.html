@@ -80,9 +80,8 @@
 <li>
 <code><a href="../reference/bi_class_breaks.html">bi_class_breaks()</a></code> can be used with <code><a href="../reference/bi_legend.html">bi_legend()</a></code> to facilitate optionally adding break values to your legends. Like <code><a href="../reference/bi_class.html">bi_class()</a></code>, this new function accepts both continuous and pre-made factors.</li>
 </ul></li>
-<li>Breaking changes<ul><li>There is no default supplied for <code><a href="../reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="../reference/bi_class.html">bi_class()</a></code> now accepts factors as well. Users that relied on the default behavior of <code><a href="../reference/bi_class.html">bi_class()</a></code> will now receive an error asking you to specify a <code>style</code> for calculating breaks.</li>
-<li>Changes to <code><a href="../reference/bi_legend.html">bi_legend()</a></code> to facilitate breaks mean that there are new arguments to be aware of when calling the function.</li>
-</ul></li>
+<li>Breaking changes<ul><li>
+<code>R</code> version 3.4 is no longer supported - please use at least <code>R</code> version 3.5<ul><li>There is no default supplied for <code><a href="../reference/bi_class.html">bi_class()</a></code>’s <code>style</code> argument since <code><a href="../reference/bi_class.html">bi_class()</a></code> now accepts factors as well. Users that relied on the default behavior of <code><a href="../reference/bi_class.html">bi_class()</a></code> will now receive an error asking you to specify a <code>style</code> for calculating breaks.</li></ul></li></ul></li>
 <li>Deprecated functions<ul><li>
 <code><a href="../reference/bi_pal_manual.html">bi_pal_manual()</a></code> now returns a warning that it has been deprecated and will be removed in a later release of <code>biscale</code> (planned for the end of 2022). Please update your workflows to use the new approach to generating custom palettes.</li></ul></li>
 <li>Internal improvements<ul><li>
