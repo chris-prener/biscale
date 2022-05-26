@@ -15,7 +15,10 @@
     * `bi_pal_manual()` now returns a warning that it has been deprecated and will be removed in a later release of `biscale` (planned for the end of 2022). Please update your workflows to use the new approach to generating custom palettes.
 * Internal improvements
     * `sf` is no longer a *required* dependency and is now *suggested* - this returns the package to its original release in terms of *suggesting* `sf`
+    * `cowplot` is now a suggested dependency
     * All functions have been rewritten to reduce dependencies and duplicative code
+* Documentation improvements
+    * Documentation updates have been made, including the addition of a number of new examples and vignettes. These include detailed articles on bivariate palettes, working with breaks and legends, and creating bivariate maps with raster data.
 
 # biscale 0.3.0
 

@@ -38,13 +38,25 @@ Alternatively, the development version of `biscale` can be accessed from GitHub 
 remotes::install_github("slu-openGIS/biscale")
 ```
 
-### Installing Dependencies
+### Installing Suggested Dependencies
 Since the package does not directly use functions from `sf`, it is a suggested dependency rather than a required one. However, the most direct approach to using `biscale` is with `sf` objects, and we therefore recommend users install `sf`. Windows and macOS users should be able to install `sf` without significant issues unless they are building from source. Linux users will need to install several open source spatial libraries to get `sf` itself up and running. 
+
+The other suggested dependency that users may want to consider installing is `cowplot`. All of the examples in the package documentation utilize it to construct final map images that combine the map with the legend. Like `sf`, it is suggested because none of the functions in `biscale` call `cowplot` directly.
+
+If you want to use them, you can either install these packages individually (faster) or install all of the suggested dependencies at once (slower, will also give you a number of other packages you may or may not want):
+
+```r
+## install just cowplot and sf
+install.packages(c("cowplot", "sf"))
+
+## install all suggested dependencies
+install.packages("biscale", dependencies = TRUE)
+```
 
 ### Functions
 All functions within `biscale` use the prefix `bi_` to leverage the auto-completion features of RStudio and other IDEs. 
 
-### Data
+## Data
 `biscale` contains a data set of U.S. Census tracts for the City of St. Louis in Missouri. Both median income and the percentage of white residents are included, both of which can be used to demonstrate the package's functionality.
 
 ### Preparing Data
@@ -76,7 +88,8 @@ Users should therefore choose methods for calculating breaks carefully as well a
 
 *As of `v1.0`, `biscale` now supports larger dimension maps as well as custom breaks for maps. For an overview of these options, see the "Options for Breaks and Legends" vignette.*
 
-### Mapping Data
+## Bivariate Mapping with Biscale
+### Creating Maps
 Once breaks are created, we can use `bi_scale_fill()` as part of our `ggplot()` call:
 
 ```r
@@ -112,6 +125,7 @@ legend <- bi_legend(pal = "GrPink",
 
 The palette and dimensions should match what has been used for both `bi_class()` (in terms of dimensions) and `bi_scale_fill()` (in terms of both dimensions and palette). The `size` argument controls the font size used on the legend. Note that [`plotmath`](https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html) is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of `bi_legend()` - you don't need to include them in your `xlab` and `ylab` arguments!
 
+### Creating a Final Output
 With our legend drawn, we can then combine the legend and the map with a package like `cowplot`. The values needed for this stage will be subject to experimentation depending on the shape of the map itself. 
 
 ```r

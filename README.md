@@ -63,6 +63,8 @@ breaks for bivariate maps.
 
 ### Breaking Changes
 
+-   `R` version 3.4 is no longer supported - please use at least `R`
+    version 3.5
 -   There is no default supplied for `bi_class()`’s `style` argument
     since `bi_class()` now accepts factors as well. Users that relied on
     the default behavior of `bi_class()` will now receive an error
@@ -83,6 +85,13 @@ breaks for bivariate maps.
     several dependencies have been removed in the process of
     re-factoring all of the code in `biscale`.
 
+### Documentation Improvements
+
+-   Documentation updates have been made, including the addition of a
+    number of new examples and vignettes. These include detailed
+    articles on bivariate palettes, working with breaks and legends, and
+    creating bivariate maps with raster data.
+
 ## Installation
 
 ### Installing biscale
@@ -101,13 +110,34 @@ GitHub with `remotes`:
 remotes::install_github("slu-openGIS/biscale")
 ```
 
-### Installing Dependencies
+### Installing Suggested Dependencies
 
-`biscale` has the `sf` package as a suggested dependency, which may
-require additional work install. You should check the [`sf` package
-website](https://r-spatial.github.io/sf/) for the latest details on
-installing that package if you do not already have it installed.
-Instructions vary significantly by operating system.
+Since the package does not directly use functions from `sf`, it is a
+suggested dependency rather than a required one. However, the most
+direct approach to using `biscale` is with `sf` objects, and we
+therefore recommend users install `sf`. Windows and macOS users should
+be able to install `sf` without significant issues unless they are
+building from source. Linux users will need to install several open
+source spatial libraries to get `sf` itself up and running.
+
+The other suggested dependency that users may want to consider
+installing is `cowplot`. All of the examples in the package
+documentation utilize it to construct final map images that combine the
+map with the legend. Like `sf`, it is suggested because none of the
+functions in `biscale` call `cowplot` directly.
+
+If you want to use them, you can either install these packages
+individually (faster) or install all of the suggested dependencies at
+once (slower, will also give you a number of other packages you may or
+may not want):
+
+``` r
+## install just cowplot and sf
+install.packages(c("cowplot", "sf"))
+
+## install all suggested dependencies
+install.packages("biscale", dependencies = TRUE)
+```
 
 ## Usage
 

@@ -21,6 +21,7 @@
   * `bi_class_breaks()` can be used with `bi_legend()` to facilitate optionally adding break values to your legends. Like `bi_class()`, this new function accepts both continuous and pre-made factors.
 
 ### Breaking Changes
+  * `R` version 3.4 is no longer supported - please use at least `R` version 3.5
   * There is no default supplied for `bi_class()`'s `style` argument since `bi_class()` now accepts factors as well. Users that relied on the default behavior of `bi_class()` will now receive an error asking you to specify a `style` for calculating breaks.
   * Changes to `bi_legend()` to facilitate breaks mean that there are new arguments to be aware of when calling the function.
 
@@ -29,6 +30,9 @@
   
 ### Internal Improvements
   * `sf` is now a suggested package instead of an imported package, and several dependencies have been removed in the process of re-factoring all of the code in `biscale`.
+  
+### Documentation Improvements
+  * Documentation updates have been made, including the addition of a number of new examples and vignettes. These include detailed articles on bivariate palettes, working with breaks and legends, and creating bivariate maps with raster data.
 
 ## Installation
 The easiest way to get `biscale` is to install it from CRAN:
@@ -44,7 +48,7 @@ Alternatively, the development version of `biscale` can be accessed from GitHub 
 remotes::install_github("slu-openGIS/biscale")
 ```
 
-`biscale` has the `sf` package as a suggested dependency, which may require additional work install. Additional details, including some tips for installing `sf`, can be found in the [Get started article](articles/biscale.html#getting-started).
+Additional details, including some tips for installing suggested dependencies, can be found in the [Get started article](articles/biscale.html#getting-started).
 
 ## Resources
 
