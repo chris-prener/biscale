@@ -5,10 +5,9 @@ context("test bi_scale_fill function")
 data("stl_race_income", package = "biscale")
 data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2)
 
-# load suggested dependencies ------------------------------------------------
+# load dependencies ------------------------------------------------
 
 library(ggplot2)
-library(sf)
 
 # test errors ------------------------------------------------
 

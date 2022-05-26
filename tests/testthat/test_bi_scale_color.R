@@ -1,9 +1,8 @@
 context("test bi_scale_color function")
 
-# load suggested dependencies ------------------------------------------------
+# load dependencies ------------------------------------------------
 
 library(ggplot2)
-library(sf)
 
 # load test data ------------------------------------------------
 

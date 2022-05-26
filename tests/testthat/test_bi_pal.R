@@ -4,10 +4,6 @@ context("test bi_pal function")
 
 data("stl_race_income", package = "biscale")
 
-# load suggested dependencies ------------------------------------------------
-
-library(sf)
-
 # test errors ------------------------------------------------
 
 test_that("missing parameters trigger appropriate errors", {
