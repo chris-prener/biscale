@@ -3,10 +3,10 @@ pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   biscale: biscale.html
+  bivariate_palettes: bivariate_palettes.html
   breaks: breaks.html
-  palettes: palettes.html
   rasters: rasters.html
-last_built: 2022-05-26T16:34Z
+last_built: 2022-05-26T16:45Z
 urls:
   reference: https://slu-openGIS.github.io/biscale/reference
   article: https://slu-openGIS.github.io/biscale/articles
