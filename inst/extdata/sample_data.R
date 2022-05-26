@@ -29,3 +29,8 @@ tracts <- tracts %>%
 stl_race_income <- tracts
 
 usethis::use_data(stl_race_income, overwrite = TRUE)
+
+stl_race_income_point <- st_centroid(stl_race_income)
+
+usethis::use_data(stl_race_income_point, overwrite = TRUE)
+

@@ -23,12 +23,11 @@
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
 #'
-#' @seealso bi_pals
+#' @seealso bi_pal
 #'
 #' @examples
 #' # load dependencies
 #' library(ggplot2)
-#' library(sf)
 #'
 #' # add breaks, 3x3
 #' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)

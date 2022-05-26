@@ -3,11 +3,11 @@
 #' @description A simple features data set containing the geometry and associated attributes
 #'     for the 2013-2017 American Community Survey estimates for median household income and the
 #'     percentage of white residents in St. Louis. This version of the sample data are stored
-#'     as polygon data.
+#'     as point data.
 #'
 #' @docType data
 #'
-#' @usage data(stl_race_income)
+#' @usage data(stl_race_income_point)
 #'
 #' @format A data frame with 106 rows and 4 variables:
 #' \describe{
@@ -20,8 +20,8 @@
 #' @source \code{tidycensus} package
 #'
 #' @examples
-#' str(stl_race_income)
-#' head(stl_race_income)
-#' summary(stl_race_income$medInc)
+#' str(stl_race_income_point)
+#' head(stl_race_income_point)
+#' summary(stl_race_income_point$medInc)
 #'
-"stl_race_income"
+"stl_race_income_point"

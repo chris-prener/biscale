@@ -32,6 +32,18 @@
 #'
 #' @seealso bi_pal
 #'
+#' @examples
+#' # load dependencies
+#' library(ggplot2)
+#'
+#' # add breaks, 3x3
+#' data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
+#'
+#' # create map
+#' plot <- ggplot() +
+#'   geom_sf(data = data, aes(color = bi_class), size = 2, show.legend = FALSE) +
+#'   bi_scale_color(pal = "GrPink", dim = 3)
+#'
 #' @export
 bi_scale_color <- function(pal, dim = 3, flip_axes = FALSE, rotate_pal = FALSE, ...){
 

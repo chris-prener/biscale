@@ -37,7 +37,6 @@ Applies the selected palette as the fill aesthetic when \code{\link{geom_sf}}
 \examples{
 # load dependencies
 library(ggplot2)
-library(sf)
 
 # add breaks, 3x3
 data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
@@ -49,5 +48,5 @@ plot <- ggplot() +
 
 }
 \seealso{
-bi_pals
+bi_pal
 }

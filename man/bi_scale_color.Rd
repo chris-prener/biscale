@@ -41,6 +41,19 @@ Applies the selected palette as the color aesthetic when \code{\link{geom_sf}}
     is used and the \code{bi_class} variable is given as the \code{color} in the aesthetic
     mapping.
 }
+\examples{
+# load dependencies
+library(ggplot2)
+
+# add breaks, 3x3
+data <- bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 3)
+
+# create map
+plot <- ggplot() +
+  geom_sf(data = data, aes(color = bi_class), size = 2, show.legend = FALSE) +
+  bi_scale_color(pal = "GrPink", dim = 3)
+
+}
 \seealso{
 bi_pal
 }
