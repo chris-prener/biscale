@@ -46,7 +46,7 @@ library(raster)    # work with raster data
 ```
 
 ## Sample Data
-The data for this example are stored in `biscale`'s GitHub repository. They are a selection from [NEON's](http://www.neonscience.org/) [Spatio-temporal Teaching Data Subset](https://figshare.com/articles/dataset/Spatio_temporal_Series_Teaching_Data_Subsets/2009586), which are available on figshare. These data were created by Leah Wasser and Megan A. Jones, and are available under a CC-BY 4.0 license. 
+The data for this example are stored in `biscale`'s GitHub repository. They are a selection from [NEON's](https://www.neonscience.org/) [Spatio-temporal Teaching Data Subset](https://figshare.com/articles/dataset/Spatio_temporal_Series_Teaching_Data_Subsets/2009586), which are available on figshare. These data were created by Leah Wasser and Megan A. Jones, and are available under a CC-BY 4.0 license. 
 
 The data consist of a `.tif` file describing elevation in the Harvard Forest in Massachusetts. They need to be downloaded from GitHub into your `R` session since they do not come within the package itself due to the size of the file:
 

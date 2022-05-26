@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Thematic choropleth maps are used to display quantities of some variable within areas, such as mapping median income across a city's neighborhoods. However, we often think in bivariate terms - "how do race and income vary together?". Maps that captures this, known as bivariate choropleth maps, are often perceived as difficult to create and interpret. The goal of `biscale` is to implement a consistent approach to bivariate mapping entirely within `R`. The package's workflow is based on a 2019 [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr. `biscale` also contains a set of bivariate mapping palettes, including Joshua Stevens' [classive color schemes](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). 
+Thematic choropleth maps are used to display quantities of some variable within areas, such as mapping median income across a city's neighborhoods. However, we often think in bivariate terms - "how do race and income vary together?". Maps that captures this, known as bivariate choropleth maps, are often perceived as difficult to create and interpret. The goal of `biscale` is to implement a consistent approach to bivariate mapping entirely within `R`. The package's workflow is based on a 2019 [tutorial](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/) written by Timo Grossenbacher and Angelo Zehr. `biscale` also contains a set of bivariate mapping palettes, including Joshua Stevens' [classive color schemes](https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). 
 
 ```{r example-maps, echo=FALSE, out.width = '100%'}
 knitr::include_graphics("../man/figures/biscale.001.jpeg")
@@ -144,10 +144,10 @@ knitr::include_graphics("../man/figures/biscale.004.jpeg")
 ```
 
 ## Getting Help
-* If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](http://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.
+* If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](https://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.
 * If you are new to spatial analysis in `R`, we strongly encourage you check out the excellent new [*Geocomputation in R*](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow.
-* If you have questions about using `biscale`, you are encouraged to use the [RStudio Community forums](https://community.rstudio.com). Please create a [`reprex`](http://reprex.tidyverse.org/) before posting. Feel free to tag Chris (`@chris.prener`) in any posts about `biscale`.
-* If you think you've found a bug, please create a [`reprex`](http://reprex.tidyverse.org/) and then open an issue on [GitHub](https://github.com/chris-prener/biscale/issues/new/choose).
+* If you have questions about using `biscale`, you are encouraged to use the [RStudio Community forums](https://community.rstudio.com). Please create a [`reprex`](https://reprex.tidyverse.org/) before posting. Feel free to tag Chris (`@chris.prener`) in any posts about `biscale`.
+* If you think you've found a bug, please create a [`reprex`](https://reprex.tidyverse.org/) and then open an issue on [GitHub](https://github.com/chris-prener/biscale/issues/new/choose).
 
 ## Suggesting Features or Changes
-If you have features or suggestions you want to see implemented, please open an issue on [GitHub](https://github.com/chris-prener/biscale/issues/new/choose) (and ideally created a [`reprex`](http://reprex.tidyverse.org/) to go with it!). Please note that this project is released with a [Contributor Code of Conduct](https://chris-prener.github.io/biscale/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
+If you have features or suggestions you want to see implemented, please open an issue on [GitHub](https://github.com/chris-prener/biscale/issues/new/choose) (and ideally created a [`reprex`](https://reprex.tidyverse.org/) to go with it!). Please note that this project is released with a [Contributor Code of Conduct](https://chris-prener.github.io/biscale/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.

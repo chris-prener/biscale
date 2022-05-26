@@ -7,10 +7,10 @@
 Workflow](https://github.com/chris-prener/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![Coverage
 status](https://codecov.io/gh/chris-prener/biscale/branch/main/graph/badge.svg)](https://codecov.io/github/chris-prener/biscale?branch=main)
-[![CRAN_status_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
+[![CRAN_status_badge](https://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 [![cran
 checks](https://cranchecks.info/badges/worst/biscale)](https://cran.r-project.org/web/checks/check_results_biscale.html)
-[![Downloads](http://cranlogs.r-pkg.org/badges/biscale?color=brightgreen)](http://www.r-pkg.org/pkg/biscale)
+[![Downloads](https://cranlogs.r-pkg.org/badges/biscale?color=brightgreen)](https://www.r-pkg.org/pkg/biscale)
 [![DOI](https://zenodo.org/badge/183024212.svg)](https://zenodo.org/badge/latestdoi/183024212)
 
 `biscale` implements a set of functions for bivariate thematic mapping

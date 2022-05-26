@@ -36,7 +36,7 @@ To ensure compatibility with scripts written with older versions of `biscale`, t
 knitr::include_graphics('../man/figures/pals_legancy.jpeg')
 ```
 
-The `"DkViolet"` palette was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
+The `"DkViolet"` palette was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).
 
 ## Palette Manipulations
 In order to facilitate even greater flexibility with palettes, `biscale` functions include two additional arguments to manipulate their arrangement. 
