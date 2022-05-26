@@ -1,5 +1,5 @@
 ## Release summary
-This release makes numerous improvements and changes to the package. All of the functions have been refactored to reduce the number of dependencies, documentation has been improved, and new functionality has been added to work with breaks and legends.
+This release makes numerous improvements and changes to the package. All of the functions have been refactored to reduce the number of dependencies, documentation has been improved, and new functionality has been added to work with breaks and legends. One function, bi_pal_manual(), has been deprecated and now returns a warning using .Deprecated() that it will be removed in a later version. I have kept breaking changes to a minimum - the package requires R 3.5 now, and there has been a change to bi_class() that will impact users. Both changes have been flagged in the package documentation.
 
 ## Test environments
 * local OS X install: R 4.1.2
