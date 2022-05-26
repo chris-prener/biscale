@@ -81,7 +81,9 @@ Be careful to ensure that your use of `flip_axes` and/or `rotate_pal` is consist
 ## Custom Palettes
 In addition the built-in palettes described above, `biscale` supports custom palettes. *As of v1.0.0, the workflow for using custom palettes is different than prior releases and the old approach, using `bi_pal_manual()`, has been deprecated. We plan to remove `bi_pal_manual()` in late 2022. Please update your workflows accordingly.*
 
-To create a custom palette, users must create a named vector. The first example below is a named vector for a two-by-two (`dim = 2`) map. The pairs correspond to `x,y` coordinates on the legend where the first value is the `x` value and the second is the `y` value. The `1-1` pair is therefore the lower left corner of the legend and, in the example, the `2-2` pair is the upper right corner. The named vector should have 4 values in total.
+To create a custom palette, users must create a named vector and supply associated hex values. We recommend checking out [Benjamin Brooke's](https://bvgsoftware.com) [Bivariate Choropleth Color Generator](https://observablehq.com/@benjaminadk/bivariate-choropleth-color-generator) if you want to experiment with creating your own palettes. [Joshua Steves' blogpost from 2015](https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/) also contains tips for creating palettes.
+
+The first example below is a named vector for a two-by-two (`dim = 2`) map. The pairs correspond to `x,y` coordinates on the legend where the first value is the `x` value and the second is the `y` value. The `1-1` pair is therefore the lower left corner of the legend and, in the example, the `2-2` pair is the upper right corner. The named vector should have 4 values in total.
 
 ```r
 custom_pal2 <- c(
