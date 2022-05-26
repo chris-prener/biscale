@@ -61,7 +61,7 @@ Once you have the raster data downloaded, you will need to convert them from a `
 neon_harv <- as.data.frame(DSM_HARV, xy = TRUE)
 ```
 
-Next, we'll create a vector correlated with the `y` column to simulate a bivariate relationship that we can map. To do this, we'll use the `fuax::rnorm_pre()` variable to create a variable that has a moderately strong correlation with `y` along with a mean of 10 and a standard deviation of 2:
+Next, we'll create a vector correlated with the `y` column to simulate a bivariate relationship that we can map. To do this, we'll use the `fuax::rnorm_pre()` function to create a variable that has a moderately strong correlation with `y` along with a mean of 10 and a standard deviation of 2:
 
 ```r
 ## create simulated data
