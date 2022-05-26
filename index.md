@@ -1,8 +1,8 @@
 
 # biscale <img src="man/figures/logo.png" align="right" />
 
-![GitHub Workflow](https://github.com/slu-openGIS/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
-[![Coverage status](https://codecov.io/gh/slu-openGIS/biscale/branch/main/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=main)
+![GitHub Workflow](https://github.com/chris-prener/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
+[![Coverage status](https://codecov.io/gh/chris-prener/biscale/branch/main/graph/badge.svg)](https://codecov.io/github/chris-prener/biscale?branch=main)
 [![CRAN_status_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 [![cran checks](https://cranchecks.info/badges/worst/biscale)](https://cran.r-project.org/web/checks/check_results_biscale.html)
 [![Downloads](http://cranlogs.r-pkg.org/badges/biscale?color=brightgreen)](http://www.r-pkg.org/pkg/biscale)
@@ -45,7 +45,7 @@ Alternatively, the development version of `biscale` can be accessed from GitHub 
 
 ```r
 # install.packages("remotes")
-remotes::install_github("slu-openGIS/biscale")
+remotes::install_github("chris-prener/biscale")
 ```
 
 Additional details, including some tips for installing suggested dependencies, can be found in the [Get started article](articles/biscale.html#getting-started).

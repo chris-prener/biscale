@@ -4,9 +4,9 @@
 # biscale <img src="man/figures/logo.png" align="right" />
 
 ![GitHub
-Workflow](https://github.com/slu-openGIS/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
+Workflow](https://github.com/chris-prener/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![Coverage
-status](https://codecov.io/gh/slu-openGIS/biscale/branch/main/graph/badge.svg)](https://codecov.io/github/slu-openGIS/biscale?branch=main)
+status](https://codecov.io/gh/chris-prener/biscale/branch/main/graph/badge.svg)](https://codecov.io/github/chris-prener/biscale?branch=main)
 [![CRAN_status_badge](http://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 [![cran
 checks](https://cranchecks.info/badges/worst/biscale)](https://cran.r-project.org/web/checks/check_results_biscale.html)
@@ -107,7 +107,7 @@ GitHub with `remotes`:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("slu-openGIS/biscale")
+remotes::install_github("chris-prener/biscale")
 ```
 
 ### Installing Suggested Dependencies
@@ -235,5 +235,5 @@ like this:
 ## Contributor Code of Conduct
 
 Please note that this project is released with a [Contributor Code of
-Conduct](https://slu-opengis.github.io/biscale/CODE_OF_CONDUCT.html). By
-participating in this project you agree to abide by its terms.
+Conduct](https://chris-prener.github.io/biscale/CODE_OF_CONDUCT.html).
+By participating in this project you agree to abide by its terms.
