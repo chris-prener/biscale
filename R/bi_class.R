@@ -12,9 +12,13 @@
 #' @param y The \code{y} variable, either a numeric (including double and integer
 #'     classes) or factor
 #' @param style A string identifying the style used to calculate breaks. Currently
-#'     supported styles are \code{"quantile"} (default), \code{"equal"}, \code{"fisher"},
+#'     supported styles are \code{"quantile"}, \code{"equal"}, \code{"fisher"},
 #'     and \code{"jenks"}. If both \code{x} and \code{y} are factors, this argument can
 #'     be omitted.
+#'
+#'     Note that older versions of \code{biscale} used \code{"quantile"} as the default
+#'     for this argument. Now that \code{bi_class} accepts factors, this argument
+#'     no longer as a default and older code will error.
 #' @param dim The dimensions of the palette. To use the built-in palettes,
 #'     this value must be either \code{2}, \code{3}, or \code{4}. A value of
 #'     \code{3}, for example, would be used to create a three-by-three bivariate

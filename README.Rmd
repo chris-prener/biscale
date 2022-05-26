@@ -41,7 +41,6 @@ In addition to support for two-by-two, three-by-three, and four-by-four maps, th
 ### Breaking Changes
   * `R` version 3.4 is no longer supported - please use at least `R` version 3.5
   * There is no default supplied for `bi_class()`'s `style` argument since `bi_class()` now accepts factors as well. Users that relied on the default behavior of `bi_class()` will now receive an error asking you to specify a `style` for calculating breaks.
-  * Changes to `bi_legend()` to facilitate breaks mean that there are new arguments to be aware of when calling the function.
 
 ### Deprecated Functions
   * `bi_pal_manual()` now returns a warning that it has been deprecated and will be removed in a later release of `biscale` (planned for the end of 2022). Please update your workflows to use the new approach to generating custom palettes.
