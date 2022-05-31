@@ -1,4 +1,4 @@
-# biscale 1.0.0.9999
+# biscale 1.0.0
 
 * New features
     * `bi_class()` now accepts factors for one or both of the `x` and `y` variables, allowing more flexibility for how breaks are calculated. If you want finer grained control over your categories, calculate them ahead of time and then pass the factors on to `bi_class()`.

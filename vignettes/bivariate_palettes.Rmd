@@ -33,7 +33,7 @@ Most of the newly added palettes not based on legacy designs were adapted from e
 To ensure compatibility with scripts written with older versions of `biscale`, the original five palettes included in the package are still available. They can be used only for two-by-two (`dim = 2`) and three-by-three (`dim = 3`) maps.
 
 ```{r echo=FALSE, out.width='100%'}
-knitr::include_graphics('../man/figures/pals_legancy.jpeg')
+knitr::include_graphics('../man/figures/pals_legacy.jpeg')
 ```
 
 The `"DkViolet"` palette was created by [Timo Grossenbacher and Angelo Zehr](https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/), and the other four palettes were created by [Joshua Stevens](https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/).

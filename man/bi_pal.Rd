@@ -59,9 +59,11 @@ Prints either a visual preview of each palette or the associated
 \details{
 The \code{"Brown"}, \code{"DkBlue"}, \code{"DkCyan"}, and \code{"GrPink"}
     palettes were made by
-    \href{http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/}{Joshua Stevens}.
+    \href{https://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/}{Joshua Stevens}.
     The \code{"DkViolet"} palette was made by
     \href{https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/}{Timo Grossenbacher and Angelo Zehr}.
+    Many of the new palettes were inspired by Branson Fox's earlier work to expand
+    \code{biscale}.
 }
 \examples{
 # gray pink palette, 2x2
