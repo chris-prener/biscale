@@ -19,7 +19,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">biscale</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -91,9 +91,12 @@ classes) or factor</p></dd>
 classes) or factor</p></dd>
 <dt>style</dt>
 <dd><p>A string identifying the style used to calculate breaks. Currently
-supported styles are <code>"quantile"</code> (default), <code>"equal"</code>, <code>"fisher"</code>,
-and <code>"jenks"</code>. If both <code>x</code> and <code>y</code> are factors, this argument can
-be omitted.</p></dd>
+    supported styles are <code>"quantile"</code>, <code>"equal"</code>, <code>"fisher"</code>,
+    and <code>"jenks"</code>. If both <code>x</code> and <code>y</code> are factors, this argument can
+    be omitted.</p>
+<p>Note that older versions of <code>biscale</code> used <code>"quantile"</code> as the default
+    for this argument. Now that <code>bi_class</code> accepts factors, this argument
+    no longer as a default and older code will error.</p></dd>
 <dt>dim</dt>
 <dd><p>The dimensions of the palette. To use the built-in palettes,
     this value must be either <code>2</code>, <code>3</code>, or <code>4</code>. A value of
