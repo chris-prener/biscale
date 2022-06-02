@@ -190,3 +190,37 @@ bi_legend("BlueGold", pad_width = 1.5, pad_color = '#000000')
 knitr::include_graphics('../man/figures/legend_padding.jpeg')
 ```
 
+## Using Non-Latin Characters
+*As of v1.1.0, `biscale`'s legends accept non-Latin characters.* The `bi_legend()` function now has a `base_family` argument that can be use to alter the legend font family used. It defaults to `"sans"`, which has always been the font family used in `biscale`. However, users who wish to utilize non-Latin characters may find that `"sans"` will not print their inputs. By setting `base_family = ""`, those characters can now be used to created legends in `biscale` if the suggested package `showtext` is installed.
+
+If you want to use non-Latin characters, you can either install `showtext` individually (faster) or install all of the suggested dependencies at once (slower, will also give you a number of other packages you may or may not want):
+
+```r
+## install just showtext
+install.packages("showtext)
+
+## install all suggested dependencies
+install.packages("biscale", dependencies = TRUE)
+```
+
+Once you have `showtext` installed, you should include `showtext::showtext_auto()` prior to using `bi_legend()`:
+
+```r
+# set language preferences
+showtext::showtext_auto()
+
+# create legend
+bi_legend(pal = "GrPink",
+          dim = 3,
+          xlab = "白人",
+          ylab = "收入",
+          size = 12,
+          arrows = TRUE,
+          family = "")
+```
+```{r echo=FALSE, out.width='100%'}
+knitr::include_graphics('../man/figures/legend5.jpeg')
+```
+
+When you use `bi_theme()`, be sure to set `base_family = ""` as well so that you can use non-Latin characters there, too.
+
