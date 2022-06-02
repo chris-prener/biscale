@@ -42,6 +42,12 @@
 #'     will be added to both the x and y axes of the legend. If you want to
 #'     suppress these arrows, especially if you are supplying breaks to create
 #'     a more detailed legend, this parameter can be set of \code{FALSE}.
+#' @param base_family A character string; by default, it is set to \code{"sans"},
+#'     which has been the font used in \code{biscale} since its initial release.
+#'     If you are using non-Latin characters, you may need to set
+#'     \code{base_family = ""} to get your characters to display. Other options
+#'     include \code{"mono"} and \code{"serif"}. See the Breaks and Legends
+#'     vignette for details.
 #'
 #' @return A \code{ggplot} object with a bivariate legend.
 #'
@@ -76,10 +82,21 @@
 #' # print legend
 #' legend
 #'
+#' # sample 3x3 legend with Chinese characters
+#' legend <- bi_legend(pal = "GrPink",
+#'                     dim = 3,
+#'                     xlab = "白人 ",
+#'                     ylab = "收入 ",
+#'                     size = 16,
+#'                     base_family = "")
+#'
+#' # print legend
+#' legend
+#'
 #' @export
 bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
                       rotate_pal = FALSE, pad_width = NA, pad_color = '#ffffff',
-                      breaks = NULL, arrows = TRUE){
+                      breaks = NULL, arrows = TRUE, base_family = "sans"){
 
   # global binding
   bi_class = bi_fill = x = y = NULL
@@ -125,14 +142,16 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
 
   # build legend
   out <- bi_legend_build(leg = leg, dim = dim, xlab = xlab, ylab = ylab, size = size,
-                         pad_width = pad_width, pad_color = pad_color, breaks = breaks, arrows = arrows)
+                         pad_width = pad_width, pad_color = pad_color, breaks = breaks,
+                         arrows = arrows, family = family)
 
   # return output
   return(out)
 
 }
 
-bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, breaks, arrows){
+bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, breaks,
+                            arrows, family){
 
   # global bindings
   bi_fill = x = y = NULL
@@ -190,11 +209,13 @@ bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, br
   ## add arrows
   if (arrows == TRUE) {
 
+    # add labels
     legend <- legend +
       ggplot2::labs(x = substitute(paste(xQN, ""%->%"")), y = substitute(paste(yQN, ""%->%"")))
 
   } else if (arrows == FALSE){
 
+    # add labels
     legend <- legend +
       ggplot2::labs(x = xQN, y = yQN)
 
@@ -207,9 +228,9 @@ bi_legend_build <- function(leg, dim, xlab, ylab, size, pad_width, pad_color, br
 
   ## add theme
   if (breaks_include == TRUE){
-    legend <- legend + bi_theme_legend(base_size = size)
+    legend <- legend + bi_theme_legend(base_size = size, base_family = family)
   } else if (breaks_include == FALSE){
-    legend <- legend + bi_theme(base_size = size)
+    legend <- legend + bi_theme(base_size = size, base_family = family)
   }
 
   # return output

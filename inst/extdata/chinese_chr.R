@@ -1,13 +1,25 @@
 devtools::load_all()
 
-legend <- bi_legend(pal = "GrPink",
-                    dim = 3,
-                    xlab = "Higher % 白人", # Here are some chinese characters.
-                    ylab = "Higher 收入 ", # Here are some chinese characters.
-                    size = 8,
-                    arrows = FALSE)
-
 showtext::showtext_auto()
+
+bi_legend(pal = "GrPink",
+    dim = 3,
+    size = 8,
+    arrows = FALSE,
+    labs = FALSE) +
+  ggplot2::labs(
+    x = "白人",
+    y = "收入"
+  )
+
+bi_legend(pal = "GrPink",
+          dim = 3,
+          xlab = "白人",
+          ylab = "白人",
+          size = 12,
+          arrows = TRUE,
+          family = "")
+
 
 library(ggplot2)
 
