@@ -90,6 +90,19 @@ breaks for bivariate maps.
     articles on bivariate palettes, working with breaks and legends, and
     creating bivariate maps with raster data.
 
+## What’s New in the Development Version (v1.1.0.9000)?
+
+*These require the development version to be installed using
+`remotes::install_github()`, described in the next section.*
+
+### New Features
+
+-   The `bi_legend()` function now has a `base_family` argument, which
+    can be paired with the suggested `showtext` package to display
+    non-Latin characters. See the [“Options for Breaks and Legends”
+    vignette](https://chris-prener.github.io/biscale/articles/breaks.html#using-non-latin-characters)
+    for details on using this new feature.
+
 ## Installation
 
 ### Installing biscale

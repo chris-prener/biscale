@@ -33,6 +33,12 @@
 ### Documentation Improvements
   * Documentation updates have been made, including the addition of a number of new examples and vignettes. These include detailed articles on bivariate palettes, working with breaks and legends, and creating bivariate maps with raster data.
 
+## What's New in the Development Version (v1.1.0.9000)?
+*These require the development version to be installed using `remotes::install_github()`, described in the next section.*
+
+### New Features
+  * The `bi_legend()` function now has a `base_family` argument, which can be paired with the suggested `showtext` package to display non-Latin characters. See the ["Options for Breaks and Legends" vignette](articles/breaks.html#using-non-latin-characters) for details on using this new feature.
+
 ## Installation
 The easiest way to get `biscale` is to install it from CRAN:
 
