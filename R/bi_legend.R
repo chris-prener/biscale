@@ -5,7 +5,7 @@
 #'
 #' @usage bi_legend(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
 #'     rotate_pal = FALSE, pad_width = NA, pad_color = "#ffffff",
-#'     breaks = NULL, arrows = TRUE)
+#'     breaks = NULL, arrows = TRUE, base_family = "sans")
 #'
 #' @param pal A palette name or a vector containing a custom palette. See
 #'     the help file for \code{\link{bi_pal}} for complete list of built-in palette

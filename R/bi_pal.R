@@ -101,7 +101,7 @@ bi_pal <- function(pal, dim = 3, preview = TRUE, flip_axes = FALSE, rotate_pal =
   if (preview == TRUE){
     out <- bi_legend_build(leg = out, xlab = "x var ", ylab = "y var ", size = 10,
                            pad_width = NA, pad_color = "#ffffff", breaks = NULL,
-                           arrows = TRUE)
+                           arrows = TRUE, family = "sans")
   }
 
   # return output

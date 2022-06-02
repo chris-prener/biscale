@@ -6,7 +6,7 @@
 \usage{
 bi_legend(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
     rotate_pal = FALSE, pad_width = NA, pad_color = "#ffffff",
-    breaks = NULL, arrows = TRUE)
+    breaks = NULL, arrows = TRUE, base_family = "sans")
 }
 \arguments{
 \item{pal}{A palette name or a vector containing a custom palette. See
@@ -77,7 +77,7 @@ legend <- bi_legend(pal = "GrPink",
                     ylab = "Higher Income ",
                     size = 16)
 
-# print legend
+## print legend
 legend
 
 # sample 3x3 legend with breaks
@@ -95,10 +95,14 @@ legend <- bi_legend(pal = "GrPink",
                     breaks = break_vals,
                     arrows = FALSE)
 
-# print legend
+## print legend
 legend
 
 # sample 3x3 legend with Chinese characters
+## set language preference
+showtext::showtext_auto()
+
+## create legend
 legend <- bi_legend(pal = "GrPink",
                     dim = 3,
                     xlab = "白人 ",
@@ -106,7 +110,7 @@ legend <- bi_legend(pal = "GrPink",
                     size = 16,
                     base_family = "")
 
-# print legend
+## print legend
 legend
 
 }
