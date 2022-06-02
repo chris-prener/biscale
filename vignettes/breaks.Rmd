@@ -197,7 +197,7 @@ If you want to use non-Latin characters, you can either install `showtext` indiv
 
 ```r
 ## install just showtext
-install.packages("showtext)
+install.packages("showtext")
 
 ## install all suggested dependencies
 install.packages("biscale", dependencies = TRUE)
