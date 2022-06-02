@@ -216,7 +216,7 @@ bi_legend(pal = "GrPink",
           ylab = "收入",
           size = 12,
           arrows = TRUE,
-          family = "")
+          base_family = "")
 ```
 ```{r echo=FALSE, out.width='100%'}
 knitr::include_graphics('../man/figures/legend5.jpeg')
