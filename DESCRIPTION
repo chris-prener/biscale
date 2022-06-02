@@ -23,9 +23,7 @@ Encoding: UTF-8
 LazyData: true
 Imports:
   classInt,
-  ggplot2,
-  stats,
-  utils
+  ggplot2
 RoxygenNote: 7.1.2
 Suggests:
   covr,
