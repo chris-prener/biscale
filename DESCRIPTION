@@ -32,6 +32,7 @@ Suggests:
   cowplot,
   knitr,
   rmarkdown,
+  showtext,
   sf,
   testthat
 VignetteBuilder: knitr

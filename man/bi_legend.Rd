@@ -6,7 +6,7 @@
 \usage{
 bi_legend(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
     rotate_pal = FALSE, pad_width = NA, pad_color = "#ffffff",
-    breaks = NULL, arrows = TRUE)
+    breaks = NULL, arrows = TRUE, base_family = "sans")
 }
 \arguments{
 \item{pal}{A palette name or a vector containing a custom palette. See
@@ -54,6 +54,13 @@ showing the corresponding range of values for each axis or, if
 will be added to both the x and y axes of the legend. If you want to
 suppress these arrows, especially if you are supplying breaks to create
 a more detailed legend, this parameter can be set of \code{FALSE}.}
+
+\item{base_family}{A character string; by default, it is set to \code{"sans"},
+which has been the font used in \code{biscale} since its initial release.
+If you are using non-Latin characters, you may need to set
+\code{base_family = ""} to get your characters to display. Other options
+include \code{"mono"} and \code{"serif"}. See the Breaks and Legends
+vignette for details.}
 }
 \value{
 A \code{ggplot} object with a bivariate legend.
@@ -70,7 +77,7 @@ legend <- bi_legend(pal = "GrPink",
                     ylab = "Higher Income ",
                     size = 16)
 
-# print legend
+## print legend
 legend
 
 # sample 3x3 legend with breaks
@@ -88,7 +95,22 @@ legend <- bi_legend(pal = "GrPink",
                     breaks = break_vals,
                     arrows = FALSE)
 
-# print legend
+## print legend
+legend
+
+# sample 3x3 legend with Chinese characters
+## set language preference
+showtext::showtext_auto()
+
+## create legend
+legend <- bi_legend(pal = "GrPink",
+                    dim = 3,
+                    xlab = "白人 ",
+                    ylab = "收入 ",
+                    size = 16,
+                    base_family = "")
+
+## print legend
 legend
 
 }

@@ -118,3 +118,17 @@ legend4 <- gridExtra::grid.arrange(ncol = 3,
 
 ggsave(legend4, filename = "man/figures/legend_padding.jpeg", dpi = 200,
        width = 6, height = 3, units = "in")
+
+showtext::showtext_auto()
+
+legend5 <- bi_legend(pal = "GrPink",
+          dim = 3,
+          xlab = "白人",
+          ylab = "收入",
+          size = 12,
+          arrows = TRUE,
+          base_family = "") +
+  labs (subtitle = "Legend with Chinese Characters")
+
+ggsave(legend5, filename = "man/figures/legend5.jpeg", dpi = 200,
+       width = 6, height = 3, units = "in")
