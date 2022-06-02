@@ -61,7 +61,7 @@
 #'                     ylab = "Higher Income ",
 #'                     size = 16)
 #'
-#' # print legend
+#' ## print legend
 #' legend
 #'
 #' # sample 3x3 legend with breaks
@@ -79,10 +79,14 @@
 #'                     breaks = break_vals,
 #'                     arrows = FALSE)
 #'
-#' # print legend
+#' ## print legend
 #' legend
 #'
 #' # sample 3x3 legend with Chinese characters
+#' ## set language preference
+#' showtext::showtext_auto()
+#'
+#' ## create legend
 #' legend <- bi_legend(pal = "GrPink",
 #'                     dim = 3,
 #'                     xlab = "白人 ",
@@ -90,7 +94,7 @@
 #'                     size = 16,
 #'                     base_family = "")
 #'
-#' # print legend
+#' ## print legend
 #' legend
 #'
 #' @export
@@ -143,7 +147,7 @@ bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
   # build legend
   out <- bi_legend_build(leg = leg, dim = dim, xlab = xlab, ylab = ylab, size = size,
                          pad_width = pad_width, pad_color = pad_color, breaks = breaks,
-                         arrows = arrows, family = family)
+                         arrows = arrows, family = base_family)
 
   # return output
   return(out)
