@@ -87,5 +87,5 @@ abide by its terms.
 ## Acknowledgements
 These contributing guidelines are modified from those used by [Jenny Bryan](https://github.com/jennybc).
 
-[repoLink]: https://github.com/slu-openGIS/biscale
-[issuesLink]: https://github.com/slu-openGIS/biscale/issues
+[repoLink]: https://github.com/chris-prener/biscale
+[issuesLink]: https://github.com/chris-prener/biscale/issues

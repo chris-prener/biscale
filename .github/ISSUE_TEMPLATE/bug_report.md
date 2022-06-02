@@ -17,7 +17,8 @@ A clear and concise description of what you expected to happen.
 **To Reproduce**
 Please include a minimal reproducible example (AKA a reprex). If you've never
 heard of a [reprex](http://reprex.tidyverse.org/) before, start by reading
-<https://www.tidyverse.org/help/#reprex>. When you create your reprex, please use a data set available in a package.
+<https://www.tidyverse.org/help/#reprex>. When you create your reprex, please use 
+a data set available in a package.
 
 ```r
 # inset reprex here
