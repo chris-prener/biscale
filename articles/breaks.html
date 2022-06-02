@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Options for Breaks and Legends</h1>
                         <h4 data-toc-skip class="author">Christopher Prener, Ph.D.</h4>
             
-            <h4 data-toc-skip class="date">2022-06-01</h4>
+            <h4 data-toc-skip class="date">2022-06-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/chris-prener/biscale/blob/HEAD/vignettes/breaks.Rmd" class="external-link"><code>vignettes/breaks.Rmd</code></a></small>
       <div class="hidden name"><code>breaks.Rmd</code></div>
@@ -232,6 +232,32 @@
 <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">"BlueGold"</span>, pad_width <span class="op">=</span> <span class="fl">1.5</span>, pad_color <span class="op">=</span> <span class="st">'#000000'</span><span class="op">)</span></code></pre></div>
 <p><img src="../reference/figures/legend_padding.jpeg" width="100%"></p>
 </div>
+</div>
+<div class="section level2">
+<h2 id="using-non-latin-characters">Using Non-Latin Characters<a class="anchor" aria-label="anchor" href="#using-non-latin-characters"></a>
+</h2>
+<p><em>As of v1.1.0, <code>biscale</code>’s legends accept non-Latin characters.</em> The <code><a href="../reference/bi_legend.html">bi_legend()</a></code> function now has a <code>base_family</code> argument that can be use to alter the legend font family used. It defaults to <code>"sans"</code>, which has always been the font family used in <code>biscale</code>. However, users who wish to utilize non-Latin characters may find that <code>"sans"</code> will not print their inputs. By setting <code>base_family = ""</code>, those characters can now be used to created legends in <code>biscale</code> if the suggested package <code>showtext</code> is installed.</p>
+<p>If you want to use non-Latin characters, you can either install <code>showtext</code> individually (faster) or install all of the suggested dependencies at once (slower, will also give you a number of other packages you may or may not want):</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="do">## install just showtext</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"showtext)</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">## install all suggested dependencies</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">install.packages("</span>biscale<span class="st">", dependencies = TRUE)</span></span></code></pre></div>
+<p>Once you have <code>showtext</code> installed, you should include <code><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext::showtext_auto()</a></code> prior to using <code><a href="../reference/bi_legend.html">bi_legend()</a></code>:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># set language preferences</span>
+<span class="fu">showtext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="co"># create legend</span>
+<span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,
+          dim <span class="op">=</span> <span class="fl">3</span>,
+          xlab <span class="op">=</span> <span class="st">"白人"</span>,
+          ylab <span class="op">=</span> <span class="st">"收入"</span>,
+          size <span class="op">=</span> <span class="fl">12</span>,
+          arrows <span class="op">=</span> <span class="cn">TRUE</span>,
+          family <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
+<p><img src="../reference/figures/legend5.jpeg" width="100%"></p>
+<p>When you use <code><a href="../reference/bi_theme.html">bi_theme()</a></code>, be sure to set <code>base_family = ""</code> as well so that you can use non-Latin characters there, too.</p>
 </div>
   </div>
 
