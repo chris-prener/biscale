@@ -45,6 +45,13 @@ the \code{x} and \code{y} variables. If it is a vector, the first element
 will be applied to the \code{x} variable and the second will be applied
 to the \code{y} variable.}
 
+\item{si_levels}{A logical scalar or vector of length 2 that where \code{TRUE},
+and taking into account \code{dig_lab} (default = 3), rounds the
+level(s) and applies one of a few selected SI prefixes, if
+appropriate. Affects either or both the display of the \code{x} and
+\code{y} variables based on the same syntax as the \code{dig_lab}
+parameter. Defaults to \code{FALSE} (no adjustment to either variable).}
+
 \item{split}{A logical scalar; if \code{FALSE} (default), the range of values
 for each factor level (corresponds to \code{dim}) will be returned for
 both the \code{x} and \code{y} variables. If \code{TRUE}, the individual
@@ -75,6 +82,10 @@ bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
 # return breaks for each category of x and y
 bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
     dim = 4, dig_lab = c(4, 5), split = TRUE)
+
+# show SI prefix
+bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
+    dim = 4, dig_lab = c(4, 5), si_levels = c(y = TRUE), split = TRUE)
 
 # optionally name vector for dig_lab for increased clarity of code
 bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,

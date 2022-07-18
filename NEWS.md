@@ -1,3 +1,9 @@
+# biscale 1.1.0.9001
+
+* New feature
+  * The `bi_class_breaks()` function now has a `si_levels` argument to enable printing
+of rounded breaks' labels with an SI prefix. This is primarily to abbreviate labels for legends.
+ 
 # biscale 1.1.0.9000
 
 * New features
