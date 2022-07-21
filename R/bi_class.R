@@ -128,7 +128,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
 #'     reporting as well as more descriptive legends.
 #'
 #' @usage bi_class_breaks(.data, x, y, style, dim = 3, clean_levels = TRUE,
-#'     dig_lab = 3, split = FALSE)
+#'     dig_lab = 3, si_levels = FALSE, split = FALSE)
 #'
 #' @param .data A data frame, tibble, or \code{sf} object
 #' @param x The \code{x} variable, either a numeric (including double and integer

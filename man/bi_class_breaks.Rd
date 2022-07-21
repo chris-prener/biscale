@@ -5,7 +5,7 @@
 \title{Return Breaks}
 \usage{
 bi_class_breaks(.data, x, y, style, dim = 3, clean_levels = TRUE,
-    dig_lab = 3, split = FALSE)
+    dig_lab = 3, si_levels = FALSE, split = FALSE)
 }
 \arguments{
 \item{.data}{A data frame, tibble, or \code{sf} object}
