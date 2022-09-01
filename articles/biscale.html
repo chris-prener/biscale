@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Bivarite Mapping with ggplot2</h1>
                         <h4 data-toc-skip class="author">Christopher Prener, Ph.D.</h4>
             
-            <h4 data-toc-skip class="date">2022-06-02</h4>
+            <h4 data-toc-skip class="date">2022-09-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/chris-prener/biscale/blob/HEAD/vignettes/biscale.Rmd" class="external-link"><code>vignettes/biscale.Rmd</code></a></small>
       <div class="hidden name"><code>biscale.Rmd</code></div>
@@ -116,11 +116,11 @@
 </h3>
 <p>The easiest way to get <code>biscale</code> is to install it from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span><span class="op">)</span></span></code></pre></div>
 <p>Alternatively, the development version of <code>biscale</code> can be accessed from GitHub with <code>remotes</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"chris-prener/biscale"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"chris-prener/biscale"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="installing-suggested-dependencies">Installing Suggested Dependencies<a class="anchor" aria-label="anchor" href="#installing-suggested-dependencies"></a>
@@ -129,11 +129,11 @@
 <p>The other suggested dependency that users may want to consider installing is <code>cowplot</code>. All of the examples in the package documentation utilize it to construct final map images that combine the map with the legend. Like <code>sf</code>, it is suggested because none of the functions in <code>biscale</code> call <code>cowplot</code> directly.</p>
 <p>If you want to use them, you can either install these packages individually (faster) or install all of the suggested dependencies at once (slower, will also give you a number of other packages you may or may not want):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## install just cowplot and sf</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cowplot"</span>, <span class="st">"sf"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co">## install all suggested dependencies</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## install just cowplot and sf</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cowplot"</span>, <span class="st">"sf"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## install all suggested dependencies</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
@@ -150,11 +150,11 @@
 </h3>
 <p>Once data are loaded, bivariate classes can be applied with the <code><a href="../reference/bi_class.html">bi_class()</a></code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># load dependencies</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://chris-prener.github.io/biscale/">biscale</a></span><span class="op">)</span>
-
-<span class="co"># create classes</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># load dependencies</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://chris-prener.github.io/biscale/">biscale</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># create classes</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p>The <code>dim</code> argument is used to control the extent of the legend - do you want to produce a two-by-two map (<code>dim = 2</code>), a three-by-three map (<code>dim = 3</code>), or a four-by-four map (<code>dim = 4</code>)? <em>Note that support for four-by-four mapping is new as of v1.0.0!</em></p>
 <p>Classes can be applied with the <code>style</code> parameter using four approaches for calculating breaks: <code>"quantile"</code> (default), <code>"equal"</code>, <code>"fisher"</code>, and <code>"jenks"</code>. The default <code>"quantile"</code> approach will create relatively equal “buckets” of data for mapping, with a break created at the median (50th percentile) for a two-by-two map or at the 33rd and 66th percentiles for a three-by-three map. For a four-by-four map, breaks are created at the 25th, 50th (median), and 75th percentiles.</p>
 <p><img src="../reference/figures/biscale.002.jpeg" width="100%"></p>
@@ -172,15 +172,15 @@
 </h3>
 <p>Once breaks are created, we can use <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code> as part of our <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot()</a></code> call:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># create map</span>
-<span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">bi_class</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">0.1</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/bi_scale_fill.html">bi_scale_fill</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>
-    title <span class="op">=</span> <span class="st">"Race and Income in St. Louis, MO"</span>,
-    subtitle <span class="op">=</span> <span class="st">"Gray Pink (GrPink) Palette"</span>
-  <span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/bi_theme.html">bi_theme</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># create map</span></span>
+<span><span class="va">map</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">bi_class</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"white"</span>, size <span class="op">=</span> <span class="fl">0.1</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/bi_scale_fill.html">bi_scale_fill</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Race and Income in St. Louis, MO"</span>,</span>
+<span>    subtitle <span class="op">=</span> <span class="st">"Gray Pink (GrPink) Palette"</span></span>
+<span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/bi_theme.html">bi_theme</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>This requires that the variable <code>bi_class</code>, created with <code><a href="../reference/bi_class.html">bi_class()</a></code>, is used as the fill variable in the aesthetic mapping. We also want to remove the legend from the plot since it will not accurately communicate the complexity of the bivariate scale.</p>
 <p>The dimensions of the scale must again be supplied for <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code> (they should match the dimensions given for <code><a href="../reference/bi_class.html">bi_class()</a></code>!), and a palette must be given. For reference, the top image above uses the <code>"DkBlue"</code> palette, the map images in the breaks section above use the <code>"DkViolet"</code> palette, and the map constructed in this section (and displayed below) uses the <code>"GrPink"</code> palette. <em>Note that, as of v1.0.0, the number of options for palettes has been expanded and there is increased support for custom palettes. See the “Bivariate Palettes” vignette or <code><a href="../reference/bi_pal.html">?bi_pal</a></code> for more details.</em></p>
 <p>If you are mapping point data, there is an alternative function <code><a href="../reference/bi_scale_color.html">bi_scale_color()</a></code> that works the same way as <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code>.</p>
@@ -191,11 +191,11 @@
 </h3>
 <p>We’ve set <code>show.legend = FALSE</code> so that we can add (manually) our own bivariate legend. The legend itself can be created with the <code><a href="../reference/bi_legend.html">bi_legend()</a></code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,
-                    dim <span class="op">=</span> <span class="fl">3</span>,
-                    xlab <span class="op">=</span> <span class="st">"Higher % White "</span>,
-                    ylab <span class="op">=</span> <span class="st">"Higher Income "</span>,
-                    size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span>
+<span>                    dim <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                    xlab <span class="op">=</span> <span class="st">"Higher % White "</span>,</span>
+<span>                    ylab <span class="op">=</span> <span class="st">"Higher Income "</span>,</span>
+<span>                    size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code></pre></div>
 <p>The palette and dimensions should match what has been used for both <code><a href="../reference/bi_class.html">bi_class()</a></code> (in terms of dimensions) and <code><a href="../reference/bi_scale_fill.html">bi_scale_fill()</a></code> (in terms of both dimensions and palette). The <code>size</code> argument controls the font size used on the legend. Note that <a href="https://stat.ethz.ch/R-manual/R-devel/library/grDevices/html/plotmath.html" class="external-link"><code>plotmath</code></a> is used to draw the arrows since Unicode arrows are font dependent. This happens internally as part of <code><a href="../reference/bi_legend.html">bi_legend()</a></code> - you don’t need to include them in your <code>xlab</code> and <code>ylab</code> arguments!</p>
 </div>
 <div class="section level3">
@@ -203,10 +203,10 @@
 </h3>
 <p>With our legend drawn, we can then combine the legend and the map with a package like <code>cowplot</code>. The values needed for this stage will be subject to experimentation depending on the shape of the map itself.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># combine map with legend</span>
-<span class="va">finalPlot</span> <span class="op">&lt;-</span> <span class="fu">ggdraw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">draw_plot</span><span class="op">(</span><span class="va">map</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">draw_plot</span><span class="op">(</span><span class="va">legend</span>, <span class="fl">0.2</span>, <span class="fl">.65</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># combine map with legend</span></span>
+<span><span class="va">finalPlot</span> <span class="op">&lt;-</span> <span class="fu">ggdraw</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">draw_plot</span><span class="op">(</span><span class="va">map</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">draw_plot</span><span class="op">(</span><span class="va">legend</span>, <span class="fl">0.2</span>, <span class="fl">.65</span>, <span class="fl">0.2</span>, <span class="fl">0.2</span><span class="op">)</span></span></code></pre></div>
 <p>This approach allows us to customize legend’s placement and size to suit different map layouts. All of the maps shown as part of this vignette were produced using this approach. There are other approaches you could take as well that do not use <code>cowplot</code>. Note that, because <code>cowplot</code> requires <code>R</code> v3.5, it is not included as a <em>suggested</em> package (to maintain backward compatibility). <em>Beginning with v1.0.0, there are additional options for constructing legends with <code>biscale</code>. Please see the “Options for Breaks and Legends” vignette for more details!</em></p>
 <p>The completed map, created with the sample code in this vignette, looks like this:</p>
 <p><img src="../reference/figures/biscale.004.jpeg" width="100%"></p>
@@ -246,7 +246,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

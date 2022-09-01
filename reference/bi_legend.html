@@ -74,9 +74,9 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">bi_legend</span><span class="op">(</span><span class="va">pal</span>, dim <span class="op">=</span> <span class="fl">3</span>, <span class="va">xlab</span>, <span class="va">ylab</span>, size <span class="op">=</span> <span class="fl">10</span>, flip_axes <span class="op">=</span> <span class="cn">FALSE</span>,
-    rotate_pal <span class="op">=</span> <span class="cn">FALSE</span>, pad_width <span class="op">=</span> <span class="cn">NA</span>, pad_color <span class="op">=</span> <span class="st">"#ffffff"</span>,
-    breaks <span class="op">=</span> <span class="cn">NULL</span>, arrows <span class="op">=</span> <span class="cn">TRUE</span>, base_family <span class="op">=</span> <span class="st">"sans"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bi_legend</span><span class="op">(</span><span class="va">pal</span>, dim <span class="op">=</span> <span class="fl">3</span>, <span class="va">xlab</span>, <span class="va">ylab</span>, size <span class="op">=</span> <span class="fl">10</span>, flip_axes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    rotate_pal <span class="op">=</span> <span class="cn">FALSE</span>, pad_width <span class="op">=</span> <span class="cn">NA</span>, pad_color <span class="op">=</span> <span class="st">"#ffffff"</span>,</span>
+<span>    breaks <span class="op">=</span> <span class="cn">NULL</span>, arrows <span class="op">=</span> <span class="cn">TRUE</span>, base_family <span class="op">=</span> <span class="st">"sans"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -86,6 +86,8 @@
 the help file for <code><a href="bi_pal.html">bi_pal</a></code> for complete list of built-in palette
 names. If you are providing a custom palette, it must follow the formatting
 described in the 'Advanced Options' vignette.</p></dd>
+
+
 <dt>dim</dt>
 <dd><p>The dimensions of the palette. To use the built-in palettes,
     this value must be either <code>2</code>, <code>3</code>, or <code>4</code>. A value of
@@ -94,38 +96,58 @@ described in the 'Advanced Options' vignette.</p></dd>
 <p>If you are using a custom palette, this value may be larger (though these
     maps can be very hard to interpret). See the 'Advanced Options' vignette
     for details on the relationship between <code>dim</code> values and palette size.</p></dd>
+
+
 <dt>xlab</dt>
 <dd><p>Text for desired x axis label on legend</p></dd>
+
+
 <dt>ylab</dt>
 <dd><p>Text for desired y axis label on legend</p></dd>
+
+
 <dt>size</dt>
 <dd><p>A numeric scalar; size of axis labels</p></dd>
+
+
 <dt>flip_axes</dt>
 <dd><p>A logical scalar; if <code>TRUE</code>, the axes of the palette
 will be flipped. If <code>FALSE</code> (default), the palette will be displayed
 on its original axes. Custom palettes with 'dim' greater
 than 4 cannot take advantage of flipping axes.</p></dd>
+
+
 <dt>rotate_pal</dt>
 <dd><p>A logical scalar; if <code>TRUE</code>, the palette will be
 rotated 180 degrees. If <code>FALSE</code> (default), the palette will be
 displayed in its original orientation. Custom palettes with 'dim' greater
 than 4 cannot take advantage of palette rotation.</p></dd>
+
+
 <dt>pad_width</dt>
 <dd><p>An optional numeric scalar; controls the width of padding
 between tiles in the legend</p></dd>
+
+
 <dt>pad_color</dt>
 <dd><p>An optional character scalar; controls the color of padding
 between tiles in the legend</p></dd>
+
+
 <dt>breaks</dt>
 <dd><p>An optional list created by <code>bi_class_breaks</code>. Depending
 on the options selected when making the list, labels will placed
 showing the corresponding range of values for each axis or, if
 <code>split = TRUE</code>, showing the individual breaks.</p></dd>
+
+
 <dt>arrows</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> (default), directional arrows
 will be added to both the x and y axes of the legend. If you want to
 suppress these arrows, especially if you are supplying breaks to create
 a more detailed legend, this parameter can be set of <code>FALSE</code>.</p></dd>
+
+
 <dt>base_family</dt>
 <dd><p>A character string; by default, it is set to <code>"sans"</code>,
 which has been the font used in <code>biscale</code> since its initial release.
@@ -133,10 +155,13 @@ If you are using non-Latin characters, you may need to set
 <code>base_family = ""</code> to get your characters to display. Other options
 include <code>"mono"</code> and <code>"serif"</code>. See the Breaks and Legends
 vignette for details.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>ggplot</code> object with a bivariate legend.</p>
+    
+
+<p>A <code>ggplot</code> object with a bivariate legend.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -145,52 +170,52 @@ vignette for details.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># sample 3x3 legend</span></span>
-<span class="r-in"><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu">bi_legend</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span>
-<span class="r-in">                    dim <span class="op">=</span> <span class="fl">3</span>,</span>
-<span class="r-in">                    xlab <span class="op">=</span> <span class="st">"Higher % White "</span>,</span>
-<span class="r-in">                    ylab <span class="op">=</span> <span class="st">"Higher Income "</span>,</span>
-<span class="r-in">                    size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## print legend</span></span>
-<span class="r-in"><span class="va">legend</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># sample 3x3 legend</span></span></span>
+<span class="r-in"><span><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu">bi_legend</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span></span>
+<span class="r-in"><span>                    dim <span class="op">=</span> <span class="fl">3</span>,</span></span>
+<span class="r-in"><span>                    xlab <span class="op">=</span> <span class="st">"Higher % White "</span>,</span></span>
+<span class="r-in"><span>                    ylab <span class="op">=</span> <span class="st">"Higher Income "</span>,</span></span>
+<span class="r-in"><span>                    size <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## print legend</span></span></span>
+<span class="r-in"><span><span class="va">legend</span></span></span>
 <span class="r-plt img"><img src="bi_legend-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># sample 3x3 legend with breaks</span></span>
-<span class="r-in"><span class="co">## create vector of breaks</span></span>
-<span class="r-in"><span class="va">break_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">stl_race_income</span>, style <span class="op">=</span> <span class="st">"quantile"</span>,</span>
-<span class="r-in">    x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
-<span class="r-in">    split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## create legend</span></span>
-<span class="r-in"><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu">bi_legend</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span>
-<span class="r-in">                    dim <span class="op">=</span> <span class="fl">3</span>,</span>
-<span class="r-in">                    xlab <span class="op">=</span> <span class="st">"Higher % White "</span>,</span>
-<span class="r-in">                    ylab <span class="op">=</span> <span class="st">"Higher Income "</span>,</span>
-<span class="r-in">                    size <span class="op">=</span> <span class="fl">16</span>,</span>
-<span class="r-in">                    breaks <span class="op">=</span> <span class="va">break_vals</span>,</span>
-<span class="r-in">                    arrows <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## print legend</span></span>
-<span class="r-in"><span class="va">legend</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># sample 3x3 legend with breaks</span></span></span>
+<span class="r-in"><span><span class="co">## create vector of breaks</span></span></span>
+<span class="r-in"><span><span class="va">break_vals</span> <span class="op">&lt;-</span> <span class="fu"><a href="bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">stl_race_income</span>, style <span class="op">=</span> <span class="st">"quantile"</span>,</span></span>
+<span class="r-in"><span>    x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## create legend</span></span></span>
+<span class="r-in"><span><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu">bi_legend</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span></span>
+<span class="r-in"><span>                    dim <span class="op">=</span> <span class="fl">3</span>,</span></span>
+<span class="r-in"><span>                    xlab <span class="op">=</span> <span class="st">"Higher % White "</span>,</span></span>
+<span class="r-in"><span>                    ylab <span class="op">=</span> <span class="st">"Higher Income "</span>,</span></span>
+<span class="r-in"><span>                    size <span class="op">=</span> <span class="fl">16</span>,</span></span>
+<span class="r-in"><span>                    breaks <span class="op">=</span> <span class="va">break_vals</span>,</span></span>
+<span class="r-in"><span>                    arrows <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## print legend</span></span></span>
+<span class="r-in"><span><span class="va">legend</span></span></span>
 <span class="r-plt img"><img src="bi_legend-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># sample 3x3 legend with Chinese characters</span></span>
-<span class="r-in"><span class="co">## set language preference</span></span>
-<span class="r-in"><span class="fu">showtext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## create legend</span></span>
-<span class="r-in"><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu">bi_legend</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span>
-<span class="r-in">                    dim <span class="op">=</span> <span class="fl">3</span>,</span>
-<span class="r-in">                    xlab <span class="op">=</span> <span class="st">"白人 "</span>,</span>
-<span class="r-in">                    ylab <span class="op">=</span> <span class="st">"收入 "</span>,</span>
-<span class="r-in">                    size <span class="op">=</span> <span class="fl">16</span>,</span>
-<span class="r-in">                    base_family <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## print legend</span></span>
-<span class="r-in"><span class="va">legend</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># sample 3x3 legend with Chinese characters</span></span></span>
+<span class="r-in"><span><span class="co">## set language preference</span></span></span>
+<span class="r-in"><span><span class="fu">showtext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## create legend</span></span></span>
+<span class="r-in"><span><span class="va">legend</span> <span class="op">&lt;-</span> <span class="fu">bi_legend</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span></span>
+<span class="r-in"><span>                    dim <span class="op">=</span> <span class="fl">3</span>,</span></span>
+<span class="r-in"><span>                    xlab <span class="op">=</span> <span class="st">"白人 "</span>,</span></span>
+<span class="r-in"><span>                    ylab <span class="op">=</span> <span class="st">"收入 "</span>,</span></span>
+<span class="r-in"><span>                    size <span class="op">=</span> <span class="fl">16</span>,</span></span>
+<span class="r-in"><span>                    base_family <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## print legend</span></span></span>
+<span class="r-in"><span><span class="va">legend</span></span></span>
 <span class="r-plt img"><img src="bi_legend-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -205,7 +230,7 @@ vignette for details.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

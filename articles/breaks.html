@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Options for Breaks and Legends</h1>
                         <h4 data-toc-skip class="author">Christopher Prener, Ph.D.</h4>
             
-            <h4 data-toc-skip class="date">2022-06-02</h4>
+            <h4 data-toc-skip class="date">2022-09-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/chris-prener/biscale/blob/HEAD/vignettes/breaks.Rmd" class="external-link"><code>vignettes/breaks.Rmd</code></a></small>
       <div class="hidden name"><code>breaks.Rmd</code></div>
@@ -112,12 +112,12 @@
 </h2>
 <p><em>As of v1.0.0, <code>biscale</code> functions accept factors as well as numeric vectors.</em> This allows users to exert far greater control over how bivariate classes are ultimately calculated. To start, we’ll load our dependencies and sample data:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## load dependencies</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://chris-prener.github.io/biscale/">biscale</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/" class="external-link">classInt</a></span><span class="op">)</span>
-
-<span class="co">## load data</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="va">stl_race_income</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## load dependencies</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://chris-prener.github.io/biscale/">biscale</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/" class="external-link">classInt</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## load data</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">stl_race_income</span></span></code></pre></div>
 <p>If we investigate the <code>pctWhite</code> vector in our sample data, we’ll see that the data are percentage values.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(data<span class="sc">$</span>pctWhite)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
@@ -125,18 +125,18 @@
 <p>Using <code>style = "quantile"</code> will group these based on the distribution of values, yielding breaks at approximately 14% and 62%. Perhaps we would rather group our values manually, making breaks at 33.3% and 66.6% instead.</p>
 <p>Now that <code>biscale</code> accepts factors, we can construct our breaks ahead of time and pass them to the <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code> function from <code>base</code> <code>R</code>. We need to ensure that the breaks created have one more value than what we will use for the <code>dim</code> argument in <code>biscale</code>’s functions. Therefore, if we intend to create a three-by-three bivariate map, our breaks that are passed to <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut()</a></code>’s <code>breaks</code> argument need to have four values.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">pctWhite_bin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">33.3</span>,<span class="fl">66.6</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span><span class="op">)</span><span class="op">)</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite_bin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">33.3</span>,<span class="fl">66.6</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span><span class="op">)</span><span class="op">)</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Using a similar approach, you can use <code><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html" class="external-link">classInt::classIntervals()</a></code> to calculate your breaks as well. For example, <code>"kmeans"</code> is not included as one of the styles in <code>biscale</code>, but we can apply it to our data and use it as the basis for constructing breaks:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## calculate breaks</span>
-<span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html" class="external-link">classIntervals</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span>, n <span class="op">=</span> <span class="fl">3</span>, style <span class="op">=</span> <span class="st">"kmeans"</span><span class="op">)</span><span class="op">$</span><span class="va">brks</span>
-
-<span class="co">## cut data</span>
-<span class="va">data</span><span class="op">$</span><span class="va">pctWhite_bin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span>, breaks <span class="op">=</span> <span class="va">breaks</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## calculate breaks</span></span>
+<span><span class="va">breaks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html" class="external-link">classIntervals</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span>, n <span class="op">=</span> <span class="fl">3</span>, style <span class="op">=</span> <span class="st">"kmeans"</span><span class="op">)</span><span class="op">$</span><span class="va">brks</span></span>
+<span></span>
+<span><span class="co">## cut data</span></span>
+<span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite_bin</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">pctWhite</span>, breaks <span class="op">=</span> <span class="va">breaks</span>, include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>The <code><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html" class="external-link">classInt::classIntervals()</a></code> is what <code><a href="../reference/bi_class.html">bi_class()</a></code> uses internally to calculate breaks for continuous variables, and it is also possible to manually replicate these calculations using this approach.</p>
 <p>No matter the approach we’ve used to create it, we can use our factor <code>pctWhite_bin</code> with <code><a href="../reference/bi_class.html">bi_class()</a></code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite_bin</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bi_class.html">bi_class</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite_bin</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p>The <code><a href="../reference/bi_class.html">bi_class()</a></code> function will ensure that the number of factor levels in <code>pctWhite_bin</code> matches the value given for <code>dim</code>. Since <code>medInc</code> is a continuous measure, it will be binned using the <code>"quantile"</code> approach. If both the <code>x</code> and <code>y</code> variables are factors, <code>style</code> can be omitted. From this point forward, the <code>biscale</code> workflow is the same as in the basic examples.</p>
 </div>
 <div class="section level2">
@@ -144,24 +144,24 @@
 </h2>
 <p><em>As of v1.0.0, <code>biscale</code> provides two sets of tools for further customizing your legends. These include the addition of breaks or labels to each axis as well as the addition of padding between each grid square on the legend.</em> To start, we’ll load our dependencies and sample data:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## load dependencies</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://chris-prener.github.io/biscale/">biscale</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/" class="external-link">classInt</a></span><span class="op">)</span>
-
-<span class="co">## load data</span>
-<span class="va">data</span> <span class="op">&lt;-</span> <span class="va">stl_race_income</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## load dependencies</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://chris-prener.github.io/biscale/">biscale</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/classInt/" class="external-link">classInt</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## load data</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">stl_race_income</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="adding-labels-to-the-legend">Adding Labels to the Legend<a class="anchor" aria-label="anchor" href="#adding-labels-to-the-legend"></a>
 </h3>
 <p>To take advantage of <code>biscale</code>’s new functionality for adding labels or breaks to legends, there is a companion function to <code><a href="../reference/bi_class.html">bi_class()</a></code> named <code><a href="../reference/bi_class_breaks.html">bi_class_breaks()</a></code>. The arguments are largely the same, though <code><a href="../reference/bi_class_breaks.html">bi_class_breaks()</a></code> contains some additional arguments for formatting the output. These options will significantly influence what your legend looks like. Of particular note are <code>dig_lab</code>, which impacts the number of digits returned, and <code>split</code>, which will impact whether you create labels (if <code>split = FALSE</code>) or breaks (if <code>split = TRUE</code>):</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## example 1</span>
-<span class="va">labels1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, 
-                           dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fl">3</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-                          
-<span class="co">## example 2</span>
-<span class="va">breaks2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, 
-                          dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">2</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## example 1</span></span>
+<span><span class="va">labels1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, </span>
+<span>                           dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fl">3</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>                          </span>
+<span><span class="co">## example 2</span></span>
+<span><span class="va">breaks2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, </span>
+<span>                          dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">2</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>What is crucial here is that you use the same <code>style</code> for calculating breaks as well as the same <code>x</code> and <code>y</code> columns.</p>
 <p>The results illustrate important differences between the two examples:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="do">## example 1</span></span>
@@ -184,40 +184,40 @@
 <p>In the second example, <code>dig_lab = c(x = 2, y = 5)</code> uses a named vector to apply different <code>dig_lab</code> values to <code>x</code> and <code>y</code>. This results in consistent decimals for <code>x</code> and no scientific notation for <code>y</code> - a big improvement! Since <code>split = TRUE</code>, we get breaks instead of labels.</p>
 <p>The specific values needed for <code>dig_lab</code> are entirely dependent on your data, and some experimentation will likely be necessary to produce values you are happy with. We’ll recreate <code>labels1</code> before proceeding, using what we learned about the best <code>dig_lab</code> values:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## example 1 (modified)</span>
-<span class="va">labels1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, 
-                           dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## example 1 (modified)</span></span>
+<span><span class="va">labels1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, </span>
+<span>                           dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Notice here that we use an unnamed vector for the <code>dig_lab</code> argument. <code><a href="../reference/bi_class_breaks.html">bi_class_breaks()</a></code> will accept either.</p>
 <p>If you are using pre-made factors, these can be passed to <code><a href="../reference/bi_class_breaks.html">bi_class_breaks()</a></code> as well. Picking up from the example above, the factor variable `<code>is passed to the</code>x` argument:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite_bin</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>,
-                dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NA</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bi_class_breaks.html">bi_class_breaks</a></span><span class="op">(</span><span class="va">data</span>, x <span class="op">=</span> <span class="va">pctWhite_bin</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>,</span>
+<span>                dim <span class="op">=</span> <span class="fl">3</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NA</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>Note that an <code>NA</code> value is passed to <code>dig_lab</code> since <code>pctWhite_bin</code> has already been created as a factor. If you are using <code><a href="https://r-spatial.github.io/classInt/reference/classIntervals.html" class="external-link">classInt::classIntervals()</a></code> to create your factor, use that function’s <code>dig_lab</code> argument instead to prepare your labels or breaks to the desired number of decimal places.</p>
 <p>Once you have values that are ready to use, they can be passed to <code><a href="../reference/bi_legend.html">bi_legend()</a></code>. To illustrate the difference between labels and breaks, we’ll place the legends next to each other for comparison. First, our code:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## example 1 (modified)</span>
-<span class="va">legend1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"PurpleGrn"</span>,
-                     xlab <span class="op">=</span> <span class="st">"% White"</span>,
-                     ylab <span class="op">=</span> <span class="st">"Income"</span>,
-                     size <span class="op">=</span> <span class="fl">12</span>,
-                     breaks <span class="op">=</span> <span class="va">labels1</span>,
-                     arrows <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-                     
-<span class="co">## example 2</span>
-<span class="va">legend2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"PurpleGrn"</span>,
-                     xlab <span class="op">=</span> <span class="st">"% White"</span>,
-                     ylab <span class="op">=</span> <span class="st">"Income"</span>,
-                     size <span class="op">=</span> <span class="fl">12</span>,
-                     breaks <span class="op">=</span> <span class="va">breaks2</span>,
-                     arrows <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## example 1 (modified)</span></span>
+<span><span class="va">legend1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"PurpleGrn"</span>,</span>
+<span>                     xlab <span class="op">=</span> <span class="st">"% White"</span>,</span>
+<span>                     ylab <span class="op">=</span> <span class="st">"Income"</span>,</span>
+<span>                     size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">labels1</span>,</span>
+<span>                     arrows <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>                     </span>
+<span><span class="co">## example 2</span></span>
+<span><span class="va">legend2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"PurpleGrn"</span>,</span>
+<span>                     xlab <span class="op">=</span> <span class="st">"% White"</span>,</span>
+<span>                     ylab <span class="op">=</span> <span class="st">"Income"</span>,</span>
+<span>                     size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>                     breaks <span class="op">=</span> <span class="va">breaks2</span>,</span>
+<span>                     arrows <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>We have passed our objects containing labels or breaks, <code>labels1</code> and <code>breaks2</code> respectively, to the optional <code>breaks</code> argument. Since we now can see how values are changing, we can simplify the labels. In both cases, we have <code>arrows = FALSE</code> to suppress the default arrows and have less text passed to both the <code>xlab</code> and <code>ylab</code> text. Here are the results:</p>
 <p><img src="../reference/figures/legend1.jpeg" width="100%"><img src="../reference/figures/legend2.jpeg" width="100%"></p>
 <p>For comparison, here is the default legend:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">legend3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"PurpleGrn"</span>,
-                     xlab <span class="op">=</span> <span class="st">"Higher % White"</span>,
-                     ylab <span class="op">=</span> <span class="st">"Higher Income"</span>,
-                     size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span><span class="va">legend3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"PurpleGrn"</span>,</span>
+<span>                     xlab <span class="op">=</span> <span class="st">"Higher % White"</span>,</span>
+<span>                     ylab <span class="op">=</span> <span class="st">"Higher Income"</span>,</span>
+<span>                     size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span> </span></code></pre></div>
 <p><img src="../reference/figures/legend3.jpeg" width="100%"></p>
 </div>
 <div class="section level3">
@@ -225,11 +225,11 @@
 </h3>
 <p>If you desire a clearer delineation of the classifications within the palette, you can use the optional <code>pad_width</code> and <code>pad_color</code> arguments to style the legend.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## adjusting padding width only</span>
-<span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">"BlueGold"</span>, pad_width <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span>
-
-<span class="co">## adjusting padding width and color</span>
-<span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">"BlueGold"</span>, pad_width <span class="op">=</span> <span class="fl">1.5</span>, pad_color <span class="op">=</span> <span class="st">'#000000'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## adjusting padding width only</span></span>
+<span><span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">"BlueGold"</span>, pad_width <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## adjusting padding width and color</span></span>
+<span><span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span><span class="st">"BlueGold"</span>, pad_width <span class="op">=</span> <span class="fl">1.5</span>, pad_color <span class="op">=</span> <span class="st">'#000000'</span><span class="op">)</span></span></code></pre></div>
 <p><img src="../reference/figures/legend_padding.jpeg" width="100%"></p>
 </div>
 </div>
@@ -239,24 +239,24 @@
 <p><em>As of v1.1.0, <code>biscale</code>’s legends accept non-Latin characters.</em> The <code><a href="../reference/bi_legend.html">bi_legend()</a></code> function now has a <code>base_family</code> argument that can be use to alter the legend font family used. It defaults to <code>"sans"</code>, which has always been the font family used in <code>biscale</code>. However, users who wish to utilize non-Latin characters may find that <code>"sans"</code> will not print their inputs. By setting <code>base_family = ""</code>, those characters can now be used to created legends in <code>biscale</code> if the suggested package <code>showtext</code> is installed.</p>
 <p>If you want to use non-Latin characters, you can either install <code>showtext</code> individually (faster) or install all of the suggested dependencies at once (slower, will also give you a number of other packages you may or may not want):</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## install just showtext</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"showtext"</span><span class="op">)</span>
-
-<span class="co">## install all suggested dependencies</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## install just showtext</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"showtext"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## install all suggested dependencies</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"biscale"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>Once you have <code>showtext</code> installed, you should include <code><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext::showtext_auto()</a></code> prior to using <code><a href="../reference/bi_legend.html">bi_legend()</a></code>:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># set language preferences</span>
-<span class="fu">showtext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span>
-
-<span class="co"># create legend</span>
-<span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,
-          dim <span class="op">=</span> <span class="fl">3</span>,
-          xlab <span class="op">=</span> <span class="st">"白人"</span>,
-          ylab <span class="op">=</span> <span class="st">"收入"</span>,
-          size <span class="op">=</span> <span class="fl">12</span>,
-          arrows <span class="op">=</span> <span class="cn">TRUE</span>,
-          base_family <span class="op">=</span> <span class="st">""</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># set language preferences</span></span>
+<span><span class="fu">showtext</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># create legend</span></span>
+<span><span class="fu"><a href="../reference/bi_legend.html">bi_legend</a></span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>,</span>
+<span>          dim <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>          xlab <span class="op">=</span> <span class="st">"白人"</span>,</span>
+<span>          ylab <span class="op">=</span> <span class="st">"收入"</span>,</span>
+<span>          size <span class="op">=</span> <span class="fl">12</span>,</span>
+<span>          arrows <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>          base_family <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
 <p><img src="../reference/figures/legend5.jpeg" width="100%"></p>
 <p>When you use <code><a href="../reference/bi_theme.html">bi_theme()</a></code>, be sure to set <code>base_family = ""</code> as well so that you can use non-Latin characters there, too.</p>
 </div>
@@ -279,7 +279,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

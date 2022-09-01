@@ -76,19 +76,25 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">bi_class</span><span class="op">(</span><span class="va">.data</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">style</span>, dim <span class="op">=</span> <span class="fl">3</span>, keep_factors <span class="op">=</span> <span class="cn">FALSE</span>, dig_lab <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bi_class</span><span class="op">(</span><span class="va">.data</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">style</span>, dim <span class="op">=</span> <span class="fl">3</span>, keep_factors <span class="op">=</span> <span class="cn">FALSE</span>, dig_lab <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>.data</dt>
 <dd><p>A data frame, tibble, or <code>sf</code> object</p></dd>
+
+
 <dt>x</dt>
 <dd><p>The <code>x</code> variable, either a numeric (including double and integer
 classes) or factor</p></dd>
+
+
 <dt>y</dt>
 <dd><p>The <code>y</code> variable, either a numeric (including double and integer
 classes) or factor</p></dd>
+
+
 <dt>style</dt>
 <dd><p>A string identifying the style used to calculate breaks. Currently
     supported styles are <code>"quantile"</code>, <code>"equal"</code>, <code>"fisher"</code>,
@@ -97,6 +103,8 @@ classes) or factor</p></dd>
 <p>Note that older versions of <code>biscale</code> used <code>"quantile"</code> as the default
     for this argument. Now that <code>bi_class</code> accepts factors, this argument
     no longer as a default and older code will error.</p></dd>
+
+
 <dt>dim</dt>
 <dd><p>The dimensions of the palette. To use the built-in palettes,
     this value must be either <code>2</code>, <code>3</code>, or <code>4</code>. A value of
@@ -106,39 +114,49 @@ classes) or factor</p></dd>
     maps can be very hard to interpret).</p>
 <p>If you are using pre-made factors, both factors must have the same number
     of levels as this value.</p></dd>
+
+
 <dt>keep_factors</dt>
 <dd><p>A logical scalar; if <code>TRUE</code>, the intermediate factor
 variables created as part of the calculation of <code>bi_class</code> will be
 retained. If <code>FALSE</code> (default), they will not be returned.</p></dd>
+
+
 <dt>dig_lab</dt>
 <dd><p>An integer that is passed to <code><a href="https://rdrr.io/r/base/cut.html" class="external-link">base::cut()</a></code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A copy of <code>.data</code> with a new variable <code>bi_class</code> that contains
-    combinations of values that correspond to an observations values for <code>x</code>    and <code>y</code>. This is the basis for applying a bivariate color palette.</p>
+    
+
+<p>A copy of <code>.data</code> with a new variable <code>bi_class</code> that contains
+    combinations of values that correspond to an observations values for <code>x</code></p>
+
+
+<p>and <code>y</code>. This is the basis for applying a bivariate color palette.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># quantile breaks, 2x2</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">bi_class</span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># summarize quantile breaks, 2x2</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">bi_class</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># quantile breaks, 2x2</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">bi_class</span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># summarize quantile breaks, 2x2</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">bi_class</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1-1 1-2 2-1 2-2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  45   8   8  45 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># quantile breaks, 3x3</span></span>
-<span class="r-in"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">bi_class</span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># summarize quantile breaks, 3x3</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">bi_class</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># quantile breaks, 3x3</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">bi_class</span><span class="op">(</span><span class="va">stl_race_income</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># summarize quantile breaks, 3x3</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">bi_class</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1-1 1-2 2-1 2-2 2-3 3-2 3-3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  25  11  11  17   7   7  28 </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -153,7 +171,7 @@ retained. If <code>FALSE</code> (default), they will not be returned.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -74,7 +74,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">bi_pal</span><span class="op">(</span><span class="va">pal</span>, dim <span class="op">=</span> <span class="fl">3</span>, preview <span class="op">=</span> <span class="cn">TRUE</span>, flip_axes <span class="op">=</span> <span class="cn">FALSE</span>, rotate_pal <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bi_pal</span><span class="op">(</span><span class="va">pal</span>, dim <span class="op">=</span> <span class="fl">3</span>, preview <span class="op">=</span> <span class="cn">TRUE</span>, flip_axes <span class="op">=</span> <span class="cn">FALSE</span>, rotate_pal <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -94,6 +94,8 @@
     three-by-three maps.</p>
 <p>If you are providing a custom palette, it must follow the formatting
     described in the 'Advanced Options' vignette.</p></dd>
+
+
 <dt>dim</dt>
 <dd><p>The dimensions of the palette. To use the built-in palettes,
     this value must be either <code>2</code>, <code>3</code>, or <code>4</code>. A value of
@@ -102,24 +104,33 @@
 <p>If you are using a custom palette, this value may be larger (though these
     maps can be very hard to interpret). See the 'Advanced Options' vignette
     for details on the relationship between <code>dim</code> values and palette size.</p></dd>
+
+
 <dt>preview</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> (default), an image preview
 will be generated. If <code>FALSE</code>, a vector with hex color values will
 be returned.</p></dd>
+
+
 <dt>flip_axes</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> the axes of the palette
 will be flipped. If <code>FALSE</code> (default), the palette will be displayed
 on its original axes. Custom palettes with 'dim' greater
 than 4 cannot take advantage of flipping axes.</p></dd>
+
+
 <dt>rotate_pal</dt>
 <dd><p>A logical scalar; if <code>TRUE</code> the palette will be
 rotated 180 degrees. If <code>FALSE</code> (default), the palette will be
 displayed in its original orientation. Custom palettes with 'dim' greater
 than 4 cannot take advantage of palette rotation.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>If <code>preview = TRUE</code>, an image preview of the legend will be returned.
+    
+
+<p>If <code>preview = TRUE</code>, an image preview of the legend will be returned.
     Otherwise, if <code>preview = FALSE</code>, a named vector with class values for names
     and their corresponding hex color values.</p>
     </div>
@@ -136,38 +147,38 @@ than 4 cannot take advantage of palette rotation.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># gray pink palette, 2x2</span></span>
-<span class="r-in"><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># gray pink palette, 2x2</span></span></span>
+<span class="r-in"><span><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="bi_pal-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># gray pink palette, 2x2 hex values</span></span>
-<span class="r-in"><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">2</span>, preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># gray pink palette, 2x2 hex values</span></span></span>
+<span class="r-in"><span><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">2</span>, preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       1-1       2-1       1-2       2-2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "#e8e8e8" "#c85a5a" "#64acbe" "#574249" </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># gray pink palette, 3x3</span></span>
-<span class="r-in"><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># gray pink palette, 3x3</span></span></span>
+<span class="r-in"><span><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="bi_pal-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># gray pink palette, 3x3 hex values</span></span>
-<span class="r-in"><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">3</span>, preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># gray pink palette, 3x3 hex values</span></span></span>
+<span class="r-in"><span><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="st">"GrPink"</span>, dim <span class="op">=</span> <span class="fl">3</span>, preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       1-1       2-1       3-1       1-2       2-2       3-2       1-3       2-3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "#e8e8e8" "#e4acac" "#c85a5a" "#b0d5df" "#ad9ea5" "#985356" "#64acbe" "#627f8c" </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       3-3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "#574249" </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># custom palette</span></span>
-<span class="r-in"><span class="va">custom_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span class="r-in">    <span class="st">"1-1"</span> <span class="op">=</span> <span class="st">"#cabed0"</span>, <span class="co"># low x, low y</span></span>
-<span class="r-in">    <span class="st">"2-1"</span> <span class="op">=</span> <span class="st">"#ae3a4e"</span>, <span class="co"># high x, low y</span></span>
-<span class="r-in">    <span class="st">"1-2"</span> <span class="op">=</span> <span class="st">"#4885c1"</span>, <span class="co"># low x, high y</span></span>
-<span class="r-in">    <span class="st">"2-2"</span> <span class="op">=</span> <span class="st">"#3f2949"</span> <span class="co"># high x, high y</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="va">custom_pal</span>, dim <span class="op">=</span> <span class="fl">2</span>, preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># custom palette</span></span></span>
+<span class="r-in"><span><span class="va">custom_pal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="st">"1-1"</span> <span class="op">=</span> <span class="st">"#cabed0"</span>, <span class="co"># low x, low y</span></span></span>
+<span class="r-in"><span>    <span class="st">"2-1"</span> <span class="op">=</span> <span class="st">"#ae3a4e"</span>, <span class="co"># high x, low y</span></span></span>
+<span class="r-in"><span>    <span class="st">"1-2"</span> <span class="op">=</span> <span class="st">"#4885c1"</span>, <span class="co"># low x, high y</span></span></span>
+<span class="r-in"><span>    <span class="st">"2-2"</span> <span class="op">=</span> <span class="st">"#3f2949"</span> <span class="co"># high x, high y</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">bi_pal</span><span class="op">(</span>pal <span class="op">=</span> <span class="va">custom_pal</span>, dim <span class="op">=</span> <span class="fl">2</span>, preview <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       1-1       2-1       1-2       2-2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> "#cabed0" "#ae3a4e" "#4885c1" "#3f2949" </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -182,7 +193,7 @@ than 4 cannot take advantage of palette rotation.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
