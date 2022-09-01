@@ -33,6 +33,9 @@
 #'     variables created as part of the calculation of \code{bi_class} will be
 #'     retained. If \code{FALSE} (default), they will not be returned.
 #' @param dig_lab An integer that is passed to \code{base::cut()}
+#' @param na_rm A logical scalar that is passed to \code{classInt::classIntervals()};
+#'     if \code{TRUE}, \code{NA} values will be removed prior to calculating breaks.
+#'     If \code{FALSE} (default), they will be included.
 #'
 #' @return A copy of \code{.data} with a new variable \code{bi_class} that contains
 #'     combinations of values that correspond to an observations values for \code{x}
@@ -52,7 +55,7 @@
 #' table(data$bi_class)
 #'
 #' @export
-bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3){
+bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3, na_rm = FALSE){
 
   # global bindings
   bi_x = bi_y = NULL
@@ -103,8 +106,8 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
   bi_var_validate(.data, var = yQN, dim = dim, style = style)
 
   # calculate classes
-  .data <- bi_var_cut(.data, var = xQN, new_var = "bi_x", dim = dim, style = style, dig_lab = dig_vals[1])
-  .data <- bi_var_cut(.data, var = yQN, new_var = "bi_y", dim = dim, style = style, dig_lab = dig_vals[2])
+  .data <- bi_var_cut(.data, var = xQN, new_var = "bi_x", dim = dim, style = style, dig_lab = dig_vals[1], na_rm = na_rm)
+  .data <- bi_var_cut(.data, var = yQN, new_var = "bi_y", dim = dim, style = style, dig_lab = dig_vals[2], na_rm = na_rm)
 
   # combine
   .data$bi_class <- paste0(as.numeric(.data$bi_x), "-", as.numeric(.data$bi_y))
@@ -302,7 +305,7 @@ bi_var_validate <- function(.data, var, dim, style){
 
 
 # cut variable
-bi_var_cut <- function(.data, var, new_var, dim, style, dig_lab){
+bi_var_cut <- function(.data, var, new_var, dim, style, dig_lab, na_rm){
 
   if (inherits(x = .data[[var]], what = "factor")){
 
@@ -311,7 +314,7 @@ bi_var_cut <- function(.data, var, new_var, dim, style, dig_lab){
   } else if (inherits(x = .data[[var]], what = c("integer", "double", "numeric"))){
 
     .data[[new_var]] <- cut(.data[[var]], breaks = classInt::classIntervals(.data[[var]], n = dim, style = style)$brks,
-                            include.lowest = TRUE, dig.lab = dig_lab)
+                            include.lowest = TRUE, dig.lab = dig_lab, na.rm = na_rm)
 
   }
 
