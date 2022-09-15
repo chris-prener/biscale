@@ -81,7 +81,7 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">bi_class_breaks</span><span class="op">(</span><span class="va">.data</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">style</span>, dim <span class="op">=</span> <span class="fl">3</span>, clean_levels <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>    dig_lab <span class="op">=</span> <span class="fl">3</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span>    dig_lab <span class="op">=</span> <span class="fl">3</span>, si_levels <span class="op">=</span> <span class="cn">FALSE</span>, split <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -135,6 +135,15 @@ will be applied to the <code>x</code> variable and the second will be applied
 to the <code>y</code> variable.</p></dd>
 
 
+<dt>si_levels</dt>
+<dd><p>A logical scalar or vector of length 2 that where <code>TRUE</code>,
+and taking into account <code>dig_lab</code> (default = 3), rounds the
+level(s) and applies one of a few selected SI prefixes, if
+appropriate. Affects either or both the display of the <code>x</code> and
+<code>y</code> variables based on the same syntax as the <code>dig_lab</code>
+parameter. Defaults to <code>FALSE</code> (no adjustment to either variable).</p></dd>
+
+
 <dt>split</dt>
 <dd><p>A logical scalar; if <code>FALSE</code> (default), the range of values
 for each factor level (corresponds to <code>dim</code>) will be returned for
@@ -180,30 +189,40 @@ returned.</p></dd>
 <span class="r-in"><span><span class="fu">bi_class_breaks</span><span class="op">(</span><span class="va">stl_race_income</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>,</span></span>
 <span class="r-in"><span>    dim <span class="op">=</span> <span class="fl">4</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bi_x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.00  3.14 37.31 69.87 96.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"     "3.14"  "37.31" "69.87" "96.73"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bi_y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10545 23474 34688 51379 74425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10545" "23474" "34688" "51379" "74425"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># show SI prefix</span></span></span>
+<span class="r-in"><span><span class="fu">bi_class_breaks</span><span class="op">(</span><span class="va">stl_race_income</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>,</span></span>
+<span class="r-in"><span>    dim <span class="op">=</span> <span class="fl">4</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>, si_levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>y <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $bi_x</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"     "3.14"  "37.31" "69.87" "96.73"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $bi_y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10.545k" "23.474k" "34.688k" "51.379k" "74.425k"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># optionally name vector for dig_lab for increased clarity of code</span></span></span>
 <span class="r-in"><span><span class="fu">bi_class_breaks</span><span class="op">(</span><span class="va">stl_race_income</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>,</span></span>
 <span class="r-in"><span>    dim <span class="op">=</span> <span class="fl">4</span>, dig_lab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>, split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bi_x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.00  3.14 37.31 69.87 96.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"     "3.14"  "37.31" "69.87" "96.73"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bi_y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10545 23474 34688 51379 74425</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "10545" "23474" "34688" "51379" "74425"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># scalars can also be used for dig_lab, though results may be less optimal</span></span></span>
 <span class="r-in"><span><span class="fu">bi_class_breaks</span><span class="op">(</span><span class="va">stl_race_income</span>, style <span class="op">=</span> <span class="st">"quantile"</span>, x <span class="op">=</span> <span class="va">pctWhite</span>, y <span class="op">=</span> <span class="va">medInc</span>,</span></span>
 <span class="r-in"><span>    dim <span class="op">=</span> <span class="fl">4</span>, dig_lab <span class="op">=</span> <span class="fl">3</span>, split <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bi_x</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  0.00  3.14 37.30 69.90 96.70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "0"    "3.14" "37.3" "69.9" "96.7"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $bi_y</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 10500 23500 34700 51400 74400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1.05e+04" "2.35e+04" "3.47e+04" "5.14e+04" "7.44e+04"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
