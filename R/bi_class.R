@@ -131,7 +131,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
 #'     reporting as well as more descriptive legends.
 #'
 #' @usage bi_class_breaks(.data, x, y, style, dim = 3, clean_levels = TRUE,
-#'     dig_lab = 3, split = FALSE)
+#'     dig_lab = 3, si_levels = FALSE, split = FALSE)
 #'
 #' @param .data A data frame, tibble, or \code{sf} object
 #' @param x The \code{x} variable, either a numeric (including double and integer
@@ -163,6 +163,12 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
 #'     the \code{x} and \code{y} variables. If it is a vector, the first element
 #'     will be applied to the \code{x} variable and the second will be applied
 #'     to the \code{y} variable.
+#' @param si_levels A logical scalar or vector of length 2 that where \code{TRUE},
+#'     and taking into account \code{dig_lab} (default = 3), rounds the
+#'     level(s) and applies one of a few selected SI prefixes, if
+#'     appropriate. Affects either or both the display of the \code{x} and
+#'     \code{y} variables based on the same syntax as the \code{dig_lab}
+#'     parameter. Defaults to \code{FALSE} (no adjustment to either variable).
 #' @param split A logical scalar; if \code{FALSE} (default), the range of values
 #'     for each factor level (corresponds to \code{dim}) will be returned for
 #'     both the \code{x} and \code{y} variables. If \code{TRUE}, the individual
@@ -186,6 +192,10 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
 #' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
 #'     dim = 4, dig_lab = c(4, 5), split = TRUE)
 #'
+#' # show SI prefix
+#' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
+#'     dim = 4, dig_lab = c(4, 5), si_levels = c(y = TRUE), split = TRUE)
+#'
 #' # optionally name vector for dig_lab for increased clarity of code
 #' bi_class_breaks(stl_race_income, style = "quantile", x = pctWhite, y = medInc,
 #'     dim = 4, dig_lab = c(x = 4, y = 5), split = TRUE)
@@ -196,7 +206,7 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
 #'
 #' @export
 bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
-                            dig_lab = 3, split = FALSE){
+                            dig_lab = 3, si_levels = FALSE, split = FALSE){
 
   # global bindings
   bi_x = bi_y = NULL
@@ -246,6 +256,7 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
 
   # validate palette
   dig_vals <- bi_validate_dig_lab(dig_lab = dig_lab)
+  si_vals  <- bi_validate_si_levels(si_levels = si_levels)
 
   # nse
   xQN <- as.character(substitute(x))
@@ -264,6 +275,10 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
     bi_x = levels(.data$bi_x),
     bi_y = levels(.data$bi_y)
   )
+
+  if (sum(si_levels) >= 1) {
+    out <- bi_levels_si(levels_list = out, si_vals = si_vals, dig_vals = dig_vals)
+  }
 
   if (clean_levels == TRUE | split == TRUE){
     out <- bi_levels_clean(levels_list = out, split = split)
@@ -323,6 +338,47 @@ bi_var_cut <- function(.data, var, new_var, dim, style, dig_lab, na_rm){
 
 }
 
+# optionally abbreviate with International System of Units (SI)
+bi_levels_si <- function(levels_list, si_vals, dig_vals){
+
+  levels_list$bi_y <- gsub("[][()]", "", levels_list$bi_y)
+  if (si_vals[1] == TRUE) {
+    bi_x_clean <- gsub("[][()]", "", levels_list$bi_x)
+
+    bi_x_clean_start    <- as.numeric(gsub(',.*','', bi_x_clean))
+    bi_x_clean_start_si <- si_number(bi_x_clean_start, dig_vals[1])
+    bi_x_clean_end      <- as.numeric(gsub('.*,','', bi_x_clean))
+    bi_x_clean_end_si   <- si_number(bi_x_clean_end, dig_vals[1])
+    levels_list$bi_x    <- paste0(
+      # ( or ] captured, otherwise blank
+      gsub("\\d", "", substr(levels_list$bi_x,1,1)),
+      bi_x_clean_start_si, ",",
+      bi_x_clean_end_si,
+      gsub("\\d", "",
+        substr(levels_list$bi_x,nchar(levels_list$bi_x),nchar(levels_list$bi_x)))
+    )
+  }
+  if (si_vals[2] == TRUE) {
+    bi_y_clean <- gsub("[][()]", "", levels_list$bi_y)
+
+    bi_y_clean_start    <- as.numeric(gsub(',.*','', bi_y_clean))
+    bi_y_clean_start_si <- si_number(bi_y_clean_start, dig_vals[2])
+    bi_y_clean_end      <- as.numeric(gsub('.*,','', bi_y_clean))
+    bi_y_clean_end_si   <- si_number(bi_y_clean_end, dig_vals[2])
+    levels_list$bi_y    <- paste0(
+      # ( or ] captured, otherwise blank
+      gsub("\\d", "", substr(levels_list$bi_y,1,1)),
+      bi_y_clean_start_si, ",",
+      bi_y_clean_end_si,
+      gsub("\\d", "",
+           substr(levels_list$bi_y,nchar(levels_list$bi_y),nchar(levels_list$bi_y)))
+    )
+  }
+
+  # return output
+  return(levels_list)
+}
+
 # clean levels created by bi_var_cut
 bi_levels_clean <- function(levels_list, split){
 
@@ -337,11 +393,10 @@ bi_levels_clean <- function(levels_list, split){
   # optionally split
   if (split == TRUE){
 
-    levels_list$bi_x <- unique(as.numeric(unlist(strsplit(levels_list$bi_x, "-"))))
-    levels_list$bi_y <- unique(as.numeric(unlist(strsplit(levels_list$bi_y, "-"))))
+    levels_list$bi_x <- unique(unlist(strsplit(levels_list$bi_x, "-")))
+    levels_list$bi_y <- unique(unlist(strsplit(levels_list$bi_y, "-")))
 
   }
-
   # return output
   return(levels_list)
 
@@ -374,4 +429,51 @@ bi_validate_dig_lab <- function(dig_lab){
 
   return(dig_vals)
 
+}
+
+# validate si_levels inputs
+bi_validate_si_levels <- function(si_levels){
+
+  if (is.logical(si_levels) == FALSE | anyNA(si_levels)){
+    stop("A logical scalar or vector  must be supplied for 'si_levels'.")
+  }
+
+  if (length(si_levels) == 1){
+
+    si_vals <- c(si_levels, si_levels)
+
+  } else if (length(si_levels) == 2){
+
+    if (is.null(names(si_levels)) == TRUE){
+      si_vals <- si_levels
+    } else if (all(names(si_levels) %in% c("x", "y")) == TRUE){
+      si_vals <- c(si_levels[["x"]], si_levels[["y"]])
+    } else if (all(names(si_levels) %in% c("x", "y")) == FALSE){
+      stop("The vector supplied for the 'si_levels' argument contains invalid names. Only 'x' and 'y' are accepted for named vectors.")
+    }
+
+  } else if (length(si_levels) > 2) {
+    stop("The vector supplied for the 'si_levels' argument is too long.")
+  }
+
+  return(si_vals)
+
+}
+
+# For si_levels: Slight modification of @Tarquinnn's function at
+#  https://stackoverflow.com/a/59086755/2305061
+si_number = function(x, digits) {
+  xnum = as.numeric(x)
+
+  compress = function(xnum, n) {
+    signif(xnum * 10^(-n), digits)
+  }
+
+  ifelse(abs(xnum) >= 1e6,  paste0(compress(xnum, 6), "M"),
+  ifelse(abs(xnum) >= 1000, paste0(compress(xnum, 3), "k"),
+  ifelse(abs(xnum) >= 1,  as.character(compress(xnum, 0)),
+  ifelse(abs(xnum) >= 0.001, paste0(compress(xnum, -3), "m"),
+  ifelse(abs(xnum) >= 1e-6, paste0(compress(xnum, -6), "u"),
+  as.character(xnum)))))
+  )
 }
