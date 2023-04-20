@@ -150,5 +150,23 @@ The completed map, created with the sample code in this README, looks like this:
 
 ![](man/figures/biscale.004.jpeg)
 
+Rotate the legend for better readability of labels.
+
+```r
+library(grid)
+legend <- bi_legend(pal = "GrPink",
+                    dim = 3,
+                    xlab = "Higher % White ",
+                    ylab = "Higher Income ",
+                    size = 20)
+print(map)
+print(legend, vp = grid::viewport(x = 0.4, y = .75, width = 0.2, height = 0.2, angle = -45))
+```
+
+The completed map, created with the sample code in this README, looks like this:
+
+![](man/figures/biscale.007.jpeg)
+
+
 ## Contributor Code of Conduct
 Please note that this project is released with a [Contributor Code of Conduct](https://chris-prener.github.io/biscale/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.

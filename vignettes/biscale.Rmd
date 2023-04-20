@@ -143,6 +143,25 @@ The completed map, created with the sample code in this vignette, looks like thi
 knitr::include_graphics("../man/figures/biscale.004.jpeg")
 ```
 
+
+### Rotate the legend for better readability of labels.
+
+```r
+library(grid)
+legend <- bi_legend(pal = "GrPink",
+                    dim = 3,
+                    xlab = "Higher % White ",
+                    ylab = "Higher Income ",
+                    size = 20)
+print(map)
+print(legend, vp = grid::viewport(x = 0.4, y = .75, width = 0.2, height = 0.2, angle = -45))
+```
+
+```{r  final-map-rotated-legend, echo=FALSE, out.width = '100%'}
+knitr::include_graphics("../man/figures/biscale.007.jpeg")
+```
+
+
 ## Getting Help
 * If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](https://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.
 * If you are new to spatial analysis in `R`, we strongly encourage you check out the excellent new [*Geocomputation in R*](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow.
