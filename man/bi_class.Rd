@@ -40,6 +40,10 @@ variables created as part of the calculation of \code{bi_class} will be
 retained. If \code{FALSE} (default), they will not be returned.}
 
 \item{dig_lab}{An integer that is passed to \code{base::cut()}}
+
+\item{na_rm}{A logical scalar that is passed to \code{classInt::classIntervals()};
+if \code{TRUE}, \code{NA} values will be removed prior to calculating breaks.
+If \code{FALSE} (default), they will be included.}
 }
 \value{
 A copy of \code{.data} with a new variable \code{bi_class} that contains

@@ -67,3 +67,17 @@ test_that("high dimension inputs generate warning", {
   expect_warning(bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 5),
                  "Maps that are larger than 4x4 dimensions can be difficult to interpret, and biscale does not provide built-in palettes for these maps. If you proceed, you will need to supply a custom palette for these data.")
 })
+
+
+# test variable inputs ----------------------------------------------------
+
+var.inputs <- list( input1 = "medInc"
+                   ,input2 = "pctWhite")
+
+test_that("Allow variable inputs", {
+  expect_equal(
+    bi_class(stl_race_income, x = pctWhite, y = medInc, style = "quantile", dim = 2),
+    bi_class(stl_race_income, x = !!var.inputs$input2, y = !!var.inputs$input1, style = "quantile", dim = 2)
+  )
+})
+

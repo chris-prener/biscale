@@ -54,6 +54,8 @@
 #' # summarize quantile breaks, 3x3
 #' table(data$bi_class)
 #'
+#' @importFrom rlang ensym
+#'
 #' @export
 bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3, na_rm = FALSE){
 
@@ -98,8 +100,9 @@ bi_class <- function(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab 
   }
 
   # nse
-  xQN <- as.character(substitute(x))
-  yQN <- as.character(substitute(y))
+  #browser()
+  xQN <- as.character(rlang::ensym(x))
+  yQN <- as.character(rlang::ensym(y))
 
   # evaluate inputs
   bi_var_validate(.data, var = xQN, dim = dim, style = style)
@@ -259,8 +262,9 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
   si_vals  <- bi_validate_si_levels(si_levels = si_levels)
 
   # nse
-  xQN <- as.character(substitute(x))
-  yQN <- as.character(substitute(y))
+  #browser()
+  xQN <- as.character(rlang::ensym(x))
+  yQN <- as.character(rlang::ensym(y))
 
   # evaluate inputs
   bi_var_validate(.data, var = xQN, dim = dim, style = style)
@@ -291,6 +295,8 @@ bi_class_breaks <- function(.data, x, y, style, dim = 3, clean_levels = TRUE,
 
 # validate variable input
 bi_var_validate <- function(.data, var, dim, style){
+
+  #browser()
 
   if (var %in% names(.data) == FALSE){
     stop(paste0("The variable '", var, "' is not found in the given data set."))

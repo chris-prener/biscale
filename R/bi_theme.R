@@ -41,7 +41,7 @@ bi_theme <- function(base_family = "sans", base_size = 24, bg_color = "#ffffff",
       axis.ticks = ggplot2::element_blank(),
 
       # add a grid that blends into plot background
-      panel.grid.major = ggplot2::element_line(color = bg_color, size = 0.2),
+      panel.grid.major = ggplot2::element_line(color = bg_color, linewidth = 0.2),
       panel.grid.minor = ggplot2::element_blank(),
 
       # background colors
@@ -84,7 +84,7 @@ bi_theme_legend <- function(base_family = "sans", base_size = 24, bg_color = "#f
       axis.ticks = ggplot2::element_line(),
 
       # add a grid that blends into plot background
-      panel.grid.major = ggplot2::element_line(color = bg_color, size = 0.2),
+      panel.grid.major = ggplot2::element_line(color = bg_color, linewidth = 0.2),
       panel.grid.minor = ggplot2::element_blank(),
 
       # background colors
