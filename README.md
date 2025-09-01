@@ -6,7 +6,7 @@
 ![GitHub
 Workflow](https://github.com/chris-prener/biscale/actions/workflows/R-CMD-check.yaml/badge.svg)
 [![Coverage
-status](https://codecov.io/gh/chris-prener/biscale/branch/main/graph/badge.svg)](https://codecov.io/github/chris-prener/biscale?branch=main)
+status](https://codecov.io/gh/chris-prener/biscale/branch/main/graph/badge.svg)](https://app.codecov.io/github/chris-prener/biscale?branch=main)
 [![CRAN_status_badge](https://www.r-pkg.org/badges/version/biscale)](https://cran.r-project.org/package=biscale)
 [![cran
 checks](https://cranchecks.info/badges/worst/biscale)](https://cran.r-project.org/web/checks/check_results_biscale.html)
@@ -31,65 +31,65 @@ breaks for bivariate maps.
 
 ### New Features
 
--   `bi_class()` now accepts factors for one or both of the `x` and `y`
-    variables, allowing more flexibility for how breaks are calculated.
-    If you want finer grained control over your categories, calculate
-    them ahead of time and then pass the factors on to `bi_class()`.
--   `bi_pal()`, `bi_legend()`, `bi_scale_fill()`, and `bi_scale_color()`
-    functions all support four-by-four bivariate maps when `dim = 4`.
-    Note that the original five palettes do not support four-by-four
-    mapping, but very close approximations (e.g. `DkBlue2` instead of
-    `DkBlue`) are now provided in their place. The legacy palettes are
-    all still included in the package.
--   The number of built-in palettes has been greatly expanded!
--   Palettes can now be flipped and rotated (or both!), so that each
-    built-in palette can be displayed in four different configurations.
-    This includes the built-in palettes and any custom palettes that are
-    four-by-four or smaller. If you want to flip or rotate larger
-    palettes, you should make those decisions while creating the palette
-    itself.
--   The workflow for allowing custom palettes has been overhauled to
-    simply the process - users can provide a named vector for the `pal`
-    arguments in the `bi_pal()`, `bi_legend()`, `bi_scale_fill()`, and
-    `bi_scale_color()` functions. All of these functions will validate
-    your input to ensure that it maps correctly.
--   `bi_class()` can be used to calculate bivariate breaks for maps
-    larger than four-by-four, though it will return a warning reminding
-    you that these maps are hard to read and that `biscale` does not
-    provide palettes for larger maps. Instead, you should provide a
-    custom palette.
--   `bi_class_breaks()` can be used with `bi_legend()` to facilitate
-    optionally adding break values to your legends. Like `bi_class()`,
-    this new function accepts both continuous and pre-made factors.
+- `bi_class()` now accepts factors for one or both of the `x` and `y`
+  variables, allowing more flexibility for how breaks are calculated. If
+  you want finer grained control over your categories, calculate them
+  ahead of time and then pass the factors on to `bi_class()`.
+- `bi_pal()`, `bi_legend()`, `bi_scale_fill()`, and `bi_scale_color()`
+  functions all support four-by-four bivariate maps when `dim = 4`. Note
+  that the original five palettes do not support four-by-four mapping,
+  but very close approximations (e.g. `DkBlue2` instead of `DkBlue`) are
+  now provided in their place. The legacy palettes are all still
+  included in the package.
+- The number of built-in palettes has been greatly expanded!
+- Palettes can now be flipped and rotated (or both!), so that each
+  built-in palette can be displayed in four different configurations.
+  This includes the built-in palettes and any custom palettes that are
+  four-by-four or smaller. If you want to flip or rotate larger
+  palettes, you should make those decisions while creating the palette
+  itself.
+- The workflow for allowing custom palettes has been overhauled to
+  simply the process - users can provide a named vector for the `pal`
+  arguments in the `bi_pal()`, `bi_legend()`, `bi_scale_fill()`, and
+  `bi_scale_color()` functions. All of these functions will validate
+  your input to ensure that it maps correctly.
+- `bi_class()` can be used to calculate bivariate breaks for maps larger
+  than four-by-four, though it will return a warning reminding you that
+  these maps are hard to read and that `biscale` does not provide
+  palettes for larger maps. Instead, you should provide a custom
+  palette.
+- `bi_class_breaks()` can be used with `bi_legend()` to facilitate
+  optionally adding break values to your legends. Like `bi_class()`,
+  this new function accepts both continuous and pre-made factors.
 
 ### Breaking Changes
 
--   `R` version 3.4 is no longer supported - please use at least `R`
-    version 3.5
--   There is no default supplied for `bi_class()`’s `style` argument
-    since `bi_class()` now accepts factors as well. Users that relied on
-    the default behavior of `bi_class()` will now receive an error
-    asking you to specify a `style` for calculating breaks.
+- `R` version 3.4 is no longer supported - please use at least `R`
+  version 3.5
+- There is no default supplied for `bi_class()`’s `style` argument since
+  `bi_class()` now accepts factors as well. Users that relied on the
+  default behavior of `bi_class()` will now receive an error asking you
+  to specify a `style` for calculating breaks.
 
 ### Deprecated Functions
 
--   `bi_pal_manual()` now returns a warning that it has been deprecated
-    and will be removed in a later release of `biscale` (planned for the
-    end of 2022). Please update your workflows to use the new approach
-    to generating custom palettes.
+- `bi_pal_manual()` now returns a warning that it has been deprecated
+  and will be removed in a later release of `biscale` (planned for the
+  end of 2022). Please update your workflows to use the new approach to
+  generating custom palettes.
 
 ### Internal Improvements
 
--   `sf` is now a suggested package instead of an imported package, and
-    several dependencies have been removed in the process of
-    re-factoring all of the code in `biscale`.
+- `sf` is now a suggested package instead of an imported package, and
+  several dependencies have been removed in the process of re-factoring
+  all of the code in `biscale`.
 
 ### Documentation Improvements
 
--   Documentation updates have been made, including the addition of a
-    number of new examples and vignettes. These include detailed
-    articles on bivariate palettes, working with breaks and legends, and
-    creating bivariate maps with raster data.
+- Documentation updates have been made, including the addition of a
+  number of new examples and vignettes. These include detailed articles
+  on bivariate palettes, working with breaks and legends, and creating
+  bivariate maps with raster data.
 
 ## What’s New in the Development Version (v1.1.0.9000)?
 
@@ -98,11 +98,11 @@ breaks for bivariate maps.
 
 ### New Features
 
--   The `bi_legend()` function now has a `base_family` argument, which
-    can be paired with the suggested `showtext` package to display
-    non-Latin characters. See the [“Options for Breaks and Legends”
-    vignette](https://chris-prener.github.io/biscale/articles/breaks.html#using-non-latin-characters)
-    for details on using this new feature.
+- The `bi_legend()` function now has a `base_family` argument, which can
+  be paired with the suggested `showtext` package to display non-Latin
+  characters. See the [“Options for Breaks and Legends”
+  vignette](https://chris-prener.github.io/biscale/articles/breaks.html#using-non-latin-characters)
+  for details on using this new feature.
 
 ## Installation
 

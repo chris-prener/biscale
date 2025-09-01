@@ -145,8 +145,8 @@ knitr::include_graphics("../man/figures/biscale.004.jpeg")
 
 ## Getting Help
 * If you are new to `R` itself, welcome! Hadley Wickham's [*R for Data Science*](https://r4ds.had.co.nz) is an excellent way to get started with data manipulation in the tidyverse, which `biscale` is designed to integrate seamlessly with.
-* If you are new to spatial analysis in `R`, we strongly encourage you check out the excellent new [*Geocomputation in R*](https://geocompr.robinlovelace.net) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow.
-* If you have questions about using `biscale`, you are encouraged to use the [RStudio Community forums](https://community.rstudio.com). Please create a [`reprex`](https://reprex.tidyverse.org/) before posting. Feel free to tag Chris (`@chris.prener`) in any posts about `biscale`.
+* If you are new to spatial analysis in `R`, we strongly encourage you check out the excellent new [*Geocomputation in R*](https://r.geocompx.org/) by Robin Lovelace, Jakub Nowosad, and Jannes Muenchow.
+* If you have questions about using `biscale`, you are encouraged to use the [RStudio Community forums](https://forum.posit.co/). Please create a [`reprex`](https://reprex.tidyverse.org/) before posting. Feel free to tag Chris (`@chris.prener`) in any posts about `biscale`.
 * If you think you've found a bug, please create a [`reprex`](https://reprex.tidyverse.org/) and then open an issue on [GitHub](https://github.com/chris-prener/biscale/issues/new/choose).
 
 ## Suggesting Features or Changes

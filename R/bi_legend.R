@@ -82,21 +82,6 @@
 #' ## print legend
 #' legend
 #'
-#' # sample 3x3 legend with Chinese characters
-#' ## set language preference
-#' showtext::showtext_auto()
-#'
-#' ## create legend
-#' legend <- bi_legend(pal = "GrPink",
-#'                     dim = 3,
-#'                     xlab = "白人 ",
-#'                     ylab = "收入 ",
-#'                     size = 16,
-#'                     base_family = "")
-#'
-#' ## print legend
-#' legend
-#'
 #' @export
 bi_legend <- function(pal, dim = 3, xlab, ylab, size = 10, flip_axes = FALSE,
                       rotate_pal = FALSE, pad_width = NA, pad_color = '#ffffff',
