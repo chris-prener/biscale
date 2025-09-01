@@ -1,6 +1,6 @@
 #' Apply Bivariate Color to ggplot Object
 #'
-#' @description Applies the selected palette as the color aesthetic when \code{\link{ggplot2}{geom_sf}}
+#' @description Applies the selected palette as the color aesthetic when \code{\link[ggplot2]{geom_sf}}
 #'     is used and the \code{bi_class} variable is given as the \code{color} in the aesthetic
 #'     mapping.
 #'
@@ -26,7 +26,7 @@
 #'     rotated 180 degrees. If \code{FALSE} (default), the palette will be
 #'     displayed in its original orientation. Custom palettes with 'dim' greater
 #'     than 4 cannot take advantage of palette rotation.
-#' @param ... Arguments to pass to \code{\link{ggplot2}{scale_color_manual}}
+#' @param ... Arguments to pass to \code{\link[ggplot2]{scale_color_manual}}
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
 #'

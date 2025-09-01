@@ -4,7 +4,7 @@
 #'     in a new variable named \code{bi_class}, which will be added to the given
 #'     data object.
 #'
-#' @usage bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3)
+#' @usage bi_class(.data, x, y, style, dim = 3, keep_factors = FALSE, dig_lab = 3, na_rm = FALSE)
 #'
 #' @param .data A data frame, tibble, or \code{sf} object
 #' @param x The \code{x} variable, either a numeric (including double and integer

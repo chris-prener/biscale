@@ -1,7 +1,7 @@
 #' Basic Theme for Bivariate Mapping
 #'
 #' @description A theme for creating a simple, clean bivariate map using
-#'     \code{\link{ggplot2}{geom_sf}}.
+#'     \code{\link[ggplot2]{geom_sf}}.
 #'
 #' @param base_family A character string representing the font family to be used
 #'     in the map.

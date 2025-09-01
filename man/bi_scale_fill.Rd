@@ -24,13 +24,13 @@ on its original axes.}
 rotated 180 degrees. If \code{FALSE} (default), the palette will be
 displayed in its original orientation}
 
-\item{...}{Arguments to pass to \code{\link{ggplot2}{scale_fill_manual}}}
+\item{...}{Arguments to pass to \code{\link[ggplot2]{scale_fill_manual}}}
 }
 \value{
 A \code{ggplot} object with the given bivariate palette applied to the data.
 }
 \description{
-Applies the selected palette as the fill aesthetic when \code{\link{ggplot2}{geom_sf}}
+Applies the selected palette as the fill aesthetic when \code{\link[ggplot2]{geom_sf}}
     is used and the \code{bi_class} variable is given as the \code{fill} in the aesthetic
     mapping.
 }
