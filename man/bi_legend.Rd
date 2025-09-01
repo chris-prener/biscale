@@ -98,21 +98,6 @@ legend <- bi_legend(pal = "GrPink",
 ## print legend
 legend
 
-# sample 3x3 legend with Chinese characters
-## set language preference
-showtext::showtext_auto()
-
-## create legend
-legend <- bi_legend(pal = "GrPink",
-                    dim = 3,
-                    xlab = "白人 ",
-                    ylab = "收入 ",
-                    size = 16,
-                    base_family = "")
-
-## print legend
-legend
-
 }
 \seealso{
 \code{\link{bi_pal}}
