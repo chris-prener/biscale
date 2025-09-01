@@ -11,7 +11,7 @@ Addresses NOTEs on CRAN.
 * r-hub not used because it lacks dependencies needed to build `sf` on Debian
 
 ## R CMD check results
-There were no ERRORs, WARNINGs, or NOTEs with local or CI checks.
+There were no ERRORs, WARNINGs, or NOTEs with local or CI checks. 
 
 ## Reverse dependencies
-Not applicable.
+There were also no issues identified when checking reverse dependencies with `revdepcheck`.
