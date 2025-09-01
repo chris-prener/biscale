@@ -1,6 +1,6 @@
 #' Apply Bivariate Fill to ggplot Object
 #'
-#' @description Applies the selected palette as the fill aesthetic when \code{\link{geom_sf}}
+#' @description Applies the selected palette as the fill aesthetic when \code{\link{ggplot2}{geom_sf}}
 #'     is used and the \code{bi_class} variable is given as the \code{fill} in the aesthetic
 #'     mapping.
 #'
@@ -19,7 +19,7 @@
 #' @param rotate_pal A logical scalar; if \code{TRUE} the palette will be
 #'     rotated 180 degrees. If \code{FALSE} (default), the palette will be
 #'     displayed in its original orientation
-#' @param ... Arguments to pass to \code{\link{scale_fill_manual}}
+#' @param ... Arguments to pass to \code{\link{ggplot2}{scale_fill_manual}}
 #'
 #' @return A \code{ggplot} object with the given bivariate palette applied to the data.
 #'

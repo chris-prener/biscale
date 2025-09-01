@@ -1,7 +1,7 @@
 Package: biscale
 Type: Package
 Title: Tools and Palettes for Bivariate Thematic Mapping
-Version: 1.1.0.9000
+Version: 1.0.1
 Authors@R: c(
     person("Christopher", "Prener", , "chris.prener@gmail.com", c("aut", "cre"),
     comment = c(ORCID = "0000-0002-4310-9888")),
@@ -24,7 +24,7 @@ LazyData: true
 Imports:
   classInt,
   ggplot2
-RoxygenNote: 7.2.0
+RoxygenNote: 7.3.2
 Suggests:
   covr,
   cowplot,

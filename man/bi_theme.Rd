@@ -28,7 +28,7 @@ color of the map's text.}
 }
 \description{
 A theme for creating a simple, clean bivariate map using
-    \code{\link{ggplot2}}.
+    \code{\link{ggplot2}{geom_sf}}.
 }
 \examples{
 # load suggested dependencies
