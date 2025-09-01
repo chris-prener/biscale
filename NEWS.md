@@ -1,14 +1,12 @@
-# biscale 1.1.0.9001
+# biscale 1.1.0
 
 * New feature
   * The `bi_class_breaks()` function now has a `si_levels` argument to enable printing
 of rounded breaks' labels with an SI prefix. This is primarily to abbreviate labels for legends.
- 
-# biscale 1.1.0.9000
-
-* New features
   * The `bi_legend()` function now has a `base_family` argument, which can be paired with the suggested `showtext` package to display non-Latin characters. See the ["Options for Breaks and Legends" vignette](https://chris-prener.github.io/biscale/articles/breaks.html#using-non-latin-characters) for details on using this new feature.
-
+* Internal improvements
+  * Addressed documentation issues with linking to other packages
+ 
 # biscale 1.0.0
 
 * New features
