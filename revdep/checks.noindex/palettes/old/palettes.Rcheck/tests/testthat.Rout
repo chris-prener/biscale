@@ -1,0 +1,40 @@
+
+R version 4.5.1 (2025-06-13) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(palettes)
+> 
+> test_check("palettes")
+[ FAIL 0 | WARN 0 | SKIP 29 | PASS 63 ]
+
+══ Skipped tests (29) ══════════════════════════════════════════════════════════
+• On CRAN (29): 'test-colour.R:39:3', 'test-colour.R:82:3',
+  'test-colour.R:82:3', 'test-colour.R:82:3', 'test-colour.R:82:3',
+  'test-colour.R:99:3', 'test-colour.R:99:3', 'test-colour.R:99:3',
+  'test-colour.R:99:3', 'test-colour.R:104:3', 'test-colour.R:110:3',
+  'test-colour.R:110:3', 'test-colour.R:110:3', 'test-colour.R:110:3',
+  'test-colour.R:116:3', 'test-colour.R:122:3', 'test-colour.R:122:3',
+  'test-colour.R:122:3', 'test-colour.R:122:3', 'test-colour.R:128:3',
+  'test-colour.R:134:3', 'test-colour.R:140:3', 'test-colour.R:146:3',
+  'test-colour.R:152:3', 'test-ggplot2-scales.R:15:3', 'test-symbol.R:2:3',
+  'test-symbol.R:2:3', 'test-symbol.R:2:3', 'test-symbol.R:2:3'
+
+[ FAIL 0 | WARN 0 | SKIP 29 | PASS 63 ]
+> 
+> proc.time()
+   user  system elapsed 
+  1.190   0.132   1.653 

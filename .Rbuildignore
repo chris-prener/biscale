@@ -14,3 +14,4 @@
 ^index\.md$
 ^LICENSE$
 ^CRAN-SUBMISSION$
+^revdep

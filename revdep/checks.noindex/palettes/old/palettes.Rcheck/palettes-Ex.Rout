@@ -1,0 +1,636 @@
+
+R version 4.5.1 (2025-06-13) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "palettes"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('palettes')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("as_tibble.palettes_colour")
+> ### * as_tibble.palettes_colour
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: as_tibble.palettes_colour
+> ### Title: Cast colour vectors and colour palettes to tibbles
+> ### Aliases: as_tibble.palettes_colour as_tibble.palettes_palette
+> 
+> ### ** Examples
+> 
+> x <- pal_colour(c("#663171", "#EA7428", "#0C7156"))
+> as_tibble(x)
+# A tibble: 3 × 1
+  colour   
+  <colour> 
+1 • #663171
+2 • #EA7428
+3 • #0C7156
+> 
+> y <- pal_palette(
++   Egypt = c("#DD5129", "#0F7BA2", "#43B284", "#FAB255"),
++   Java  = c("#663171", "#CF3A36", "#EA7428", "#E2998A", "#0C7156")
++ )
+> as_tibble(y)
+# A tibble: 9 × 2
+  palette colour   
+  <chr>   <colour> 
+1 Egypt   • #DD5129
+2 Egypt   • #0F7BA2
+3 Egypt   • #43B284
+4 Egypt   • #FAB255
+5 Java    • #663171
+6 Java    • #CF3A36
+7 Java    • #EA7428
+8 Java    • #E2998A
+9 Java    • #0C7156
+> 
+> 
+> 
+> cleanEx()
+> nameEx("carto_palettes")
+> ### * carto_palettes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: carto_palettes
+> ### Title: Cartography palettes
+> ### Aliases: carto_palettes discrete_palettes, sequential_palettes,
+> ###   diverging_palettes discrete_palettes sequential_palettes
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # Get all palettes by name.
+> names(discrete_palettes)
+[1] "Antique" "Bold"    "Pastel"  "Prism"   "Safe"    "Vivid"  
+> names(sequential_palettes)
+ [1] "Burg"       "BurgYl"     "RedOr"      "OrYel"      "Peach"     
+ [6] "PinkYl"     "Mint"       "BluGrn"     "DarkMint"   "Emrld"     
+[11] "BluYl"      "Teal"       "TealGrn"    "Purp"       "PurpOr"    
+[16] "Sunset"     "Magenta"    "SunsetDark" "BrwnYl"    
+> names(diverging_palettes)
+[1] "ArmyRose" "Fall"     "Geyser"   "Temps"    "TealRose" "Tropic"   "Earth"   
+> 
+> # Plot all palettes.
+> plot(discrete_palettes)
+> plot(sequential_palettes)
+> plot(diverging_palettes)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("colour-mixing-arithmetic")
+> ### * colour-mixing-arithmetic
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: colour-mixing-arithmetic
+> ### Title: Mix colour vectors with arithmetic operators
+> ### Aliases: colour-mixing-arithmetic color-mixing-arithmetic
+> ###   +.palettes_colour
+> 
+> ### ** Examples
+> 
+> x <- pal_colour("red")
+> y <- pal_colour("blue")
+> x + y
+<palettes_colour[1]>
+• #FF00FF
+> 
+> 
+> 
+> cleanEx()
+> nameEx("colour-mixing-math")
+> ### * colour-mixing-math
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: colour-mixing-math
+> ### Title: Mix colour vectors with math functions
+> ### Aliases: colour-mixing-math color-mixing-math sum.palettes_colour
+> ###   cumsum.palettes_colour
+> 
+> ### ** Examples
+> 
+> x <- pal_colour(c("red", "blue"))
+> sum(x)
+<palettes_colour[1]>
+• #FF00FF
+> 
+> x <- pal_colour(c("red", "blue", "yellow"))
+> cumsum(x)
+<palettes_colour[3]>
+• #FF0000
+• #FF00FF
+• #FFFFFF
+> 
+> 
+> 
+> cleanEx()
+> nameEx("list_colour_symbols")
+> ### * list_colour_symbols
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: list_colour_symbols
+> ### Title: Symbols to use in colour previews
+> ### Aliases: list_colour_symbols list_color_symbols
+> 
+> ### ** Examples
+> 
+> list_colour_symbols()
+── options(palettes.print_symbol = ...) ────────────────────
+•	circle_small            ⬛	square_large           
+●	circle                  ▇	block                   
+⚫	circle_medium          █	block_full              
+⬤	circle_large            ⬩	diamond_small           
+⬬	ellipse_horizontal      ◆	diamond                 
+⬮	ellipse_vertical        ⬥	diamond_medium          
+▲	triangle_up             ⬟	pentagon                
+▼	triangle_down           ⬢	hexagon                 
+◀	triangle_left           ★	star                    
+▶	triangle_right          ♥	heart                   
+▪	square_small            ☺	smiley                  
+■	square                  ෴	moustache               
+◼	square_medium                                    
+> 
+> 
+> 
+> cleanEx()
+> nameEx("met_palettes")
+> ### * met_palettes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: met_palettes
+> ### Title: Metropolitan Museum of Art palettes
+> ### Aliases: met_palettes met_palettes_a11y
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # Get all palettes by name.
+> names(met_palettes)
+ [1] "Archambault" "Austria"     "Benedictus"  "Cassatt1"    "Cassatt2"   
+ [6] "Cross"       "Degas"       "Demuth"      "Derain"      "Egypt"      
+[11] "Gauguin"     "Greek"       "Hiroshige"   "Hokusai1"    "Hokusai2"   
+[16] "Hokusai3"    "Homer1"      "Homer2"      "Ingres"      "Isfahan1"   
+[21] "Isfahan2"    "Java"        "Johnson"     "Juarez"      "Kandinsky"  
+[26] "Klimt"       "Lakota"      "Manet"       "Monet"       "Moreau"     
+[31] "Morgenstern" "Nattier"     "Navajo"      "NewKingdom"  "Nizami"     
+[36] "OKeeffe1"    "OKeeffe2"    "Paquin"      "Peru1"       "Peru2"      
+[41] "Pillement"   "Pissaro"     "Redon"       "Renoir"      "Signac"     
+[46] "Tam"         "Tara"        "Thomas"      "Tiepolo"     "Troy"       
+[51] "Tsimshian"   "VanGogh1"    "VanGogh2"    "VanGogh3"    "Veronese"   
+[56] "Wissing"    
+> 
+> # Plot all palettes.
+> plot(met_palettes)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("nord_palettes")
+> ### * nord_palettes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: nord_palettes
+> ### Title: Nord palettes
+> ### Aliases: nord_palettes
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # Get all palettes by name.
+> names(nord_palettes)
+ [1] "polarnight"       "snowstorm"        "frost"            "aurora"          
+ [5] "lumina"           "mountain_forms"   "silver_mine"      "lake_superior"   
+ [9] "victory_bonds"    "halifax_harbor"   "moose_pond"       "algoma_forest"   
+[13] "rocky_mountain"   "red_mountain"     "baie_mouton"      "afternoon_prarie"
+> 
+> # Plot all palettes.
+> plot(nord_palettes)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pal_colour")
+> ### * pal_colour
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pal_colour
+> ### Title: Colour vectors
+> ### Aliases: pal_colour is_colour as_colour as_colour.default
+> ###   as_colour.palettes_palette pal_color is_color as_color
+> 
+> ### ** Examples
+> 
+> pal_colour(c("darkred", "#0F7BA2"))
+<palettes_colour[2]>
+• #8B0000
+• #0F7BA2
+> 
+> is_colour("darkred")
+[1] FALSE
+> is_colour(pal_colour("darkred"))
+[1] TRUE
+> 
+> as_colour("#0F7BA2")
+<palettes_colour[1]>
+• #0F7BA2
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pal_numeric")
+> ### * pal_numeric
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pal_numeric
+> ### Title: Colour vector and colour palette mapping
+> ### Aliases: pal_numeric pal_bin pal_quantile pal_factor
+> 
+> ### ** Examples
+> 
+> pal <- pal_bin(met_palettes$Tam, domain = 0:100)
+> plot(as_colour(pal(sort(runif(16, 0, 100)))))
+> 
+> # Exponential distribution, mapped continuously
+> pal <- pal_numeric(met_palettes$Tam, domain = NULL)
+> plot(as_colour(pal(sort(rexp(16)))))
+> 
+> # Exponential distribution, mapped by interval
+> pal <- pal_bin(met_palettes$Tam, domain = NULL, bins = 4)
+> plot(as_colour(pal(sort(rexp(16)))))
+> 
+> # Exponential distribution, mapped by quantile
+> pal <- pal_quantile(met_palettes$Tam, domain = NULL)
+> plot(as_colour(pal(sort(rexp(16)))))
+> 
+> # Categorical data; by default, the values being coloured span the gamut...
+> pal <- pal_factor(met_palettes$Java, domain = NULL)
+> plot(as_colour(pal(LETTERS[1:5])))
+> 
+> # ...unless the data is a factor, without droplevels...
+> pal <- pal_factor(met_palettes$Java, domain = NULL)
+> plot(as_colour(pal(factor(LETTERS[1:5], levels = LETTERS))))
+> 
+> # ...or the domain is stated explicitly.
+> pal <- pal_factor(met_palettes$Java, domain = NULL, levels = LETTERS)
+> plot(as_colour(pal(LETTERS[1:5])))
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pal_palette")
+> ### * pal_palette
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pal_palette
+> ### Title: Colour palettes
+> ### Aliases: pal_palette is_palette as_palette
+> 
+> ### ** Examples
+> 
+> pal_palette(
++   Egypt = c("#DD5129", "#0F7BA2", "#43B284", "#FAB255"),
++   Java  = c("#663171", "#CF3A36", "#EA7428", "#E2998A", "#0C7156")
++ )
+<palettes_palette[2]>
+$Egypt
+<palettes_colour[4]>
+• #DD5129
+• #0F7BA2
+• #43B284
+• #FAB255
+
+$Java
+<palettes_colour[5]>
+• #663171
+• #CF3A36
+• #EA7428
+• #E2998A
+• #0C7156
+
+> 
+> x <- list(
++   Egypt = c("#DD5129", "#0F7BA2", "#43B284", "#FAB255"),
++   Java  = c("#663171", "#CF3A36", "#EA7428", "#E2998A", "#0C7156")
++ )
+> as_palette(x)
+<palettes_palette[2]>
+$Egypt
+<palettes_colour[4]>
+• #DD5129
+• #0F7BA2
+• #43B284
+• #FAB255
+
+$Java
+<palettes_colour[5]>
+• #663171
+• #CF3A36
+• #EA7428
+• #E2998A
+• #0C7156
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pal_ramp")
+> ### * pal_ramp
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pal_ramp
+> ### Title: Colour vector and colour palette interpolation
+> ### Aliases: pal_ramp pal_ramp.palettes_colour pal_ramp.palettes_palette
+> 
+> ### ** Examples
+> 
+> # The class returned after interpolation matches the input class.
+> x <- pal_colour(c("darkslateblue", "cornflowerblue", "slategray1"))
+> y <- pal_palette(blues = x)
+> class(pal_ramp(x))
+[1] "palettes_colour" "vctrs_vctr"     
+> class(pal_ramp(y))
+[1] "palettes_palette" "vctrs_list_of"    "vctrs_vctr"       "list"            
+> 
+> # Choose between linear and spline interpolation.
+> pal_ramp(x, n = 7, interpolate = "linear")
+<palettes_colour[7]>
+• #483D8B
+• #535AAB
+• #5C77CB
+• #6495ED
+• #89AEF3
+• #A9C8F9
+• #C6E2FF
+> pal_ramp(x, n = 7, interpolate = "spline")
+<palettes_colour[7]>
+• #483D8B
+• #495CB3
+• #5179D4
+• #6495ED
+• #80B0FD
+• #A2CAFF
+• #C6E2FF
+> 
+> # Palettes will have the same length after interpolation, regardless of the
+> # number of colours in the original palette.
+> z <- pal_palette(
++   Egypt = c("#DD5129", "#0F7BA2", "#43B284", "#FAB255"),
++   Java  = c("#663171", "#CF3A36", "#EA7428", "#E2998A", "#0C7156")
++ )
+> pal_ramp(z, n = 5)
+<palettes_palette[2]>
+$Egypt
+<palettes_colour[5]>
+• #DD5129
+• #737484
+• #369694
+• #83B479
+• #FAB255
+
+$Java
+<palettes_colour[5]>
+• #663171
+• #CF3A36
+• #EA7428
+• #E2998A
+• #0C7156
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("palettes-options")
+> ### * palettes-options
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: palettes-options
+> ### Title: Package options
+> ### Aliases: palettes-options
+> 
+> ### ** Examples
+> 
+> options(
++   palettes.print_symbol = "square",
++   palettes.print_hex = FALSE,
++   palettes.print_sep = " ",
++   palettes.print_width = 3,
++   palettes.print_index = TRUE
++ )
+> met_palettes$Cross
+<palettes_colour[9]>
+[1] ■ ■ ■ 
+[4] ■ ■ ■ 
+[7] ■ ■ ■
+> 
+> 
+> 
+> cleanEx()
+> nameEx("penguin_palettes")
+> ### * penguin_palettes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: penguin_palettes
+> ### Title: Palmer penguins palettes
+> ### Aliases: penguin_palettes
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # Get all palettes by name.
+> names(penguin_palettes)
+[1] "dark"      "medium"    "light"     "adelie"    "chinstrap" "gentoo"   
+> 
+> # Plot all palettes.
+> plot(penguin_palettes)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("performance_palettes")
+> ### * performance_palettes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: performance_palettes
+> ### Title: Performance palettes
+> ### Aliases: performance_palettes
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # Get all palettes by name.
+> names(performance_palettes)
+[1] "dark"
+> 
+> # Plot all palettes.
+> plot(performance_palettes)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("plot.palettes_colour")
+> ### * plot.palettes_colour
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: plot.palettes_colour
+> ### Title: Plot colour vectors and colour palettes
+> ### Aliases: plot.palettes_colour plot.palettes_palette
+> 
+> ### ** Examples
+> 
+> # Objects of class `palettes_colour` are plotted as swatches.
+> x <- pal_colour(c("darkslateblue", "cornflowerblue", "slategray1"))
+> plot(x)
+> 
+> # Objects of class `palettes_palette` with one palette are plotted with
+> # the palette name spanned across the swatches.
+> y <- pal_palette(Egypt = c("#DD5129", "#0F7BA2", "#43B284", "#FAB255"))
+> plot(y)
+> 
+> # Objects of class `palettes_palette` with multiple palettes are faceted.
+> z <- pal_palette(
++   Egypt = c("#DD5129", "#0F7BA2", "#43B284", "#FAB255"),
++   Java  = c("#663171", "#CF3A36", "#EA7428", "#E2998A", "#0C7156")
++ )
+> plot(z)
+> 
+> # Colours can also be interpolated.
+> plot(x, n = 5)
+> plot(y, n = 5)
+> plot(z, n = 5)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("pnw_palettes")
+> ### * pnw_palettes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pnw_palettes
+> ### Title: Pacific Northwest palettes
+> ### Aliases: pnw_palettes
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # Get all palettes by name.
+> names(pnw_palettes)
+ [1] "Starfish" "Shuksan"  "Bay"      "Winter"   "Lake"     "Sunset"  
+ [7] "Shuksan2" "Cascades" "Sailboat" "Moth"     "Spring"   "Mushroom"
+[13] "Sunset2"  "Anemone" 
+> 
+> # Plot all palettes.
+> plot(pnw_palettes)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("scale_colour_palette_d")
+> ### * scale_colour_palette_d
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: scale_colour_palette_d
+> ### Title: Colour scales from colour vectors and colour palettes
+> ### Aliases: scale_colour_palette_d scale_fill_palette_d
+> ###   scale_colour_palette_c scale_fill_palette_c scale_colour_palette_b
+> ###   scale_fill_palette_b scale_color_palette_d scale_color_palette_c
+> ###   scale_color_palette_b
+> 
+> ### ** Examples
+> 
+> library(ggplot2)
+> 
+> # Use palette_d with discrete data
+> discrete_pal <- pal_colour(c("#663171", "#EA7428", "#0C7156"))
+> ggplot(mtcars, aes(wt, mpg, colour = as.factor(cyl))) +
++   geom_point(size = 3) +
++   scale_colour_palette_d(discrete_pal)
+> 
+> # Use palette_c with continuous data
+> continuous_pal <- pal_colour(c("#3C0D03", "#E67424", "#F5C34D"))
+> ggplot(mtcars, aes(wt, mpg, colour = mpg)) +
++   geom_point(size = 3) +
++   scale_colour_palette_c(continuous_pal)
+> 
+> # Use palette_b to bin continuous data before mapping
+> ggplot(mtcars, aes(wt, mpg, colour = mpg)) +
++   geom_point(size = 3) +
++   scale_colour_palette_b(continuous_pal)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:ggplot2’
+
+> nameEx("viridis_palettes")
+> ### * viridis_palettes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: viridis_palettes
+> ### Title: Viridis palettes
+> ### Aliases: viridis_palettes
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # Get all palettes by name.
+> names(viridis_palettes)
+[1] "viridis" "magma"   "inferno" "plasma"  "cividis" "rocket"  "mako"   
+[8] "turbo"  
+> 
+> # Plot all palettes.
+> plot(viridis_palettes, n = 256)
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  3.715 0.055 3.952 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

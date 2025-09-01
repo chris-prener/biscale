@@ -1,0 +1,38 @@
+Package: biscale
+Type: Package
+Title: Tools and Palettes for Bivariate Thematic Mapping
+Version: 1.1.0
+Authors@R: c(
+    person("Christopher", "Prener", , "chris.prener@gmail.com", c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-4310-9888")),
+    person("Timo", "Grossenbacher", , role = "aut"),
+    person("Angelo", "Zehr", , role = "aut"),
+    person("Joshua", "Stevens", , role = "ctb"))
+Description: Provides a 'ggplot2' centric approach to bivariate mapping. This is a 
+    technique that maps two quantities simultaneously rather than the single value 
+    that most thematic maps display. The package provides a suite of tools 
+    for calculating breaks using multiple different approaches, a selection of 
+    palettes appropriate for bivariate mapping and scale functions for 'ggplot2' 
+    calls that adds those palettes to maps. Tools for creating bivariate legends 
+    are also included.
+Depends: R (>= 3.5)
+License: GPL-3
+URL: https://chris-prener.github.io/biscale/
+BugReports: https://github.com/chris-prener/biscale/issues
+Encoding: UTF-8
+LazyData: true
+Imports: classInt, ggplot2
+RoxygenNote: 7.3.2
+Suggests: covr, cowplot, knitr, rmarkdown, sf, testthat
+VignetteBuilder: knitr
+RemoteType: local
+RemoteUrl: /Users/chris/GitHub/biscale
+NeedsCompilation: no
+Packaged: 2025-09-01 01:20:05 UTC; chris
+Author: Christopher Prener [aut, cre] (ORCID:
+    <https://orcid.org/0000-0002-4310-9888>),
+  Timo Grossenbacher [aut],
+  Angelo Zehr [aut],
+  Joshua Stevens [ctb]
+Maintainer: Christopher Prener <chris.prener@gmail.com>
+Built: R 4.5.1; ; 2025-09-01 01:20:05 UTC; unix

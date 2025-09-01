@@ -1,0 +1,11 @@
+bi_class                Create Classes for Bivariate Maps
+bi_class_breaks         Return Breaks
+bi_legend               Create Object for Drawing Legend
+bi_pal                  Preview Palettes and Hex Values
+bi_scale_color          Apply Bivariate Color to ggplot Object
+bi_scale_fill           Apply Bivariate Fill to ggplot Object
+bi_theme                Basic Theme for Bivariate Mapping
+stl_race_income         Race and Median Income in St. Louis by Census
+                        Tract, 2017
+stl_race_income_point   Race and Median Income in St. Louis by Census
+                        Tract, 2017
